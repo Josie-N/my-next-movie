@@ -9,6 +9,14 @@ function Movies () {
     }, []
   );
 
+  const handleDelete = (data, movie) => {
+    // Filter movie using filter method
+    const filteredMovie = data.filter(m => m._id !== movie._id);
+
+    // We override the initial list value using setData()
+    setData(filteredMovie);
+  }
+
   const visuallyHidden = {
     position: 'absolute',
     left: -10000,
@@ -37,27 +45,14 @@ function Movies () {
             <th scope="col" />
           </tr>
           </thead>
-          <MovieList movieData={data} />
+          <MovieList movieData={data} handleDelete={handleDelete} />
         </table>
       </main>
     </>
   )
 }
 
-function MovieList ({ movieData }) {
-
-  // Step 1: Add local component state
-  const [table, updateTable] = useState(movieData);
-
-  // console.log(table, ' table  ---------->')
-
-  const handleDelete = (movie) => {
-    // Step 2: Filter movie using filter method
-    const filteredMovie = table.filter(m => m._id !== movie._id);
-
-    //  Step 3: We override the initial list value using removeTableItem() !
-    updateTable(filteredMovie);
-  }
+function MovieList ({ movieData, handleDelete }) {
 
   return (
     <tbody>
@@ -69,7 +64,10 @@ function MovieList ({ movieData }) {
           <td>{movie.numberInStock}</td>
           <td>{movie.dailyRentalRate}</td>
           <td>
-            <button type="button" className="btn btn-danger btn-sm" onClick={() => handleDelete(movie)}>Delete</button>
+            <button type="button" className="btn btn-danger btn-sm"
+              // Lift up the state back to the parent component
+                    onClick={() => handleDelete(movieData, movie)}>Delete
+            </button>
           </td>
         </tr>
       )
