@@ -3,9 +3,11 @@ import { getMovies } from "./services/fakeMovieService";
 
 function Movies () {
   const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
       setData(getMovies())
+      setLoading(false)
     }, []
   );
 
@@ -29,6 +31,7 @@ function Movies () {
   const movieCount = data.length;
 
   if (movieCount < 1) return <h2>There are no movies in the database.</h2>
+  if (isLoading) return <pre>LOADING...</pre>
 
   return (
     <>
