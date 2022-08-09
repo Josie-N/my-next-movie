@@ -9,10 +9,6 @@ function Movies () {
     }, []
   );
 
-  // Don't forget: Add loading state
-  // Suggestion: add pagination
-  // Suggestion: use a real api instead
-
   const visuallyHidden = {
     position: 'absolute',
     left: -10000,
@@ -25,7 +21,6 @@ function Movies () {
   const movieCount = data.length;
 
   if (movieCount < 1) return <h2>There are no movies in the database.</h2>
-
 
   return (
     <>
@@ -49,10 +44,20 @@ function Movies () {
   )
 }
 
+function MovieList ({ movieData }) {
 
-function MovieList (props) {
+  // Step 1: Add local component state
+  const [table, updateTable] = useState(movieData);
 
-  const handleDelete = (movie) => console.log(movie);
+  // console.log(table, ' table  ---------->')
+
+  const handleDelete = (movie) => {
+    // Step 2: Filter movie using filter method
+    const filteredMovie = table.filter(m => m._id !== movie._id);
+
+    //  Step 3: We override the initial list value using removeTableItem() !
+    updateTable(filteredMovie);
+  }
 
   return (
     <tbody>
@@ -67,9 +72,8 @@ function MovieList (props) {
             <button type="button" className="btn btn-danger btn-sm" onClick={() => handleDelete(movie)}>Delete</button>
           </td>
         </tr>
-      );
-    })
-    }
+      )
+    })}
     </tbody>
   )
 }

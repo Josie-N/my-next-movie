@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import './App.css';
 import Movies from "./Movies";
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <main className="container">
         <Movies />
