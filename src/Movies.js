@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import MovieList from "./MovieList";
 
 function Movies () {
-  const [data, setData] = useState({});
+  const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
       fetch('https://k2maan-moviehut.herokuapp.com/api/movies?limit=10')
         .then(response => response.json())
-        .then(json => setData(json))
+        .then(json => setMovies(json.data))
         .catch(error => {
           console.error(error);
         });
@@ -17,12 +17,11 @@ function Movies () {
     }, []
   );
 
-  const { data: movieData } = data;
+  const handleDelete = (movies, movie) => {
+    const filteredMovies = movies.filter(m => m._id !== movie._id);
 
-  const handleDelete = (movieData, movie) => {
-    const filteredMovie = movieData.filter(m => m._id !== movie._id);
-    // We override the initial movie list using setData()
-    setData(filteredMovie);
+    // We update the initial movie list using setMovies()
+    setMovies(filteredMovies);
   }
 
   const visuallyHidden = {
@@ -34,7 +33,7 @@ function Movies () {
     overflow: 'hidden'
   }
 
-  const movieCount = movieData && movieData.length;
+  const movieCount = movies.length;
 
   if (isLoading) return <pre>LOADING...</pre>
   if (movieCount < 1) return <h2>There are no movies in the database.</h2>
@@ -54,7 +53,7 @@ function Movies () {
             <th scope="col" />
           </tr>
           </thead>
-          <MovieList movieData={movieData} handleDelete={handleDelete} />
+          <MovieList movies={movies} handleDelete={handleDelete} />
         </table>
       </main>
     </>

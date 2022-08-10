@@ -1,20 +1,22 @@
 import React from "react";
 
-function MovieList ({ movieData = [], handleDelete }) {
-
+function MovieList ({ movies, handleDelete }) {
+  
   return (
     <tbody>
-    {movieData.map(movie => {
+    {movies.map(movie => {
+      const { _id, name, genre, director, imdbRating } = movie;
+
       return (
-        <tr key={movie['_id']}>
-          <td>{movie.name}</td>
-          <td>{movie.genre}</td>
-          <td>{movie.director}</td>
-          <td>{movie.imdbRating}</td>
+        <tr key={_id}>
+          <td>{name}</td>
+          <td>{genre}</td>
+          <td>{director}</td>
+          <td>{imdbRating}</td>
           <td>
             <button type="button" className="btn btn-danger btn-sm"
               // Lift up the state back to the parent component
-                    onClick={() => handleDelete(movieData, movie)}>
+                    onClick={() => handleDelete(movies, movie)}>
               Delete
             </button>
           </td>
