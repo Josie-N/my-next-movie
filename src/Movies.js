@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { getMovies } from "./services/fakeMovieService";
 
 function Movies () {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-      setData(getMovies())
+      fetch('https://k2maan-moviehut.herokuapp.com/api/movies?limit=10')
+        .then(response => response.json())
+        .then(json => setData(json))
+        .catch(error => {
+          console.error(error);
+        });
+      
       setLoading(false)
     }, []
   );
 
-  const handleDelete = (data, movie) => {
-    // Filter movie using filter method
-    const filteredMovie = data.filter(m => m._id !== movie._id);
+  const { data: movieData } = data;
 
-    // We override the initial list value using setData()
+  const handleDelete = (movieData, movie) => {
+    const filteredMovie = movieData.filter(m => m._id !== movie._id);
+    // We override the initial movie list using setData()
     setData(filteredMovie);
   }
 
@@ -28,10 +33,10 @@ function Movies () {
     overflow: 'hidden'
   }
 
-  const movieCount = data.length;
+  const movieCount = movieData && movieData.length;
 
-  if (movieCount < 1) return <h2>There are no movies in the database.</h2>
   if (isLoading) return <pre>LOADING...</pre>
+  if (movieCount < 1) return <h2>There are no movies in the database.</h2>
 
   return (
     <>
@@ -43,33 +48,35 @@ function Movies () {
           <tr>
             <th scope="col">Title</th>
             <th scope="col">Genre</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Rate</th>
+            <th scope="col">Director</th>
+            <th scope="col">imdb Rating</th>
             <th scope="col" />
           </tr>
           </thead>
-          <MovieList movieData={data} handleDelete={handleDelete} />
+          <MovieList movieData={movieData} handleDelete={handleDelete} />
         </table>
       </main>
     </>
   )
 }
 
-function MovieList ({ movieData, handleDelete }) {
+
+function MovieList ({ movieData = [], handleDelete }) {
 
   return (
     <tbody>
     {movieData.map(movie => {
       return (
         <tr key={movie['_id']}>
-          <td>{movie.title}</td>
-          <td>{movie.genre.name}</td>
-          <td>{movie.numberInStock}</td>
-          <td>{movie.dailyRentalRate}</td>
+          <td>{movie.name}</td>
+          <td>{movie.genre}</td>
+          <td>{movie.director}</td>
+          <td>{movie.imdbRating}</td>
           <td>
             <button type="button" className="btn btn-danger btn-sm"
               // Lift up the state back to the parent component
-                    onClick={() => handleDelete(movieData, movie)}>Delete
+                    onClick={() => handleDelete(movieData, movie)}>
+              Delete
             </button>
           </td>
         </tr>
