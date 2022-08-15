@@ -3,11 +3,17 @@ import React from 'react';
 function Pagination () {
   return (
     <>
-      <nav aria-label="Page navigation using numbers">
+      <nav role="navigation" aria-label="Pagination Navigation">
         <ul className="pagination">
-          <li className="page-item active"><a className="page-link" href="#">1</a></li>
-          <li className="page-item"><a className="page-link" href="#">2</a></li>
-          <li className="page-item"><a className="page-link" href="#">3</a></li>
+          <li className="page-item active">
+            <a className="page-link" href="#" aria-label="Go to Page 1" aria-current>1</a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#" aria-label="Go to Page 2">2</a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#" aria-label="Go to Page 3">3</a>
+          </li>
         </ul>
       </nav>
     </>
