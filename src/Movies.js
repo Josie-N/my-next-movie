@@ -3,7 +3,8 @@ import MovieList from "./MovieList";
 
 function Movies () {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(true);
+
 
   useEffect(() => {
       fetch('https://k2maan-moviehut.herokuapp.com/api/movies?limit=10')
@@ -41,19 +42,23 @@ function Movies () {
   return (
     <>
       <h1 style={visuallyHidden}>Vidly movie database</h1>
-      <h2>Showing {movieCount} movie{movieCount > 1 ? 's' : ''} in the database.</h2>
+      <h2>Showing {movieCount} movie{movieCount > 1 ? 's' : ''}</h2>
       <main>
         <table className="table table-striped">
           <thead>
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Director</th>
-            <th scope="col">imdb Rating</th>
-            <th scope="col" />
+            <th />
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Director</th>
+            <th>IMDb Score</th>
+            <th />
           </tr>
           </thead>
-          <MovieList movies={movies} handleDelete={handleDelete} />
+          <MovieList
+            movies={movies}
+            handleDelete={handleDelete}
+          />
         </table>
       </main>
     </>

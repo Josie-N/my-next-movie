@@ -1,7 +1,8 @@
 import React from "react";
+import Like from "./Like";
 
 function MovieList ({ movies, handleDelete }) {
-  
+
   return (
     <tbody>
     {movies.map(movie => {
@@ -9,6 +10,7 @@ function MovieList ({ movies, handleDelete }) {
 
       return (
         <tr key={_id}>
+          <Like />
           <td>{name}</td>
           <td>{genre}</td>
           <td>{director}</td>
