@@ -4,7 +4,7 @@ import classNames from "classnames";
 function Like () {
   const [liked, setLike] = useState(false);
 
-  const handleLike = () => setLike(true);
+  const handleToggle = () => setLike(!liked);
 
   const heartIconClasses = classNames(
     'bi',
@@ -14,7 +14,10 @@ function Like () {
 
   return (
     <>
-      <td onClick={handleLike} style={{ cursor: 'pointer' }}>
+      <td onClick={handleToggle}
+          className="text-center"
+          style={{ cursor: 'pointer' }}
+      >
         <i className={heartIconClasses} />
       </td>
     </>
