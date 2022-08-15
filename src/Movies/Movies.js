@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import MovieList from "./MovieList";
+import MovieList from "../MovieList";
+import Pagination from "../Pagination";
+import styles from "./Movies.module.css";
 
 function Movies () {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
-
 
   useEffect(() => {
       fetch('https://k2maan-moviehut.herokuapp.com/api/movies?limit=10')
@@ -25,15 +26,6 @@ function Movies () {
     setMovies(filteredMovies);
   }
 
-  const visuallyHidden = {
-    position: 'absolute',
-    left: -10000,
-    top: 'auto',
-    width: 1,
-    height: 1,
-    overflow: 'hidden'
-  }
-
   const movieCount = movies.length;
 
   if (isLoading) return <pre>LOADING...</pre>
@@ -41,8 +33,11 @@ function Movies () {
 
   return (
     <>
-      <h1 style={visuallyHidden}>Vidly movie database</h1>
-      <h2>Showing {movieCount} movie{movieCount > 1 ? 's' : ''}</h2>
+      <h1 className={styles.visuallyHidden}>Vidly movie database</h1>
+      <div className={styles.headerContainer}>
+        <h2>Showing {movieCount} movie{movieCount > 1 ? 's' : ''}</h2>
+        <Pagination />
+      </div>
       <main>
         <table className="table table-striped">
           <thead>
