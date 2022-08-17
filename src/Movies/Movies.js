@@ -6,11 +6,16 @@ import styles from "./Movies.module.css";
 function Movies () {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [totalPageCount, setTotalPageCount] = useState([]);
 
   useEffect(() => {
-      fetch('https://k2maan-moviehut.herokuapp.com/api/movies?limit=10')
+      fetch('https://josie-moviehut.herokuapp.com/api/movies?limit=20')
         .then(response => response.json())
-        .then(json => setMovies(json.data))
+        .then(json => {
+          const { pagination, data } = json;
+          setMovies(data);
+          setTotalPageCount(pagination.totalPages);
+        })
         .catch(error => {
           console.error(error);
         });
@@ -35,8 +40,10 @@ function Movies () {
     <>
       <h1 className={styles.visuallyHidden}>Vidly movie database</h1>
       <div className={styles.headerContainer}>
-        <h2>Showing {movieCount} movie{movieCount > 1 ? 's' : ''}</h2>
-        <Pagination />
+        <h2>Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})</h2>
+        <Pagination
+          totalPagesAvailable={totalPageCount}
+        />
       </div>
       <main>
         <table className="table table-striped">

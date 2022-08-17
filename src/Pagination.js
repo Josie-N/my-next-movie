@@ -1,20 +1,25 @@
 import React from 'react';
+import _ from 'lodash';
 
-function Pagination () {
+function Pagination ({ totalPagesAvailable }) {
+  if (totalPagesAvailable === 1) return null;
+
+  // _.range() creates an array of numbers
+  // Result: 50 (integer) is converted to: [1, 2, 3, ... , 50] (array with no 0 index)
+  const pages = _.range(1, totalPagesAvailable + 1);
+
+
   return (
     <>
       <nav role="navigation" aria-label="Pagination Navigation">
-        <ul className="pagination">
-          <li className="page-item active">
-            <a className="page-link" href="#" aria-label="Go to Page 1" aria-current>1</a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" aria-label="Go to Page 2">2</a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" aria-label="Go to Page 3">3</a>
-          </li>
-        </ul>
+        {pages.map(pageNumber =>
+          <ul key={pageNumber} className="pagination">
+            {/*<li onClick={onPageChange} className={pageStatusClass}>*/}
+            <li>
+              <a className="page-link" aria-label={`Go to Page ${pageNumber}`}>{pageNumber}</a>
+            </li>
+          </ul>
+        )}
       </nav>
     </>
   );
