@@ -7,12 +7,17 @@ function Movies () {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   useEffect(() => {
-      fetch('https://josie-moviehut.herokuapp.com/api/movies?limit=20')
+      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=10`)
         .then(response => response.json())
         .then(json => {
           const { pagination, data } = json;
+          console.log('json: ', json);
+          console.log('pagination.next:  ', pagination.next)
+
           setMovies(data);
           setTotalPageCount(pagination.totalPages);
         })
@@ -20,8 +25,8 @@ function Movies () {
           console.error(error);
         });
 
-      setLoading(false)
-    }, []
+      setLoading(false);
+    }, [currentPage]
   );
 
   const handleDelete = (movies, movie) => {
@@ -29,6 +34,10 @@ function Movies () {
 
     // We update the initial movie list using setMovies()
     setMovies(filteredMovies);
+  }
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   }
 
   const movieCount = movies.length;
@@ -43,6 +52,8 @@ function Movies () {
         <h2>Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})</h2>
         <Pagination
           totalPagesAvailable={totalPageCount}
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
         />
       </div>
       <main>

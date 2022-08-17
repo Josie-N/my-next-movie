@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import _ from 'lodash';
 import classNames from "classnames";
 
-function Pagination ({ totalPagesAvailable }) {
-
-  const [currentPage, setCurrentPage] = useState(1);
+function Pagination (
+  {
+    totalPagesAvailable,
+    onPageChange,
+    currentPage
+  }) {
+  // _.range() creates an array of numbers
+  // Result: 50 (integer) is converted to: [1, 2, 3, ... , 50] (array)
+  let pages = _.range(1, totalPagesAvailable + 1);
 
   if (totalPagesAvailable === 1) return null;
 
-  // _.range() creates an array of numbers
-  // Result: 50 (integer) is converted to: [1, 2, 3, ... , 50] (array with no 0 index)
-  let pages = _.range(1, totalPagesAvailable + 1);
-
   if (totalPagesAvailable > 3) {
     pages = pages.slice(0, 3)
-  }
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
   }
 
   return (
@@ -37,7 +35,7 @@ function Pagination ({ totalPagesAvailable }) {
                 <a aria-current={pageIsActive}
                    aria-label={`Go to Page ${pageNumber}`}
                    className="page-link"
-                   onClick={() => handlePageChange(pageNumber)}
+                   onClick={() => onPageChange(pageNumber)}
                 >
                   {pageNumber}
                 </a>
