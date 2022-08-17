@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MovieList from "../MovieList";
-import Pagination from "../Pagination";
+import Pagination from "../Pagination/Pagination";
 import styles from "./Movies.module.css";
 
 function Movies () {

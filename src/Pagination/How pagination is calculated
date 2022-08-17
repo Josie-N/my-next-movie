@@ -1,0 +1,26 @@
+
+    How pagination is calculated - steps:
+
+    1. Calculate number of pages available
+
+    This step is done on the backend side (not by the react app)
+    totalNumberOfMovies / moviesPerPage ⟹ Math.ceil(numbersOfPagesAvailable);
+    Example: 100 movies / 5 movies per page ⟹ 20 pages available (total page number)
+    Types: number / number = number
+
+    2. Store all page numbers available in a new array
+
+    The data type needs to be changed, from a number (integer) to an array of integers
+    const pageNumbersAvailable = _.range(first index, last index);
+    Example: 50 (integer) is converted to: [1, 2, 3, ... , 50] (array of integers)
+
+    3. Map over the array of numbers created
+
+    Each individual page number can now be rendered to the screen
+    [1, 2, 3, 4].map( pageNumber => (
+     <ul>
+       <li>
+         <a>{pageNumber}</a>
+         </li>
+    </ul>
+    ));
