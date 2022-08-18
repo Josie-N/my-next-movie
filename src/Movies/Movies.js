@@ -15,8 +15,6 @@ function Movies () {
         .then(response => response.json())
         .then(json => {
           const { pagination, data } = json;
-          console.log('json: ', json);
-          console.log('pagination.next:  ', pagination.next)
 
           setMovies(data);
           setTotalPageCount(pagination.totalPages);
@@ -47,9 +45,10 @@ function Movies () {
 
   return (
     <>
-      <h1 className={styles.visuallyHidden}>Vidly movie database</h1>
+      <h1 className={styles.visuallyHidden}>Vidly movie search database</h1>
+      <h2>Vidly</h2>
       <div className={styles.headerContainer}>
-        <h2>Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})</h2>
+        <h3>Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})</h3>
         <Pagination
           totalPagesAvailable={totalPageCount}
           onPageChange={handlePageChange}
