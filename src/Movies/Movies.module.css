@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.headerContainer {
+.navigationContainer {
   display: flex;
   justify-content: space-between;
 }
