@@ -50,7 +50,7 @@ function Movies () {
       <div className={styles.headerContainer}>
         <h3>Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})</h3>
         <Pagination
-          totalPagesAvailable={totalPageCount}
+          totalPageCount={totalPageCount}
           onPageChange={handlePageChange}
           currentPage={currentPage}
         />

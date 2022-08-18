@@ -1,26 +1,45 @@
 
     How pagination is calculated - steps:
 
-    1. Calculate number of pages available
+    1. Calculate total number of pages available
 
-    This step is done on the backend side (not by the react app)
-    totalNumberOfMovies / moviesPerPage ⟹ Math.ceil(numbersOfPagesAvailable);
-    Example: 100 movies / 5 movies per page ⟹ 20 pages available (total page number)
-    Types: number / number = number
+    This step is done on the backend side (not by the React app)
 
-    2. Store all page numbers available in a new array
+    const totalPageCount = Math.ceil(totalNumberOfMovies / moviesPerPage);
+    Example: 100 movies / 5 movies per page ⟹ 20 pages available
+    Final output received: one number
 
-    The data type needs to be changed, from a number (integer) to an array of integers
-    const pageNumbersAvailable = _.range(first index, last index);
-    Example: 50 (integer) is converted to: [1, 2, 3, ... , 50] (array of integers)
 
-    3. Map over the array of numbers created
+    2. Calculate the range of page numbers visible on the screen
 
-    Each individual page number can now be rendered to the screen
-    [1, 2, 3, 4].map( pageNumber => (
-     <ul>
-       <li>
-         <a>{pageNumber}</a>
+    Max. 2 to 5 number of pages available on the screen (out of 50 or more total pages)
+    Pagination format: N-2 | N-1 | current page = N | N+1 | N+2
+    Example: 9 | 10 | current page = 11 | 12 | 13
+
+    Calculate N-2 and N+2. We need 'totalPageCount' value for this (calculated in Step 1).
+    Final output: two numbers
+
+
+    3. Store the page range numbers in a new array
+
+    The data type needs to be changed in order to be able to map through it,
+    from a number (integer) to an array of integers.
+
+    const pageNumberRange = _.range(N-2, N+2 + 1);
+
+    Example: _.range(3, 50)  ⟹ is converted to: [ 3, ... , 49]; (50 is not included, you need to add '+ 1')
+    Final output: one array of integers
+
+
+    4. Map over the array of numbers created
+
+    Each individual page number can now be rendered to the screen:
+    pageNumberRange.map( pageNumber => (
+       <ul>
+         <li>
+           <a>{pageNumber}</a>
          </li>
-    </ul>
+       </ul>
     ));
+
+    Final output: unordered list of <li> html tags (via React)
