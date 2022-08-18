@@ -63,7 +63,7 @@ function Movies () {
             <th>Title</th>
             <th>Genre</th>
             <th>Director</th>
-            <th>IMDb Score</th>
+            <th className={styles.tableHeader}>IMDb Score</th>
             <th />
           </tr>
           </thead>
