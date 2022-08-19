@@ -8,18 +8,18 @@ function Pagination ({ totalPageCount, onPageChange, currentPage }) {
   // Pagination format: N-2 | N-1 | current page = N | N+1 | N+2
   // Pagination example: 5 | 6 | current page = 7 | 8 | 9
 
-  // Calculate: firstVisiblePageNumber = the value of N-2 (number)
+  // Calculate: firstVisiblePageNumber = the value of N-2 (type: number)
   const firstVisiblePageNumber = Math.max(currentPage - 2, 1);
 
   // Condition to initially show only the first two-page numbers (1 and 2).
   // Initial format: current page = N | N+1
   const numberOfPagesToShowOnRight = currentPage > 2 ? 2 : 1;
 
-  // Calculate: lastVisiblePageNumber = the value of N+2 (number)
+  // Calculate: lastVisiblePageNumber = the value of N+2 (type: number)
   const lastVisiblePageNumber = Math.min(currentPage + numberOfPagesToShowOnRight, totalPageCount);
 
   // _.range() creates an array of numbers
-  // Example: 50 (integer) is converted to: [1, 2, 3, ... , 50] (array)
+  // Example: 50 (integer) is converted to: [1, 2, 3, ... , 49]
   let pageNumberRange = _.range(firstVisiblePageNumber, lastVisiblePageNumber + 1);
 
   return (

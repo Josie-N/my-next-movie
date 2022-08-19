@@ -7,11 +7,14 @@ function MovieList ({ movies, handleDelete }) {
     <tbody>
     {movies.map(movie => {
       const { _id, name, genre, director, imdbRating } = movie;
+      const removeString = name.replace(/The /gm, '');
 
       return (
         <tr key={_id}>
           <Like />
-          <td>{name}</td>
+          <td>
+            <h4>{removeString}</h4>
+          </td>
           <td>{genre}</td>
           <td>{director}</td>
           <td>{imdbRating}</td>

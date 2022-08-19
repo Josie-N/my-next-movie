@@ -47,7 +47,7 @@ function Movies () {
     <>
       <h1 className={styles.visuallyHidden}>Vidly movie search database</h1>
       <a href="/">
-        <h2 className='d-inline'>Vidly</h2>
+        <h2 className='d-inline pr-5'>Vidly</h2>
       </a>
       <div className='d-flex justify-content-between align-items-center'>
         <h3>Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})</h3>
