@@ -1,3 +1,28 @@
+:root {
+  /* Font sizes */
+  /* Scale: Perfect Fourth - 1.333 */
+
+  --font-size-3xl: 4.209rem;
+  --font-size-2xl: 3.157rem;
+  --font-size-xl: 2.369rem;
+  --font-size-lg: 1.777rem;
+  --font-size-md: 1.333rem;
+  --font-size-base: 17px;
+  --font-size-sm: 0.75rem;
+
+  /* Line heights */
+  --line-height-md: 1.5;
+  --line-height-sm: 1.25;
+
+  /* Letter spacings. */
+  --letter-spacing-md: 0.1em;
+  --letter-spacing-sm: 0.05em;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
 @font-face {
   font-family: 'CadizSemiBold';
   src: url('./fonts/CadizWeb-SemiBold.woff2') format("woff2"),

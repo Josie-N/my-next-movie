@@ -11,7 +11,7 @@ function Movies () {
 
 
   useEffect(() => {
-      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=10`)
+      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=6`)
         .then(response => response.json())
         .then(json => {
           const { pagination, data } = json;

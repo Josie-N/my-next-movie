@@ -1,13 +1,13 @@
 import React from 'react';
-import Like from "../Like/Like";
 import styles from "./MovieCard.module.css";
+import Like from "../Like/Like";
 
 function MovieCard ({ movies, handleDelete }) {
 
   return (
     <>
       {movies.map(movie => {
-        const { _id, name, genre, director, imdbRating } = movie;
+        const { _id, name, genre, director, imdbRating, overview } = movie;
         const title = name.replace(/The /gm, '');
 
         return (
@@ -20,7 +20,7 @@ function MovieCard ({ movies, handleDelete }) {
                   <Like />
                 </div>
                 <p>{genre} ∙ {director}</p>
-                <p>Description will come here until ellipsis cuts th...</p>
+                <p>{overview}</p>
               </div>
               <button type="button" className={styles.deleteMovieButton}
                 // Lift up the state back to the parent component
