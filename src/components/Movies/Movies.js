@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MovieList from "../MovieList";
+import MovieList from "../MovieList/MovieList";
 import Pagination from "../Pagination/Pagination";
 import styles from "./Movies.module.css";
 
