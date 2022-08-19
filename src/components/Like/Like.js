@@ -14,12 +14,12 @@ function Like () {
 
   return (
     <>
-      <td onClick={handleToggle}
-          className="text-center"
-          style={{ cursor: 'pointer' }}
+      <span onClick={handleToggle}
+            className="text-center"
+            style={{ cursor: 'pointer' }}
       >
         <i className={heartIconClasses} />
-      </td>
+      </span>
     </>
   );
 }

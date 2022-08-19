@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MovieList from "../MovieList/MovieList";
+import MovieCard from "../MovieCard/MovieCard";
 import Pagination from "../Pagination/Pagination";
 import styles from "./Movies.module.css";
 
@@ -57,23 +57,12 @@ function Movies () {
           currentPage={currentPage}
         />
       </div>
+      <hr />
       <main>
-        <table className="table table-striped">
-          <thead>
-          <tr>
-            <th />
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Director</th>
-            <th className={styles.tableHeader}>IMDb Score</th>
-            <th />
-          </tr>
-          </thead>
-          <MovieList
-            movies={movies}
-            handleDelete={handleDelete}
-          />
-        </table>
+        <MovieCard
+          movies={movies}
+          handleDelete={handleDelete}
+        />
       </main>
     </>
   )
