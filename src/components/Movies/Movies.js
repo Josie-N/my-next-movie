@@ -45,20 +45,26 @@ function Movies () {
 
   return (
     <>
-      <h1 className={styles.visuallyHidden}>Vidly movie search database</h1>
-      <a href="/">
-        <h2 className='d-inline pr-5'>Vidly</h2>
-      </a>
-      <div className='d-flex justify-content-between align-items-center'>
-        <h3>Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})</h3>
-        <Pagination
-          totalPageCount={totalPageCount}
-          onPageChange={handlePageChange}
-          currentPage={currentPage}
-        />
-      </div>
-      <hr />
+      <header>
+        <h1 className={styles.visuallyHidden}>
+          The tale of, a movie search database
+        </h1>
+        <a href="/">
+          <h2 className={styles.textLogo} aria-hidden>The tale of</h2>
+        </a>
+        <div className='d-flex justify-content-end'>
+          <Pagination
+            totalPageCount={totalPageCount}
+            onPageChange={handlePageChange}
+            currentPage={currentPage}
+          />
+        </div>
+      </header>
+      <hr className={styles.navigationBoundary} />
       <main>
+        <h3 className={styles.movieCountInfo}>
+          Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})
+        </h3>
         <MovieCard
           movies={movies}
           handleDelete={handleDelete}

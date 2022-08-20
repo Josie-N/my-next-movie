@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from "./MovieCard.module.css";
-import Like from "../Like/Like";
 
 function MovieCard ({ movies, handleDelete }) {
 
@@ -11,24 +10,22 @@ function MovieCard ({ movies, handleDelete }) {
         const title = name.replace(/The /gm, '');
 
         return (
-          <>
-            <div key={_id} className={styles.cardMainContainer}>
-              <div>
-                <p>{imdbRating}</p>
-                <div className={styles.movieTitleContainer}>
-                  <h4 className={styles.movieTitle}>{title}</h4>
-                  <Like />
-                </div>
-                <p>{genre} ∙ {director}</p>
-                <p>{overview}</p>
+          <div key={_id} className={styles.cardMainContainer}>
+            <div>
+              <p className={styles.imdbScore}>{imdbRating}</p>
+              <div className={styles.movieTitleContainer}>
+                <h4 className={styles.movieTitle}>{title}</h4>
               </div>
-              <button type="button" className={styles.deleteMovieButton}
-                // Lift up the state back to the parent component
-                      onClick={() => handleDelete(movies, movie)}>
-                X
-              </button>
+              <p>{genre} ∙ {director}</p>
+              <hr className={styles.line} />
+              <p>{overview}</p>
             </div>
-          </>
+            {/*<button type="button" className={styles.deleteMovieButton}*/}
+            {/*  // Lift up the state back to the parent component*/}
+            {/*        onClick={() => handleDelete(movies, movie)}>*/}
+            {/*  X*/}
+            {/*</button>*/}
+          </div>
         )
       })}
     </>

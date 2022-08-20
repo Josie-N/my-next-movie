@@ -1,0 +1,53 @@
+@import "variables.css";
+
+@font-face {
+  font-family: 'Cadiz';
+  src:         url('../fonts/CadizWeb-SemiBold.woff2') format("woff2"),
+               url('../fonts/CadizWeb-SemiBold.woff') format("woff");
+
+  font-weight: 600;
+  font-style:  normal;
+}
+
+@font-face {
+  font-family: 'Cadiz';
+  src:         url('../fonts/CadizWeb-Regular.woff2') format("woff2"),
+               url('../fonts/CadizWeb-Regular.woff') format('woff');
+
+  font-weight: 400;
+  font-style:  normal;
+}
+
+body {
+  font-family:             'Cadiz', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size:               var(--font-size-base);
+  font-weight:             400;
+  color:                   var(--text-color-gunmetal);
+  font-feature-settings:   'kern';
+  font-kerning:            normal;
+  text-rendering:          optimizeLegibility;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  margin:                  0;
+  padding:                 20px 0 0 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size:      var(--font-size-3xl);
+  font-weight:    600;
+  letter-spacing: var(--letter-spacing-s);
+}
+
+p {
+  font-size:   var(--font-size-md);
+  line-height: var(--line-height-md);
+}
+
+a {
+  font-size: var(--font-size-base);
+}
+
+code {
+  font-family: source-code-pro, monospace;
+}

@@ -1,18 +1,30 @@
 
 .visuallyHidden {
   position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
+  left:     -10000px;
+  top:      auto;
+  width:    1px;
+  height:   1px;
   overflow: hidden;
 }
 
+.textLogo {
+  display:       inline;
+  padding-right: 3.5rem;
+  font-size:     var(--font-size-xl);
+  color:         var(--text-color-gunmetal);
+}
+
 .navigationContainer {
-  display: flex;
+  display:         flex;
   justify-content: space-between;
 }
 
-.tableHeader {
-  white-space: nowrap;
+.movieCountInfo {
+  font-size: var(--font-size-lg);
+}
+
+.navigationBoundary {
+  margin-top:    0;
+  margin-bottom: 2rem;
 }
