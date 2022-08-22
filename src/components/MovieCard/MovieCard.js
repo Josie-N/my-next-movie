@@ -10,7 +10,7 @@ function MovieCard ({ movies, handleDelete }) {
         const title = name.replace(/The /gm, '');
 
         return (
-          <div key={_id} className={styles.cardMainContainer}>
+          <div key={_id} tabindex="0" className={styles.cardMainContainer}>
             <div>
               <h4 className={styles.movieTitle}>{title}</h4>
               <p className={styles.movieDetails}>{genre} ∙ {director}</p>
