@@ -1,4 +1,8 @@
 
+.header {
+  margin-top: var(--space-1);
+}
+
 .visuallyHidden {
   position: absolute;
   left:     -10000px;
@@ -11,7 +15,7 @@
 .textLogo {
   display:       inline;
   padding-right: 3.5rem;
-  font-size:     var(--font-size-xl);
+  font-size:     var(--font-size-lg);
   color:         var(--text-color-gunmetal);
 }
 
@@ -20,11 +24,11 @@
   justify-content: space-between;
 }
 
-.movieCountInfo {
-  font-size: var(--font-size-lg);
-}
-
 .navigationBoundary {
   margin-top:    0;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-3);
 }
+
+/*.movieCountInfo {*/
+/*  font-size: var(--font-size-lg);*/
+/*}*/

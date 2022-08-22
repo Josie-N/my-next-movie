@@ -12,14 +12,11 @@ function MovieCard ({ movies, handleDelete }) {
         return (
           <div key={_id} className={styles.cardMainContainer}>
             <div>
-              <p className={styles.imdbScore}>{imdbRating}</p>
-              <div className={styles.movieTitleContainer}>
-                <h4 className={styles.movieTitle}>{title}</h4>
-              </div>
-              <p>{genre} ∙ {director}</p>
-              <hr className={styles.line} />
-              <p>{overview}</p>
+              <h4 className={styles.movieTitle}>{title}</h4>
+              <p className={styles.movieDetails}>{genre} ∙ {director}</p>
+              <p className={styles.movieDescription}>{overview}</p>
             </div>
+            <p className={styles.movieRating}>{imdbRating}</p>
             {/*<button type="button" className={styles.deleteMovieButton}*/}
             {/*  // Lift up the state back to the parent component*/}
             {/*        onClick={() => handleDelete(movies, movie)}>*/}

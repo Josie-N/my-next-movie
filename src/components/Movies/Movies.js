@@ -11,7 +11,7 @@ function Movies () {
 
 
   useEffect(() => {
-      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=6`)
+      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=5`)
         .then(response => response.json())
         .then(json => {
           const { pagination, data } = json;
@@ -45,7 +45,7 @@ function Movies () {
 
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <h1 className={styles.visuallyHidden}>
           The tale of, a movie search database
         </h1>
@@ -62,9 +62,6 @@ function Movies () {
       </header>
       <hr className={styles.navigationBoundary} />
       <main>
-        <h3 className={styles.movieCountInfo}>
-          Showing movie{movieCount > 1 ? 's' : ''} on this page ({movieCount})
-        </h3>
         <MovieCard
           movies={movies}
           handleDelete={handleDelete}

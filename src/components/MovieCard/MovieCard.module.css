@@ -1,40 +1,45 @@
+
 .cardMainContainer {
-  border:          3px solid black;
-  border-radius:   6px;
-  margin-bottom:   40px;
-  padding:         32px 40px 32px 32px;
-  display:         flex;
+  display:         inline-flex;
   justify-content: space-between;
   max-width:       680px;
+  position:        relative;
+
+  padding:         0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
+  margin-bottom:   var(--space-5);
+  border:          3px solid var(--text-color-gunmetal);
+  border-radius:   6px;
 }
 
 .cardMainContainer:last-child {
-  margin-bottom: 96px;
-}
-
-.deleteMovieButton {
-  align-self:       flex-start;
-  padding:          4px 4px 16px 16px;
-  background-color: transparent;
-  border-style:     none;
-  cursor:           pointer;
-}
-
-.movieTitleContainer {
-  display: inline-flex;
+  margin-bottom: var(--space-9);
 }
 
 .movieTitle {
-  margin-right: 16px;
-  font-size:    var(--font-size-3xl);
+  max-width: 31.2rem;
+  font-size: var(--font-size-3xl);
+  margin:    var(--space-4) 0 0.69rem 0;
 }
 
-.imdbScore {
-  text-align:    right;
-  margin-bottom: 0;
+.movieRating {
+  position:   absolute;
+  right:      var(--space-3);
+  margin-top: var(--space-2);
 }
 
-.line {
-  width:       40%;
-  margin-left: 0;
+.movieDetails {
+  font-size: var(--font-size-base);
 }
+
+.movieDescription {
+  max-width:    34.8rem;
+  margin-right: var(--space-0);
+}
+
+/*.deleteMovieButton {*/
+/*  align-self:       flex-start;*/
+/*  padding:          4px 4px 16px 16px;*/
+/*  background-color: transparent;*/
+/*  border-style:     none;*/
+/*  cursor:           pointer;*/
+/*}*/
