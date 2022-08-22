@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "../MovieCard/MovieCard";
 import Pagination from "../Pagination/Pagination";
+import MovieCard from "../MovieCard/MovieCard";
+
 import styles from "./Movies.module.css";
 
 function Movies () {
@@ -8,7 +9,6 @@ function Movies () {
   const [isLoading, setLoading] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
 
   useEffect(() => {
       fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=5`)
@@ -27,12 +27,12 @@ function Movies () {
     }, [currentPage]
   );
 
-  const handleDelete = (movies, movie) => {
-    const filteredMovies = movies.filter(m => m._id !== movie._id);
-
-    // We update the initial movie list using setMovies()
-    setMovies(filteredMovies);
-  }
+  // const handleDelete = (movies, movie) => {
+  //   const filteredMovies = movies.filter(m => m._id !== movie._id);
+  //
+  //   // We update the initial movie list using setMovies()
+  //   setMovies(filteredMovies);
+  // }
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -62,10 +62,10 @@ function Movies () {
       </header>
       <hr className={styles.navigationBoundary} />
       <main>
-        <MovieCard
-          movies={movies}
-          handleDelete={handleDelete}
-        />
+        {movies.map(movie => {
+          return (
+            <MovieCard key={movie._id} movie={movie} />)
+        })}
       </main>
     </>
   )

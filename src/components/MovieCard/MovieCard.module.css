@@ -1,5 +1,5 @@
 
-.cardMainContainer {
+.movieCard {
   display:         inline-flex;
   justify-content: space-between;
   max-width:       680px;
@@ -11,14 +11,31 @@
   border-radius:   6px;
 }
 
-.cardMainContainer:last-child {
+.movieCard:hover {
+  cursor: row-resize;
+}
+
+.movieCard:last-child {
   margin-bottom: var(--space-9);
+}
+
+.movieCard__collapsed {
+  composes:      movieCard;
+  display:       flex;
+  margin-bottom: var(--space-2);
+  border-radius: 4px;
 }
 
 .movieTitle {
   max-width: 31.2rem;
   font-size: var(--font-size-3xl);
   margin:    var(--space-4) 0 0.69rem 0;
+}
+
+.movieTitle__collapsed {
+  composes:  movieTitle;
+  font-size: var(--font-size-xl);
+  margin:    var(--space-2) 0 0 0;
 }
 
 .movieRating {
