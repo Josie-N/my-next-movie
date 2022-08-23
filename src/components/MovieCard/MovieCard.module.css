@@ -1,22 +1,16 @@
 
 .movieCard {
-  display:         inline-flex;
-  justify-content: space-between;
-  max-width:       680px;
-  position:        relative;
-
-  padding:         0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
-  margin-bottom:   var(--space-5);
-  border:          3px solid var(--text-color-gunmetal);
-  border-radius:   6px;
+  max-width: 680px;
+  position:  relative;
+  padding:   0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
+  border:    3px solid var(--text-color-gunmetal);
 }
 
-.movieCard:hover {
-  cursor: row-resize;
-}
-
-.movieCard:last-child {
-  margin-bottom: var(--space-9);
+.movieCard__open {
+  composes:      movieCard;
+  display:       inline-flex;
+  margin:        calc(var(--space-5) / 2) 0;
+  border-radius: 6px;
 }
 
 .movieCard__collapsed {
@@ -26,8 +20,33 @@
   border-radius: 4px;
 }
 
+.movieCard:hover {
+  cursor:           row-resize;
+  background-image: radial-gradient(var(--text-color-gunmetal) 1.1px, var(--background-color-white) 1.1px);
+  background-size:  44px 44px;
+}
+
+.movieCard:last-child {
+  margin-bottom: var(--space-9);
+}
+
+.movieCard:first-child {
+  margin-top: 0;
+}
+
+.movieCardInner {
+  display:        flex;
+  flex-direction: column;
+  align-items:    flex-start;
+}
+
 .movieTitle {
-  max-width: 31.2rem;
+  max-width:        31.2rem;
+  background-color: var(--background-color-white);
+}
+
+.movieTitle__open {
+  composes:  movieTitle;
   font-size: var(--font-size-3xl);
   margin:    var(--space-4) 0 0.69rem 0;
 }
@@ -39,18 +58,21 @@
 }
 
 .movieRating {
-  position:   absolute;
-  right:      var(--space-3);
-  margin-top: var(--space-2);
+  position:         absolute;
+  right:            var(--space-3);
+  margin-top:       var(--space-2);
+  background-color: var(--background-color-white);
 }
 
 .movieDetails {
-  font-size: var(--font-size-base);
+  font-size:        var(--font-size-base);
+  background-color: var(--background-color-white);
 }
 
 .movieDescription {
-  max-width:    34.8rem;
-  margin-right: var(--space-0);
+  max-width:        34.8rem;
+  margin-right:     var(--space-0);
+  background-color: var(--background-color-white);
 }
 
 /*.deleteMovieButton {*/

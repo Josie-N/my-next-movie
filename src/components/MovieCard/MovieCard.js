@@ -24,11 +24,11 @@ function MovieCard ({ movie }) {
   return (
     <div
       tabIndex="0"
-      className={styles.movieCard}
+      className={styles.movieCard__open}
       onClick={handleCollapse}
     >
-      <div>
-        <h4 className={styles.movieTitle}>{title}</h4>
+      <div className={styles.movieCardInner}>
+        <h4 className={styles.movieTitle__open}>{title}</h4>
         <p className={styles.movieDetails}>{genre} ∙ {director}</p>
         <p className={styles.movieDescription}>{overview}</p>
       </div>
