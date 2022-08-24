@@ -74,11 +74,3 @@
   margin-right:     var(--space-0);
   background-color: var(--background-color-white);
 }
-
-/*.deleteMovieButton {*/
-/*  align-self:       flex-start;*/
-/*  padding:          4px 4px 16px 16px;*/
-/*  background-color: transparent;*/
-/*  border-style:     none;*/
-/*  cursor:           pointer;*/
-/*}*/
