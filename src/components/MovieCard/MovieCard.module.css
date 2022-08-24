@@ -1,22 +1,25 @@
 
 .movieCard {
-  max-width: 680px;
-  position:  relative;
-  padding:   0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
-  border:    3px solid var(--text-color-gunmetal);
+  margin-top: var(--space-5);
+  padding:    0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
+  max-width:  680px;
+  position:   relative;
+  border:     3px solid var(--text-color-gunmetal);
 }
 
 .movieCard__open {
   composes:      movieCard;
   display:       inline-flex;
-  margin:        calc(var(--space-5) / 2) 0;
   border-radius: 6px;
+}
+
+.movieCard__collapsed + .movieCard__collapsed {
+  margin-top: calc(var(--space-5) / 2);
 }
 
 .movieCard__collapsed {
   composes:      movieCard;
   display:       flex;
-  margin-bottom: var(--space-2);
   border-radius: 4px;
 }
 
