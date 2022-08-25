@@ -3,6 +3,7 @@ import Pagination from "../Pagination/Pagination";
 import MovieCard from "../MovieCard/MovieCard";
 
 import styles from "./Movies.module.css";
+import helperStyles from "../../assets/stylesheets/helper.module.css";
 
 function Movies () {
   const [movies, setMovies] = useState([]);
@@ -46,7 +47,7 @@ function Movies () {
   return (
     <>
       <header className={styles.header}>
-        <h1 className={styles.visuallyHidden}>
+        <h1 className={helperStyles.visuallyHidden}>
           The tale of, a movie search database
         </h1>
         <a href="/">

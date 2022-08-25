@@ -3,15 +3,6 @@
   margin-top: var(--space-1);
 }
 
-.visuallyHidden {
-  position: absolute;
-  left:     -10000px;
-  top:      auto;
-  width:    1px;
-  height:   1px;
-  overflow: hidden;
-}
-
 .textLogo {
   display:       inline;
   padding-right: 3.5rem;
@@ -28,7 +19,3 @@
   margin-top:    0;
   margin-bottom: var(--space-3);
 }
-
-/*.movieCountInfo {*/
-/*  font-size: var(--font-size-lg);*/
-/*}*/

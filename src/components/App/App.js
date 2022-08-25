@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import './App.css';
 import Movies from "../Movies/Movies";
+
+import styles from './App.module.css';
 
 class App extends Component {
   render () {
     return (
-      <main className="container">
+      <div className={styles.layoutContainer}>
         <Movies />
-      </main>
+      </div>
     );
   }
 }
