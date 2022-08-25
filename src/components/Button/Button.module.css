@@ -10,5 +10,6 @@
 }
 
 .button:hover {
-  outline: 1px solid var(--text-color-gunmetal);
+  outline:    1px solid var(--text-color-gunmetal);
+  transition: outline 0.2s ease-out;
 }

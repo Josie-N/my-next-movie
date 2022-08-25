@@ -61,12 +61,29 @@ function Movies () {
           />
         </div>
       </header>
-      <hr className={styles.navigationBoundary} />
-      <main>
-        {movies.map(movie => {
-          return (
-            <MovieCard key={movie._id} movie={movie} />)
-        })}
+      <hr />
+      <main className={styles.mainContentContainer}>
+        <h3 className={helperStyles.visuallyHidden}>
+          Browse all movies available:
+        </h3>
+        <div className={styles.movieCardContainer}>
+          {movies.map(movie => {
+            return (
+              <MovieCard key={movie._id} movie={movie} />)
+          })}
+        </div>
+        {/*To do: move into it's own Watchlist component*/}
+        <aside className={styles.watchlistContainer}>
+          <ul className={styles.watchlist}>
+            <h3 className={styles.watchlistTitle}>Watchlist:</h3>
+            <li>
+              <a href="/">😊 Yes (32)</a>
+            </li>
+            <li>
+              <a href="/">😕 No (2)</a>
+            </li>
+          </ul>
+        </aside>
       </main>
     </>
   )

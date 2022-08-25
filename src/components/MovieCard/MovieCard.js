@@ -47,21 +47,24 @@ function MovieCard ({ movie }) {
   }
 
   return (
-    <div
-      tabIndex="0"
-      className={styles.movieCard__open}
-      onClick={handleCollapse}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className={styles.movieCardInner}>
-        <h4 className={styles.movieTitle__open}>{title}</h4>
-        <p className={styles.movieDetails}>{genre} ∙ {director}</p>
-        <p className={styles.movieDescription}>{overview}</p>
+    <>
+      <div
+        tabIndex="0"
+        className={styles.movieCard__open}
+        onClick={handleCollapse}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className={styles.movieCardInner}>
+          <h4 className={styles.movieTitle__open}>{title}</h4>
+          <p className={styles.movieDetails}>{genre} ∙ {director}</p>
+          <p className={styles.movieDescription}>{overview}</p>
+        </div>
+        <p className={styles.movieRating}>{imdbRating}</p>
+        {buttonGroup}
+        <div className={styles.movieCardShadow}></div>
       </div>
-      <p className={styles.movieRating}>{imdbRating}</p>
-      {buttonGroup}
-    </div>
+    </>
   );
 }
 

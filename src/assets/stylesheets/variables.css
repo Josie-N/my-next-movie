@@ -36,4 +36,6 @@
   --space-2:                26px; /* base line-height */
   --space-1:                13px; /* 26 - (26/ 2) */
   --space-0:                6.5px; /* (26/ 2) / 2 */
+
+  --grid-column-gap:        2rem;
 }

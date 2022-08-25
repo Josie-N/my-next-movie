@@ -1,7 +1,6 @@
 
 .buttonGroup {
-  display:          flex;
-  background-color: gold;
-  position:         absolute;
-  right:            0;
+  display:  flex;
+  position: absolute;
+  right:    0;
 }

@@ -1,21 +1,44 @@
 
+.mainContentContainer {
+  display:     flex;
+  align-items: flex-start;
+  padding-top: var(--space-3);
+}
+
+.movieCardContainer {
+  width:        42.5rem;
+  margin-right: var(--grid-column-gap);
+}
+
+.watchlistContainer {
+  display:         flex;
+  justify-content: center;
+  flex-grow:       1;
+  position:        sticky;
+  top:             0;
+}
+
+.watchlist {
+  min-width: 146px;
+  font-size: var(--font-size-md);
+}
+
+.watchlistTitle {
+  font-size:     var(--font-size-md);
+  margin-bottom: var(--space-1);
+}
+
 .header {
   margin-top: var(--space-1);
 }
 
 .textLogo {
   display:       inline;
-  padding-right: 3.5rem;
+  padding-right: var(--space-4);
   font-size:     var(--font-size-lg);
-  color:         var(--text-color-gunmetal);
 }
 
 .navigationContainer {
   display:         flex;
   justify-content: space-between;
-}
-
-.navigationBoundary {
-  margin-top:    0;
-  margin-bottom: var(--space-3);
 }

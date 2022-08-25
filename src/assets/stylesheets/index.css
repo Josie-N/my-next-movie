@@ -23,6 +23,7 @@ body {
   font-size:               var(--font-size-base);
   font-weight:             400;
   color:                   var(--text-color-gunmetal);
+  
   font-feature-settings:   'kern';
   font-kerning:            normal;
   text-rendering:          optimizeLegibility;
@@ -33,10 +34,13 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-size:      var(--font-size-3xl);
   font-weight:    600;
   letter-spacing: var(--letter-spacing-s);
   margin:         0;
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
 }
 
 p {
@@ -52,6 +56,11 @@ ol, ul {
 
 a {
   font-size: var(--font-size-base);
+  color:     var(--text-color-gunmetal);
+}
+
+a:hover {
+  color: var(--text-color-gunmetal);
 }
 
 code {

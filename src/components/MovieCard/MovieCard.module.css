@@ -1,15 +1,27 @@
 
 .movieCard {
-  margin-top: var(--space-5);
-  padding:    0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
-  max-width:  680px;
-  position:   relative;
-  border:     3px solid var(--text-color-gunmetal);
+  display:          flex;
+  margin-top:       var(--space-5);
+  padding:          0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
+  position:         relative;
+  border:           3px solid var(--text-color-gunmetal);
+  background-color: var(--background-color-white);
+}
+
+.movieCard:hover {
+  cursor: row-resize;
+}
+
+.movieCard:last-child {
+  margin-bottom: var(--space-9);
+}
+
+.movieCard:first-child {
+  margin-top: 0;
 }
 
 .movieCard__open {
   composes:      movieCard;
-  display:       inline-flex;
   border-radius: 6px;
 }
 
@@ -19,22 +31,14 @@
 
 .movieCard__collapsed {
   composes:      movieCard;
-  display:       flex;
   border-radius: 4px;
+  opacity:       0.5;
 }
 
-.movieCard:hover {
-  cursor:           row-resize;
+.movieCard__collapsed:hover {
   background-image: radial-gradient(var(--text-color-gunmetal) 1.1px, var(--background-color-white) 1.1px);
   background-size:  44px 44px;
-}
-
-.movieCard:last-child {
-  margin-bottom: var(--space-9);
-}
-
-.movieCard:first-child {
-  margin-top: 0;
+  opacity:          1;
 }
 
 .movieCardInner {
@@ -76,4 +80,14 @@
   max-width:        34.8rem;
   margin-right:     var(--space-0);
   background-color: var(--background-color-white);
+}
+
+.movieCardShadow {
+  height:           100%;
+  width:            42.6rem;
+  z-index:          -1;
+  position:         absolute;
+  transform:        translate(-34px, 23px);
+  background-image: radial-gradient(var(--text-color-gunmetal) 1.1px, var(--background-color-white) 1.1px);
+  background-size:  5px 5px;
 }
