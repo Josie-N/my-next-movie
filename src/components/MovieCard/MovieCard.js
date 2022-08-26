@@ -6,21 +6,26 @@ import styles from "./MovieCard.module.css";
 
 
 function MovieCard ({ movie }) {
-  const [isCardCollapsed, setCardCollapse] = useState(false);
+  const { _id, name, genre, director, imdbRating, overview } = movie;
+
+  const cardAlreadyCollapsed = JSON.parse(window.localStorage.getItem(_id));
+  const cardCollapsedInitialState = cardAlreadyCollapsed ? cardAlreadyCollapsed : false;
+
+  const [isCardCollapsed, setCardCollapse] = useState(cardCollapsedInitialState);
   const [isCardActionable, setCardActionable] = useState(false);
 
-  const { name, genre, director, imdbRating, overview } = movie;
   const title = name.replace(/The /gm, '');
 
   const handleMouseEnter = () => setCardActionable(true);
 
   const handleMouseLeave = () => setCardActionable(false);
-  
-  const handleCollapse = () => setCardCollapse(!isCardCollapsed);
 
-  const handleButtonClick = (event) => {
-    event.stopPropagation();
+  const handleCollapse = () => {
+    localStorage.setItem(_id, JSON.stringify(!isCardCollapsed));
+    setCardCollapse(!isCardCollapsed);
   }
+
+  const handleButtonClick = (event) => event.stopPropagation();
 
   const buttonGroup = <>
     {isCardActionable ?
