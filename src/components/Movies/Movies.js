@@ -9,7 +9,12 @@ function Movies () {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+
+  const initialPage = 1;
+  const lastCurrentPage = parseInt(window.localStorage.getItem("pageNumber"));
+  const [currentPage, setCurrentPage] = useState(lastCurrentPage ? lastCurrentPage : initialPage);
+
+  const movieCount = movies.length;
 
   useEffect(() => {
       fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=5`)
@@ -37,9 +42,8 @@ function Movies () {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    localStorage.setItem(`pageNumber`, pageNumber);
   }
-
-  const movieCount = movies.length;
 
   if (isLoading) return <pre>LOADING...</pre>
   if (movieCount < 1) return <h2>There are no movies in the database.</h2>
@@ -50,7 +54,7 @@ function Movies () {
         <h1 className={helperStyles.visuallyHidden}>
           The tale of, a movie search database
         </h1>
-        <a href="/">
+        <a onClick={() => handlePageChange(initialPage)} href="/">
           <h2 className={styles.textLogo} aria-hidden>The tale of</h2>
         </a>
         <div className='d-flex justify-content-end'>
@@ -72,7 +76,7 @@ function Movies () {
               <MovieCard key={movie._id} movie={movie} />)
           })}
         </div>
-        {/*To do: move into it's own Watchlist component*/}
+        {/*To do: move into its own Watchlist component*/}
         <aside className={styles.watchlistContainer}>
           <ul className={styles.watchlist}>
             <h3 className={styles.watchlistTitle}>Watchlist:</h3>
