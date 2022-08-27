@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7451c79b.css",
+    "main.js": "/static/js/main.3fbd6f87.js",
+    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
+    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
+    "static/media/CadizWeb-SemiBold.woff": "/static/media/CadizWeb-SemiBold.7afd1b42c870004879da.woff",
+    "static/media/CadizWeb-Regular.woff": "/static/media/CadizWeb-Regular.ea7c22be15d9a0836628.woff",
+    "static/media/CadizWeb-SemiBold.woff2": "/static/media/CadizWeb-SemiBold.5817baaec5bb72fc77e0.woff2",
+    "static/media/CadizWeb-Regular.woff2": "/static/media/CadizWeb-Regular.856670d353a0e11a6063.woff2",
+    "static/media/brandHeaderLogo.svg": "/static/media/brandHeaderLogo.63c42e8bfdb302514d60f320d2029628.svg",
+    "index.html": "/index.html",
+    "main.7451c79b.css.map": "/static/css/main.7451c79b.css.map",
+    "main.3fbd6f87.js.map": "/static/js/main.3fbd6f87.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7451c79b.css",
+    "static/js/main.3fbd6f87.js"
+  ]
+}
