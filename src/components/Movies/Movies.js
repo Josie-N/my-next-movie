@@ -4,6 +4,8 @@ import MovieCard from "../MovieCard/MovieCard";
 
 import styles from "./Movies.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
+import logo from "../../assets/images/brandHeaderLogo.svg";
+
 
 function Movies () {
   const [movies, setMovies] = useState([]);
@@ -54,10 +56,13 @@ function Movies () {
         <h1 className={helperStyles.visuallyHidden}>
           The tale of, a movie search database
         </h1>
-        <a onClick={() => handlePageChange(initialPage)} href="/">
-          <h2 className={styles.textLogo} aria-hidden>The tale of</h2>
-        </a>
-        <div className='d-flex justify-content-end'>
+        <span>
+          <a onClick={() => handlePageChange(initialPage)} href="/">
+            <img className={styles.brandLogo} src={logo} alt="Brand logo" aria-hidden />
+          </a>
+        </span>
+        <div className={styles.mainNavigationContainer}>
+          <p className={styles.genreTextIntro}>I'm looking for:</p>
           <Pagination
             totalPageCount={totalPageCount}
             onPageChange={handlePageChange}
@@ -65,7 +70,6 @@ function Movies () {
           />
         </div>
       </header>
-      <hr />
       <main className={styles.mainContentContainer}>
         <h3 className={helperStyles.visuallyHidden}>
           Browse all movies available:

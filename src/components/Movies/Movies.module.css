@@ -1,4 +1,25 @@
 
+.header {
+  margin-top: var(--space-0);
+}
+
+.mainNavigationContainer {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+}
+
+.brandLogo {
+  padding-right: var(--space-4);
+  margin-bottom: var(--space-0);
+}
+
+.genreTextIntro {
+  font-size:     var(--font-size-lg);
+  font-weight:   600;
+  margin-bottom: 0;
+}
+
 .mainContentContainer {
   display:     flex;
   align-items: flex-start;
@@ -26,19 +47,4 @@
 .watchlistTitle {
   font-size:     var(--font-size-md);
   margin-bottom: var(--space-1);
-}
-
-.header {
-  margin-top: var(--space-1);
-}
-
-.textLogo {
-  display:       inline;
-  padding-right: var(--space-4);
-  font-size:     var(--font-size-lg);
-}
-
-.navigationContainer {
-  display:         flex;
-  justify-content: space-between;
 }

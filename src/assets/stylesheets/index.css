@@ -23,7 +23,7 @@ body {
   font-size:               var(--font-size-base);
   font-weight:             400;
   color:                   var(--text-color-gunmetal);
-  
+
   font-feature-settings:   'kern';
   font-kerning:            normal;
   text-rendering:          optimizeLegibility;
@@ -78,4 +78,9 @@ button {
   color:            inherit;
   background-color: transparent;
   cursor:           pointer;
+}
+
+::selection {
+  background: var(--background-color-white);
+  color:      var(--highlight-color);
 }
