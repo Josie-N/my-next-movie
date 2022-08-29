@@ -51,12 +51,6 @@
   max-width: 31.2rem;
 }
 
-.movieYear {
-  composes:       DINCondSemiBold from "../../assets/stylesheets/index.css";
-  letter-spacing: var(--letter-spacing-sm);
-  font-size:      1rem;
-}
-
 .movieTitle__open {
   composes:  movieTitle;
   font-size: var(--font-size-3xl);
@@ -70,30 +64,47 @@
 }
 
 .movieRating {
-  font-size:  1rem;
-
-  position:   absolute;
-  right:      var(--space-3);
-  margin-top: var(--space-2);
+  composes:       DINCondSemiBold from "../../assets/stylesheets/index.css";
+  font-size:      1rem;
+  letter-spacing: var(--letter-spacing-sm);
+  position:       absolute;
+  right:          var(--space-3);
+  margin-top:     var(--space-2);
 }
 
 .movieDetails {
-  font-size:        var(--font-size-base);
-  background-color: var(--background-color-white);
+  font-size: var(--font-size-base);
+  opacity:   0.78;
+}
+
+.movieYear {
+  font-size:      1rem;
+  letter-spacing: 0.015rem;
 }
 
 .movieDescription {
-  max-width:        34.8rem;
-  margin-right:     var(--space-0);
-  background-color: var(--background-color-white);
+  max-width:    34.8rem;
+  margin-right: var(--space-0);
 }
 
 .movieCardShadow {
-  height:           100%;
-  width:            42.6rem;
-  z-index:          -1;
-  position:         absolute;
-  transform:        translate(-34px, 23px);
+  height:    100%;
+  width:     42.6rem;
+  z-index:   -1;
+  position:  absolute;
+  transform: translate(-34px, 23px);
+}
+
+.movieCardShadow__new {
+  composes:         movieCardShadow;
+  background-color: var(--text-color-gunmetal);
+  opacity:          0.9;
+  border-radius:    4px;
+}
+
+.movieCardShadow__old {
+  composes:         movieCardShadow;
   background-image: radial-gradient(var(--text-color-gunmetal) 1.1px, var(--background-color-white) 1.1px);
   background-size:  5px 5px;
+  border-radius:    11px;
 }
