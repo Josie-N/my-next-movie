@@ -1,4 +1,7 @@
-
+/*
+   visually hide an element from users, but leave it accessible
+   for screen readers
+*/
 .visuallyHidden {
   position: absolute;
   left:     -10000px;

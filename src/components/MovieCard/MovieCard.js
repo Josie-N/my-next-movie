@@ -6,7 +6,7 @@ import styles from "./MovieCard.module.css";
 
 
 function MovieCard ({ movie }) {
-  const { _id, name, genre, director, imdbRating, overview } = movie;
+  const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
 
   const cardAlreadyCollapsed = JSON.parse(window.localStorage.getItem(_id));
   const cardCollapsedInitialState = cardAlreadyCollapsed ? cardAlreadyCollapsed : false;
@@ -30,8 +30,8 @@ function MovieCard ({ movie }) {
   const buttonGroup = <>
     {isCardActionable ?
       <ButtonGroup>
-        <Button handleButtonClick={handleButtonClick}>YES!</Button>
         <Button handleButtonClick={handleButtonClick}>NO.</Button>
+        <Button handleButtonClick={handleButtonClick}>YES!</Button>
       </ButtonGroup>
       : ''
     }
@@ -62,7 +62,10 @@ function MovieCard ({ movie }) {
       >
         <div className={styles.movieCardInner}>
           <h4 className={styles.movieTitle__open}>{title}</h4>
-          <p className={styles.movieDetails}>{genre} ∙ {director}</p>
+          <p className={styles.movieDetails}>
+            <span className={styles.movieYear}>{releaseYear} ∙ </span>
+            <span>{genre}</span>
+          </p>
           <p className={styles.movieDescription}>{overview}</p>
         </div>
         <p className={styles.movieRating}>{imdbRating}</p>

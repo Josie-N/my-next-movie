@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: 'Cadiz';
-  src:         url('../fonts/CadizWeb-SemiBold.woff2') format("woff2"),
-               url('../fonts/CadizWeb-SemiBold.woff') format("woff");
+  src:         url('../fonts/Cadiz-SemiBold.woff2') format("woff2"),
+               url('../fonts/Cadiz-SemiBold.woff') format("woff");
 
   font-weight: 600;
   font-style:  normal;
@@ -11,9 +11,18 @@
 
 @font-face {
   font-family: 'Cadiz';
-  src:         url('../fonts/CadizWeb-Regular.woff2') format("woff2"),
-               url('../fonts/CadizWeb-Regular.woff') format('woff');
+  src:         url('../fonts/Cadiz-Regular.woff2') format("woff2"),
+               url('../fonts/Cadiz-Regular.woff') format('woff');
 
+  font-weight: 400;
+  font-style:  normal;
+}
+
+@font-face {
+  font-family: 'DIN Cond';
+  src:         url("../fonts/FFDIN-RegularCondensed.woff2") format("woff2"),
+               url("../fonts/FFDIN-RegularCondensed.woff") format("woff");
+  
   font-weight: 400;
   font-style:  normal;
 }
@@ -83,4 +92,9 @@ button {
 ::selection {
   background: var(--background-color-white);
   color:      var(--highlight-color);
+}
+
+.DINCondSemiBold {
+  font-family: "DIN Cond", Helvetica, sans-serif;
+  font-weight: 600;
 }

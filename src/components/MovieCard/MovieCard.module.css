@@ -48,8 +48,13 @@
 }
 
 .movieTitle {
-  max-width:        31.2rem;
-  background-color: var(--background-color-white);
+  max-width: 31.2rem;
+}
+
+.movieYear {
+  composes:       DINCondSemiBold from "../../assets/stylesheets/index.css";
+  letter-spacing: var(--letter-spacing-sm);
+  font-size:      1rem;
 }
 
 .movieTitle__open {
@@ -65,10 +70,11 @@
 }
 
 .movieRating {
-  position:         absolute;
-  right:            var(--space-3);
-  margin-top:       var(--space-2);
-  background-color: var(--background-color-white);
+  font-size:  1rem;
+
+  position:   absolute;
+  right:      var(--space-3);
+  margin-top: var(--space-2);
 }
 
 .movieDetails {
