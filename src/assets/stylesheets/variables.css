@@ -20,9 +20,9 @@
   --line-height-sm:         1.3; /*  22px */
 
   /* Letter spacings */
-  --letter-spacing-normal:  0;
-  --letter-spacing-sm:      0.05rem;
+  --letter-spacing-sm:      0.04rem;
   --letter-spacing-s:       -0.02rem;
+  --letter-spacing-normal:  0;
 
   /* Spacing units */
   --space-9:                117px;
