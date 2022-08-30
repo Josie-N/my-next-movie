@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import cn from "classnames";
 
 import styles from "./MovieCard.module.css";
+import PropTypes from "prop-types";
 
 
 function MovieCard ({ movie }) {
@@ -81,5 +82,20 @@ function MovieCard ({ movie }) {
     </div>
   );
 }
+
+MovieCard.propTypes = {
+  key: PropTypes.string,
+  // movie prop is expected to have the following properties
+  // shape() takes an object and validates the types inside the object
+  movie: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      releaseYear: PropTypes.number,
+      genre: PropTypes.string,
+      imdbRating: PropTypes.number,
+      overview: PropTypes.string
+    }
+  ).isRequired
+};
 
 export default MovieCard;
