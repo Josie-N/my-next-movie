@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Pagination from "../Pagination/Pagination";
-import MovieCard from "../MovieCard/MovieCard";
-
-import styles from "./Movies.module.css";
+import Pagination from "../../components/generic/Pagination/Pagination";
+import MovieCard from "../../components/MovieCard/MovieCard";
+import styles from "./MoviesPage.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
 import logo from "../../assets/images/brandHeaderLogo.svg";
 
 
-function Movies () {
+function MoviesPage () {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [totalPageCount, setTotalPageCount] = useState([]);
+  const [totalPageCount, setTotalPageCount] = useState(0);
 
   const initialPage = 1;
   const lastCurrentPage = parseInt(window.localStorage.getItem("pageNumber"));
@@ -100,4 +99,4 @@ function Movies () {
   )
 }
 
-export default Movies;
+export default MoviesPage;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ButtonGroup from "../ButtonGroup/ButtonGroup";
-import Button from "../Button/Button";
+import ButtonGroup from "../generic/ButtonGroup/ButtonGroup";
+import Button from "../generic/Button/Button";
 import cn from "classnames";
 
 import styles from "./MovieCard.module.css";
