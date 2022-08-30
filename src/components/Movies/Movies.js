@@ -85,10 +85,13 @@ function Movies () {
           <ul className={styles.watchlist}>
             <h3 className={styles.watchlistTitle}>Watchlist:</h3>
             <li>
-              <a href="/">😊 Yes (32)</a>
+              <a href="/">👍 Yes (32)</a>
             </li>
             <li>
-              <a href="/">😕 No (2)</a>
+              <a href="/">👎 No (2)</a>
+            </li>
+            <li>
+              <a href="/">👀 Already seen (5)</a>
             </li>
           </ul>
         </aside>

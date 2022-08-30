@@ -9,20 +9,21 @@ import styles from "./MovieCard.module.css";
 function MovieCard ({ movie }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
 
+  const imdbRatingInteger = Math.round(imdbRating * 10);
+  const title = name.replace(/The /gm, '');
+
   const cardAlreadyCollapsed = JSON.parse(window.localStorage.getItem(_id));
   const cardCollapsedInitialState = cardAlreadyCollapsed ? cardAlreadyCollapsed : false;
 
   const [isCardCollapsed, setCardCollapse] = useState(cardCollapsedInitialState);
   const [isCardActionable, setCardActionable] = useState(false);
 
-  const title = name.replace(/The /gm, '');
-
   const isMovieNew = releaseYear >= 2000;
   const movieCardShadowClassNames = cn(
     { [styles["movieCardShadow__new"]]: isMovieNew },
     { [styles["movieCardShadow__old"]]: !isMovieNew }
   );
-  
+
   const handleMouseEnter = () => setCardActionable(true);
 
   const handleMouseLeave = () => setCardActionable(false);
@@ -74,7 +75,7 @@ function MovieCard ({ movie }) {
         </p>
         <p className={styles.movieDescription}>{overview}</p>
       </div>
-      <p className={styles.movieRating}>{imdbRating}</p>
+      <p className={styles.movieRating}>{imdbRatingInteger}</p>
       {buttonGroup}
       <div className={movieCardShadowClassNames}></div>
     </div>
