@@ -84,13 +84,22 @@ function MoviesPage () {
           <ul className={styles.watchlist}>
             <h3 className={styles.watchlistTitle}>Watchlist:</h3>
             <li>
-              <a href="/">👍 Yes (32)</a>
+              <a href="/">
+                <span className={styles.watchlistEmoji}>👍 </span>
+                Yes (32)
+              </a>
             </li>
             <li>
-              <a href="/">👎 No (2)</a>
+              <a href="/">
+                <span className={styles.watchlistEmoji}>👎 </span>
+                No (2)
+              </a>
             </li>
             <li>
-              <a href="/">👀 Already seen (5)</a>
+              <a href="/">
+                <span className={styles.watchlistEmoji}>👀 </span>
+                Already seen (5)
+              </a>
             </li>
           </ul>
         </aside>

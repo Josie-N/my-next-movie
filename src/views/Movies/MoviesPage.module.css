@@ -48,3 +48,7 @@
   font-size:     var(--font-size-md);
   margin-bottom: var(--space-1);
 }
+
+.watchlistEmoji {
+  composes: NotoEmoji from "../../assets/stylesheets/index.css";
+}
