@@ -39,8 +39,13 @@ function MovieCard ({ movie }) {
   const buttonGroup = <>
     {isCardActionable ?
       <ButtonGroup>
-        <Button handleButtonClick={handleButtonClick}>NO.</Button>
-        <Button handleButtonClick={handleButtonClick}>YES!</Button>
+        <Button handleButtonClick={handleButtonClick}>
+          <span className={styles.movieCardEmoji}>👎🏻</span>
+          <span>REMOVE</span>
+        </Button>
+        <Button handleButtonClick={handleButtonClick}>
+          <span className={styles.movieCardEmoji}>👍</span>
+          <span>ADD</span></Button>
       </ButtonGroup>
       : ''
     }

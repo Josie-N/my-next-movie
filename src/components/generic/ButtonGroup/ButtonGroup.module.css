@@ -2,5 +2,6 @@
 .buttonGroup {
   display:  flex;
   position: absolute;
-  right:    0;
+  right:    35px;
+  top:      -30px;
 }

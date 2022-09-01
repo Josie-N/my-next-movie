@@ -82,23 +82,23 @@ function MoviesPage () {
         {/*To do: move into its own Watchlist component*/}
         <aside className={styles.watchlistContainer}>
           <ul className={styles.watchlist}>
-            <h3 className={styles.watchlistTitle}>Watchlist:</h3>
+            <h3 className={styles.watchlistTitle}>My watchlist:</h3>
             <li>
               <a href="/">
                 <span className={styles.watchlistEmoji}>👍 </span>
-                Yes (32)
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <span className={styles.watchlistEmoji}>👎 </span>
-                No (2)
+                Added (32)
               </a>
             </li>
             <li>
               <a href="/">
                 <span className={styles.watchlistEmoji}>👀 </span>
                 Already seen (5)
+              </a>
+            </li>
+            <li>
+              <a href="/">
+                <span className={styles.watchlistEmoji}>👎 </span>
+                Removed (2)
               </a>
             </li>
           </ul>

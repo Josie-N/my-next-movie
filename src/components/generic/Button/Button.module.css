@@ -1,12 +1,15 @@
 .button {
+  composes:         DINCondSemiBold from "../../../assets/stylesheets/index.css";
   font-size:        var(--font-size-base);
-  font-weight:      600;
-  letter-spacing:   0.02rem;
+  color:            var(--text-color-gunmetal);
+  letter-spacing:   0.06rem;
+
   margin:           var(--space-0);
   padding:          var(--space-0) var(--space-1);
   background-color: var(--background-color-white);
   border:           2px solid var(--text-color-gunmetal);
   border-radius:    4px;
+  box-shadow:       4px 4px 0 var(--text-color-gunmetal);
 }
 
 .button:hover {

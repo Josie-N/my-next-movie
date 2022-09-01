@@ -47,6 +47,12 @@
   align-items:    flex-start;
 }
 
+.movieCardEmoji {
+  composes:     NotoEmoji from "../../assets/stylesheets/index.css";
+  font-size:    1rem;
+  margin-right: 4px;
+}
+
 .movieTitle {
   max-width: 31.2rem;
 }
