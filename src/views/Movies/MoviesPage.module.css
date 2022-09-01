@@ -31,6 +31,12 @@
   margin-right: var(--grid-column-gap);
 }
 
+.showMoreMovies {
+  display:         flex;
+  justify-content: end;
+  margin:          8rem auto;
+}
+
 .watchlistContainer {
   display:         flex;
   justify-content: center;
@@ -49,6 +55,6 @@
   margin-bottom: var(--space-1);
 }
 
-.watchlistEmoji {
+.emoji {
   composes: NotoEmoji from "../../assets/stylesheets/index.css";
 }

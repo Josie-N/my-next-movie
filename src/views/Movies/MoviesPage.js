@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Pagination from "../../components/generic/Pagination/Pagination";
 import MovieCard from "../../components/MovieCard/MovieCard";
+import Button from "../../components/generic/Button/Button";
+
 import styles from "./MoviesPage.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
 import logo from "../../assets/images/brandHeaderLogo.svg";
@@ -23,7 +24,7 @@ function MoviesPage () {
         .then(json => {
           const { pagination, data } = json;
 
-          setMovies(data);
+          setMovies([...movies, ...data]);
           setTotalPageCount(pagination.totalPages);
         })
         .catch(error => {
@@ -34,17 +35,24 @@ function MoviesPage () {
     }, [currentPage]
   );
 
-  // const handleDelete = (movies, movie) => {
-  //   const filteredMovies = movies.filter(m => m._id !== movie._id);
-  //
-  //   // We update the initial movie list using setMovies()
-  //   setMovies(filteredMovies);
-  // }
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     localStorage.setItem(`pageNumber`, pageNumber);
   }
+
+  const loadMoreMovies = () => {
+    setCurrentPage(currentPage + 1);
+  }
+
+  const loadMoreButton =
+    (currentPage === totalPageCount) ?
+      <h4>No more movies to load.</h4>
+      :
+      <Button hasIcon icon="👇" type="button" handleButtonClick={loadMoreMovies}>
+        <span>SHOW MORE</span>
+      </Button>
+
 
   if (isLoading) return <pre>LOADING...</pre>
   if (movieCount < 1) return <h2>There are no movies in the database.</h2>
@@ -61,12 +69,7 @@ function MoviesPage () {
           </a>
         </span>
         <div className={styles.mainNavigationContainer}>
-          <p className={styles.genreTextIntro}>I'm looking for:</p>
-          <Pagination
-            totalPageCount={totalPageCount}
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-          />
+          {/*<p className={styles.genreTextIntro}>I'm looking for:</p>*/}
         </div>
       </header>
       <main className={styles.mainContentContainer}>
@@ -78,6 +81,9 @@ function MoviesPage () {
             return (
               <MovieCard key={movie._id} movie={movie} />)
           })}
+          <div className={styles.showMoreMovies}>
+            {loadMoreButton}
+          </div>
         </div>
         {/*To do: move into its own Watchlist component*/}
         <aside className={styles.watchlistContainer}>
@@ -85,23 +91,28 @@ function MoviesPage () {
             <h3 className={styles.watchlistTitle}>My watchlist:</h3>
             <li>
               <a href="/">
-                <span className={styles.watchlistEmoji}>👍 </span>
+                <span className={styles.emoji}>👍 </span>
                 Added (32)
               </a>
             </li>
             <li>
               <a href="/">
-                <span className={styles.watchlistEmoji}>👀 </span>
+                <span className={styles.emoji}>👀 </span>
                 Already seen (5)
               </a>
             </li>
             <li>
               <a href="/">
-                <span className={styles.watchlistEmoji}>👎 </span>
+                <span className={styles.emoji}>👎 </span>
                 Removed (2)
               </a>
             </li>
           </ul>
+          {/*<Pagination*/}
+          {/*  totalPageCount={totalPageCount}*/}
+          {/*  onPageChange={handlePageChange}*/}
+          {/*  currentPage={currentPage}*/}
+          {/*/>*/}
         </aside>
       </main>
     </>

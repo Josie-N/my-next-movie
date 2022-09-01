@@ -39,13 +39,12 @@ function MovieCard ({ movie }) {
   const buttonGroup = <>
     {isCardActionable ?
       <ButtonGroup>
-        <Button handleButtonClick={handleButtonClick}>
-          <span className={styles.movieCardEmoji}>👎🏻</span>
+        <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonClick}>
           <span>REMOVE</span>
         </Button>
-        <Button handleButtonClick={handleButtonClick}>
-          <span className={styles.movieCardEmoji}>👍</span>
-          <span>ADD</span></Button>
+        <Button hasIcon icon="👍" type="button" handleButtonClick={handleButtonClick}>
+          <span>ADD</span>
+        </Button>
       </ButtonGroup>
       : ''
     }
@@ -89,7 +88,6 @@ function MovieCard ({ movie }) {
 }
 
 MovieCard.propTypes = {
-  key: PropTypes.string,
   // movie prop is expected to have the following properties
   // shape() takes an object and validates the types inside the object
   movie: PropTypes.shape({
