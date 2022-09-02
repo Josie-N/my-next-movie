@@ -61,9 +61,17 @@ function MovieCard ({ movie, pageNumber, showPageNumberOnFirstCard, showPageNumb
       }
     </>
 
+  const screenReaderPagination =
+    <>
+      {showPageNumberOnFirstCard &&
+        <h3 className={helperStyles.visuallyHidden}>Page {pageNumber}</h3>
+      }
+    </>
+
   if (isCardCollapsed) {
     return (
       <>
+        {screenReaderPagination}
         <div
           tabIndex="0"
           className={styles.movieCard__collapsed}
@@ -80,9 +88,7 @@ function MovieCard ({ movie, pageNumber, showPageNumberOnFirstCard, showPageNumb
 
   return (
     <>
-      {showPageNumberOnFirstCard &&
-        <h3 className={helperStyles.visuallyHidden}>Page {pageNumber}</h3>
-      }
+      {screenReaderPagination}
       <div
         tabIndex="0"
         className={styles.movieCard__open}

@@ -12,12 +12,13 @@
   cursor: row-resize;
 }
 
-.movieCard:last-child {
-  margin-bottom: var(--space-9);
+/* because visually hidden heading (a11y) is the first child */
+.movieCard:nth-child(2) {
+  margin-top: 0;
 }
 
-.movieCard:first-child {
-  margin-top: 0;
+.movieCard:last-child {
+  margin-bottom: var(--space-9);
 }
 
 .movieCard__open {
@@ -111,7 +112,7 @@
 
 .pageLandmark {
   opacity:     0.8;
-  
+
   composes:    DINCondSemiBold from "../../assets/stylesheets/index.css";
   text-align:  right;
   font-size:   var(--font-size-xl);
