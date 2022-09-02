@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.7451c79b.css",
-    "main.js": "/static/js/main.3fbd6f87.js",
-    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
-    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
-    "static/media/CadizWeb-SemiBold.woff": "/static/media/CadizWeb-SemiBold.7afd1b42c870004879da.woff",
-    "static/media/CadizWeb-Regular.woff": "/static/media/CadizWeb-Regular.ea7c22be15d9a0836628.woff",
-    "static/media/CadizWeb-SemiBold.woff2": "/static/media/CadizWeb-SemiBold.5817baaec5bb72fc77e0.woff2",
-    "static/media/CadizWeb-Regular.woff2": "/static/media/CadizWeb-Regular.856670d353a0e11a6063.woff2",
-    "static/media/brandHeaderLogo.svg": "/static/media/brandHeaderLogo.63c42e8bfdb302514d60f320d2029628.svg",
+    "main.css": "/static/css/main.ac8d9412.css",
+    "main.js": "/static/js/main.fc114dcb.js",
+    "static/media/Cadiz-SemiBold.woff": "/static/media/Cadiz-SemiBold.7afd1b42c870004879da.woff",
+    "static/media/Cadiz-Regular.woff": "/static/media/Cadiz-Regular.ea7c22be15d9a0836628.woff",
+    "static/media/FFDIN-RegularCondensed.woff": "/static/media/FFDIN-RegularCondensed.0fe6f0de492989f4738a.woff",
+    "static/media/FFDIN-RegularCondensed.woff2": "/static/media/FFDIN-RegularCondensed.c285b9b96644e8f33ecb.woff2",
+    "static/media/Cadiz-SemiBold.woff2": "/static/media/Cadiz-SemiBold.5817baaec5bb72fc77e0.woff2",
+    "static/media/Cadiz-Regular.woff2": "/static/media/Cadiz-Regular.856670d353a0e11a6063.woff2",
     "index.html": "/index.html",
-    "main.7451c79b.css.map": "/static/css/main.7451c79b.css.map",
-    "main.3fbd6f87.js.map": "/static/js/main.3fbd6f87.js.map"
+    "static/media/brandHeaderLogo.svg": "/static/media/brandHeaderLogo.ac661574390e08bc98ffbe17686a74ce.svg",
+    "main.ac8d9412.css.map": "/static/css/main.ac8d9412.css.map",
+    "main.fc114dcb.js.map": "/static/js/main.fc114dcb.js.map"
   },
   "entrypoints": [
-    "static/css/main.7451c79b.css",
-    "static/js/main.3fbd6f87.js"
+    "static/css/main.ac8d9412.css",
+    "static/js/main.fc114dcb.js"
   ]
 }
