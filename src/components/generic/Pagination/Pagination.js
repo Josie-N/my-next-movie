@@ -20,7 +20,7 @@ function Pagination ({ totalPageCount, onPageChange, currentPage }) {
   const lastVisiblePageNumber = Math.min(currentPage + numberOfPagesToShowOnRight, totalPageCount);
 
   // _.range() creates an array of numbers
-  // Example: 50 (integer) is converted to: [1, 2, 3, ... , 49]
+  // Example: .range(1, 50) is converted to: [1, 2, 3, ... , 49 + 1]
   let pageNumberRange = _.range(firstVisiblePageNumber, lastVisiblePageNumber + 1);
 
   return (

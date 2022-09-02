@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import ButtonGroup from "../generic/ButtonGroup/ButtonGroup";
 import Button from "../generic/Button/Button";
-import cn from "classnames";
 
 import styles from "./MovieCard.module.css";
+import helperStyles from "../../assets/stylesheets/helper.module.css";
+import cn from "classnames";
 import PropTypes from "prop-types";
 
 
-function MovieCard ({ movie }) {
+function MovieCard ({ movie, pageNumber, showPageNumberOnFirstCard, showPageNumberOnLastCard }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
 
   const imdbRatingInteger = Math.round(imdbRating * 10);
@@ -36,60 +37,79 @@ function MovieCard ({ movie }) {
 
   const handleButtonClick = (event) => event.stopPropagation();
 
-  const buttonGroup = <>
-    {isCardActionable ?
-      <ButtonGroup>
-        <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonClick}>
-          <span>REMOVE</span>
-        </Button>
-        <Button hasIcon icon="👍" type="button" handleButtonClick={handleButtonClick}>
-          <span>ADD</span>
-        </Button>
-      </ButtonGroup>
-      : ''
-    }
-  </>
+  const pageDivide =
+    <>
+      {showPageNumberOnLastCard &&
+        <span aria-hidden className={styles.pageLandmark}>
+          {pageNumber}
+        </span>
+      }
+    </>
+
+  const buttonGroup =
+    <>
+      {isCardActionable ?
+        <ButtonGroup>
+          <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonClick}>
+            <span>REMOVE</span>
+          </Button>
+          <Button hasIcon icon="👍" type="button" handleButtonClick={handleButtonClick}>
+            <span>ADD</span>
+          </Button>
+        </ButtonGroup>
+        : ''
+      }
+    </>
 
   if (isCardCollapsed) {
     return (
-      <div
-        tabIndex="0"
-        className={styles.movieCard__collapsed}
-        onClick={handleCollapse}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h4 className={styles.movieTitle__collapsed}>{title}</h4>
-      </div>
+      <>
+        <div
+          tabIndex="0"
+          className={styles.movieCard__collapsed}
+          onClick={handleCollapse}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <h4 className={styles.movieTitle__collapsed}>{title}</h4>
+        </div>
+        {pageDivide}
+      </>
     )
   }
 
   return (
-    <div
-      tabIndex="0"
-      className={styles.movieCard__open}
-      onClick={handleCollapse}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className={styles.movieCardInner}>
-        <h4 className={styles.movieTitle__open}>{title}</h4>
-        <p className={styles.movieDetails}>
-          <span className={styles.movieYear}>{releaseYear} ∙ </span>
-          <span>{genre}</span>
-        </p>
-        <p className={styles.movieDescription}>{overview}</p>
+    <>
+      {showPageNumberOnFirstCard &&
+        <h3 className={helperStyles.visuallyHidden}>Page {pageNumber}</h3>
+      }
+      <div
+        tabIndex="0"
+        className={styles.movieCard__open}
+        onClick={handleCollapse}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className={styles.movieCardInner}>
+          <h4 className={styles.movieTitle__open}>{title}</h4>
+          <p className={styles.movieDetails}>
+            <span className={styles.movieYear}>{releaseYear} ∙ </span>
+            <span>{genre}</span>
+          </p>
+          <p className={styles.movieDescription}>{overview}</p>
+        </div>
+        <p className={styles.movieRating}>{imdbRatingInteger}</p>
+        {buttonGroup}
+        <div className={movieCardShadowClassNames}></div>
       </div>
-      <p className={styles.movieRating}>{imdbRatingInteger}</p>
-      {buttonGroup}
-      <div className={movieCardShadowClassNames}></div>
-    </div>
+      {pageDivide}
+    </>
   );
 }
 
 MovieCard.propTypes = {
-  // movie prop is expected to have the following properties
   // shape() takes an object and validates the types inside the object
+  // movie prop is expected to have the following properties:
   movie: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -98,7 +118,10 @@ MovieCard.propTypes = {
       imdbRating: PropTypes.number,
       overview: PropTypes.string
     }
-  ).isRequired
+  ).isRequired,
+  pageNumber: PropTypes.number,
+  showPageNumberOnFirstCard: PropTypes.bool,
+  showPageNumberOnLastCard: PropTypes.bool
 };
 
 export default MovieCard;

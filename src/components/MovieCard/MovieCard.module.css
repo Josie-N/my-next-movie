@@ -108,3 +108,19 @@
   border:           2px solid var(--text-color-gunmetal);
   opacity:          0.75;
 }
+
+.pageLandmark {
+  opacity:     0.8;
+  
+  composes:    DINCondSemiBold from "../../assets/stylesheets/index.css";
+  text-align:  right;
+  font-size:   var(--font-size-xl);
+  font-weight: 600;
+
+  position:    absolute;
+  right:       -50px;
+}
+
+.pageLandmark::before {
+  content: '__ ';
+}

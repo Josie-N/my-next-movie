@@ -13,13 +13,13 @@ function MoviesPage () {
   const [totalPageCount, setTotalPageCount] = useState(0);
 
   const initialPage = 1;
-  const lastCurrentPage = parseInt(window.localStorage.getItem("pageNumber"));
-  const [currentPage, setCurrentPage] = useState(lastCurrentPage ? lastCurrentPage : initialPage);
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
+  const numberOfMoviesPerPage = 5;
   const movieCount = movies.length;
 
   useEffect(() => {
-      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=5`)
+      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=${numberOfMoviesPerPage}`)
         .then(response => response.json())
         .then(json => {
           const { pagination, data } = json;
@@ -34,7 +34,6 @@ function MoviesPage () {
       setLoading(false);
     }, [currentPage]
   );
-
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -52,7 +51,6 @@ function MoviesPage () {
       <Button hasIcon icon="👇" type="button" handleButtonClick={loadMoreMovies}>
         <span>SHOW MORE</span>
       </Button>
-
 
   if (isLoading) return <pre>LOADING...</pre>
   if (movieCount < 1) return <h2>There are no movies in the database.</h2>
@@ -73,13 +71,29 @@ function MoviesPage () {
         </div>
       </header>
       <main className={styles.mainContentContainer}>
-        <h3 className={helperStyles.visuallyHidden}>
+        <h2 className={helperStyles.visuallyHidden}>
           Browse all movies available:
-        </h3>
+        </h2>
         <div className={styles.movieCardContainer}>
-          {movies.map(movie => {
+          {movies && movies.map((movie, index) => {
+            const quotient = index / numberOfMoviesPerPage;
+
+            const divisionRemainder = index % numberOfMoviesPerPage;
+
+            // 4, 9, 14, 19, ...
+            const indexOfLastCardOnEachPage = (numberOfMoviesPerPage - 1);
+
+            // 0, 5, 10, 15, ...
+            const indexOfFirstCardOnEachPage = (numberOfMoviesPerPage - 5);
+
             return (
-              <MovieCard key={movie._id} movie={movie} />)
+              <MovieCard key={movie._id}
+                         movie={movie}
+                         pageNumber={Math.floor(quotient) + 1}
+                         showPageNumberOnLastCard={divisionRemainder === indexOfLastCardOnEachPage}
+                         showPageNumberOnFirstCard={divisionRemainder === indexOfFirstCardOnEachPage}
+              />
+            );
           })}
           <div className={styles.showMoreMovies}>
             {loadMoreButton}
@@ -88,31 +102,26 @@ function MoviesPage () {
         {/*To do: move into its own Watchlist component*/}
         <aside className={styles.watchlistContainer}>
           <ul className={styles.watchlist}>
-            <h3 className={styles.watchlistTitle}>My watchlist:</h3>
+            <h2 className={styles.watchlistTitle}>My watchlist:</h2>
             <li>
               <a href="/">
                 <span className={styles.emoji}>👍 </span>
-                Added (32)
+                <h3 className={styles.watchlistItemLabel}>Added (32)</h3>
               </a>
             </li>
             <li>
               <a href="/">
                 <span className={styles.emoji}>👀 </span>
-                Already seen (5)
+                <h3 className={styles.watchlistItemLabel}>Already seen (5)</h3>
               </a>
             </li>
             <li>
               <a href="/">
                 <span className={styles.emoji}>👎 </span>
-                Removed (2)
+                <h3 className={styles.watchlistItemLabel}>Removed (2)</h3>
               </a>
             </li>
           </ul>
-          {/*<Pagination*/}
-          {/*  totalPageCount={totalPageCount}*/}
-          {/*  onPageChange={handlePageChange}*/}
-          {/*  currentPage={currentPage}*/}
-          {/*/>*/}
         </aside>
       </main>
     </>

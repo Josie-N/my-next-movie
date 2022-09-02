@@ -13,7 +13,9 @@
 
   --text-color-gunmetal:    #1C2735;
   --background-color-white: #FFFFFF;
-  --highlight-color:        #7A6C5D;
+  --highlight-color:        #1B998B;
+  --color-green-positive:   #1B998B;
+  --color-red-negative:     #B33F62;
 
   /* Line heights */
   --line-height-md:         1.55; /*  26px */
