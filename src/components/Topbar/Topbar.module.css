@@ -1,0 +1,13 @@
+
+.maxWidthContainer {
+  composes: maxWidthDesktop from "../../assets/stylesheets/index.css";
+}
+
+.header {
+  margin-top: var(--space-0);
+}
+
+.brandLogo {
+  padding-right: var(--space-4);
+  margin-bottom: var(--space-0);
+}

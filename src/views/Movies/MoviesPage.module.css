@@ -1,17 +1,12 @@
 
-.header {
-  margin-top: var(--space-0);
+.maxWidthContainer {
+  composes: maxWidthDesktop from "../../assets/stylesheets/index.css";
 }
 
 .mainNavigationContainer {
   display:         flex;
   align-items:     center;
   justify-content: space-between;
-}
-
-.brandLogo {
-  padding-right: var(--space-4);
-  margin-bottom: var(--space-0);
 }
 
 .genreTextIntro {

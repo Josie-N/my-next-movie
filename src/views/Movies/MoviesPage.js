@@ -58,18 +58,6 @@ function MoviesPage () {
   return (
     <>
       <header className={styles.header}>
-        <h1 className={helperStyles.visuallyHidden}>
-          The tale of, a movie search database
-        </h1>
-        <span>
-          <a onClick={() => handlePageChange(initialPage)} href="/">
-            <img className={styles.brandLogo} src={logo} alt="Brand logo" aria-hidden />
-          </a>
-        </span>
-        <div className={styles.mainNavigationContainer}>
-          {/*<p className={styles.genreTextIntro}>I'm looking for:</p>*/}
-        </div>
-      </header>
       <main className={styles.mainContentContainer}>
         <h2 className={helperStyles.visuallyHidden}>
           Browse all movies available:
