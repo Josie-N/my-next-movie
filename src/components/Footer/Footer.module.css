@@ -1,0 +1,24 @@
+
+.maxWidthContainer {
+  composes: maxWidthDesktop from "../../assets/stylesheets/index.css";
+}
+
+.footerList {
+  display:         flex;
+  justify-content: space-between;
+  margin-bottom:   2rem;
+}
+
+.footerItem {
+  font-size:      var(--font-size-sm);
+  letter-spacing: 0.1px;
+}
+
+.footerLink {
+  font-size:     var(--font-size-sm);
+  border-bottom: 1px solid var(--text-color-gunmetal);
+}
+
+.footerLink:hover {
+  border-bottom: 2px solid var(--text-color-gunmetal);
+}
