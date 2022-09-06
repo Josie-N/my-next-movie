@@ -1,0 +1,35 @@
+
+.watchlistContainer {
+  display:        flex;
+  flex-direction: column;
+  flex-grow:      1;
+
+  position:       sticky;
+  top:            0;
+  padding-left:   var(--grid-column-gap);
+  margin-left:    var(--grid-column-width);
+}
+
+.watchlist {
+  min-width: 8.58rem;
+  font-size: var(--font-size-md);
+}
+
+.watchlistTitle {
+  font-size:     var(--font-size-md);
+  margin-bottom: var(--space-1);
+}
+
+.watchlistItemLabel {
+  display:     inline-block;
+  font-size:   var(--font-size-base);
+  font-weight: 400;
+}
+
+.watchlistItemLabel:hover {
+  font-weight: 600;
+}
+
+.emoji {
+  composes: NotoEmoji from "../../assets/stylesheets/index.css";
+}

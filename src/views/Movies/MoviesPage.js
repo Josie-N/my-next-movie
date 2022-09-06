@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Button from "../../components/generic/Button/Button";
+import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
 
 import styles from "./MoviesPage.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
-import logo from "../../assets/images/brandHeaderLogo.svg";
 
 
 function MoviesPage () {
@@ -87,31 +87,9 @@ function MoviesPage () {
             {loadMoreButton}
           </div>
         </div>
-        {/*To do: move into its own Watchlist component*/}
-        <aside className={styles.watchlistContainer}>
-          <ul className={styles.watchlist}>
-            <h2 className={styles.watchlistTitle}>My watchlist:</h2>
-            <li>
-              <a href="/">
-                <span className={styles.emoji}>👍 </span>
-                <h3 className={styles.watchlistItemLabel}>Added (32)</h3>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <span className={styles.emoji}>👀 </span>
-                <h3 className={styles.watchlistItemLabel}>Already seen (5)</h3>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <span className={styles.emoji}>👎 </span>
-                <h3 className={styles.watchlistItemLabel}>Removed (2)</h3>
-              </a>
-            </li>
-          </ul>
-        </aside>
-      </main>
+
+          <WatchlistSidebar />
+        </main>
     </>
   )
 }

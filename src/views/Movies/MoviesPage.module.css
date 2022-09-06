@@ -32,35 +32,3 @@
   justify-content: end;
   margin:          8rem auto;
 }
-
-.watchlistContainer {
-  display:         flex;
-  justify-content: center;
-  flex-grow:       1;
-  position:        sticky;
-  top:             0;
-}
-
-.watchlist {
-  min-width: 146px;
-  font-size: var(--font-size-md);
-}
-
-.watchlistTitle {
-  font-size:     var(--font-size-md);
-  margin-bottom: var(--space-1);
-}
-
-.watchlistItemLabel {
-  display:     inline;
-  font-size:   var(--font-size-base);
-  font-weight: 400;
-}
-
-.watchlistItemLabel:hover {
-  font-weight: 600;
-}
-
-.emoji {
-  composes: NotoEmoji from "../../assets/stylesheets/index.css";
-}
