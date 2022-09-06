@@ -3,21 +3,10 @@
   composes: maxWidthDesktop from "../../assets/stylesheets/index.css";
 }
 
-.mainNavigationContainer {
-  display:         flex;
-  align-items:     center;
-  justify-content: space-between;
-}
-
-.genreTextIntro {
-  font-size:     var(--font-size-lg);
-  font-weight:   600;
-  margin-bottom: 0;
-}
-
 .mainContentContainer {
   display:     flex;
   align-items: flex-start;
+  margin:      var(--space-3) 0 9rem 0;
   padding-top: var(--space-3);
 }
 
@@ -31,4 +20,11 @@
   display:         flex;
   justify-content: end;
   margin:          8rem auto;
+}
+
+.homepageLoadingMessage {
+  font-size:       var(--font-size-xxl);
+  display:         flex;
+  justify-content: center;
+  margin:          200px 0;
 }

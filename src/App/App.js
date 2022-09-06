@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import MoviesPage from "../views/Movies/MoviesPage";
 import { Topbar } from "../components/Topbar/Topbar";
+import { Homepage } from "../views/Homepage/Homepage";
 import { Footer } from "../components/Footer/Footer";
 
 import styles from './App.module.css';
@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div>
         <Topbar />
-        <MoviesPage />
+        <Homepage />
         <hr className={styles.footerTopBoundary} />
         <Footer />
       </div>
