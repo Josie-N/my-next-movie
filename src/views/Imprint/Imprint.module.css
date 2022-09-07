@@ -1,0 +1,59 @@
+
+.imprint {
+  display:         flex;
+  justify-content: space-between;
+  margin-bottom:   20rem;
+}
+
+.imprintInnerContainer {
+  margin-top: var(--space-5);
+}
+
+.imprintMainTitle {
+  font-size: var(--font-size-xxl);
+}
+
+.imprintInfo {
+  font-size:     var(--font-size-md);
+  margin-bottom: 0;
+}
+
+.imprintInfo:nth-child(4) {
+  margin-bottom: var(--space-2);
+}
+
+.imprintLegalInfo {
+  font-size:     var(--font-size-sm);
+  margin-bottom: var(--space-4);
+}
+
+.imprintLegalLink {
+  font-size:     var(--font-size-sm);
+  border-bottom: 1px solid var(--text-color-gunmetal);
+}
+
+.imprintLegalLink:hover {
+  font-weight:   600;
+  border-bottom: 2px solid var(--text-color-gunmetal);
+}
+
+.imprintRedirectIcon {
+  vertical-align: middle;
+}
+
+.imprintSocialIconsContainer {
+  margin-top: var(--space-0);
+}
+
+.imprintEmailLink {
+  font-size: var(--font-size-md);
+}
+
+.imprintEmailLink:hover {
+  font-weight: 600;
+}
+
+.imprintSocialIcon {
+  cursor:       pointer;
+  margin-right: 0.6rem;
+}
