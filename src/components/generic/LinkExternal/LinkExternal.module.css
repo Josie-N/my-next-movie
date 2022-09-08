@@ -1,0 +1,16 @@
+
+.linkExternal {
+  white-space:   nowrap;
+  border-bottom: 1px solid var(--text-color-gunmetal);
+  cursor:        pointer;
+}
+
+.linkExternal:hover {
+  border-bottom: 2px solid var(--text-color-gunmetal);
+  font-weight:   600;
+  transition:    border-bottom .15s;
+}
+
+.imprintRedirectIcon {
+  vertical-align: middle;
+}
