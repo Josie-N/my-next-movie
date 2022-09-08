@@ -1,8 +1,4 @@
 
-.maxWidthContainer {
-  composes: maxWidthDesktop from "../../assets/stylesheets/index.css";
-}
-
 .footerList {
   display:         flex;
   justify-content: space-between;
@@ -21,4 +17,5 @@
 
 .footerLink:hover {
   border-bottom: 2px solid var(--text-color-gunmetal);
+  font-weight:   600;
 }

@@ -1,8 +1,4 @@
 
-.maxWidthContainer {
-  composes: maxWidthDesktop from "../../assets/stylesheets/index.css";
-}
-
 .header {
   margin-top: var(--space-0);
 }
