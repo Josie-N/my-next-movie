@@ -37,16 +37,19 @@ export const Imprint = () => {
               </a>
             </p>
             <div className={styles.imprintSocialIconsContainer}>
-              <a href="">
-                <Icon.Twitter className={styles.imprintSocialIcon} strokeWidth={1.1} size={23} color="#1C2735" />
-              </a>
-              <a href="">
+              <a href="https://www.linkedin.com/in/josie-nagy/" target="_blank" rel="noopener noreferrer">
                 <Icon.Linkedin className={styles.imprintSocialIcon} strokeWidth={1.1} size={24} color="#1C2735" />
+              </a>
+              <a href="https://github.com/Josie-N" target="_blank" rel="noopener noreferrer">
+                <Icon.GitHub className={styles.imprintSocialIcon} strokeWidth={1.1} size={23} color="#1C2735" />
+              </a>
+              <a href="https://twitter.com/iozefina_nagy" target="_blank" rel="noopener noreferrer">
+                <Icon.Twitter className={styles.imprintSocialIcon} strokeWidth={1.1} size={23} color="#1C2735" />
               </a>
             </div>
           </address>
         </div>
-        <img src={imprint} width="540" alt="" />
+        <img className={styles.imprintImage} src={imprint} alt="" />
       </div>
     </div>
   );
