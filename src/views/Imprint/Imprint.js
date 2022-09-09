@@ -15,7 +15,7 @@ export const Imprint = () => {
   });
 
   return (
-    <div className={helperStyles.maxWidthDesktop}>
+    <main className={helperStyles.maxWidthDesktop}>
       <div className={styles.imprint}>
         <div className={styles.imprintInnerContainer}>
           <h1 className={styles.imprintMainTitle}>Legal Notice</h1>
@@ -64,6 +64,6 @@ export const Imprint = () => {
         </div>
         <img className={styles.imprintImage} src={imprint} alt="" />
       </div>
-    </div>
+    </main>
   );
 }

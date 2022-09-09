@@ -1,5 +1,6 @@
 
 .mainContentContainer {
+  min-height:  62.7vh;
   display:     flex;
   align-items: flex-start;
   margin:      var(--space-3) 0 9rem 0;
