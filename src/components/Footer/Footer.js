@@ -20,7 +20,7 @@ export const Footer = () => {
           </li>
           <li className={styles.footerItem}>
             <Link className={styles.footerLink} to="/imprint">
-              Imprint
+              Legal Notice
             </Link>
           </li>
         </ul>

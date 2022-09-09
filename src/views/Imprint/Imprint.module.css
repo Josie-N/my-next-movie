@@ -1,16 +1,28 @@
 
 .imprint {
-  display:         flex;
-  justify-content: space-between;
-  margin-bottom:   19rem;
+  display:        flex;
+  flex-direction: column;
+  margin-bottom:  3rem;
 }
 
 .imprintInnerContainer {
   margin-top: var(--space-5);
+  width:      60%;
 }
 
 .imprintMainTitle {
-  font-size: var(--font-size-xxl);
+  font-size:     var(--font-size-xxl);
+  margin-bottom: var(--space-0);
+}
+
+.imprintSubtitle {
+  font-size:     var(--font-size-xl);
+  margin-bottom: var(--space-2);
+}
+
+.contactTitle {
+  font-size:     var(--font-size-lg);
+  margin-bottom: var(--space-0);
 }
 
 .imprintInfo {
@@ -20,7 +32,7 @@
 }
 
 .imprintInfo:nth-child(4) {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
 .imprintLegalInfo {
@@ -29,9 +41,8 @@
 }
 
 .imprintSocialIconsContainer {
-  margin-top: var(--space-0);
-  position:   relative;
-  left:       -6px;
+  margin-top:    var(--space-0);
+  margin-bottom: var(--space-3);
 }
 
 .imprintEmailLink {
@@ -44,18 +55,22 @@
 
 .imprintSocialIcon {
   display:      inline-block;
-  width:        14%;
   cursor:       pointer;
   margin-right: 0.6rem;
 }
 
 .imprintImage {
-  width: 33.75rem;
+  width:      30rem;
+  align-self: flex-end;
 }
 
 @media screen and (max-width: 768px) {
+  .imprintInnerContainer {
+    width: 100%;
+  }
+
   .imprintImage {
-    width: 21.25rem;
+    width: 24rem;
   }
 }
 
@@ -68,11 +83,24 @@
     font-size: var(--font-size-2xl);
   }
 
+  .imprintSubtitle {
+    font-size:     var(--font-size-lg);
+    margin-bottom: var(--space-1);
+  }
+
+  .contactTitle {
+    font-size: var(--font-size-md);
+  }
+
   .imprintInfo {
     font-size: var(--font-size-base);
   }
 
   .imprintEmailLink {
+    font-size: var(--font-size-base);
+  }
+
+  .imprintLegalDisclaimer {
     font-size: var(--font-size-base);
   }
 
