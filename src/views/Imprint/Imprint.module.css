@@ -28,21 +28,6 @@
   margin-bottom: var(--space-4);
 }
 
-.imprintLegalLink {
-  font-size:     var(--font-size-sm);
-  border-bottom: 1px solid var(--text-color-gunmetal);
-  white-space:   nowrap;
-}
-
-.imprintLegalLink:hover {
-  font-weight:   600;
-  border-bottom: 2px solid var(--text-color-gunmetal);
-}
-
-.imprintRedirectIcon {
-  vertical-align: middle;
-}
-
 .imprintSocialIconsContainer {
   margin-top: var(--space-0);
   position:   relative;

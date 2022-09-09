@@ -1,4 +1,6 @@
 import React from 'react';
+import { LinkExternal } from "../../components/generic/LinkExternal/LinkExternal";
+
 import styles from "./Imprint.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
 import imprint from "../../assets/images/Imprint.svg";
@@ -6,22 +8,15 @@ import * as Icon from 'react-feather';
 
 
 export const Imprint = () => {
-
   return (
     <div className={helperStyles.maxWidthDesktop}>
       <div className={styles.imprint}>
         <div className={styles.imprintInnerContainer}>
           <h1 className={styles.imprintMainTitle}>Imprint</h1>
           <p className={styles.imprintLegalInfo}>According to{" "}
-            <a className={styles.imprintLegalLink}
-               href="https://www.gesetze-im-internet.de/tmg/__5.html"
-               target="_blank" rel="noopener noreferrer"
-            >
+            <LinkExternal hasIcon fontSize="sm" path="https://www.gesetze-im-internet.de/tmg/__5.html">
               § 5, Abs. 1, Nr. 1, TMG
-            </a>{" "}
-            <span className={styles.imprintRedirectIcon}>
-              <Icon.ExternalLink strokeWidth={1.5} size={14} color="#1C2735" />
-            </span>
+            </LinkExternal>
           </p>
           <address>
             <h4 className={styles.imprintInfo}>Owner: Iozefina Nagy</h4>
