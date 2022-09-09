@@ -1,8 +1,4 @@
 
-.maxWidthContainer {
-  composes: maxWidthDesktop from "../../assets/stylesheets/index.css";
-}
-
 .mainContentContainer {
   display:     flex;
   align-items: flex-start;

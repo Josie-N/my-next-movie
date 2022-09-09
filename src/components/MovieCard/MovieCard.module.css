@@ -104,7 +104,7 @@
 
 .movieCardShadow__old {
   composes:         movieCardShadow;
-  background-image: radial-gradient(var(--text-color-gunmetal) 1.1px, var(--background-color-white) 1.1px);
+  background-image: radial-gradient(var(--text-color-gunmetal) 0.9px, transparent 0.9px);
   background-size:  5px 5px;
   border:           2px solid var(--text-color-gunmetal);
   opacity:          0.75;

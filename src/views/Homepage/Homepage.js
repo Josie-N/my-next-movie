@@ -50,7 +50,7 @@ export const Homepage = () => {
 
   return (
     <>
-      <div className={styles.maxWidthContainer}>
+      <div className={helperStyles.maxWidthDesktop}>
         <main className={styles.mainContentContainer}>
           <h2 className={helperStyles.visuallyHidden}>
             Browse all movies available:
