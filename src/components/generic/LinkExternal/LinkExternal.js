@@ -5,19 +5,33 @@ import PropTypes from "prop-types";
 
 export const LinkExternal = ({ children, path, hasIcon, fontSize }) => {
 
-  const IconResize = (fontSize) => {
-    let iconSize = 14;
+  const calcSizes = (fontSize) => {
+    const baseIconSize = 14;
+    const baseStrokeWidth = 1.5;
 
     switch (fontSize) {
       case 'md':
-        return iconSize = iconSize + 3;
+        return {
+          icon: baseIconSize + 3,
+          strokeWidth: baseStrokeWidth
+        }
       case 'base':
-        return iconSize = iconSize + 0.5;
+        return {
+          icon: baseIconSize + 0.5,
+          strokeWidth: baseStrokeWidth
+        }
+      case 'sm':
+        return {
+          icon: baseIconSize - 3,
+          strokeWidth: baseStrokeWidth + 0.4
+        }
       default:
-        return iconSize;
+        throw Error('calcSizes error!')
     }
   }
 
+  const resize = calcSizes(fontSize);
+  
   return (
     <>
       <a style={{ fontSize: `var(--font-size-${fontSize})` }}
@@ -29,10 +43,9 @@ export const LinkExternal = ({ children, path, hasIcon, fontSize }) => {
       </a>
       {hasIcon &&
         <span className={styles.imprintRedirectIcon}>
-          {" "}
           <Icon.ExternalLink
-            strokeWidth={1.5}
-            size={IconResize(fontSize)}
+            strokeWidth={resize.strokeWidth}
+            size={resize.icon}
             color={`var(--text-color-gunmetal)`}
           />
           {" "}
@@ -46,7 +59,7 @@ LinkExternal.propTypes = {
   children: PropTypes.node.isRequired,
   path: PropTypes.string.isRequired,
   hasIcon: PropTypes.bool,
-  fontSize: PropTypes.string
+  fontSize: PropTypes.oneOf(['sm', 'base', 'md']),
 };
 
 LinkExternal.defaultProps = {

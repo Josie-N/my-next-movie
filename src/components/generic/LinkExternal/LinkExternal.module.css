@@ -3,6 +3,7 @@
   white-space:   nowrap;
   border-bottom: 1px solid var(--text-color-gunmetal);
   cursor:        pointer;
+  margin-right:  2px;
 }
 
 .linkExternal:hover {
