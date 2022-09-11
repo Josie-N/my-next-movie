@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.ac8d9412.css",
-    "main.js": "/static/js/main.fc114dcb.js",
+    "main.css": "/static/css/main.970a442b.css",
+    "main.js": "/static/js/main.e33e21e4.js",
+    "static/media/Imprint.svg": "/static/media/Imprint.74624777f3b941aa0ade297d41f8a5f7.svg",
     "static/media/Cadiz-SemiBold.woff": "/static/media/Cadiz-SemiBold.7afd1b42c870004879da.woff",
     "static/media/Cadiz-Regular.woff": "/static/media/Cadiz-Regular.ea7c22be15d9a0836628.woff",
     "static/media/FFDIN-RegularCondensed.woff": "/static/media/FFDIN-RegularCondensed.0fe6f0de492989f4738a.woff",
@@ -9,12 +10,12 @@
     "static/media/Cadiz-SemiBold.woff2": "/static/media/Cadiz-SemiBold.5817baaec5bb72fc77e0.woff2",
     "static/media/Cadiz-Regular.woff2": "/static/media/Cadiz-Regular.856670d353a0e11a6063.woff2",
     "index.html": "/index.html",
-    "static/media/brandHeaderLogo.svg": "/static/media/brandHeaderLogo.ac661574390e08bc98ffbe17686a74ce.svg",
-    "main.ac8d9412.css.map": "/static/css/main.ac8d9412.css.map",
-    "main.fc114dcb.js.map": "/static/js/main.fc114dcb.js.map"
+    "static/media/brandLogo.svg": "/static/media/brandLogo.0bf734473e55203e5f401e2f9832e668.svg",
+    "main.970a442b.css.map": "/static/css/main.970a442b.css.map",
+    "main.e33e21e4.js.map": "/static/js/main.e33e21e4.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac8d9412.css",
-    "static/js/main.fc114dcb.js"
+    "static/css/main.970a442b.css",
+    "static/js/main.e33e21e4.js"
   ]
 }
