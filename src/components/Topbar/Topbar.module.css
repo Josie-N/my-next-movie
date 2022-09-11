@@ -4,6 +4,7 @@
 }
 
 .brandLogo {
+  margin-top:    1rem;
   padding-right: var(--space-4);
   margin-bottom: var(--space-0);
 }

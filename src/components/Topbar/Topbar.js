@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import styles from "../../components/Topbar/Topbar.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
-import logo from "../../assets/images/brandHeaderLogo.svg";
+import logo from "../../assets/images/brandLogo.svg";
 
 
 export const Topbar = () => {
