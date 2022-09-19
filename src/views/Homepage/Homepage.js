@@ -5,7 +5,8 @@ import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSid
 
 import styles from "./Homepage.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
-
+import MovieCard from "../../components/MovieCard/MovieCard";
+import Spinner from "../../components/generic/Spinner/Spinner";
 
 export const Homepage = () => {
   const [movies, setMovies] = useState([]);
@@ -57,6 +58,11 @@ export const Homepage = () => {
           </h2>
 
           {/*To do: move into its own MovieCardPage component*/}
+            {isLoading ?
+              <div className={styles.movieCardContainerSkeleton}>
+                <Spinner />
+              </div>
+              :
           <div className={styles.movieCardContainer}>
             {movies && movies.map((movie, index) => {
               const quotient = index / numberOfMoviesPerPage;
@@ -82,7 +88,10 @@ export const Homepage = () => {
               {loadMoreButton}
             </div>
           </div>
-          <WatchlistSidebar />
+          {isLoading ?
+            <Spinner /> :
+            <WatchlistSidebar />
+          }
         </main>
       </div>
     </>
