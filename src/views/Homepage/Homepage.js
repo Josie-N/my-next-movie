@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "../../components/MovieCard/MovieCard";
 import Button from "../../components/generic/Button/Button";
 import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
 
@@ -47,8 +46,6 @@ export const Homepage = () => {
         <span>SHOW MORE</span>
       </Button>
 
-  if (isLoading) return <h2 className={styles.homepageLoadingMessage}>One moment please...</h2>
-
   return (
     <>
       <div className={helperStyles.maxWidthDesktop}>
@@ -56,34 +53,36 @@ export const Homepage = () => {
           <h2 className={helperStyles.visuallyHidden}>
             Browse all movies available:
           </h2>
-
-          {/*To do: move into its own MovieCardPage component*/}
+          <div>
+            {/*To do: move into its own MovieCardPage component*/}
             {isLoading ?
               <div className={styles.movieCardContainerSkeleton}>
                 <Spinner />
               </div>
               :
-          <div className={styles.movieCardContainer}>
-            {movies && movies.map((movie, index) => {
-              const quotient = index / numberOfMoviesPerPage;
+              <div className={styles.movieCardContainer}>
+                {movies && movies.map((movie, index) => {
+                  const quotient = index / numberOfMoviesPerPage;
 
-              const divisionRemainder = index % numberOfMoviesPerPage;
+                  const divisionRemainder = index % numberOfMoviesPerPage;
 
-              // 4, 9, 14, 19, ...
-              const indexOfLastCardOnEachPage = (numberOfMoviesPerPage - 1);
+                  // 4, 9, 14, 19, ...
+                  const indexOfLastCardOnEachPage = (numberOfMoviesPerPage - 1);
 
-              // 0, 5, 10, 15, ...
-              const indexOfFirstCardOnEachPage = (numberOfMoviesPerPage - 5);
+                  // 0, 5, 10, 15, ...
+                  const indexOfFirstCardOnEachPage = (numberOfMoviesPerPage - 5);
 
-              return (
-                <MovieCard key={movie._id}
-                           movie={movie}
-                           pageNumber={Math.floor(quotient) + 1}
-                           showPageNumberOnLastCard={divisionRemainder === indexOfLastCardOnEachPage}
-                           showPageNumberOnFirstCard={divisionRemainder === indexOfFirstCardOnEachPage}
-                />
-              );
-            })}
+                  return (
+                    <MovieCard key={movie._id}
+                               movie={movie}
+                               pageNumber={Math.floor(quotient) + 1}
+                               showPageNumberOnLastCard={divisionRemainder === indexOfLastCardOnEachPage}
+                               showPageNumberOnFirstCard={divisionRemainder === indexOfFirstCardOnEachPage}
+                    />
+                  );
+                })}
+              </div>
+            }
             <div className={styles.showMoreMovies}>
               {loadMoreButton}
             </div>

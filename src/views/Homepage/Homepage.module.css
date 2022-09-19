@@ -8,20 +8,25 @@
 }
 
 .movieCardContainer {
+  min-height:   40rem;
   width:        42.5rem;
   margin-right: var(--grid-column-gap);
   position:     relative;
 }
 
+.movieCardContainerSkeleton {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  min-height:     39rem;
+  width:          42.5rem;
+  margin-right:   var(--grid-column-gap);
+  position:       relative;
+}
+
 .showMoreMovies {
   display:         flex;
   justify-content: end;
-  margin:          8rem auto;
+  margin:          8rem var(--grid-column-gap);
 }
 
-.homepageLoadingMessage {
-  font-size:       var(--font-size-xxl);
-  display:         flex;
-  justify-content: center;
-  margin:          200px 0;
-}
