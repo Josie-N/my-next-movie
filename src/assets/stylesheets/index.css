@@ -2,8 +2,7 @@
 
 @font-face {
   font-family: 'Cadiz';
-  src:         url('../fonts/Cadiz-SemiBold.woff2') format("woff2"),
-               url('../fonts/Cadiz-SemiBold.woff') format("woff");
+  src:         url('https://s3.eu-central-1.amazonaws.com/truetaleof.com/CadizWeb-SemiBold.woff2') format("woff2");
 
   font-weight: 600;
   font-style:  normal;
@@ -11,8 +10,7 @@
 
 @font-face {
   font-family: 'Cadiz';
-  src:         url('../fonts/Cadiz-Regular.woff2') format("woff2"),
-               url('../fonts/Cadiz-Regular.woff') format('woff');
+  src:         url('https://s3.eu-central-1.amazonaws.com/truetaleof.com/CadizWeb-Regular.woff2') format("woff2");
 
   font-weight: 400;
   font-style:  normal;
@@ -20,15 +18,23 @@
 
 @font-face {
   font-family: 'DIN Cond';
-  src:         url("../fonts/FFDIN-RegularCondensed.woff2") format("woff2"),
-               url("../fonts/FFDIN-RegularCondensed.woff") format("woff");
+  src:         url("https://s3.eu-central-1.amazonaws.com/truetaleof.com/FFDIN-COND-subset.woff2") format("woff2");
 
   font-weight: 400;
   font-style:  normal;
 }
 
+@font-face {
+  font-family: 'Noto Emoji';
+  src:         url("https://s3.eu-central-1.amazonaws.com/truetaleof.com/NotoEmoji-Medium-subset.woff") format("woff");
+
+  font-weight: 500;
+  font-style:  normal;
+}
+
+
 body {
-  font-family:             'Cadiz', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-family:             'Cadiz', 'Arial', sans-serif;
   font-size:               var(--font-size-base);
   font-weight:             400;
   color:                   var(--text-color-gunmetal);
