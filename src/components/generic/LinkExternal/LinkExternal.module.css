@@ -13,5 +13,6 @@
 }
 
 .imprintRedirectIcon {
-  vertical-align: middle;
+  position: relative;
+  bottom:   2px;
 }

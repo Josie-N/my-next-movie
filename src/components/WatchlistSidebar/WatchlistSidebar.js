@@ -9,19 +9,19 @@ export const WatchlistSidebar = () => {
       <ul className={styles.watchlist}>
         <li>
           <a href="/">
-            <span className={styles.emoji}>👍 </span>
+            <span className={styles.emoji}>👍🏻</span>
             <h3 className={styles.watchlistItemLabel}>Added (32)</h3>
           </a>
         </li>
         <li>
           <a href="/">
-            <span className={styles.emoji}>👀 </span>
+            <span className={styles.emoji}>👀</span>
             <h3 className={styles.watchlistItemLabel}>Already seen (5)</h3>
           </a>
         </li>
         <li>
           <a href="/">
-            <span className={styles.emoji}>👎 </span>
+            <span className={styles.emoji}>👎</span>
             <h3 className={styles.watchlistItemLabel}>Removed (2)</h3>
           </a>
         </li>

@@ -31,5 +31,6 @@
 }
 
 .emoji {
-  composes: NotoEmoji from "../../assets/stylesheets/index.css";
+  composes:     NotoEmoji from "../../assets/stylesheets/index.css";
+  margin-right: var(--space-0);
 }
