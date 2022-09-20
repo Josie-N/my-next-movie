@@ -11,9 +11,12 @@
   --font-size-base:         17px; /*      1 rem */
   --font-size-sm:           0.885rem; /*  15.10px */
 
+  /* Color weight naming system from 1 to 10 (6 is the base) */
   --text-color-gunmetal:    #1C2735;
+  --text-color-gunmetal-3:  #8D939A;
+
   --background-color-white: #FFFFFF;
-  --highlight-color:        #1B998B;
+  --color-yellow-highlight: #FFCE00;
   --color-green-positive:   #1B998B;
   --color-red-negative:     #B33F62;
 
