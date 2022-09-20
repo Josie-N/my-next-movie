@@ -8,7 +8,7 @@ import imprint from "../../assets/images/Imprint.svg";
 import * as Icon from 'react-feather';
 
 
-export const Imprint = () => {
+const Imprint = () => {
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -67,3 +67,5 @@ export const Imprint = () => {
     </main>
   );
 }
+
+export default Imprint;

@@ -7,7 +7,7 @@ import helperStyles from "../../assets/stylesheets/helper.module.css";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Spinner from "../../components/generic/Spinner/Spinner";
 
-export const Homepage = () => {
+const Homepage = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState(0);
@@ -96,3 +96,5 @@ export const Homepage = () => {
     </>
   )
 }
+
+export default Homepage;

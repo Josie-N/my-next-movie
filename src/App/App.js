@@ -1,17 +1,17 @@
-import React from "react";
+import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from "react-router-dom";
 
-import { Homepage } from "../views/Homepage/Homepage";
+import DelayedFallback from "../components/generic/DelayedFallback/DelayedFallback";
 import { Topbar } from "../components/Topbar/Topbar";
-import { Footer } from "../components/Footer/Footer";
-import { Imprint } from "../views/Imprint/Imprint";
-
 import styles from "./App.module.css";
 
+const Homepage = lazy(() => import("../views/Homepage/Homepage"));
+const Imprint = lazy(() => import("../views/Imprint/Imprint"));
+const Footer = lazy(() => import("../components/Footer/Footer"));
 
 function App () {
   return (
-    <>
+    <Suspense fallback={<DelayedFallback />}>
       <Topbar />
       <Routes>
         <Route exact path="/" element={<Homepage />} />
@@ -20,7 +20,7 @@ function App () {
       </Routes>
       <hr className={styles.footerTopBoundary} />
       <Footer />
-    </>
+    </Suspense>
   );
 }
 

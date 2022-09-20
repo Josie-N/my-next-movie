@@ -6,7 +6,7 @@ import styles from "../../components/Footer/Footer.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
 
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <div className={helperStyles.maxWidthDesktop}>
       <footer>
@@ -28,3 +28,5 @@ export const Footer = () => {
     </div>
   );
 }
+
+export default Footer;
