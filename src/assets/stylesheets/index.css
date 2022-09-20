@@ -32,6 +32,9 @@
   font-style:  normal;
 }
 
+html {
+  overflow-x: hidden;
+}
 
 body {
   font-family:             'Cadiz', 'Arial', sans-serif;
@@ -110,4 +113,20 @@ button {
 .NotoEmoji {
   font-family: "Noto Emoji", sans-serif;
   font-weight: 500;
+}
+
+::-webkit-scrollbar {
+  width:            8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--text-color-gunmetal);
+  transition:       background-color .5s;
+  cursor:           pointer;
+  min-height:       3.75rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-color-gunmetal-3);
 }
