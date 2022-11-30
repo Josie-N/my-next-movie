@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "../../components/generic/Button/Button";
 import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
 
@@ -7,45 +7,8 @@ import helperStyles from "../../assets/stylesheets/helper.module.css";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Spinner from "../../components/generic/Spinner/Spinner";
 
-const Homepage = () => {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [totalPageCount, setTotalPageCount] = useState(0);
-
-  const initialPage = 1;
-  const [currentPage, setCurrentPage] = useState(initialPage);
-
-  const numberOfMoviesPerPage = 5;
-
-  useEffect(() => {
-      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=${numberOfMoviesPerPage}`)
-        .then(response => response.json())
-        .then(json => {
-          const { pagination, data } = json;
-
-          setMovies([...movies, ...data]);
-          setTotalPageCount(pagination.totalPages);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-
-      setLoading(false);
-    }, [currentPage]
-  );
-
-  const loadMoreMovies = () => {
-    setCurrentPage(currentPage + 1);
-  }
-
-  const loadMoreButton =
-    (currentPage === totalPageCount) ?
-      <h4>No more movies to load.</h4>
-      :
-      <Button hasIcon icon="👇" type="button" handleButtonClick={loadMoreMovies}>
-        <span>SHOW MORE</span>
-      </Button>
-
+const Homepage = ({ movies, totalPageCount, isLoading, currentPage, loadMoreMovies, numberOfMoviesPerPage }) => {
+  
   return (
     <>
       <div className={helperStyles.maxWidthDesktop}>
@@ -66,7 +29,7 @@ const Homepage = () => {
 
                   const divisionRemainder = index % numberOfMoviesPerPage;
 
-                  // 4, 9, 14, 19, ...
+                  // Output: 4, 9, 14, 19, ...
                   const indexOfLastCardOnEachPage = (numberOfMoviesPerPage - 1);
 
                   // 0, 5, 10, 15, ...
@@ -84,7 +47,15 @@ const Homepage = () => {
               </div>
             }
             <div className={styles.showMoreMovies}>
-              {loadMoreButton}
+              {
+                (currentPage === totalPageCount) ?
+                  <h4>No more movies to load.</h4>
+                  :
+                  <Button ariaLabel="Show more movies" hasIcon icon="👇" type="button"
+                          handleButtonClick={loadMoreMovies}>
+                    <span>SHOW MORE</span>
+                  </Button>
+              }
             </div>
           </div>
           {isLoading ?
