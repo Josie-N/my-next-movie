@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import Homepage from "./Homepage";
 
 const HomepageContainer = () => {
@@ -11,21 +13,26 @@ const HomepageContainer = () => {
 
   const numberOfMoviesPerPage = 5;
 
-  useEffect(() => {
-      // async call instead of fetch
-      // fetch() is hard to debug / do error handling
-      fetch(`https://josie-moviehut.herokuapp.com/api/movies?page=${currentPage}&limit=${numberOfMoviesPerPage}`)
-        .then(response => response.json())
-        .then(json => {
-          const { pagination, data } = json;
+  // TO DO: move getMovies to a different file (create services/ api.js)
+  const getMovies = async () => {
+    const currentPageParam = `page=${currentPage}`;
+    const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
+    const url = `https://josie-moviehut.herokuapp.com/api/movies?${currentPageParam}&${moviePageLimitParam}`;
 
-          setMovies([...movies, ...data]);
-          setTotalPageCount(pagination.totalPages); // 150
-          setLoading(false);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+    return await axios.get(url);
+  }
+
+  useEffect(() => {
+      try {
+        const response = getMovies();
+        const { pagination, data } = response.data;
+
+        setMovies([...movies, ...data]);
+        setTotalPageCount(pagination.totalPages); // 150
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
     }, [currentPage]
   );
 
