@@ -10,14 +10,14 @@ export const Topbar = () => {
   return (
     <div className={helperStyles.maxWidthDesktop}>
       <header className={styles.header}>
+        <span>
+          <Link to="/">
+            <img className={styles.brandLogo} src={logo} alt="True tale of" />
+          </Link>
+        </span>
         <h1 className={helperStyles.visuallyHidden}>
           The tale of, a movie search database
         </h1>
-        <span>
-          <Link to="/">
-            <img className={styles.brandLogo} src={logo} alt="Brand logo" aria-hidden />
-          </Link>
-        </span>
       </header>
     </div>
   );
