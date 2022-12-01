@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 import Homepage from "./Homepage";
+import { getMovies } from "../../services/api";
 
 const HomepageContainer = () => {
   const [movies, setMovies] = useState([]);
@@ -13,26 +13,20 @@ const HomepageContainer = () => {
 
   const numberOfMoviesPerPage = 5;
 
-  // TO DO: move getMovies to a different file (create services/ api.js)
-  const getMovies = async () => {
-    const currentPageParam = `page=${currentPage}`;
-    const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
-    const url = `https://josie-moviehut.herokuapp.com/api/movies?${currentPageParam}&${moviePageLimitParam}`;
-
-    return await axios.get(url);
-  }
-
   useEffect(() => {
-      try {
-        const response = getMovies();
-        const { pagination, data } = response.data;
+      (async () => {
+        try {
+          const response = await getMovies(currentPage, numberOfMoviesPerPage);
 
-        setMovies([...movies, ...data]);
-        setTotalPageCount(pagination.totalPages); // 150
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
+          const { pagination, data } = response;
+
+          setMovies([...movies, ...data]);
+          setTotalPageCount(pagination.totalPages); // 150
+          setLoading(false);
+        } catch (error) {
+          console.error(error);
+        }
+      })();
     }, [currentPage]
   );
 
