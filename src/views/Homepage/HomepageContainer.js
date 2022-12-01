@@ -35,12 +35,12 @@ const HomepageContainer = () => {
   }
 
   return (
-    <Homepage movies={movies}
+    <Homepage isLoading={isLoading}
+              movies={movies}
               totalPageCount={totalPageCount}
-              isLoading={isLoading}
               currentPage={currentPage}
-              loadMoreMovies={loadMoreMovies}
               numberOfMoviesPerPage={numberOfMoviesPerPage}
+              loadMoreMovies={loadMoreMovies}
     />
   )
 }

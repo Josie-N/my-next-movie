@@ -1,14 +1,15 @@
 import React from "react";
-import Button from "../../components/generic/Button/Button";
-import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
+import PropTypes from "prop-types";
 
 import styles from "./Homepage.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
+
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Spinner from "../../components/generic/Spinner/Spinner";
+import Button from "../../components/generic/Button/Button";
+import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
 
-const Homepage = ({ movies, totalPageCount, isLoading, currentPage, loadMoreMovies, numberOfMoviesPerPage }) => {
-  
+const Homepage = ({ isLoading, movies, totalPageCount, currentPage, numberOfMoviesPerPage, loadMoreMovies }) => {
   return (
     <>
       <div className={helperStyles.maxWidthDesktop}>
@@ -66,6 +67,15 @@ const Homepage = ({ movies, totalPageCount, isLoading, currentPage, loadMoreMovi
       </div>
     </>
   )
+}
+
+Homepage.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  movies: PropTypes.object.isRequired,
+  totalPageCount: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  numberOfMoviesPerPage: PropTypes.number.isRequired,
+  loadMoreMovies: PropTypes.func.isRequired,
 }
 
 export default Homepage;
