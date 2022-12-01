@@ -5,7 +5,7 @@ import DelayedFallback from "../components/generic/DelayedFallback/DelayedFallba
 import { Topbar } from "../components/Topbar/Topbar";
 import styles from "./App.module.css";
 
-const Homepage = lazy(() => import("../views/Homepage/Homepage"));
+const HomepageContainer = lazy(() => import("../views/Homepage/HomepageContainer"));
 const Imprint = lazy(() => import("../views/Imprint/Imprint"));
 const Footer = lazy(() => import("../components/Footer/Footer"));
 
@@ -14,7 +14,7 @@ function App () {
     <Suspense fallback={<DelayedFallback />}>
       <Topbar />
       <Routes>
-        <Route exact path="/" element={<Homepage />} />
+        <Route exact path="/" element={<HomepageContainer />} />
         <Route path="/imprint" element={<Imprint />} />
         <Route path="*" element={<h1>404 Page not found</h1>} />
       </Routes>
