@@ -3,18 +3,29 @@ import ButtonGroup from "../generic/ButtonGroup/ButtonGroup";
 import Button from "../generic/Button/Button";
 
 import styles from "./MovieCard.module.css";
-import helperStyles from "../../assets/stylesheets/helper.module.css";
 import cn from "classnames";
 import PropTypes from "prop-types";
 
 
-function MovieCard ({ movie, pageNumber, showPageNumberOnFirstCard, showPageNumberOnLastCard }) {
+function MovieCard ({ movie }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
 
   const imdbRatingInteger = Math.round(imdbRating * 10);
   const title = name.replace(/The /gm, '');
 
+  // move to Homepage instead, because it's inside a map function
+  // helper function in a different js file
+  // 2 functions: 1. save to local storage
+  //              2. get from local storage
+
   const cardAlreadyCollapsed = JSON.parse(window.localStorage.getItem(_id));
+  // { '1234' : false,
+  //    '5678' : true,
+  //    '345345' : true,
+  //  }
+  // store only the expanded one, to reduce the amount of properties,reduce complexity
+  // [ '234', '434534', '345345' ] everything is true, you check if the id exists in the array
+
   const cardCollapsedInitialState = cardAlreadyCollapsed ? cardAlreadyCollapsed : false;
 
   const [isCardCollapsed, setCardCollapse] = useState(cardCollapsedInitialState);
@@ -37,15 +48,6 @@ function MovieCard ({ movie, pageNumber, showPageNumberOnFirstCard, showPageNumb
 
   const handleButtonClick = (event) => event.stopPropagation();
 
-  const pageDivide =
-    <>
-      {showPageNumberOnLastCard &&
-        <span aria-hidden className={styles.pageLandmark}>
-          {pageNumber}
-        </span>
-      }
-    </>
-
   const buttonGroup =
     <>
       {isCardActionable ?
@@ -61,55 +63,40 @@ function MovieCard ({ movie, pageNumber, showPageNumberOnFirstCard, showPageNumb
       }
     </>
 
-  const screenReaderPagination =
-    <>
-      {showPageNumberOnFirstCard &&
-        <h3 className={helperStyles.visuallyHidden}>Page {pageNumber}</h3>
-      }
-    </>
-
   if (isCardCollapsed) {
     return (
-      <>
-        {screenReaderPagination}
-        <div
-          tabIndex="0"
-          className={styles.movieCard__collapsed}
-          onClick={handleCollapse}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <h4 className={styles.movieTitle__collapsed}>{title}</h4>
-        </div>
-        {pageDivide}
-      </>
-    )
-  }
-
-  return (
-    <>
-      {screenReaderPagination}
       <div
         tabIndex="0"
-        className={styles.movieCard__open}
+        className={styles.movieCard__collapsed}
         onClick={handleCollapse}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={styles.movieCardInner}>
-          <h4 className={styles.movieTitle__open}>{title}</h4>
-          <p className={styles.movieDetails}>
-            <span className={styles.movieYear}>{releaseYear} ∙ </span>
-            <span>{genre}</span>
-          </p>
-          <p className={styles.movieDescription}>{overview}</p>
-        </div>
-        <p className={styles.movieRating}>{imdbRatingInteger}</p>
-        {buttonGroup}
-        <div className={movieCardShadowClassNames}></div>
+        <h4 className={styles.movieTitle__collapsed}>{title}</h4>
       </div>
-      {pageDivide}
-    </>
+    )
+  }
+
+  return (
+    <div
+      tabIndex="0"
+      className={styles.movieCard__open}
+      onClick={handleCollapse}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className={styles.movieCardInner}>
+        <h4 className={styles.movieTitle__open}>{title}</h4>
+        <p className={styles.movieDetails}>
+          <span className={styles.movieYear}>{releaseYear} ∙ </span>
+          <span>{genre}</span>
+        </p>
+        <p className={styles.movieDescription}>{overview}</p>
+      </div>
+      <p className={styles.movieRating}>{imdbRatingInteger}</p>
+      {buttonGroup}
+      <div className={movieCardShadowClassNames}></div>
+    </div>
   );
 }
 
@@ -125,9 +112,6 @@ MovieCard.propTypes = {
       overview: PropTypes.string
     }
   ).isRequired,
-  pageNumber: PropTypes.number,
-  showPageNumberOnFirstCard: PropTypes.bool,
-  showPageNumberOnLastCard: PropTypes.bool
 };
 
 export default MovieCard;
