@@ -2,12 +2,13 @@ import React from 'react';
 import styles from './Button.module.css';
 import PropTypes from "prop-types";
 
-function Button ({ hasIcon, icon, type = 'button', handleButtonClick, children }) {
-  
+function Button ({ ariaLabel, hasIcon, icon, type = 'button', handleButtonClick, children }) {
+
   return (
     <button onClick={handleButtonClick}
             type={type}
             className={styles.button}
+            aria-label={ariaLabel}
     >
       {hasIcon ? <span className={styles.buttonIcon}>{icon}</span> : ''}
       {children}

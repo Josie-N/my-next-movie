@@ -4,10 +4,10 @@ import useMoviesPageData from "../../hooks/useMoviesData";
 import styles from "./MoviesPage.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
 
-import Spinner from "../../components/generic/Spinner/Spinner";
-import Button from "../../components/generic/Button/Button";
-import MovieList from "../../components/MovieList/MovieList";
+import MovieList from "./MovieList/MovieList";
 import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
+import Spinner from "../../components/generic/Spinner/Spinner";
+import LoadMoreMovies from "./LoadMoreMovies/LoadMoreMovies";
 
 const MoviesPage = () => {
   const { movies, isLoading, totalPageCount, currentPage, setCurrentPage, numberOfMoviesPerPage } = useMoviesPageData();
@@ -30,19 +30,10 @@ const MoviesPage = () => {
             :
             <div>
               <MovieList movies={movies} numberOfMoviesPerPage={numberOfMoviesPerPage} />
-              {/*// Move load more button to its own component*/}
-              {/*// Can you reuse <Button />?*/}
-              <div className={styles.showMoreMovies}>
-                {
-                  (currentPage === totalPageCount) ?
-                    <h4>No more movies to load.</h4>
-                    :
-                    <Button ariaLabel="Show more movies" hasIcon icon="👇" type="button"
-                            handleButtonClick={loadMoreMovies}>
-                      <span>SHOW MORE</span>
-                    </Button>
-                }
-              </div>
+              <LoadMoreMovies currentPage={currentPage}
+                              totalPageCount={totalPageCount}
+                              loadMoreMovies={loadMoreMovies}
+              />
             </div>
           }
           {isLoading ?

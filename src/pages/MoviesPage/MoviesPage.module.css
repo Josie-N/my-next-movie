@@ -24,9 +24,3 @@
   position:       relative;
 }
 
-.showMoreMovies {
-  display:         flex;
-  justify-content: end;
-  margin:          8rem var(--grid-column-gap);
-}
-

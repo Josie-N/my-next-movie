@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from "../../views/MoviesPage/MoviesPage.module.css";
+import styles from "../../MoviesPage/MoviesPage.module.css";
 import PropTypes from "prop-types";
 
-import PaginationNumberScreenReader from "../PaginationNumberScreenReader/PaginationNumberScreenReader";
-import MovieCard from "../MovieCard/MovieCard";
-import PaginationNumber from "../PaginationNumber/PaginationNumber";
+import MovieCard from "../../../components/MovieCard/MovieCard";
+import PaginationNumberScreenReader
+  from "../../../components/PaginationNumberScreenReader/PaginationNumberScreenReader";
+import PaginationNumber from "../../../components/PaginationNumber/PaginationNumber";
 
 const MovieList = ({ movies, numberOfMoviesPerPage }) => {
   return (
