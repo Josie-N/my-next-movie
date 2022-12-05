@@ -1,14 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
+import useMoviesPageData from "../../hooks/useMoviesData";
 
-import styles from "./Homepage.module.css";
+import styles from "./MoviesPage.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
+
 import Spinner from "../../components/generic/Spinner/Spinner";
 import Button from "../../components/generic/Button/Button";
 import MovieList from "../../components/MovieList/MovieList";
 import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
 
-const Homepage = ({ isLoading, movies, totalPageCount, currentPage, numberOfMoviesPerPage, loadMoreMovies }) => {
+const MoviesPage = () => {
+  const { movies, isLoading, totalPageCount, currentPage, setCurrentPage, numberOfMoviesPerPage } = useMoviesPageData();
+
+  const loadMoreMovies = () => {
+    setCurrentPage(currentPage + 1);
+  }
+
   return (
     <>
       <div className={helperStyles.maxWidthDesktop}>
@@ -16,7 +23,6 @@ const Homepage = ({ isLoading, movies, totalPageCount, currentPage, numberOfMovi
           <h2 className={helperStyles.visuallyHidden}>
             Browse all movies available:
           </h2>
-            {/*To do: move into its own MovieCardPage component*/}
           {isLoading ?
             <div className={styles.movieCardContainerSkeleton}>
               <Spinner />
@@ -24,8 +30,8 @@ const Homepage = ({ isLoading, movies, totalPageCount, currentPage, numberOfMovi
             :
             <div>
               <MovieList movies={movies} numberOfMoviesPerPage={numberOfMoviesPerPage} />
-                  const quotient = index / numberOfMoviesPerPage;
-                  const pageNumber = Math.floor(quotient) + 1;
+              {/*// Move load more button to its own component*/}
+              {/*// Can you reuse <Button />?*/}
               <div className={styles.showMoreMovies}>
                 {
                   (currentPage === totalPageCount) ?
@@ -50,13 +56,4 @@ const Homepage = ({ isLoading, movies, totalPageCount, currentPage, numberOfMovi
   )
 }
 
-Homepage.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-  movies: PropTypes.array.isRequired,
-  totalPageCount: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  numberOfMoviesPerPage: PropTypes.number.isRequired,
-  loadMoreMovies: PropTypes.func.isRequired,
-}
-
-export default Homepage;
+export default MoviesPage;

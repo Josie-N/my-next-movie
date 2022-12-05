@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../../views/Homepage/Homepage.module.css";
+import styles from "../../views/MoviesPage/MoviesPage.module.css";
 import PropTypes from "prop-types";
 
 import PaginationNumberScreenReader from "../PaginationNumberScreenReader/PaginationNumberScreenReader";
