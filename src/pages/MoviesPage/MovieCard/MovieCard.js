@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import ButtonGroup from "../generic/ButtonGroup/ButtonGroup";
-import Button from "../generic/Button/Button";
+import PropTypes from "prop-types";
+import cn from "classnames";
 
 import styles from "./MovieCard.module.css";
-import cn from "classnames";
-import PropTypes from "prop-types";
+import { getImdbRatingInteger, getMovieTitle } from "./utils/utils";
 
+import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
+import Button from "../../../components/generic/Button/Button";
 
 function MovieCard ({ movie }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
+  const imdbRatingInteger = getImdbRatingInteger(imdbRating);
+  const movieTitle = getMovieTitle(name);
 
-  const imdbRatingInteger = Math.round(imdbRating * 10);
-  const title = name.replace(/The /gm, '');
-
-  // move to Homepage instead, because it's inside a map function
+  // move to MoviesPage instead, because it's inside a map function
   // helper function in a different js file
   // 2 functions: 1. save to local storage
   //              2. get from local storage
@@ -72,7 +72,7 @@ function MovieCard ({ movie }) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <h4 className={styles.movieTitle__collapsed}>{title}</h4>
+        <h4 className={styles.movieTitle__collapsed}>{movieTitle}</h4>
       </div>
     )
   }
@@ -86,7 +86,7 @@ function MovieCard ({ movie }) {
       onMouseLeave={handleMouseLeave}
     >
       <div className={styles.movieCardInner}>
-        <h4 className={styles.movieTitle__open}>{title}</h4>
+        <h4 className={styles.movieTitle__open}>{movieTitle}</h4>
         <p className={styles.movieDetails}>
           <span className={styles.movieYear}>{releaseYear} ∙ </span>
           <span>{genre}</span>

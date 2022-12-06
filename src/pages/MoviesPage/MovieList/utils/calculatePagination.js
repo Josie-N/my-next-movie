@@ -3,7 +3,7 @@ export const getPageNumber = (movieCardIndex, numberOfMoviesPerPage) => {
   const quotient = movieCardIndex / numberOfMoviesPerPage;
   const pageNumber = Math.floor(quotient) + 1;
 
-  return { pageNumber };
+  return pageNumber;
 }
 
 export const getPageFirstCard = (index, numberOfMoviesPerPage) => {
@@ -11,7 +11,7 @@ export const getPageFirstCard = (index, numberOfMoviesPerPage) => {
   const indexOfFirstCardOnEachPage = (numberOfMoviesPerPage - 5);
   const showPageNumberOnFirstCard = (index % numberOfMoviesPerPage) === indexOfFirstCardOnEachPage;
 
-  return { showPageNumberOnFirstCard };
+  return showPageNumberOnFirstCard;
 }
 
 export const getPageLastCard = (movieCardIndex, numberOfMoviesPerPage) => {
@@ -19,5 +19,5 @@ export const getPageLastCard = (movieCardIndex, numberOfMoviesPerPage) => {
   const indexOfLastCardOnEachPage = (numberOfMoviesPerPage - 1);
   const showPageNumberOnLastCard = (movieCardIndex % numberOfMoviesPerPage) === indexOfLastCardOnEachPage;
 
-  return { showPageNumberOnLastCard };
+  return showPageNumberOnLastCard;
 }
