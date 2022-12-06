@@ -2,6 +2,8 @@ import React from 'react';
 import styles from "../../MoviesPage/MoviesPage.module.css";
 import PropTypes from "prop-types";
 
+import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calculatePagination";
+
 import MovieCard from "../../../components/MovieCard/MovieCard";
 import PaginationNumberScreenReader
   from "../../../components/PaginationNumberScreenReader/PaginationNumberScreenReader";
@@ -10,35 +12,24 @@ import PaginationNumber from "../../../components/PaginationNumber/PaginationNum
 const MovieList = ({ movies, numberOfMoviesPerPage }) => {
   return (
     <div className={styles.movieCardContainer} aria-live="polite">
-      {movies && movies.map((movie, index) => {
+      {movies && movies.map((movie, movieCardIndex) => {
 
-        // Move all of these calcs to calculatePagination function
-        const quotient = index / numberOfMoviesPerPage;
-        const pageNumber = Math.floor(quotient) + 1;
-
-        const divisionRemainder = index % numberOfMoviesPerPage;
-
-        // Output: 4, 9, 14, 19, ...
-        const indexOfLastCardOnEachPage = (numberOfMoviesPerPage - 1);
-        const showPageNumberOnLastCard = divisionRemainder === indexOfLastCardOnEachPage;
-
-        // Output: 0, 5, 10, 15, ...
-        const indexOfFirstCardOnEachPage = (numberOfMoviesPerPage - 5);
-        const showPageNumberOnFirstCard = divisionRemainder === indexOfFirstCardOnEachPage
+        const { pageNumber } = getPageNumber(movieCardIndex, numberOfMoviesPerPage);
+        const { showPageNumberOnFirstCard } = getPageFirstCard(movieCardIndex, numberOfMoviesPerPage);
+        const { showPageNumberOnLastCard } = getPageLastCard(movieCardIndex, numberOfMoviesPerPage);
 
         return (
           <>
             <PaginationNumberScreenReader
               pageNumber={pageNumber}
-              showPageNumberOnFirstCard={showPageNumberOnFirstCard}
+              shouldBeDisplayed={showPageNumberOnFirstCard}
             />
             <MovieCard key={movie._id}
                        movie={movie}
             />
             <PaginationNumber
               pageNumber={pageNumber}
-              showPageNumberOnFirstCard={showPageNumberOnFirstCard}
-              showPageNumberOnLastCard={showPageNumberOnLastCard}
+              shouldBeDisplayed={showPageNumberOnLastCard}
             />
           </>
         );

@@ -2,11 +2,11 @@ import React from 'react';
 import styles from "../PaginationNumber/PaginationNumber.module.css";
 import PropTypes from "prop-types";
 
-function PaginationNumber ({ showPageNumberOnLastCard, pageNumber }) {
+function PaginationNumber ({ shouldBeDisplayed, pageNumber }) {
   return (
     <>
       {
-        showPageNumberOnLastCard &&
+        shouldBeDisplayed &&
         <span aria-hidden className={styles.pageLandmark}>
           {pageNumber}
         </span>
@@ -16,8 +16,8 @@ function PaginationNumber ({ showPageNumberOnLastCard, pageNumber }) {
 }
 
 PaginationNumber.propTypes = {
-  pageNumber: PropTypes.number,
-  showPageNumberOnLastCard: PropTypes.bool
+  pageNumber: PropTypes.number.isRequired,
+  shouldBeDisplayed: PropTypes.bool.isRequired
 };
 
 export default PaginationNumber;

@@ -2,11 +2,11 @@ import React from 'react';
 import helperStyles from "../../assets/stylesheets/helper.module.css";
 import PropTypes from "prop-types";
 
-const PaginationNumberScreenReader = ({ showPageNumberOnFirstCard, pageNumber }) => {
+const PaginationNumberScreenReader = ({ shouldBeDisplayed, pageNumber }) => {
   return (
     <>
       {
-        showPageNumberOnFirstCard &&
+        shouldBeDisplayed &&
         <h3 className={helperStyles.visuallyHidden}>
           Page {pageNumber}
         </h3>
@@ -16,8 +16,8 @@ const PaginationNumberScreenReader = ({ showPageNumberOnFirstCard, pageNumber })
 };
 
 PaginationNumberScreenReader.propTypes = {
-  pageNumber: PropTypes.number,
-  showPageNumberOnFirstCard: PropTypes.bool,
+  pageNumber: PropTypes.number.isRequired,
+  shouldBeDisplayed: PropTypes.bool.isRequired,
 };
 
 export default PaginationNumberScreenReader;

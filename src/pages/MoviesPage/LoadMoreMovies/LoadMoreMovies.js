@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from "../MoviesPage.module.css";
-import Button from "../../../components/generic/Button/Button";
 import PropTypes from "prop-types";
+
+import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
+import Button from "../../../components/generic/Button/Button";
 
 const LoadMoreMovies = ({ currentPage, totalPageCount, loadMoreMovies }) => {
   return (
@@ -10,8 +11,12 @@ const LoadMoreMovies = ({ currentPage, totalPageCount, loadMoreMovies }) => {
         (currentPage === totalPageCount) ?
           <h4>No more movies to load.</h4>
           :
-          <Button ariaLabel="Show more movies" hasIcon icon="👇" type="button"
-                  handleButtonClick={loadMoreMovies}>
+          <Button ariaLabel="Show more movies"
+                  hasIcon
+                  icon="👇"
+                  type="button"
+                  handleButtonClick={loadMoreMovies}
+          >
             <span>SHOW MORE</span>
           </Button>
       }
