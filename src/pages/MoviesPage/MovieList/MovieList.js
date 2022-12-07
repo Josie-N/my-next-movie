@@ -5,9 +5,8 @@ import PropTypes from "prop-types";
 import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calculatePagination";
 
 import MovieCard from "../MovieCard/MovieCard";
-import PaginationNumberScreenReader
-  from "../../../components/PaginationNumberScreenReader/PaginationNumberScreenReader";
-import PaginationNumber from "../../../components/PaginationNumber/PaginationNumber";
+import PaginationNumberScreenReader from "../PaginationNumberScreenReader/PaginationNumberScreenReader";
+import PaginationNumber from "../PaginationNumber/PaginationNumber";
 
 
 const MovieList = ({ movies, numberOfMoviesPerPage }) => {

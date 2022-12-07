@@ -1,5 +1,5 @@
 import React from 'react';
-import helperStyles from "../../assets/stylesheets/helper.module.css";
+import helperStyles from "../../../assets/stylesheets/helper.module.css";
 import PropTypes from "prop-types";
 
 const PaginationNumberScreenReader = ({ shouldBeDisplayed, pageNumber }) => {

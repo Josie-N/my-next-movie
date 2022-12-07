@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../PaginationNumber/PaginationNumber.module.css";
+import styles from "./PaginationNumber.module.css";
 import PropTypes from "prop-types";
 
 function PaginationNumber ({ shouldBeDisplayed, pageNumber }) {

@@ -2,7 +2,7 @@
 .pageLandmark {
   opacity:     0.8;
 
-  composes:    DINCondSemiBold from "../../assets/stylesheets/index.css";
+  composes:    DINCondSemiBold from "../../../assets/stylesheets/index.css";
   text-align:  right;
   font-size:   var(--font-size-xl);
   font-weight: 600;
