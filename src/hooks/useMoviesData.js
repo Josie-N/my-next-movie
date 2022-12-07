@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getMovies } from "../services/api";
 
-export default function useMoviesPageData () {
+export default function useMoviesPage () {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState(0);

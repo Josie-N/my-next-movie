@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import cn from "classnames";
 
+import useLocalStorage from "../../../hooks/useLocalStorage";
+import { getImdbRatingInteger, getMovieTitle } from "./utils/helper";
 import styles from "./MovieCard.module.css";
-import { getImdbRatingInteger, getMovieTitle } from "./utils/utils";
 
 import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
@@ -13,22 +14,7 @@ function MovieCard ({ movie }) {
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getMovieTitle(name);
 
-  // move to MoviesPage instead, because it's inside a map function
-  // helper function in a different js file
-  // 2 functions: 1. save to local storage
-  //              2. get from local storage
-
-  const cardAlreadyCollapsed = JSON.parse(window.localStorage.getItem(_id));
-  // { '1234' : false,
-  //    '5678' : true,
-  //    '345345' : true,
-  //  }
-  // store only the expanded one, to reduce the amount of properties,reduce complexity
-  // [ '234', '434534', '345345' ] everything is true, you check if the id exists in the array
-
-  const cardCollapsedInitialState = cardAlreadyCollapsed ? cardAlreadyCollapsed : false;
-
-  const [isCardCollapsed, setCardCollapse] = useState(cardCollapsedInitialState);
+  const [isCardCollapsed, setCardCollapse] = useLocalStorage(false, _id);
   const [isCardActionable, setCardActionable] = useState(false);
 
   const isMovieNew = releaseYear >= 2000;
@@ -38,30 +24,11 @@ function MovieCard ({ movie }) {
   );
 
   const handleMouseEnter = () => setCardActionable(true);
-
   const handleMouseLeave = () => setCardActionable(false);
-
+  const handleButtonClick = (event) => event.stopPropagation();
   const handleCollapse = () => {
-    localStorage.setItem(_id, JSON.stringify(!isCardCollapsed));
     setCardCollapse(!isCardCollapsed);
   }
-
-  const handleButtonClick = (event) => event.stopPropagation();
-
-  const buttonGroup =
-    <>
-      {isCardActionable ?
-        <ButtonGroup>
-          <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonClick}>
-            <span>REMOVE</span>
-          </Button>
-          <Button hasIcon icon="👍" type="button" handleButtonClick={handleButtonClick}>
-            <span>ADD</span>
-          </Button>
-        </ButtonGroup>
-        : ''
-      }
-    </>
 
   if (isCardCollapsed) {
     return (
@@ -94,8 +61,18 @@ function MovieCard ({ movie }) {
         <p className={styles.movieDescription}>{overview}</p>
       </div>
       <p className={styles.movieRating}>{imdbRatingInteger}</p>
-      {buttonGroup}
-      <div className={movieCardShadowClassNames}></div>
+      {isCardActionable ?
+        <ButtonGroup>
+          <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonClick}>
+            <span>REMOVE</span>
+          </Button>
+          <Button hasIcon icon="👍" type="button" handleButtonClick={handleButtonClick}>
+            <span>ADD</span>
+          </Button>
+        </ButtonGroup>
+        : ''
+      }
+      <div className={movieCardShadowClassNames} />
     </div>
   );
 }

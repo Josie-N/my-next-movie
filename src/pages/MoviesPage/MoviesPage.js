@@ -1,5 +1,5 @@
 import React from "react";
-import useMoviesPageData from "../../hooks/useMoviesData";
+import useMoviesPage from "../../hooks/useMoviesData";
 
 import styles from "./MoviesPage.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
@@ -10,7 +10,7 @@ import Spinner from "../../components/generic/Spinner/Spinner";
 import LoadMoreMovies from "./LoadMoreMovies/LoadMoreMovies";
 
 const MoviesPage = () => {
-  const { movies, isLoading, totalPageCount, currentPage, setCurrentPage, numberOfMoviesPerPage } = useMoviesPageData();
+  const { movies, isLoading, totalPageCount, currentPage, setCurrentPage, numberOfMoviesPerPage } = useMoviesPage();
 
   const loadMoreMovies = () => {
     setCurrentPage(currentPage + 1);
