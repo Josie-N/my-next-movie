@@ -5,6 +5,7 @@
         "name": "typescript-plugin-css-modules"
       }
     ],
+    "baseUrl": ".",
     "target": "es5",
     "lib": [
       "dom",
@@ -27,6 +28,7 @@
   },
   "include": [
     "src",
+    "src/**/*",
     "typings.d.ts"
   ]
 }

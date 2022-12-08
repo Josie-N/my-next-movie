@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from "./PaginationNumber.module.css";
-import PropTypes from "prop-types";
 
-function PaginationNumber ({ shouldBeDisplayed, pageNumber }) {
+interface PaginationNumberProps {
+  shouldBeDisplayed: boolean,
+  pageNumber: number
+}
+
+function PaginationNumber ({ shouldBeDisplayed, pageNumber }: PaginationNumberProps): JSX.Element | null {
   return (
     <>
       {
@@ -14,10 +18,5 @@ function PaginationNumber ({ shouldBeDisplayed, pageNumber }) {
     </>
   );
 }
-
-PaginationNumber.propTypes = {
-  pageNumber: PropTypes.number.isRequired,
-  shouldBeDisplayed: PropTypes.bool.isRequired
-};
 
 export default PaginationNumber;
