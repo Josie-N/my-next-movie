@@ -18,7 +18,7 @@ export default function useMoviesPage () {
 
         const { pagination, data } = response;
 
-        setMovies([...movies, ...data]);
+        setMovies(previousMovies => [...previousMovies, ...data]);
         setTotalPageCount(pagination.totalPages);
         setLoading(false);
       } catch (err) {
