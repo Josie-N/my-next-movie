@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Spinner from "../Spinner/Spinner";
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator";
 
 const DelayedFallback = () => {
   const [show, setShow] = useState(false);
@@ -14,7 +14,7 @@ const DelayedFallback = () => {
 
   return (
     <>
-      {show && <Spinner />}
+      {show && <LoadingIndicator />}
     </>
   )
 }

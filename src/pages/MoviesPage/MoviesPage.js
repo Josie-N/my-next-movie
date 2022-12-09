@@ -6,7 +6,7 @@ import helperStyles from "../../assets/stylesheets/helper.module.css";
 
 import MovieList from "./MovieList/MovieList";
 import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
-import Spinner from "../../components/generic/Spinner/Spinner";
+import LoadingIndicator from "../../components/generic/LoadingIndicator/LoadingIndicator";
 import LoadMoreMovies from "./LoadMoreMovies/LoadMoreMovies";
 
 const MoviesPage = () => {
@@ -25,7 +25,7 @@ const MoviesPage = () => {
           </h2>
           {isLoading ?
             <div className={styles.movieCardContainerSkeleton}>
-              <Spinner />
+              <LoadingIndicator />
             </div>
             :
             <div>
@@ -37,7 +37,7 @@ const MoviesPage = () => {
             </div>
           }
           {isLoading ?
-            <Spinner />
+            <LoadingIndicator />
             :
             <WatchlistSidebar />
           }

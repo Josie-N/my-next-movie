@@ -14,23 +14,29 @@ function MovieCard ({ movie }) {
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getMovieTitle(name);
 
-  const [isCardCollapsed, setCardCollapse] = useLocalStorage(false, _id);
-  const [isCardActionable, setCardActionable] = useState(false);
+  const [isCardHidden, setCardHidden] = useLocalStorage(false, _id);
+  const [isCardActive, setCardActive] = useState(false);
 
+  // Adds a different background color to movie cards released before a certain year
   const isMovieNew = releaseYear >= 2000;
   const movieCardShadowClassNames = cn(
     { [styles["movieCardShadow__new"]]: isMovieNew },
     { [styles["movieCardShadow__old"]]: !isMovieNew }
   );
 
-  const handleMouseEnter = () => setCardActionable(true);
-  const handleMouseLeave = () => setCardActionable(false);
-  const handleButtonClick = (event) => event.stopPropagation();
+  // Shows buttons (add, remove) when user hovers in and out of a movie card
+  const handleMouseEnter = () => setCardActive(true);
+  const handleMouseLeave = () => setCardActive(false);
+
+  // Shows more or less content inside a movie card
   const handleCollapse = () => {
-    setCardCollapse(!isCardCollapsed);
+    setCardHidden(!isCardHidden);
   }
 
-  if (isCardCollapsed) {
+  // Runs when user clicks button to see more movie cards
+  const handleButtonClick = (event) => event.stopPropagation();
+
+  if (isCardHidden) {
     return (
       <div
         tabIndex="0"
@@ -61,7 +67,7 @@ function MovieCard ({ movie }) {
         <p className={styles.movieDescription}>{overview}</p>
       </div>
       <p className={styles.movieRating}>{imdbRatingInteger}</p>
-      {isCardActionable ?
+      {isCardActive ?
         <ButtonGroup>
           <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonClick}>
             <span>REMOVE</span>
