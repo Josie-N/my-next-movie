@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMovies } from "../services/api";
+import { getRecommendedMovieList } from "../services/api";
 
 export default function useMoviesPage () {
   const [movies, setMovies] = useState([]);
@@ -14,7 +14,7 @@ export default function useMoviesPage () {
   useEffect(() => {
     (async () => {
       try {
-        const response = await getMovies(currentPage, numberOfMoviesPerPage);
+        const response = await getRecommendedMovieList(currentPage, numberOfMoviesPerPage);
 
         const { pagination, data } = response;
 
