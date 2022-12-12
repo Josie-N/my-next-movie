@@ -9,7 +9,8 @@ import PaginationNumberScreenReader from "../PaginationNumberScreenReader/Pagina
 import PaginationNumber from "../PaginationNumber/PaginationNumber";
 
 
-const MovieList = ({ movies, numberOfMoviesPerPage }) => {
+const MovieList = ({ movies, numberOfMoviesPerPage, handleButtonAdd, handleButtonRemove }) => {
+
   return (
     <div className={styles.movieCardContainer} aria-live="polite">
       {movies && movies.map((movie, movieCardIndex) => {
@@ -26,6 +27,8 @@ const MovieList = ({ movies, numberOfMoviesPerPage }) => {
             />
             <MovieCard key={movie._id}
                        movie={movie}
+              handleButtonAdd={handleButtonAdd}
+              handleButtonRemove={handleButtonRemove}
             />
             <PaginationNumber
               pageNumber={pageNumber}

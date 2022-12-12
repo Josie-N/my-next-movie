@@ -9,7 +9,7 @@ import styles from "./MovieCard.module.css";
 import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
 
-function MovieCard ({ movie }) {
+function MovieCard ({ movie, handleButtonAdd, handleButtonRemove }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getMovieTitle(name);
@@ -32,9 +32,6 @@ function MovieCard ({ movie }) {
   const handleCollapse = () => {
     setCardHidden(!isCardHidden);
   }
-
-  // Runs when user clicks button to see more movie cards
-  const handleButtonClick = (event) => event.stopPropagation();
 
   if (isCardHidden) {
     return (
@@ -69,10 +66,10 @@ function MovieCard ({ movie }) {
       <p className={styles.movieRating}>{imdbRatingInteger}</p>
       {isCardActive ?
         <ButtonGroup>
-          <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonClick}>
+          <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonRemove}>
             <span>REMOVE</span>
           </Button>
-          <Button hasIcon icon="👍" type="button" handleButtonClick={handleButtonClick}>
+          <Button hasIcon icon="👍" type="button" handleButtonClick={(event) => handleButtonAdd(movie, event)}>
             <span>ADD</span>
           </Button>
         </ButtonGroup>
