@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../../MoviesPage/MoviesPage.module.css";
+import styles from "../MovieListRecommended.module.css";
 import PropTypes from "prop-types";
 
 import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calculatePagination";

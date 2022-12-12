@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { getRecommendedMovieList } from "../services/api";
 
-export default function useMoviesPage () {
+export default function useMovieList (getApiCall) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState(0);
@@ -14,7 +13,7 @@ export default function useMoviesPage () {
   useEffect(() => {
     (async () => {
       try {
-        const response = await getRecommendedMovieList(currentPage, numberOfMoviesPerPage);
+        const response = await getApiCall(currentPage, numberOfMoviesPerPage);
 
         const { pagination, data } = response;
 
@@ -40,6 +39,7 @@ export default function useMoviesPage () {
 
   return {
     movies,
+    setMovies,
     isLoading,
     totalPageCount,
     currentPage,

@@ -5,7 +5,7 @@ import DelayedFallback from "../components/generic/DelayedFallback/DelayedFallba
 import { Topbar } from "../components/Topbar/Topbar";
 import styles from "./App.module.css";
 
-const Homepage = lazy(() => import("../pages/MoviesPage/MoviesPage"));
+const Homepage = lazy(() => import("../pages/MoviesPage/MovieListRecommended"));
 const Imprint = lazy(() => import("../pages/Imprint/Imprint"));
 const Footer = lazy(() => import("../components/Footer/Footer"));
 

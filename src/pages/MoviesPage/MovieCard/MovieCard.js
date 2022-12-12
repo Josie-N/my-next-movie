@@ -92,6 +92,8 @@ MovieCard.propTypes = {
       overview: PropTypes.string
     }
   ).isRequired,
+  handleButtonAdd: PropTypes.func,
+  handleButtonRemove: PropTypes.func,
 };
 
 export default MovieCard;

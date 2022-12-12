@@ -30,6 +30,10 @@
   font-weight: 600;
 }
 
+.watchlistLink {
+  cursor: pointer;
+}
+
 .emoji {
   composes:     NotoEmoji from "../../assets/stylesheets/index.css";
   margin-right: var(--space-0);
