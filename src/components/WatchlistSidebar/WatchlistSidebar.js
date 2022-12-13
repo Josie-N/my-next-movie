@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../../components/WatchlistSidebar/WatchlistSidebar.module.css";
+import { Link } from "react-router-dom";
+import { ADDED, REMOVED } from "../../constants/constants";
 
 
 export const WatchlistSidebar = ({ setMovieListType, watchlistAdd, watchlistRemove }) => {
@@ -9,11 +11,12 @@ export const WatchlistSidebar = ({ setMovieListType, watchlistAdd, watchlistRemo
       <ul className={styles.watchlist}>
         <li>
           <div className={styles.watchlistLink} onClick={() => setMovieListType('added')}>
-            <span className={styles.emoji}>👍🏻</span>
-            <h3 className={styles.watchlistItemLabel}>
-              Added ({watchlistAdd})
-            </h3>
-          </div>
+            <div className={styles.watchlistLink} onClick={() => setMovieListType(ADDED)}>
+              <span className={styles.emoji}>👍🏻</span>
+              <h3 className={styles.watchlistItemLabel}>
+                Added ({watchlistAdd})
+              </h3>
+            </div>
         </li>
         <li>
           <a href="/">
@@ -22,7 +25,7 @@ export const WatchlistSidebar = ({ setMovieListType, watchlistAdd, watchlistRemo
           </a>
         </li>
         <li>
-          <div className={styles.watchlistLink} onClick={() => setMovieListType('removed')}>
+          <div className={styles.watchlistLink} onClick={() => setMovieListType(REMOVED)}>
             <span className={styles.emoji}>👎</span>
             <h3 className={styles.watchlistItemLabel}>Removed ({watchlistRemove})</h3>
           </div>

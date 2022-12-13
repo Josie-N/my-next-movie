@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../MovieListRecommended.module.css";
+import styles from "../MovieListRecommended/MovieListRecommended.module.css";
 import PropTypes from "prop-types";
 
 import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calculatePagination";
@@ -9,7 +9,7 @@ import PaginationNumberScreenReader from "../PaginationNumberScreenReader/Pagina
 import PaginationNumber from "../PaginationNumber/PaginationNumber";
 
 
-const MovieList = ({ movies, numberOfMoviesPerPage, handleButtonAdd, handleButtonRemove }) => {
+const MovieList = ({ movies, numberOfMoviesPerPage, handleMoveToAddedList, handleMoveToRemovedList }) => {
 
   return (
     <div className={styles.movieCardContainer} aria-live="polite">
@@ -24,15 +24,18 @@ const MovieList = ({ movies, numberOfMoviesPerPage, handleButtonAdd, handleButto
             <PaginationNumberScreenReader
               pageNumber={pageNumber}
               shouldBeDisplayed={showPageNumberOnFirstCard}
+              // key={movie._id}
             />
-            <MovieCard key={movie._id}
-                       movie={movie}
-              handleButtonAdd={handleButtonAdd}
-              handleButtonRemove={handleButtonRemove}
+            <MovieCard
+              movie={movie}
+              handleMoveToAddedList={handleMoveToAddedList}
+              handleMoveToRemovedList={handleMoveToRemovedList}
+              // key={movie._id}
             />
             <PaginationNumber
               pageNumber={pageNumber}
               shouldBeDisplayed={showPageNumberOnLastCard}
+              // key={movie._id}
             />
           </>
         );

@@ -9,7 +9,7 @@ import styles from "./MovieCard.module.css";
 import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
 
-function MovieCard ({ movie, handleButtonAdd, handleButtonRemove }) {
+function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getMovieTitle(name);
@@ -66,10 +66,11 @@ function MovieCard ({ movie, handleButtonAdd, handleButtonRemove }) {
       <p className={styles.movieRating}>{imdbRatingInteger}</p>
       {isCardActive ?
         <ButtonGroup>
-          <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleButtonRemove}>
+          <Button hasIcon icon="👎🏻" type="button"
+                  handleButtonClick={(event) => handleMoveToRemovedList(_id, event)}>
             <span>REMOVE</span>
           </Button>
-          <Button hasIcon icon="👍" type="button" handleButtonClick={(event) => handleButtonAdd(movie, event)}>
+          <Button hasIcon icon="👍" type="button" handleButtonClick={(event) => handleMoveToAddedList(_id, event)}>
             <span>ADD</span>
           </Button>
         </ButtonGroup>

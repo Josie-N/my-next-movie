@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import useMovieList from "../../hooks/useMoviesData";
-import { getRecommendedMovieList, postToAddedMovieList } from "../../services/api";
+import useMovieList from "../../../hooks/useMoviesData";
+import { ADDED, RECOMMENDED, REMOVED } from "../../../constants/constants";
+import { getRecommendedMovieList, postToAddedMovieList } from "../../../services/api";
+import { getFilterMovieFromList } from "../utils/helper";
 
 import styles from "./MovieListRecommended.module.css";
-import helperStyles from "../../assets/stylesheets/helper.module.css";
+import helperStyles from "../../../assets/stylesheets/helper.module.css";
 
-import MovieList from "./MovieList/MovieList";
-import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSidebar";
-import LoadingIndicator from "../../components/generic/LoadingIndicator/LoadingIndicator";
-import LoadMoreMovies from "./LoadMoreMovies/LoadMoreMovies";
-import MovieListUserAdded from "./MovieListUserAdded/MovieListUserAdded";
-import { ADDED, RECOMMENDED, REMOVED } from "../../constants/constants";
+import MovieList from "../MovieList/MovieList";
+import { WatchlistSidebar } from "../../../components/WatchlistSidebar/WatchlistSidebar";
+import LoadingIndicator from "../../../components/generic/LoadingIndicator/LoadingIndicator";
+import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
+import MovieListUserAdded from "../MovieListUserAdded/MovieListUserAdded";
 
 const MovieListRecommended = () => {
   const {
@@ -23,25 +24,27 @@ const MovieListRecommended = () => {
     numberOfMoviesPerPage
   } = useMovieList(getRecommendedMovieList);
   const [movieListType, setMovieListType] = useState(RECOMMENDED);
+
   const [watchlistAdd, setWatchlistAdd] = useState(0);
   const [watchlistRemove, setWatchlistRemove] = useState(0);
 
   // Runs when user adds a movie to recommended watchlist
-  const handleButtonAdd = (movie, event) => {
+  const handleMoveToAddedList = (_id, event) => {
     event.stopPropagation();
 
     // counter will also be updated on the BE side
     setWatchlistAdd(watchlistAdd + 1);
-    postToAddedMovieList(movie._id).catch(err => console.log(err.response.data));
+    postToAddedMovieList(_id).catch(err => console.log(err.response.data));
 
-    // Remove item from list
-    setMovies(movies.filter(movies => movie._id !== movies._id));
+    // Remove movie selected by id from list
+    setMovies(getFilterMovieFromList(movies, _id));
   };
 
   // Runs when user adds a movie to blacklist
-  const handleButtonRemove = (event) => {
+  const handleMoveToRemovedList = (_id, event) => {
     event.stopPropagation();
     setWatchlistRemove(watchlistRemove + 1);
+    setMovies(getFilterMovieFromList(movies, _id));
   }
 
   // Runs when user clicks button to see more movies
@@ -65,8 +68,9 @@ const MovieListRecommended = () => {
               {movieListType === RECOMMENDED ?
                 <MovieList movies={movies}
                            numberOfMoviesPerPage={numberOfMoviesPerPage}
-                           handleButtonAdd={handleButtonAdd}
-                           handleButtonRemove={handleButtonRemove} />
+                           handleMoveToAddedList={handleMoveToAddedList}
+                           handleMoveToRemovedList={handleMoveToRemovedList}
+                />
                 : null
               }
               {movieListType === ADDED ? <MovieListUserAdded /> : null}
