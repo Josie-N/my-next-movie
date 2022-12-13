@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAdddedMovieList } from "../../../services/api";
+import { getAddedMovieList } from "../../../services/api";
 import useMovieList from "../../../hooks/useMoviesData";
 
 import MovieCard from "../MovieCard/MovieCard";
@@ -8,11 +8,10 @@ import LoadingIndicator from "../../../components/generic/LoadingIndicator/Loadi
 function MovieListUserAdded () {
   // TO DO: Need a way to return back to recommended page
 
-  const { movies, isLoading } = useMovieList(() => getAdddedMovieList());
+  const { movies, isLoading } = useMovieList(getAddedMovieList);
 
   return (
     <div>
-      {/*TO DO: You need a design for the empty screen*/}
       <h3>Added Movies</h3>
       {isLoading ?
         <LoadingIndicator />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useMovieList from "../../hooks/useMoviesData";
-import { getRecommendedMovieList, postMovietoAddedList } from "../../services/api";
+import { getRecommendedMovieList, postToAddedMovieList } from "../../services/api";
 
 import styles from "./MovieListRecommended.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
@@ -20,7 +20,7 @@ const MovieListRecommended = () => {
     currentPage,
     setCurrentPage,
     numberOfMoviesPerPage
-  } = useMovieList(() => getRecommendedMovieList());
+  } = useMovieList(getRecommendedMovieList);
   const [movieListType, setMovieListType] = useState('recommended');
   const [watchlistAdd, setWatchlistAdd] = useState(0);
   const [watchlistRemove, setWatchlistRemove] = useState(0);
@@ -29,9 +29,9 @@ const MovieListRecommended = () => {
   const handleButtonAdd = (movie, event) => {
     event.stopPropagation();
 
-    // counter will be updated on the BE side
+    // counter will also be updated on the BE side
     setWatchlistAdd(watchlistAdd + 1);
-    postMovietoAddedList(movie._id).catch(err => console.log(err.response.data));
+    postToAddedMovieList(movie._id).catch(err => console.log(err.response.data));
 
     // Remove item from list
     setMovies(movies.filter(movies => movie._id !== movies._id));

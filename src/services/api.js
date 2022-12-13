@@ -13,33 +13,39 @@ export const getRecommendedMovieList = async (currentPage, numberOfMoviesPerPage
   return json.data;
 }
 
-export const getAdddedMovieList = async (currentPage, numberOfMoviesPerPage) => {
+export const getAddedMovieList = (currentPage, numberOfMoviesPerPage) => {
+  return getMovieList(currentPage, numberOfMoviesPerPage, 'added');
+}
+
+export const getRemovedMovieList = (currentPage, numberOfMoviesPerPage) => {
+  return getMovieList(currentPage, numberOfMoviesPerPage, 'removed');
+}
+
+export const getMovieList = async (currentPage, numberOfMoviesPerPage, listName) => {
   const currentPageParam = `page=${currentPage}`;
   const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
 
-  const listType = `list=added`;   // hardcoded, will be replaced with list type
-  const username = `username=sad-panda`;   // hardcoded, will be replaced with generated username
+  const listNameParam = `list=${listName}`;
+  const usernameParam = `username=sad-panda`;   // hardcoded for now, will be replaced with generated username
 
-  const url = base + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listType + '&' + username;
+  const url = base + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
   const json = await axios.get(url);
 
   return json.data;
 }
 
-export const postMovietoAddedList = async (id) => {
-  const movieId = `movieId=${id}`;
+export const postToAddedMovieList = (id) => {
+  return postToMovieList(id, 'added');
+}
 
-  const listType = `list=added`;   // hardcoded, will be replaced with list type
-  const username = `username=sad-panda`;   // hardcoded, will be replaced with generated username
+export const postToMovieList = async (id) => {
+  const movieIdParam = `movieId=${id}`;
 
-  const url = base + '?' + movieId + '&' + listType + '&' + username;
+  const listTypeParam = `list=added`;   // hardcoded, will be replaced with list type
+  const usernameParam = `username=sad-panda`;   // hardcoded for now, will be replaced with generated username
+
+  const url = base + '?' + movieIdParam + '&' + listTypeParam + '&' + usernameParam;
   const response = await axios.post(url);
 
   return response.data;
-
-  try {
-    const response = await axios.post(url);
-  } catch (err) {
-    console.log(err.response.data); // => status: true
-  }
 }
