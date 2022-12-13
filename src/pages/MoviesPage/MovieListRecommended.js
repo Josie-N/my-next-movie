@@ -10,6 +10,7 @@ import { WatchlistSidebar } from "../../components/WatchlistSidebar/WatchlistSid
 import LoadingIndicator from "../../components/generic/LoadingIndicator/LoadingIndicator";
 import LoadMoreMovies from "./LoadMoreMovies/LoadMoreMovies";
 import MovieListUserAdded from "./MovieListUserAdded/MovieListUserAdded";
+import { ADDED, RECOMMENDED, REMOVED } from "../../constants/constants";
 
 const MovieListRecommended = () => {
   const {
@@ -21,7 +22,7 @@ const MovieListRecommended = () => {
     setCurrentPage,
     numberOfMoviesPerPage
   } = useMovieList(getRecommendedMovieList);
-  const [movieListType, setMovieListType] = useState('recommended');
+  const [movieListType, setMovieListType] = useState(RECOMMENDED);
   const [watchlistAdd, setWatchlistAdd] = useState(0);
   const [watchlistRemove, setWatchlistRemove] = useState(0);
 
@@ -61,15 +62,15 @@ const MovieListRecommended = () => {
             </div>
             :
             <div>
-              {movieListType === 'recommended' ?
+              {movieListType === RECOMMENDED ?
                 <MovieList movies={movies}
                            numberOfMoviesPerPage={numberOfMoviesPerPage}
                            handleButtonAdd={handleButtonAdd}
                            handleButtonRemove={handleButtonRemove} />
                 : null
               }
-              {movieListType === 'added' ? <MovieListUserAdded /> : null}
-              {movieListType === 'removed' ? <p>You've been removed!</p> : null}
+              {movieListType === ADDED ? <MovieListUserAdded /> : null}
+              {movieListType === REMOVED ? <p>You've been removed!</p> : null}
               <LoadMoreMovies currentPage={currentPage}
                               totalPageCount={totalPageCount}
                               loadMoreMovies={loadMoreMovies}
