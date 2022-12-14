@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import cn from "classnames";
 
-import { useMovieListType } from "../../../store/store";
+import { useStore } from "../../../store/store";
 import { ADDED, RECOMMENDED } from "../../../constants/constants";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import { getImdbRatingInteger, getMovieTitle } from "./utils/helper";
@@ -13,7 +13,7 @@ import Button from "../../../components/generic/Button/Button";
 
 function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
-  const watchlistName = useMovieListType(state => state.movieListType);
+  const watchlistName = useStore(state => state.movieListType);
 
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getMovieTitle(name);

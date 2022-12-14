@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+
 import useMovieList from "../../../hooks/useMoviesData";
-import { useMovieListType } from "../../../store/store";
+import { useStore } from "../../../store/store";
 import { ADDED, RECOMMENDED, REMOVED } from "../../../constants/constants";
 import { getRecommendedMovieList, postToAddedMovieList } from "../../../services/api";
 import { getFilterMovieFromList } from "../utils/helper";
@@ -25,18 +26,17 @@ const MovieListRecommended = () => {
     numberOfMoviesPerPage
   } = useMovieList(getRecommendedMovieList);
 
-  // Accessed from global store
-  const watchlistName = useMovieListType(state => state.movieListType);
-
-  const [watchlistAdd, setWatchlistAdd] = useState(0);
-  const [watchlistRemove, setWatchlistRemove] = useState(0);
+  // Data accessed from global store
+  const watchlistName = useStore(state => state.movieListType);
+  const increaseAddedListCount = useStore(state => state.increaseHowManyMoviesAddedList);
+  const increaseRemovedListCount = useStore(state => state.increaseHowManyMovieRemovedList);
 
   // Runs when user adds a movie to recommended watchlist
   const handleMoveToAddedList = (_id, event) => {
     event.stopPropagation();
 
     // counter will also be updated on the BE side
-    setWatchlistAdd(watchlistAdd + 1);
+    increaseAddedListCount();
     postToAddedMovieList(_id).catch(err => console.log(err.response.data));
 
     // Remove movie selected by id from list
@@ -46,7 +46,7 @@ const MovieListRecommended = () => {
   // Runs when user adds a movie to blacklist
   const handleMoveToRemovedList = (_id, event) => {
     event.stopPropagation();
-    setWatchlistRemove(watchlistRemove + 1);
+    increaseRemovedListCount();
     setMovies(getFilterMovieFromList(movies, _id));
   }
 
@@ -84,13 +84,7 @@ const MovieListRecommended = () => {
               />
             </div>
           }
-          {isLoading ?
-            <LoadingIndicator />
-            :
-            <WatchlistSidebar
-              watchlistAdd={watchlistAdd}
-              watchlistRemove={watchlistRemove}
-            />
+          {isLoading ? <LoadingIndicator /> : <WatchlistSidebar />
           }
         </main>
       </div>

@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import { useMovieListType } from "../../store/store";
 import { RECOMMENDED } from "../../constants/constants";
+import { useStore } from "../../store/store";
 
 import styles from "../../components/Topbar/Topbar.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
 import logo from "../../assets/images/brandLogo.svg";
 
 export const Topbar = () => {
-  const updateMovieListType = useMovieListType(state => state.changeMovieListType);
+  const updateMovieListType = useStore(state => state.changeMovieListType);
 
   return (
     <div className={helperStyles.maxWidthDesktop}>

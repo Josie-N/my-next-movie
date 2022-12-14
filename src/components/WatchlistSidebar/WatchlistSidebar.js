@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import { useMovieListType } from "../../store/store";
 import { ADDED, REMOVED } from "../../constants/constants";
 
 import styles from "../WatchlistSidebar/WatchlistSidebar.module.css";
+import { useStore } from "../../store/store";
 
-export const WatchlistSidebar = ({ watchlistAdd, watchlistRemove }) => {
-  const updateMovieListType = useMovieListType(state => state.changeMovieListType);
+export const WatchlistSidebar = () => {
+  const updateMovieListType = useStore(state => state.changeMovieListType);
+  const countAddedList = useStore(state => state.howManyMoviesAddedList);
+  const countRemovedList = useStore(state => state.howManyMoviesRemovedList);
 
   return (
     <aside className={styles.watchlistContainer}>
@@ -18,7 +19,7 @@ export const WatchlistSidebar = ({ watchlistAdd, watchlistRemove }) => {
             <div className={styles.watchlistLink} onClick={() => updateMovieListType(ADDED)}>
               <span className={styles.emoji}>👍🏻</span>
               <h3 className={styles.watchlistItemLabel}>
-                Added ({watchlistAdd})
+                Added ({countAddedList})
               </h3>
             </div>
           </Link>
@@ -32,7 +33,7 @@ export const WatchlistSidebar = ({ watchlistAdd, watchlistRemove }) => {
         <li>
           <div className={styles.watchlistLink} onClick={() => updateMovieListType(REMOVED)}>
             <span className={styles.emoji}>👎</span>
-            <h3 className={styles.watchlistItemLabel}>Removed ({watchlistRemove})</h3>
+            <h3 className={styles.watchlistItemLabel}>Removed ({countRemovedList})</h3>
           </div>
         </li>
       </ul>
