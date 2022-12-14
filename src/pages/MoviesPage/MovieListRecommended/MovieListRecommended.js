@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useMovieList from "../../../hooks/useMoviesData";
+import { useMovieListType } from "../../../store/store";
 import { ADDED, RECOMMENDED, REMOVED } from "../../../constants/constants";
 import { getRecommendedMovieList, postToAddedMovieList } from "../../../services/api";
 import { getFilterMovieFromList } from "../utils/helper";
@@ -23,7 +24,9 @@ const MovieListRecommended = () => {
     setCurrentPage,
     numberOfMoviesPerPage
   } = useMovieList(getRecommendedMovieList);
-  const [movieListType, setMovieListType] = useState(RECOMMENDED);
+
+  // Accessed from global store
+  const watchlistName = useMovieListType(state => state.movieListType);
 
   const [watchlistAdd, setWatchlistAdd] = useState(0);
   const [watchlistRemove, setWatchlistRemove] = useState(0);
@@ -65,7 +68,7 @@ const MovieListRecommended = () => {
             </div>
             :
             <div>
-              {movieListType === RECOMMENDED ?
+              {watchlistName === RECOMMENDED ?
                 <MovieList movies={movies}
                            numberOfMoviesPerPage={numberOfMoviesPerPage}
                            handleMoveToAddedList={handleMoveToAddedList}
@@ -73,8 +76,8 @@ const MovieListRecommended = () => {
                 />
                 : null
               }
-              {movieListType === ADDED ? <MovieListUserAdded /> : null}
-              {movieListType === REMOVED ? <p>You've been removed!</p> : null}
+              {watchlistName === ADDED ? <MovieListUserAdded /> : null}
+              {watchlistName === REMOVED ? <p>You've been removed!</p> : null}
               <LoadMoreMovies currentPage={currentPage}
                               totalPageCount={totalPageCount}
                               loadMoreMovies={loadMoreMovies}
@@ -87,7 +90,6 @@ const MovieListRecommended = () => {
             <WatchlistSidebar
               watchlistAdd={watchlistAdd}
               watchlistRemove={watchlistRemove}
-              setMovieListType={setMovieListType}
             />
           }
         </main>

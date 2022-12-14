@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import cn from "classnames";
 
+import { useMovieListType } from "../../../store/store";
+import { ADDED, RECOMMENDED } from "../../../constants/constants";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import { getImdbRatingInteger, getMovieTitle } from "./utils/helper";
 import styles from "./MovieCard.module.css";
@@ -11,6 +13,8 @@ import Button from "../../../components/generic/Button/Button";
 
 function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
+  const watchlistName = useMovieListType(state => state.movieListType);
+
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getMovieTitle(name);
 
@@ -64,7 +68,8 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
         <p className={styles.movieDescription}>{overview}</p>
       </div>
       <p className={styles.movieRating}>{imdbRatingInteger}</p>
-      {isCardActive ?
+      {watchlistName === RECOMMENDED && isCardActive
+        ?
         <ButtonGroup>
           <Button hasIcon icon="👎🏻" type="button"
                   handleButtonClick={(event) => handleMoveToRemovedList(_id, event)}>
@@ -74,6 +79,13 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
             <span>ADD</span>
           </Button>
         </ButtonGroup>
+        : ''
+      }
+      {watchlistName === ADDED && isCardActive
+        ?
+        <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleMoveToRemovedList}>
+          <span>BACK</span>
+        </Button>
         : ''
       }
       <div className={movieCardShadowClassNames} />

@@ -14,7 +14,6 @@ export default function useMovieList (getApiCall) {
     (async () => {
       try {
         const response = await getApiCall(currentPage, numberOfMoviesPerPage);
-
         const { pagination, data } = response;
 
         setMovies(previousMovies => [...previousMovies, ...data]);
