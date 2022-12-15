@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
+import { initialPage, numberOfMoviesPerPage } from "../constants/constants";
 
 export default function useMovieList (getApiCall) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState(0);
-
-  const initialPage = 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
-
-  const numberOfMoviesPerPage = 5;
 
   useEffect(() => {
     (async () => {
@@ -22,9 +19,9 @@ export default function useMovieList (getApiCall) {
       } catch (err) {
         if (err.response) {
           // Client was given a http error response (5xx, 4xx)
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
+          console.log('Response data:', err.response.data);
+          console.log('Response status: ', err.response.status);
+          console.log('Response headers: ', err.response.headers);
         } else if (err.request) {
           // The request was made but there was no response
           console.log(err.request);
@@ -42,7 +39,6 @@ export default function useMovieList (getApiCall) {
     isLoading,
     totalPageCount,
     currentPage,
-    setCurrentPage,
-    numberOfMoviesPerPage
+    setCurrentPage
   };
 }

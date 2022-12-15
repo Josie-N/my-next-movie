@@ -7,13 +7,6 @@
   padding-top: var(--space-3);
 }
 
-.movieCardContainer {
-  min-height:   40rem;
-  width:        42.5rem;
-  margin-right: var(--grid-column-gap);
-  position:     relative;
-}
-
 .movieCardContainerSkeleton {
   display:        flex;
   flex-direction: column;
@@ -23,4 +16,3 @@
   margin-right:   var(--grid-column-gap);
   position:       relative;
 }
-

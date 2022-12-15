@@ -1,29 +1,36 @@
-import React from 'react';
-import { getAddedMovieList } from "../../../services/api";
+import React from "react";
+
 import useMovieList from "../../../hooks/useMoviesData";
+import { getAddedMovieList } from "../../../services/api";
 
-import MovieCard from "../MovieCard/MovieCard";
-import LoadingIndicator from "../../../components/generic/LoadingIndicator/LoadingIndicator";
+import MovieList from "../MovieList/MovieList";
+import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
 
-function MovieListUserAdded () {
-  // TO DO: Need a way to return back to recommended page
+const MovieListUserAdded = () => {
+  const {
+    movies,
+    totalPageCount,
+    currentPage,
+    setCurrentPage,
+    numberOfMoviesPerPage
+  } = useMovieList(getAddedMovieList);
 
-  const { movies, isLoading } = useMovieList(getAddedMovieList);
+  // Runs when user clicks button to see more movies
+  const handleLoadMoreMovies = () => {
+    setCurrentPage(currentPage + 1);
+  }
 
   return (
     <div>
-      <h3>Added Movies</h3>
-      {isLoading ?
-        <LoadingIndicator />
-        :
-        movies && movies.map(movie => {
-          return (
-            <MovieCard movie={movie} />
-          )
-        })
-      }
+      <MovieList movies={movies}
+                 numberOfMoviesPerPage={numberOfMoviesPerPage}
+      />
+      <LoadMoreMovies currentPage={currentPage}
+                      totalPageCount={totalPageCount}
+                      handleLoadMoreMovies={handleLoadMoreMovies}
+      />
     </div>
-  );
+  )
 }
 
 export default MovieListUserAdded;

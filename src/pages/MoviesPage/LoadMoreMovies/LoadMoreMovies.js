@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
 import Button from "../../../components/generic/Button/Button";
 
-const LoadMoreMovies = ({ currentPage, totalPageCount, loadMoreMovies }) => {
+const LoadMoreMovies = ({ currentPage, totalPageCount, handleLoadMoreMovies }) => {
   return (
     <div className={styles.showMoreMovies}>
       {
@@ -15,7 +15,7 @@ const LoadMoreMovies = ({ currentPage, totalPageCount, loadMoreMovies }) => {
                   hasIcon
                   icon="👇"
                   type="button"
-                  handleButtonClick={loadMoreMovies}
+                  handleButtonClick={handleLoadMoreMovies}
           >
             <span>SHOW MORE</span>
           </Button>
@@ -27,7 +27,7 @@ const LoadMoreMovies = ({ currentPage, totalPageCount, loadMoreMovies }) => {
 LoadMoreMovies.propTypes = {
   currentPage: PropTypes.number.isRequired,
   totalPageCount: PropTypes.number.isRequired,
-  loadMoreMovies: PropTypes.func.isRequired
+  handleLoadMoreMovies: PropTypes.func.isRequired
 };
 
 export default LoadMoreMovies;

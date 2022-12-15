@@ -1,11 +1,11 @@
 import axios from "axios";
-import { ADDED, mockServerBaseURL, REMOVED } from "../constants/constants";
+import { ADDED, baseURL, REMOVED } from "../constants/constants";
 
 export const getRecommendedMovieList = async (currentPage, numberOfMoviesPerPage) => {
   const currentPageParam = `page=${currentPage}`;
   const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
 
-  const url = mockServerBaseURL + '?' + currentPageParam + '&' + moviePageLimitParam;
+  const url = baseURL + '?' + currentPageParam + '&' + moviePageLimitParam;
   const json = await axios.get(url);
 
   return json.data;
@@ -26,7 +26,7 @@ export const getMovieList = async (currentPage, numberOfMoviesPerPage, listName)
   const listNameParam = `list=${listName}`;
   const usernameParam = `username=sad-panda`;   // hardcoded for now, will be replaced with generated username
 
-  const url = mockServerBaseURL + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
+  const url = baseURL + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
   const json = await axios.get(url);
 
   return json.data;
@@ -42,7 +42,7 @@ export const postToMovieList = async (id) => {
   const listTypeParam = `list=added`;   // hardcoded, will be replaced with list type
   const usernameParam = `username=sad-panda`;   // hardcoded for now, will be replaced with generated username
 
-  const url = mockServerBaseURL + '?' + movieIdParam + '&' + listTypeParam + '&' + usernameParam;
+  const url = baseURL + '?' + movieIdParam + '&' + listTypeParam + '&' + usernameParam;
   const response = await axios.post(url);
 
   return response.data;

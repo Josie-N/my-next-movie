@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import cn from "classnames";
 
-import { useStore } from "../../../store/store";
-import { ADDED, RECOMMENDED } from "../../../constants/constants";
+import styles from "./MovieCard.module.css";
+
+import useWatchlistName from "../../../hooks/useWatchlistName";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import { getImdbRatingInteger, getMovieTitle } from "./utils/helper";
-import styles from "./MovieCard.module.css";
 
 import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
 
 function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
-  const watchlistName = useStore(state => state.movieListType);
+  const { watchlistNameRecommended, watchlistNameAdded } = useWatchlistName();
 
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getMovieTitle(name);
@@ -68,7 +68,7 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
         <p className={styles.movieDescription}>{overview}</p>
       </div>
       <p className={styles.movieRating}>{imdbRatingInteger}</p>
-      {watchlistName === RECOMMENDED && isCardActive
+      {watchlistNameRecommended && isCardActive
         ?
         <ButtonGroup>
           <Button hasIcon icon="👎🏻" type="button"
@@ -81,11 +81,13 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
         </ButtonGroup>
         : ''
       }
-      {watchlistName === ADDED && isCardActive
+      {watchlistNameAdded && isCardActive
         ?
-        <Button hasIcon icon="👎🏻" type="button" handleButtonClick={handleMoveToRemovedList}>
-          <span>BACK</span>
-        </Button>
+        <ButtonGroup>
+          <Button hasIcon icon="👈" type="button" handleButtonClick={handleMoveToRemovedList}>
+            <span>BACK</span>
+          </Button>
+        </ButtonGroup>
         : ''
       }
       <div className={movieCardShadowClassNames} />

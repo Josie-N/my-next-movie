@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from "../MovieListRecommended/MovieListRecommended.module.css";
+import styles from "./MovieList.module.css";
 import PropTypes from "prop-types";
 
+import { numberOfMoviesPerPage } from "../../../constants/constants";
 import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calculatePagination";
 
 import MovieCard from "../MovieCard/MovieCard";
@@ -9,7 +10,7 @@ import PaginationNumberScreenReader from "../PaginationNumberScreenReader/Pagina
 import PaginationNumber from "../PaginationNumber/PaginationNumber";
 
 
-const MovieList = ({ movies, numberOfMoviesPerPage, handleMoveToAddedList, handleMoveToRemovedList }) => {
+const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }) => {
 
   return (
     <div className={styles.movieCardContainer} aria-live="polite">
@@ -46,7 +47,8 @@ const MovieList = ({ movies, numberOfMoviesPerPage, handleMoveToAddedList, handl
 
 MovieList.propTypes = {
   movies: PropTypes.array.isRequired,
-  numberOfMoviesPerPage: PropTypes.number.isRequired,
+  handleMoveToAddedList: PropTypes.func,
+  handleMoveToRemovedList: PropTypes.func,
 };
 
 export default MovieList;
