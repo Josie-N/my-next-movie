@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { initialPage, numberOfMoviesPerPage } from "../constants/constants";
+import { useStore } from "../store/store";
 
 export default function useMovieList (getApiCall) {
+  const username = useStore(state => state.username);
+
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState(0);
@@ -10,7 +13,7 @@ export default function useMovieList (getApiCall) {
   useEffect(() => {
     (async () => {
       try {
-        const response = await getApiCall(currentPage, numberOfMoviesPerPage);
+        const response = await getApiCall(currentPage, numberOfMoviesPerPage, username);
         const { pagination, data } = response;
 
         setMovies(previousMovies => [...previousMovies, ...data]);

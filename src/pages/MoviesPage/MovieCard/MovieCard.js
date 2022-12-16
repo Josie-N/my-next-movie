@@ -6,7 +6,7 @@ import styles from "./MovieCard.module.css";
 
 import useWatchlistName from "../../../hooks/useWatchlistName";
 import useLocalStorage from "../../../hooks/useLocalStorage";
-import { getImdbRatingInteger, getMovieTitle } from "./utils/helper";
+import { getFormatMovieTitle, getImdbRatingInteger } from "./utils/helper";
 
 import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
@@ -16,7 +16,7 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
   const { watchlistNameRecommended, watchlistNameAdded } = useWatchlistName();
 
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
-  const movieTitle = getMovieTitle(name);
+  const movieTitle = getFormatMovieTitle(name);
 
   const [isCardHidden, setCardHidden] = useLocalStorage(false, _id);
   const [isCardActive, setCardActive] = useState(false);

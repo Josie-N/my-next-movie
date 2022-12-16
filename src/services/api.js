@@ -1,6 +1,27 @@
 import axios from "axios";
 import { ADDED, baseURL, REMOVED } from "../constants/constants";
 
+export const getMovieList = async (currentPage, numberOfMoviesPerPage, username, listName) => {
+  const currentPageParam = `page=${currentPage}`;
+  const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
+
+  const listNameParam = `list=${listName}`;
+  const usernameParam = `username=${username}`;
+
+  const url = baseURL + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
+  const json = await axios.get(url);
+
+  return json.data;
+}
+
+export const getAddedMovieList = (currentPage, numberOfMoviesPerPage, username) => {
+  return getMovieList(currentPage, numberOfMoviesPerPage, username, ADDED);
+}
+
+export const getRemovedMovieList = (currentPage, numberOfMoviesPerPage, username) => {
+  return getMovieList(currentPage, numberOfMoviesPerPage, username, REMOVED);
+}
+
 export const getRecommendedMovieList = async (currentPage, numberOfMoviesPerPage) => {
   const currentPageParam = `page=${currentPage}`;
   const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
@@ -9,31 +30,6 @@ export const getRecommendedMovieList = async (currentPage, numberOfMoviesPerPage
   const json = await axios.get(url);
 
   return json.data;
-}
-
-export const getAddedMovieList = (currentPage, numberOfMoviesPerPage) => {
-  return getMovieList(currentPage, numberOfMoviesPerPage, ADDED);
-}
-
-export const getRemovedMovieList = (currentPage, numberOfMoviesPerPage) => {
-  return getMovieList(currentPage, numberOfMoviesPerPage, REMOVED);
-}
-
-export const getMovieList = async (currentPage, numberOfMoviesPerPage, listName) => {
-  const currentPageParam = `page=${currentPage}`;
-  const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
-
-  const listNameParam = `list=${listName}`;
-  const usernameParam = `username=sad-panda`;   // hardcoded for now, will be replaced with generated username
-
-  const url = baseURL + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
-  const json = await axios.get(url);
-
-  return json.data;
-}
-
-export const postToAddedMovieList = (id) => {
-  return postToMovieList(id, ADDED);
 }
 
 export const postToMovieList = async (id) => {
@@ -46,4 +42,8 @@ export const postToMovieList = async (id) => {
   const response = await axios.post(url);
 
   return response.data;
+}
+
+export const postToAddedMovieList = (id) => {
+  return postToMovieList(id, ADDED);
 }

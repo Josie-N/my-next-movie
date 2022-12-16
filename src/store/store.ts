@@ -2,22 +2,30 @@ import create from "zustand";
 
 interface StoreState {
     movieListType: string,
-    howManyMoviesAddedList: number,
-    howManyMoviesRemovedList: number,
     changeMovieListType: (newMovieListType: string) => void,
+
+    howManyMoviesAddedList: number,
     increaseHowManyMoviesAddedList: (state: number) => void,
+
+    howManyMoviesRemovedList: number,
     increaseHowManyMovieRemovedList: (state: number) => void,
+
+    username: string,
+    setUsername: (newUsername: string) => void,
 }
 
 export const useStore = create<StoreState>(
     (set) => ({
-        // initial state
         movieListType: 'recommended',
-        howManyMoviesAddedList: 0,
-        howManyMoviesRemovedList: 0,
-        // methods for manipulating state
         changeMovieListType: (newMovieListType) => set({movieListType: newMovieListType}),
+
+        howManyMoviesAddedList: 0,
         increaseHowManyMoviesAddedList: () => set((state) => ({howManyMoviesAddedList: state.howManyMoviesAddedList + 1})),
-        increaseHowManyMovieRemovedList: () => set((state) => ({howManyMoviesRemovedList: state.howManyMoviesRemovedList + 1}))
+
+        howManyMoviesRemovedList: 0,
+        increaseHowManyMovieRemovedList: () => set((state) => ({howManyMoviesRemovedList: state.howManyMoviesRemovedList + 1})),
+
+        username: '',
+        setUsername: (newUsername) => set(({username: newUsername}))
     })
 );

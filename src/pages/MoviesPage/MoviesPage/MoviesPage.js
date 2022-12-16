@@ -16,6 +16,13 @@ function MoviesPage () {
   const { isLoading } = useMovieList(getRecommendedMovieList);
   const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
 
+  const createUsername = useStore(state => state.setUsername);
+
+  useEffect(() => {
+    const identity = getFormatToLowercase(getGenerateUsername());
+    createUsername(identity);
+  }, []);
+
   return (
     <>
       <div className={helperStyles.maxWidthDesktop}>
