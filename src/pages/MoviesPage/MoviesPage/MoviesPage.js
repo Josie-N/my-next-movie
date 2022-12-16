@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import helperStyles from "../../../assets/stylesheets/helper.module.css";
 import styles from "./MoviesPage.module.css";
 
+import { useStore } from "../../../store/store";
 import { getRecommendedMovieList } from "../../../services/api";
 import useMovieList from "../../../hooks/useMoviesData";
-import useWatchlistName from "../../../hooks/useWatchlistName";
+import { getFormatToLowercase, getGenerateUsername } from "../utils/helper";
 
-import MovieListRecommended from "../MovieListRecommended/MovieListRecommended";
-import MovieListUserAdded from "../MovieListUserAdded/MovieListUserAdded";
+import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
 import MovieListHeaderScreenReader from "../MovieListHeadlineScreenReader/MovieListHeadlineScreenReader";
 import LoadingIndicator from "../../../components/generic/LoadingIndicator/LoadingIndicator";
 import { WatchlistSidebar } from "../../../components/WatchlistSidebar/WatchlistSidebar";
 
 function MoviesPage () {
   const { isLoading } = useMovieList(getRecommendedMovieList);
-  const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
-
   const createUsername = useStore(state => state.setUsername);
 
   useEffect(() => {
@@ -33,10 +31,8 @@ function MoviesPage () {
               <LoadingIndicator />
             </div>
             :
-            <div>
-              {watchlistNameRecommended ? <MovieListRecommended /> : null}
-              {watchlistNameAdded ? <MovieListUserAdded /> : null}
-              {watchlistNameRemoved ? <p>You've been removed!</p> : null}
+            <div className={styles.movieListContainer}>
+              <MovieListSwitch />
             </div>
           }
           {isLoading ? <LoadingIndicator /> : <WatchlistSidebar />}

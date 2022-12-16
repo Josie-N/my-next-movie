@@ -46,7 +46,7 @@ const MovieListRecommended = () => {
   }
 
   return (
-    <div>
+    <>
       <MovieList movies={movies}
                  handleMoveToAddedList={handleMoveToAddedList}
                  handleMoveToRemovedList={handleMoveToRemovedList}
@@ -55,7 +55,7 @@ const MovieListRecommended = () => {
                       totalPageCount={totalPageCount}
                       handleLoadMoreMovies={handleLoadMoreMovies}
       />
-    </div>
+    </>
   )
 }
 

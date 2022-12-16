@@ -21,7 +21,7 @@ const MovieListUserAdded = () => {
   }
 
   return (
-    <div>
+    <>
       <MovieList movies={movies}
                  numberOfMoviesPerPage={numberOfMoviesPerPage}
       />
@@ -29,7 +29,7 @@ const MovieListUserAdded = () => {
                       totalPageCount={totalPageCount}
                       handleLoadMoreMovies={handleLoadMoreMovies}
       />
-    </div>
+    </>
   )
 }
 
