@@ -4,9 +4,9 @@ import {ADDED, RECOMMENDED, REMOVED} from "../constants/constants";
 export default function useWatchlistName() {
     const watchlistName = useStore(state => state.movieListType);
 
-    const watchlistNameRecommended: boolean = watchlistName === RECOMMENDED;
-    const watchlistNameAdded: boolean = watchlistName === ADDED;
-    const watchlistNameRemoved: boolean = watchlistName === REMOVED;
+    const watchlistNameRecommended = watchlistName === RECOMMENDED;
+    const watchlistNameAdded = watchlistName === ADDED;
+    const watchlistNameRemoved = watchlistName === REMOVED;
 
     return {
         watchlistNameRecommended,

@@ -4,7 +4,7 @@ import MovieListRecommended from "../MovieListRecommended/MovieListRecommended";
 import MovieListUserAdded from "../MovieListUserAdded/MovieListUserAdded";
 import useWatchlistName from "../../../hooks/useWatchlistName";
 import { useStore } from "../../../store/store";
-import useMovieList from "../../../hooks/useMoviesData";
+import useMovieList from "../../../hooks/useMovieList";
 import { getRecommendedMovieList } from "../../../services/api";
 
 function MovieListSwitch () {

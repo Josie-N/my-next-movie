@@ -15,7 +15,7 @@ interface moviesProps {
 
 export const getFilterMovieFromList = (movies: moviesProps[], movieId: string
 ): moviesProps[] => {
-    return movies.filter(movies => movieId !== movies._id)
+    return movies.filter(movies => movieId !== movies._id);
 }
 
 // Converts a string to lowercase letters

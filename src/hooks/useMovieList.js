@@ -34,7 +34,7 @@ export default function useMovieList (getApiCall) {
         }
       }
     })();
-  }, [currentPage])
+  }, [currentPage, username])
 
   return {
     movies,

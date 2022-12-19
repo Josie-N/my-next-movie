@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useStore } from "../../../store/store";
-import useMovieList from "../../../hooks/useMoviesData";
+import useMovieList from "../../../hooks/useMovieList";
 import { getRecommendedMovieList, postToAddedMovieList } from "../../../services/api";
 import { getFilterMovieFromList } from "../utils/helper";
 
@@ -16,7 +16,8 @@ const MovieListRecommended = () => {
     currentPage,
     setCurrentPage
   } = useMovieList(getRecommendedMovieList);
-
+  const username = useStore(state => state.username);
+  
   // Data accessed from global store
   const increaseAddedListCount = useStore(state => state.increaseHowManyMoviesAddedList);
   const increaseRemovedListCount = useStore(state => state.increaseHowManyMovieRemovedList);
@@ -25,9 +26,9 @@ const MovieListRecommended = () => {
   const handleMoveToAddedList = (_id, event) => {
     event.stopPropagation();
 
-    // counter will also be updated on the BE side
+    // Counter will also be updated on the BE side
     increaseAddedListCount();
-    postToAddedMovieList(_id).catch(err => console.log(err.response.data));
+    postToAddedMovieList(_id, username).catch(err => console.log(err.response.data));
 
     // Remove movie selected by id from list
     setMovies(getFilterMovieFromList(movies, _id));

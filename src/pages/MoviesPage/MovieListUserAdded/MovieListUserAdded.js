@@ -1,6 +1,6 @@
 import React from "react";
 
-import useMovieList from "../../../hooks/useMoviesData";
+import useMovieList from "../../../hooks/useMovieList";
 import { getAddedMovieList } from "../../../services/api";
 
 import MovieList from "../MovieList/MovieList";

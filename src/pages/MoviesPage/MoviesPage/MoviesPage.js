@@ -4,7 +4,7 @@ import styles from "./MoviesPage.module.css";
 
 import { useStore } from "../../../store/store";
 import { getRecommendedMovieList } from "../../../services/api";
-import useMovieList from "../../../hooks/useMoviesData";
+import useMovieList from "../../../hooks/useMovieList";
 import { getFormatToLowercase, getGenerateUsername } from "../utils/helper";
 
 import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
@@ -13,13 +13,14 @@ import LoadingIndicator from "../../../components/generic/LoadingIndicator/Loadi
 import { WatchlistSidebar } from "../../../components/WatchlistSidebar/WatchlistSidebar";
 
 function MoviesPage () {
-  const { isLoading } = useMovieList(getRecommendedMovieList);
   const createUsername = useStore(state => state.setUsername);
 
   useEffect(() => {
-    const identity = getFormatToLowercase(getGenerateUsername());
-    createUsername(identity);
+    const username = getFormatToLowercase(getGenerateUsername());
+    createUsername(username);
   }, []);
+
+  const { isLoading } = useMovieList(getRecommendedMovieList);
 
   return (
     <>
