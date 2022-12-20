@@ -5,30 +5,21 @@ import { getAddedMovieList } from "../../../services/api";
 
 import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
+import { useStore } from "../../../store/store";
 
 const MovieListUserAdded = () => {
-  const {
-    movies,
-    totalPageCount,
-    currentPage,
-    setCurrentPage,
-    numberOfMoviesPerPage
-  } = useMovieList(getAddedMovieList);
+  const { movies } = useMovieList(getAddedMovieList);
+  const setCurrentPage = useStore(state => state.setCurrentPage);
 
   // Runs when user clicks button to see more movies
   const handleLoadMoreMovies = () => {
-    setCurrentPage(currentPage + 1);
+    setCurrentPage();
   }
 
   return (
     <>
-      <MovieList movies={movies}
-                 numberOfMoviesPerPage={numberOfMoviesPerPage}
-      />
-      <LoadMoreMovies currentPage={currentPage}
-                      totalPageCount={totalPageCount}
-                      handleLoadMoreMovies={handleLoadMoreMovies}
-      />
+      <MovieList movies={movies} />
+      <LoadMoreMovies handleLoadMoreMovies={handleLoadMoreMovies} />
     </>
   )
 }

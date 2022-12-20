@@ -7,7 +7,7 @@ export const WatchlistSidebar = () => {
   const updateMovieListType = useStore(state => state.changeMovieListType);
   const countAddedList = useStore(state => state.howManyMoviesAddedList);
   const countRemovedList = useStore(state => state.howManyMoviesRemovedList);
-  
+
   return (
     <aside className={styles.watchlistContainer}>
       <h2 className={styles.watchlistTitle}>My watchlist:</h2>
@@ -40,12 +40,3 @@ export const WatchlistSidebar = () => {
     </aside>
   );
 }
-
-
-
-
-
-
-
-
-

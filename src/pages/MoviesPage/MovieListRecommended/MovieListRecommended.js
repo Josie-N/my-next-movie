@@ -9,18 +9,13 @@ import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
 
 const MovieListRecommended = () => {
-  const {
-    movies,
-    setMovies,
-    totalPageCount,
-    currentPage,
-    setCurrentPage
-  } = useMovieList(getRecommendedMovieList);
-  const username = useStore(state => state.username);
-  
+  const { movies, setMovies } = useMovieList(getRecommendedMovieList);
+
   // Data accessed from global store
   const increaseAddedListCount = useStore(state => state.increaseHowManyMoviesAddedList);
   const increaseRemovedListCount = useStore(state => state.increaseHowManyMovieRemovedList);
+  const username = useStore(state => state.username);
+  const setCurrentPage = useStore(state => state.setCurrentPage);
 
   // Runs when user adds a movie to recommended watchlist
   const handleMoveToAddedList = (_id, event) => {
@@ -34,7 +29,7 @@ const MovieListRecommended = () => {
     setMovies(getFilterMovieFromList(movies, _id));
   };
 
-  // Runs when user adds a movie to blacklist
+  // Runs when user adds a movie to removed watchlist
   const handleMoveToRemovedList = (_id, event) => {
     event.stopPropagation();
     increaseRemovedListCount();
@@ -43,7 +38,7 @@ const MovieListRecommended = () => {
 
   // Runs when user clicks button to see more movies
   const handleLoadMoreMovies = () => {
-    setCurrentPage(currentPage + 1);
+    setCurrentPage();
   }
 
   return (
@@ -52,10 +47,7 @@ const MovieListRecommended = () => {
                  handleMoveToAddedList={handleMoveToAddedList}
                  handleMoveToRemovedList={handleMoveToRemovedList}
       />
-      <LoadMoreMovies currentPage={currentPage}
-                      totalPageCount={totalPageCount}
-                      handleLoadMoreMovies={handleLoadMoreMovies}
-      />
+      <LoadMoreMovies handleLoadMoreMovies={handleLoadMoreMovies} />
     </>
   )
 }

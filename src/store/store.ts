@@ -12,6 +12,12 @@ interface StoreState {
 
     username: string,
     setUsername: (newUsername: string) => void,
+
+    totalPageCount: number,
+    setTotalPageCount: (newPageCount: number) => void,
+
+    currentPage: number,
+    setCurrentPage: (state: number) => void,
 }
 
 export const useStore = create<StoreState>(
@@ -26,6 +32,12 @@ export const useStore = create<StoreState>(
         increaseHowManyMovieRemovedList: () => set((state) => ({howManyMoviesRemovedList: state.howManyMoviesRemovedList + 1})),
 
         username: '',
-        setUsername: (newUsername) => set(({username: newUsername}))
+        setUsername: (newUsername) => set(({username: newUsername})),
+
+        totalPageCount: 0,
+        setTotalPageCount: (newPageCount) => set({totalPageCount: newPageCount}),
+
+        currentPage: 1,
+        setCurrentPage: () => set((state) => ({currentPage: state.currentPage + 1})),
     })
 );

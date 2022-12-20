@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+import { useStore } from "../../../store/store";
+
 import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
 import Button from "../../../components/generic/Button/Button";
 
-const LoadMoreMovies = ({ currentPage, totalPageCount, handleLoadMoreMovies }) => {
+const LoadMoreMovies = ({ handleLoadMoreMovies }) => {
+  const currentPage = useStore(state => state.currentPage);
+  const totalPageCount = useStore(state => state.totalPageCount);
+
   return (
     <div className={styles.showMoreMovies}>
       {
@@ -25,8 +30,6 @@ const LoadMoreMovies = ({ currentPage, totalPageCount, handleLoadMoreMovies }) =
 };
 
 LoadMoreMovies.propTypes = {
-  currentPage: PropTypes.number.isRequired,
-  totalPageCount: PropTypes.number.isRequired,
   handleLoadMoreMovies: PropTypes.func.isRequired
 };
 
