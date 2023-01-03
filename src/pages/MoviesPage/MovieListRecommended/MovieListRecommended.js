@@ -12,8 +12,8 @@ const MovieListRecommended = () => {
   const { movies, setMovies } = useMovieList(getRecommendedMovieList);
 
   // Data accessed from global store
-  const increaseAddedListCount = useStore(state => state.increaseHowManyMoviesAddedList);
-  const increaseRemovedListCount = useStore(state => state.increaseHowManyMovieRemovedList);
+  const setMovieCountAddedList = useStore(state => state.setMovieCountAddedList);
+  const setMovieCountRemovedList = useStore(state => state.setMovieCountRemovedList);
   const username = useStore(state => state.username);
   const setCurrentPage = useStore(state => state.setCurrentPage);
 
@@ -22,7 +22,7 @@ const MovieListRecommended = () => {
     event.stopPropagation();
 
     // Counter will also be updated on the BE side
-    increaseAddedListCount();
+    setMovieCountAddedList();
     postToAddedMovieList(_id, username).catch(err => console.log(err.response.data));
 
     // Remove movie selected by id from list
@@ -32,7 +32,7 @@ const MovieListRecommended = () => {
   // Runs when user adds a movie to removed watchlist
   const handleMoveToRemovedList = (_id, event) => {
     event.stopPropagation();
-    increaseRemovedListCount();
+    setMovieCountRemovedList();
     setMovies(getFilterMovieFromList(movies, _id));
   }
 
