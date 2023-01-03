@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../WatchlistSidebar/WatchlistSidebar.module.css";
-import { MovieListType } from "../../constants/constants";
+import { Emoji, MovieListType } from "../../constants/constants";
 
 import { useStore } from "../../store/store";
 
@@ -15,7 +15,7 @@ export const WatchlistSidebar = () => {
       <ul className={styles.watchlist}>
         <li>
           <div className={styles.watchlistLink} onClick={() => updateMovieListType(MovieListType.Added)}>
-            <span className={styles.emoji}>👍🏻</span>
+            <span className={styles.emoji}>{Emoji.ThumbsUp}</span>
             <h3 className={styles.watchlistItemLabel}>
               Added ({movieCountAddedList})
             </h3>
@@ -23,7 +23,7 @@ export const WatchlistSidebar = () => {
         </li>
         <li>
           <a href="/">
-            <span className={styles.emoji}>👀</span>
+            <span className={styles.emoji}>{Emoji.Eyes}</span>
             <h3 className={styles.watchlistItemLabel}>
               Already seen (0)
             </h3>
@@ -31,7 +31,7 @@ export const WatchlistSidebar = () => {
         </li>
         <li>
           <div className={styles.watchlistLink} onClick={() => updateMovieListType(MovieListType.Removed)}>
-            <span className={styles.emoji}>👎</span>
+            <span className={styles.emoji}>{Emoji.ThumbsDown}</span>
             <h3 className={styles.watchlistItemLabel}>
               Removed ({movieCountRemovedList})
             </h3>
