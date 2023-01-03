@@ -2,5 +2,5 @@
 .showMoreMovies {
   display:         flex;
   justify-content: flex-end;
-  margin:          8rem var(--grid-column-gap);
+  margin:          8rem 0 8rem var(--grid-column-gap);
 }

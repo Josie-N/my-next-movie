@@ -17,13 +17,13 @@ const LoadMoreMovies = ({ handleLoadMoreMovies }) => {
         (currentPage === totalPageCount) ?
           <h4>No more movies to load.</h4>
           :
-          <Button ariaLabel="Show more movies"
+          <Button ariaLabel={`Show more movies, ${totalPageCount - currentPage} pages left`}
                   hasIcon
                   icon={Emoji.PointingDown}
                   type="button"
                   handleButtonClick={handleLoadMoreMovies}
           >
-            <span>{ButtonLabel.ShowMore}</span>
+            <span>{ButtonLabel.ShowMore} ({totalPageCount - currentPage})</span>
           </Button>
       }
     </div>
