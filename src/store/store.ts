@@ -1,14 +1,15 @@
 import create from "zustand";
+import {MovieListType} from "../constants/constants";
 
 interface StoreState {
     movieListType: string,
     changeMovieListType: (newMovieListType: string) => void,
 
-    howManyMoviesAddedList: number,
-    increaseHowManyMoviesAddedList: (state: number) => void,
+    movieCountAddedList: number,
+    setMovieCountAddedList: (state: number) => void,
 
-    howManyMoviesRemovedList: number,
-    increaseHowManyMovieRemovedList: (state: number) => void,
+    movieCountRemovedList: number,
+    setMovieCountRemovedList: (state: number) => void,
 
     username: string,
     setUsername: (newUsername: string) => void,
@@ -22,14 +23,14 @@ interface StoreState {
 
 export const useStore = create<StoreState>(
     (set) => ({
-        movieListType: 'recommended',
+        movieListType: MovieListType.Recommended,
         changeMovieListType: (newMovieListType) => set({movieListType: newMovieListType}),
 
-        howManyMoviesAddedList: 0,
-        increaseHowManyMoviesAddedList: () => set((state) => ({howManyMoviesAddedList: state.howManyMoviesAddedList + 1})),
+        movieCountAddedList: 0,
+        setMovieCountAddedList: () => set((state) => ({movieCountAddedList: state.movieCountAddedList + 1})),
 
-        howManyMoviesRemovedList: 0,
-        increaseHowManyMovieRemovedList: () => set((state) => ({howManyMoviesRemovedList: state.howManyMoviesRemovedList + 1})),
+        movieCountRemovedList: 0,
+        setMovieCountRemovedList: () => set((state) => ({movieCountRemovedList: state.movieCountRemovedList + 1})),
 
         username: '',
         setUsername: (newUsername) => set(({username: newUsername})),

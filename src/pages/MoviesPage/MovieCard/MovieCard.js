@@ -6,6 +6,7 @@ import styles from "./MovieCard.module.css";
 
 import useWatchlistName from "../../../hooks/useWatchlistName";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { ButtonLabel, Emoji } from "../../../constants/constants";
 import { getFormatMovieTitle, getImdbRatingInteger } from "./utils/helper";
 
 import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
@@ -71,12 +72,13 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
       {watchlistNameRecommended && isCardActive
         ?
         <ButtonGroup>
-          <Button hasIcon icon="👎🏻" type="button"
+          <Button hasIcon icon={Emoji.ThumbsDown} type="button"
                   handleButtonClick={(event) => handleMoveToRemovedList(_id, event)}>
-            <span>REMOVE</span>
+            <span>{ButtonLabel.Remove}</span>
           </Button>
-          <Button hasIcon icon="👍" type="button" handleButtonClick={(event) => handleMoveToAddedList(_id, event)}>
-            <span>ADD</span>
+          <Button hasIcon icon={Emoji.ThumbsUp} type="button"
+                  handleButtonClick={(event) => handleMoveToAddedList(_id, event)}>
+            <span>{ButtonLabel.Add}</span>
           </Button>
         </ButtonGroup>
         : ''
@@ -84,8 +86,8 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
       {watchlistNameAdded && isCardActive
         ?
         <ButtonGroup>
-          <Button hasIcon icon="👈" type="button" handleButtonClick={handleMoveToRemovedList}>
-            <span>BACK</span>
+          <Button hasIcon icon={Emoji.PointingLeft} type="button" handleButtonClick={handleMoveToRemovedList}>
+            <span>{ButtonLabel.Back}</span>
           </Button>
         </ButtonGroup>
         : ''

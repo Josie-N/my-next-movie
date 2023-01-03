@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-import { useStore } from "../../../store/store";
-
 import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
+import { useStore } from "../../../store/store";
+import { ButtonLabel, Emoji } from "../../../constants/constants";
+
 import Button from "../../../components/generic/Button/Button";
 
 const LoadMoreMovies = ({ handleLoadMoreMovies }) => {
@@ -16,13 +17,13 @@ const LoadMoreMovies = ({ handleLoadMoreMovies }) => {
         (currentPage === totalPageCount) ?
           <h4>No more movies to load.</h4>
           :
-          <Button ariaLabel="Show more movies"
+          <Button ariaLabel={`Show more movies, ${totalPageCount - currentPage} pages left`}
                   hasIcon
-                  icon="👇"
+                  icon={Emoji.PointingDown}
                   type="button"
                   handleButtonClick={handleLoadMoreMovies}
           >
-            <span>SHOW MORE</span>
+            <span>{ButtonLabel.ShowMore} ({totalPageCount - currentPage})</span>
           </Button>
       }
     </div>

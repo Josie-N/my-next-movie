@@ -1,40 +1,35 @@
 import React from 'react';
-import EmptyScreen from "../../../components/generic/EmptyScreen/EmptyScreen";
+
+import { MovieListType } from "../../../constants/constants";
+import { useStore } from "../../../store/store";
+import { getRecommendedMovieList } from "../../../services/api";
+import useMovieList from "../../../hooks/useMovieList";
+
 import MovieListRecommended from "../MovieListRecommended/MovieListRecommended";
 import MovieListUserAdded from "../MovieListUserAdded/MovieListUserAdded";
-import useWatchlistName from "../../../hooks/useWatchlistName";
-import { useStore } from "../../../store/store";
-import useMovieList from "../../../hooks/useMovieList";
-import { getRecommendedMovieList } from "../../../services/api";
+import EmptyScreen from "../../../components/generic/EmptyScreen/EmptyScreen";
+
 
 function MovieListSwitch () {
   const { isLoading, movies } = useMovieList(getRecommendedMovieList);
-  const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
-  const howManyMoviesAddedList = useStore(state => state.howManyMoviesAddedList);
-  const howManyMoviesRemovedList = useStore(state => state.howManyMoviesRemovedList);
+  const movieCountAddedList = useStore(state => state.movieCountAddedList);
+  const movieCountRemovedList = useStore(state => state.movieCountRemovedList);
+  const movieListType = useStore(state => state.movieListType);
 
-  const isScreenEmpty =
-    !isLoading && (
-      (watchlistNameRecommended && movies.length === 0)
-      ||
-      (watchlistNameAdded && howManyMoviesAddedList === 0)
-      ||
-      (watchlistNameRemoved && howManyMoviesRemovedList === 0)
-    );
+  const isRecommendedListEmpty = movies.length === 0;
+  const isAddedListEmpty = movieCountAddedList === 0;
+  const isRemovedListEmpty = movieCountRemovedList === 0;
 
-  return (
-    <>
-      {isScreenEmpty ?
-        <EmptyScreen />
-        :
-        <>
-          {watchlistNameRecommended ? <MovieListRecommended /> : null}
-          {watchlistNameAdded ? <MovieListUserAdded /> : null}
-          {watchlistNameRemoved ? <p>You've been removed!</p> : null}
-        </>
-      }
-    </>
-  );
+  switch (movieListType) {
+    case MovieListType.Recommended:
+      return !isLoading && isRecommendedListEmpty ? <EmptyScreen /> : <MovieListRecommended />
+    case MovieListType.Added:
+      return !isLoading && isAddedListEmpty ? <EmptyScreen /> : <MovieListUserAdded />
+    case MovieListType.Removed:
+      return !isLoading && isRemovedListEmpty ? <EmptyScreen /> : <p>You've been removed!</p>
+    default:
+      throw Error('Error! This movie list does not exist.')
+  }
 }
 
 export default MovieListSwitch;

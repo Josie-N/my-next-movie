@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { RECOMMENDED } from "../../constants/constants";
+import { MovieListType } from "../../constants/constants";
 import { useStore } from "../../store/store";
 
 import styles from "../../components/Topbar/Topbar.module.css";
@@ -14,7 +14,7 @@ export const Topbar = () => {
     <div className={helperStyles.maxWidthDesktop}>
       <header className={styles.header}>
         <span>
-          <Link to="/" onClick={() => updateMovieListType(RECOMMENDED)}>
+          <Link to="/" onClick={() => updateMovieListType(MovieListType.Recommended)}>
             <img className={styles.brandLogo} src={logo} alt="True tale of" />
           </Link>
         </span>
