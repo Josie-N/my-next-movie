@@ -10,6 +10,10 @@
   margin-left:    var(--grid-column-width);
 }
 
+.watchlistUsername {
+  font-size: var(--font-size-lg);
+}
+
 .watchlist {
   min-width: 8.58rem;
   font-size: var(--font-size-md);

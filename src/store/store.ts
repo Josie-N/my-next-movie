@@ -1,5 +1,8 @@
 import create from "zustand";
 import {MovieListType} from "../constants/constants";
+import {getFormatToLowercase, getGenerateUsername} from "../pages/MoviesPage/utils/helper";
+
+const username = getFormatToLowercase(getGenerateUsername());
 
 interface StoreState {
     movieListType: string,
@@ -12,7 +15,6 @@ interface StoreState {
     setMovieCountRemovedList: (state: number) => void,
 
     username: string,
-    setUsername: (newUsername: string) => void,
 
     totalPageCount: number,
     setTotalPageCount: (newPageCount: number) => void,
@@ -32,8 +34,7 @@ export const useStore = create<StoreState>(
         movieCountRemovedList: 0,
         setMovieCountRemovedList: () => set((state) => ({movieCountRemovedList: state.movieCountRemovedList + 1})),
 
-        username: '',
-        setUsername: (newUsername) => set(({username: newUsername})),
+        username: username,
 
         totalPageCount: 0,
         setTotalPageCount: (newPageCount) => set({totalPageCount: newPageCount}),
