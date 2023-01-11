@@ -8,13 +8,15 @@ import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calcul
 import MovieCard from "../MovieCard/MovieCard";
 import PaginationNumberScreenReader from "../PaginationNumberScreenReader/PaginationNumberScreenReader";
 import PaginationNumber from "../PaginationNumber/PaginationNumber";
+import useQueryListRecommended from "../MovieListRecommended/hooks/useQueryListRecommended";
 
 
-const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }) => {
+const MovieList = ({ handleMoveToAddedList, handleMoveToRemovedList }) => {
+  const { movies } = useQueryListRecommended();
 
   return (
     <div className={styles.movieCardContainer} aria-live="polite">
-      {movies && movies.map((movie, movieCardIndex) => {
+      {movies.data.map((movie, movieCardIndex) => {
 
         const pageNumber = getPageNumber(movieCardIndex, numberOfMoviesPerPage);
         const showPageNumberOnFirstCard = getPageFirstCard(movieCardIndex, numberOfMoviesPerPage);
@@ -46,7 +48,6 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }) =
 }
 
 MovieList.propTypes = {
-  movies: PropTypes.array.isRequired,
   handleMoveToAddedList: PropTypes.func,
   handleMoveToRemovedList: PropTypes.func,
 };
