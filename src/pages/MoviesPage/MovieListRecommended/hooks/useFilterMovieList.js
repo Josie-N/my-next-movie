@@ -11,7 +11,7 @@ export default function useFilterMovieList () {
     mutationFn: (id) => postAPI(postToAddedMovieList(id, username)),
     onSuccess: () => {
       // Invalidates every query with a key that starts with `list-recommended`
-      // Once invalidated, it auto-refetches the recommended movie list with updated result
+      // Once invalidated, it auto re-fetches the recommended movie list with updated result
       return queryClient.invalidateQueries('list-recommended');
     },
   })

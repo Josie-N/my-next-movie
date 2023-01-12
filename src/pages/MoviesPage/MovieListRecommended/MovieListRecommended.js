@@ -4,8 +4,11 @@ import { useStore } from "../../../store/store";
 import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
 import useFilterMovieList from "./hooks/useFilterMovieList";
+import useQueryListRecommended from "./hooks/useQueryListRecommended";
 
 const MovieListRecommended = () => {
+  const { movies: recommendedMovies, fetchNextPage, hasNextPage } = useQueryListRecommended();
+
   const setMovieCountAddedList = useStore(state => state.setMovieCountAddedList);
   const setMovieCountRemovedList = useStore(state => state.setMovieCountRemovedList);
   const filteredMovieList = useFilterMovieList();
@@ -19,7 +22,6 @@ const MovieListRecommended = () => {
     filteredMovieList.mutate(_id);
   };
 
-
   // Runs when user adds a movie to removed watchlist
   const handleMoveToRemovedList = (_id, event) => {
     event.stopPropagation();
@@ -29,13 +31,22 @@ const MovieListRecommended = () => {
     filteredMovieList.mutate(_id);
   }
 
+  // Runs when user clicks button to see more movies
+  const handleLoadMoreMovies = () => {
+    fetchNextPage();
+  }
+
   return (
     <>
       <MovieList
+        movies={recommendedMovies}
         handleMoveToAddedList={handleMoveToAddedList}
         handleMoveToRemovedList={handleMoveToRemovedList}
       />
-      <LoadMoreMovies />
+      <LoadMoreMovies
+        handleLoadMoreMovies={handleLoadMoreMovies}
+        hasNextPage={hasNextPage}
+      />
     </>
   )
 }

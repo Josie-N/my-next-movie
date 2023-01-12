@@ -1,13 +1,14 @@
 import React from 'react';
 
 import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
-import { ButtonLabel, Emoji } from "../../../constants/constants";
-
+import { ButtonLabel, Emoji, numberOfMoviesPerPage } from "../../../constants/constants";
 import Button from "../../../components/generic/Button/Button";
-import useListRecommendedQuery from "../MovieListRecommended/hooks/useQueryListRecommended";
 
-const LoadMoreMovies = () => {
-  const { hasNextPage, fetchNextPage } = useListRecommendedQuery();
+const LoadMoreMovies = ({ handleLoadMoreMovies, hasNextPage, movies }) => {
+
+  if (movies?.data.length < numberOfMoviesPerPage) {
+    return null;
+  }
 
   return (
     <div className={styles.showMoreMovies}>
@@ -17,7 +18,7 @@ const LoadMoreMovies = () => {
                   hasIcon
                   icon={Emoji.PointingDown}
                   type="button"
-                  handleButtonClick={() => fetchNextPage()}
+                  handleButtonClick={handleLoadMoreMovies}
           >
             <span>{ButtonLabel.ShowMore}</span>
           </Button>

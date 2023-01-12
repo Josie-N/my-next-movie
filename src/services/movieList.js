@@ -5,7 +5,7 @@ export const getRecommendedMovieList = (currentPage, username) => {
   return getUrlMovieList(currentPage, numberOfMoviesPerPage, username, MovieListType.Recommended);
 }
 
-export const getAddedMovieList = (currentPage, numberOfMoviesPerPage, username) => {
+export const getAddedMovieList = (currentPage, username) => {
   return getUrlMovieList(currentPage, numberOfMoviesPerPage, username, MovieListType.Added);
 }
 
