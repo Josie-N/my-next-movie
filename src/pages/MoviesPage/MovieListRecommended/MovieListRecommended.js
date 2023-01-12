@@ -1,29 +1,25 @@
 import React from "react";
-import useListRecommendedQuery from './hooks/useQueryListRecommended'
 
 import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
+import { useStore } from "../../../store/store";
+import useFilterMovieList from "./hooks/useFilterMovieList";
 
 const MovieListRecommended = () => {
-  const { movies, fetchNextPage } = useListRecommendedQuery();
-
-  // Data accessed from global store
-  // const setMovieCountAddedList = useStore(state => state.setMovieCountAddedList);
+  const setMovieCountAddedList = useStore(state => state.setMovieCountAddedList);
   // const setMovieCountRemovedList = useStore(state => state.setMovieCountRemovedList);
-  // const username = useStore(state => state.username);
-  // const setCurrentPage = useStore(state => state.setCurrentPage);
+  const filteredMovieList = useFilterMovieList();
 
-  // Runs when user adds a movie to recommended watchlist
-  // const handleMoveToAddedList = (_id, event) => {
-  //   event.stopPropagation();
-  //
-  //   // Counter will also be updated on the BE side
-  //   setMovieCountAddedList();
-  //   postToAddedMovieList(_id, username).catch(err => console.log(err.response.data));
-  //
-  //   // Remove movie selected by id from list
-  //   setMovies(getFilterMovieFromList(movies, _id));
-  // };
+  // Runs when user adds a movie to added watchlist
+  const handleMoveToAddedList = (_id, event) => {
+    event.stopPropagation();
+    // Counter will also be updated on the BE side
+    setMovieCountAddedList();
+
+    // Remove movie from recommended list
+    filteredMovieList.mutate(_id);
+  };
+
 
   // Runs when user adds a movie to removed watchlist
   // const handleMoveToRemovedList = (_id, event) => {
@@ -34,11 +30,12 @@ const MovieListRecommended = () => {
 
   return (
     <>
+      {filteredMovieList.isError && <h1>Post error!</h1>}
       {/*<MovieList movies={movies}*/}
       {/*           handleMoveToAddedList={handleMoveToAddedList}*/}
       {/*           handleMoveToRemovedList={handleMoveToRemovedList}*/}
       {/*/>*/}
-      <MovieList />
+      <MovieList handleMoveToAddedList={handleMoveToAddedList} />
       <LoadMoreMovies />
     </>
   )

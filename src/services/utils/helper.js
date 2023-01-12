@@ -1,9 +1,17 @@
 import axios from "axios";
 
-// All GET request axios are using this endpoint
 export const getAPI = async (url) => {
   try {
     const response = await axios.get(url);
+    return response.data;
+  } catch (err) {
+    handleError(err);
+  }
+}
+
+export const postAPI = async (url) => {
+  try {
+    const response = await axios.post(url);
     return response.data;
   } catch (err) {
     handleError(err);

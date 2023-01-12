@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import DelayedFallback from "../components/generic/DelayedFallback/DelayedFallback";
 import { Topbar } from "../components/Topbar/Topbar";
@@ -25,6 +26,7 @@ function App () {
         <hr className={styles.footerTopBoundary} />
         <Footer />
       </Suspense>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
