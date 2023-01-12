@@ -1,11 +1,11 @@
 import React from "react";
+import { useStore } from "../../../store/store";
 
 import useMovieList from "../../../hooks/useMovieList";
-import { getAddedMovieList } from "../../../services/api";
+import { getAddedMovieList } from "../../../services/movieList";
 
 import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
-import { useStore } from "../../../store/store";
 
 const MovieListUserAdded = () => {
   const { movies } = useMovieList(getAddedMovieList);

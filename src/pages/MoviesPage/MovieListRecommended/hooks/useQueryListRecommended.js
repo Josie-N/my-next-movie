@@ -1,8 +1,9 @@
 import { useInfiniteQuery } from "react-query";
+import { useStore } from "../../../../store/store";
+
 import { getAPI } from "../../../../services/utils/helper";
 import { normalizeMovies } from "../../../../services/normalizeMovies";
 import { getRecommendedMovieList } from "../../../../services/movieList";
-import { useStore } from "../../../../store/store";
 
 export default function useQueryListRecommended () {
   const username = useStore(state => state.username);
