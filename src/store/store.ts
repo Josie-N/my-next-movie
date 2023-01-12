@@ -18,9 +18,6 @@ interface StoreState {
 
     totalPageCount: number,
     setTotalPageCount: (newPageCount: number) => void,
-
-    currentPage: number,
-    setCurrentPage: (state: number) => void,
 }
 
 export const useStore = create<StoreState>(
@@ -37,9 +34,6 @@ export const useStore = create<StoreState>(
         username: username,
 
         totalPageCount: 0,
-        setTotalPageCount: (newPageCount) => set({totalPageCount: newPageCount}),
-
-        currentPage: 1,
-        setCurrentPage: () => set((state) => ({currentPage: state.currentPage + 1})),
+        setTotalPageCount: (newPageCount) => set({totalPageCount: newPageCount})
     })
 );
