@@ -29,7 +29,7 @@ function MovieListSwitch () {
     case MovieListType.Removed:
       return !isLoadingMovies && isRemovedListEmpty ? <EmptyScreen /> : <MovieListRejected />
     default:
-      throw Error('Error! This movie list does not exist.')
+      throw Error('This movie list does not exist.')
   }
 }
 
