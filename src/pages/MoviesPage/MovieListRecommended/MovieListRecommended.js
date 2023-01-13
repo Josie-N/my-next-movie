@@ -1,17 +1,18 @@
 import React from "react";
 import { useStore } from "../../../store/store";
-
+import useUpdateList from "./hooks/useUpdateList";
+import useQueryListRecommended from "./hooks/useQueryListRecommended";
 import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
-import useFilterMovieList from "./hooks/useFilterMovieList";
-import useQueryListRecommended from "./hooks/useQueryListRecommended";
+import { postToAddedMovieList, postToRejectedMovieList } from "../../../services/movieList";
 
 const MovieListRecommended = () => {
   const { movies: recommendedMovies, fetchNextPage, hasNextPage } = useQueryListRecommended();
 
   const setMovieCountAddedList = useStore(state => state.setMovieCountAddedList);
   const setMovieCountRemovedList = useStore(state => state.setMovieCountRemovedList);
-  const filteredMovieList = useFilterMovieList();
+  const addedList = useUpdateList(postToAddedMovieList);
+  const removedList = useUpdateList(postToRejectedMovieList);
 
   // Runs when user adds a movie to added watchlist
   const handleMoveToAddedList = (_id, event) => {
@@ -19,7 +20,7 @@ const MovieListRecommended = () => {
     setMovieCountAddedList();
 
     // Send (not delete) movie from recommended list to added list
-    filteredMovieList.mutate(_id);
+    addedList.mutate(_id);
   };
 
   // Runs when user adds a movie to removed watchlist
@@ -28,7 +29,7 @@ const MovieListRecommended = () => {
     setMovieCountRemovedList();
 
     // Send (not delete) movie from recommended list to removed list
-    filteredMovieList.mutate(_id);
+    removedList.mutate(_id);
   }
 
   // Runs when user clicks button to see more movies

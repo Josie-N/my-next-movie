@@ -9,10 +9,14 @@ export const getAddedMovieList = (currentPage, username) => {
   return getUrlMovieList(currentPage, numberOfMoviesPerPage, username, MovieListType.Added);
 }
 
-export const getRemovedMovieList = (currentPage, numberOfMoviesPerPage, username) => {
+export const getRemovedMovieList = (currentPage, username) => {
   return getUrlMovieList(currentPage, numberOfMoviesPerPage, username, MovieListType.Removed);
 }
 
 export const postToAddedMovieList = (id, username) => {
   return postUrlMovieList(id, username, MovieListType.Added);
+}
+
+export const postToRejectedMovieList = (id, username) => {
+  return postUrlMovieList(id, username, MovieListType.Removed);
 }

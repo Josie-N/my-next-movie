@@ -3,10 +3,12 @@ import React from 'react';
 import { MovieListType } from "../../../constants/constants";
 import { useStore } from "../../../store/store";
 
+import useListRecommendedQuery from "../MovieListRecommended/hooks/useQueryListRecommended";
+
 import MovieListRecommended from "../MovieListRecommended/MovieListRecommended";
 import MovieListUserAdded from "../MovieListUserAdded/MovieListUserAdded";
+import MovieListRejected from "../MovieListRejected/MovieListRejected";
 import EmptyScreen from "../../../components/generic/EmptyScreen/EmptyScreen";
-import useListRecommendedQuery from "../MovieListRecommended/hooks/useQueryListRecommended";
 
 function MovieListSwitch () {
   const { movies, isLoading: isLoadingMovies } = useListRecommendedQuery();
@@ -25,7 +27,7 @@ function MovieListSwitch () {
     case MovieListType.Added:
       return !isLoadingMovies && isAddedListEmpty ? <EmptyScreen /> : <MovieListUserAdded />
     case MovieListType.Removed:
-      return !isLoadingMovies && isRemovedListEmpty ? <EmptyScreen /> : <p>You've been removed!</p>
+      return !isLoadingMovies && isRemovedListEmpty ? <EmptyScreen /> : <MovieListRejected />
     default:
       throw Error('Error! This movie list does not exist.')
   }

@@ -14,7 +14,7 @@ import Button from "../../../components/generic/Button/Button";
 
 function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
-  const { watchlistNameRecommended, watchlistNameAdded } = useWatchlistName();
+  const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
 
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getFormatMovieTitle(name);
@@ -83,7 +83,7 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
         </ButtonGroup>
         : ''
       }
-      {watchlistNameAdded && isCardActive
+      {(watchlistNameAdded || watchlistNameRemoved) && isCardActive
         ?
         <ButtonGroup>
           <Button hasIcon icon={Emoji.PointingLeft} type="button" handleButtonClick={handleMoveToRemovedList}>
