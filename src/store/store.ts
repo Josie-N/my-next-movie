@@ -9,10 +9,10 @@ interface StoreState {
     changeMovieListType: (newMovieListType: string) => void,
 
     movieCountAddedList: number,
-    setMovieCountAddedList: (state: number) => void,
+    setMovieCountAddedList: () => void,
 
     movieCountRemovedList: number,
-    setMovieCountRemovedList: (state: number) => void,
+    setMovieCountRemovedList: () => void,
 
     username: string,
 
@@ -23,13 +23,19 @@ interface StoreState {
 export const useStore = create<StoreState>(
     (set) => ({
         movieListType: MovieListType.Recommended,
-        changeMovieListType: (newMovieListType) => set({movieListType: newMovieListType}),
+        changeMovieListType: (newMovieListType) => set(
+            {movieListType: newMovieListType}
+        ),
 
         movieCountAddedList: 0,
-        setMovieCountAddedList: () => set((state) => ({movieCountAddedList: state.movieCountAddedList + 1})),
+        setMovieCountAddedList: () => set(
+            (state) => ({movieCountAddedList: state.movieCountAddedList + 1})
+        ),
 
         movieCountRemovedList: 0,
-        setMovieCountRemovedList: () => set((state) => ({movieCountRemovedList: state.movieCountRemovedList + 1})),
+        setMovieCountRemovedList: () => set(
+            (state) => ({movieCountRemovedList: state.movieCountRemovedList + 1})
+        ),
 
         username: username,
 
