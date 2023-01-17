@@ -1,5 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import DelayedFallback from "../components/generic/DelayedFallback/DelayedFallback";
 import { Topbar } from "../components/Topbar/Topbar";
@@ -9,18 +11,23 @@ const Homepage = lazy(() => import("../pages/MoviesPage/MoviesPage/MoviesPage"))
 const Imprint = lazy(() => import("../pages/Imprint/Imprint"));
 const Footer = lazy(() => import("../components/Footer/Footer"));
 
+const queryClient = new QueryClient();
+
 function App () {
   return (
-    <Suspense fallback={<DelayedFallback />}>
-      <Topbar />
-      <Routes>
-        <Route exact path="/" element={<Homepage />} />
-        <Route path="/imprint" element={<Imprint />} />
-        <Route path="*" element={<h1>404 Page not found</h1>} />
-      </Routes>
-      <hr className={styles.footerTopBoundary} />
-      <Footer />
-    </Suspense>
+    <QueryClientProvider client={queryClient}>
+      <Suspense fallback={<DelayedFallback />}>
+        <Topbar />
+        <Routes>
+          <Route exact path="/" element={<Homepage />} />
+          <Route path="/imprint" element={<Imprint />} />
+          <Route path="*" element={<h1>404 Page not found</h1>} />
+        </Routes>
+        <hr className={styles.footerTopBoundary} />
+        <Footer />
+      </Suspense>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 

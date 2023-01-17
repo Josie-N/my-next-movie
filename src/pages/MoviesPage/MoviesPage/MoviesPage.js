@@ -1,42 +1,36 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { ErrorBoundary } from "react-error-boundary";
+
 import helperStyles from "../../../assets/stylesheets/helper.module.css";
 import styles from "./MoviesPage.module.css";
 
-import { useStore } from "../../../store/store";
-import { getRecommendedMovieList } from "../../../services/api";
-import useMovieList from "../../../hooks/useMovieList";
-import { getFormatToLowercase, getGenerateUsername } from "../utils/helper";
-
+import useListRecommendedQuery from "../MovieListRecommended/hooks/useQueryListRecommended";
 import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
 import MovieListHeaderScreenReader from "../MovieListHeadlineScreenReader/MovieListHeadlineScreenReader";
 import LoadingIndicator from "../../../components/generic/LoadingIndicator/LoadingIndicator";
 import { WatchlistSidebar } from "../../../components/WatchlistSidebar/WatchlistSidebar";
+import { ErrorFallback } from "../../../components/ErrorFallback/ErrorFallback";
 
 function MoviesPage () {
-  const createUsername = useStore(state => state.setUsername);
-
-  useEffect(() => {
-    const username = getFormatToLowercase(getGenerateUsername());
-    createUsername(username);
-  }, []);
-
-  const { isLoading } = useMovieList(getRecommendedMovieList);
+  const { isLoading: isLoadingMovies } = useListRecommendedQuery();
 
   return (
     <>
       <div className={helperStyles.maxWidthDesktop}>
         <main className={styles.mainContentContainer}>
           <MovieListHeaderScreenReader />
-          {isLoading ?
+          {isLoadingMovies ?
             <div className={styles.movieCardContainerSkeleton}>
               <LoadingIndicator />
             </div>
             :
             <div className={styles.movieListContainer}>
-              <MovieListSwitch />
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <MovieListSwitch />
+              </ErrorBoundary>
             </div>
           }
-          {isLoading ? <LoadingIndicator /> : <WatchlistSidebar />}
+          {isLoadingMovies ? <LoadingIndicator /> : <WatchlistSidebar />}
         </main>
       </div>
     </>

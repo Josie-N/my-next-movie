@@ -1,0 +1,22 @@
+
+.mainError {
+  font-size:     var(--font-size-3xl);
+  margin-bottom: var(--space-2);
+}
+
+.genericError {
+  background-color: var(--color-yellow-highlight-5);
+  padding:          3px;
+  display:          inline-block;
+  font-size:        var(--font-size-xl);
+  margin-bottom:    var(--space-3);
+}
+
+.errorAdvice {
+  font-size:     var(--font-size-lg);
+  margin-bottom: var(--space-1);
+}
+
+.email {
+  font-weight: 600;
+}

@@ -12,8 +12,7 @@
   cursor: row-resize;
 }
 
-/* because visually hidden heading is the first child (a11y related class) */
-.movieCard:nth-child(2) {
+.movieCard:nth-of-type(1) {
   margin-top: 0;
 }
 
@@ -27,6 +26,7 @@
   border-radius: 6px;
 }
 
+/* To reduce the amount of spacing between two consecutive collapsed movie cards*/
 .movieCard__collapsed + .movieCard__collapsed {
   margin-top: calc(var(--space-5) / 2);
 }

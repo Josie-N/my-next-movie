@@ -1,37 +1,32 @@
 import React from 'react';
-import PropTypes from "prop-types";
 
 import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
-import { useStore } from "../../../store/store";
-import { ButtonLabel, Emoji } from "../../../constants/constants";
-
+import { ButtonLabel, Emoji, numberOfMoviesPerPage } from "../../../constants/constants";
 import Button from "../../../components/generic/Button/Button";
 
-const LoadMoreMovies = ({ handleLoadMoreMovies }) => {
-  const currentPage = useStore(state => state.currentPage);
-  const totalPageCount = useStore(state => state.totalPageCount);
+const LoadMoreMovies = ({ handleLoadMoreMovies, hasNextPage, movies }) => {
+
+  if (movies?.data.length < numberOfMoviesPerPage) {
+    return null;
+  }
 
   return (
     <div className={styles.showMoreMovies}>
       {
-        (currentPage === totalPageCount) ?
-          <h4>No more movies to load.</h4>
-          :
-          <Button ariaLabel={`Show more movies, ${totalPageCount - currentPage} pages left`}
+        hasNextPage ?
+          <Button ariaLabel="Show more movies"
                   hasIcon
                   icon={Emoji.PointingDown}
                   type="button"
                   handleButtonClick={handleLoadMoreMovies}
           >
-            <span>{ButtonLabel.ShowMore} ({totalPageCount - currentPage})</span>
+            <span>{ButtonLabel.ShowMore}</span>
           </Button>
+          :
+          <h4>No more movies to load.</h4>
       }
     </div>
   );
-};
-
-LoadMoreMovies.propTypes = {
-  handleLoadMoreMovies: PropTypes.func.isRequired
 };
 
 export default LoadMoreMovies;
