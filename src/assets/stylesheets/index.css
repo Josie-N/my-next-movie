@@ -102,7 +102,7 @@ button {
 }
 
 ::selection {
-  background-color: var(--color-yellow-highlight);
+  background-color: var(--color-yellow-highlight-5);
 }
 
 .DINCondSemiBold {

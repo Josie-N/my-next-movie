@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
-import cn from "classnames";
+import classNames from "classnames/bind";
 
 import styles from "./MovieCard.module.css";
 
@@ -13,6 +13,8 @@ import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
 
 function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
+  const cn = classNames.bind(styles);
+
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
   const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
 
@@ -25,8 +27,8 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
   // Adds a different background color to movie cards released before a certain year
   const isMovieNew = releaseYear >= 2000;
   const movieCardShadowClassNames = cn(
-    { [styles["movieCardShadow__new"]]: isMovieNew },
-    { [styles["movieCardShadow__old"]]: !isMovieNew }
+    { 'movieCardShadow__new': isMovieNew },
+    { 'movieCardShadow__old': !isMovieNew }
   );
 
   // Shows buttons (add, remove) when user hovers in and out of a movie card

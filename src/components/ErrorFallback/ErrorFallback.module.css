@@ -5,7 +5,7 @@
 }
 
 .genericError {
-  background-color: var(--color-yellow-highlight);
+  background-color: var(--color-yellow-highlight-5);
   padding:          3px;
   display:          inline-block;
   font-size:        var(--font-size-xl);
