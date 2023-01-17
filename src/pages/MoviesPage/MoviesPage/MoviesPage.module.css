@@ -8,6 +8,7 @@
 }
 
 .movieListContainer {
+  position:     relative;
   width:        42.5rem;
   margin-right: var(--grid-column-gap);
 }
