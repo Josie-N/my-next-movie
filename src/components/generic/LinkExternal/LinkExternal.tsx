@@ -16,6 +16,7 @@ export const LinkExternal = ({children, path, hasIcon, fontSize = 'base'}: LinkE
         strokeWidth: number
     }
 
+    // Can be moved to a helper function
     const calcSizes = (fontSize: string): calcSizesReturn => {
         const baseIconSize = 14;
         const baseStrokeWidth = 1.5;

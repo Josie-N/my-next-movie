@@ -1,4 +1,8 @@
 
+.errorContainer {
+  max-width: calc((var(--grid-column-width) + var(--grid-column-gap)) * 8);
+}
+
 .mainError {
   font-size:     var(--font-size-3xl);
   margin-bottom: var(--space-2);
