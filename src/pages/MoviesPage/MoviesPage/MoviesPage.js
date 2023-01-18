@@ -1,10 +1,12 @@
 import React from 'react';
+import { useStore } from "../../../store/store";
 import { ErrorBoundary } from "react-error-boundary";
 
 import helperStyles from "../../../assets/stylesheets/helper.module.css";
 import styles from "./MoviesPage.module.css";
 
-import useListRecommendedQuery from "../MovieListRecommended/hooks/useQueryListRecommended";
+import useQueryList from "../../../hooks/useQueryList";
+import getMovieListConfiguration from "../utils/movieListConfiguration";
 import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
 import MovieListHeaderScreenReader from "../MovieListHeadlineScreenReader/MovieListHeadlineScreenReader";
 import LoadingIndicator from "../../../components/generic/LoadingIndicator/LoadingIndicator";
@@ -12,7 +14,10 @@ import { WatchlistSidebar } from "../../../components/WatchlistSidebar/Watchlist
 import { ErrorFallback } from "../../../components/ErrorFallback/ErrorFallback";
 
 function MoviesPage () {
-  const { isLoading: isLoadingMovies } = useListRecommendedQuery();
+  const movieListType = useStore(state => state.movieListType);
+
+  const movieListConfig = getMovieListConfiguration(movieListType);
+  const { isLoading: isLoadingMovies } = useQueryList(movieListConfig);
 
   return (
     <>

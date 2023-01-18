@@ -1,4 +1,5 @@
 import create from "zustand";
+import {persist} from 'zustand/middleware'
 import {MovieListType} from "../constants/constants";
 import {getFormatToLowercase, getGenerateUsername} from "../pages/MoviesPage/utils/helper";
 
@@ -13,11 +14,6 @@ interface StoreState {
 
     movieCountRemovedList: number,
     setMovieCountRemovedList: () => void,
-
-    username: string,
-
-    totalPageCount: number,
-    setTotalPageCount: (newPageCount: number) => void,
 }
 
 export const useStore = create<StoreState>(
@@ -35,11 +31,19 @@ export const useStore = create<StoreState>(
         movieCountRemovedList: 0,
         setMovieCountRemovedList: () => set(
             (state) => ({movieCountRemovedList: state.movieCountRemovedList + 1})
-        ),
-
-        username: username,
-
-        totalPageCount: 0,
-        setTotalPageCount: (newPageCount) => set({totalPageCount: newPageCount})
+        )
     })
+);
+
+
+export const useUsernameStore = create(
+    persist(
+        () => ({
+            username: username,
+        }),
+        {
+            name: 'username-storage', // name of the item in the storage (must be unique)
+            getStorage: () => localStorage, // (optional) by default, 'localStorage' is used
+        }
+    )
 );

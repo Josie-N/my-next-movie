@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "react-query";
 import { postAPI } from "../../../../services/utils/helper";
-import { useStore } from "../../../../store/store";
+import { useUsernameStore } from "../../../../store/store";
 
 export default function useUpdateList (url) {
-  const username = useStore(state => state.username);
-
   const queryClient = useQueryClient();
+  const { username } = useUsernameStore();
+
   const mutation = useMutation({
     mutationFn: (id) => postAPI(url(id, username)),
     onSuccess: () => {
