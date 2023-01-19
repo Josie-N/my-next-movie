@@ -1,10 +1,11 @@
 import React from "react";
+import {useStore} from "../../../store/store";
+
+import useQueryList from "../../../hooks/useQueryList";
+import getMovieListConfiguration from "../utils/movieListConfiguration";
 
 import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
-import {useStore} from "../../../store/store";
-import getMovieListConfiguration from "../utils/movieListConfiguration";
-import useQueryList from "../../../hooks/useQueryList";
 
 const MovieListUserAdded = () => {
     const movieListType = useStore(state => state.movieListType);

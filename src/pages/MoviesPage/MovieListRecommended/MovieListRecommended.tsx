@@ -11,8 +11,6 @@ import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
 
 const MovieListRecommended = () => {
     const movieListType = useStore(state => state.movieListType);
-    const setMovieCountAddedList = useStore(state => state.setMovieCountAddedList);
-    const setMovieCountRemovedList = useStore(state => state.setMovieCountRemovedList);
 
     const movieListConfig = getMovieListConfiguration(movieListType);
     const {movies: recommendedMovies, fetchNextPage, hasNextPage} = useQueryList(movieListConfig);
@@ -23,7 +21,6 @@ const MovieListRecommended = () => {
     // Runs when user adds a movie to added watchlist
     const handleMoveToAddedList = (_id: string, event: React.SyntheticEvent<HTMLButtonElement>): void => {
         event.stopPropagation();
-        setMovieCountAddedList();
 
         // Send (not delete) movie from recommended list to added list
         // The function (with variables) to manually to trigger the mutation
@@ -34,7 +31,6 @@ const MovieListRecommended = () => {
     // Runs when user adds a movie to removed watchlist
     const handleMoveToRemovedList = (_id: string, event: React.SyntheticEvent<HTMLButtonElement>): void => {
         event.stopPropagation();
-        setMovieCountRemovedList();
 
         // Send (not delete) movie from recommended list to removed list
         // @ts-ignore
