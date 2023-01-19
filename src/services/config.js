@@ -1,4 +1,4 @@
-import { baseURL, baseURL_2 } from "../constants/constants";
+import { URL } from "../constants/constants";
 
 export const getUrlMovieList = (currentPage, numberOfMoviesPerPage, username, listName) => {
   const currentPageParam = `page=${currentPage}`;
@@ -6,7 +6,7 @@ export const getUrlMovieList = (currentPage, numberOfMoviesPerPage, username, li
   const listNameParam = `list=${listName}`;
   const usernameParam = `username=${username}`;
 
-  const url = baseURL + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
+  const url = URL.movies + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
   return url;
 }
 
@@ -15,6 +15,13 @@ export const postUrlMovieList = (id, username, listName) => {
   const listTypeParam = `list=${listName}`;
   const usernameParam = `username=${username}`;
 
-  const url = baseURL_2 + '?' + movieIdParam + '&' + listTypeParam + '&' + usernameParam;
+  const url = URL.movie + '?' + movieIdParam + '&' + listTypeParam + '&' + usernameParam;
+  return url;
+}
+
+export const getUsername = (username) => {
+  const usernameParam = `username=${username}`;
+
+  const url = URL.user + '?' + usernameParam;
   return url;
 }

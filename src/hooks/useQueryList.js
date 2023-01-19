@@ -10,7 +10,7 @@ export default function useQueryList (movieListConfig) {
     movieListConfig.queryKey,
     ({ pageParam = 1 }) => getAPI(movieListConfig.getUrlFunction(pageParam, username)),
     {
-      getNextPageParam: (lastPage) => (lastPage.pagination.next.page || undefined),
+      getNextPageParam: (lastPage) => lastPage.pagination?.next?.page,
       useErrorBoundary: true,
     }
   );

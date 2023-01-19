@@ -9,6 +9,7 @@ export default function useUpdateList (url) {
   const mutation = useMutation({
     mutationFn: (id) => postAPI(url(id, username)),
     onSuccess: () => {
+      queryClient.invalidateQueries('username');
       // Invalidates every query with a key that starts with `list-recommended`
       // Once invalidated, it auto re-fetches the recommended movie list with updated result
       return queryClient.invalidateQueries('list-recommended');

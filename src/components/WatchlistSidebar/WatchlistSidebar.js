@@ -5,16 +5,19 @@ import styles from "../WatchlistSidebar/WatchlistSidebar.module.css";
 import { Emoji, MovieListType } from "../../constants/constants";
 import { useStore, useUsernameStore } from "../../store/store";
 import useWatchlistName from "../../hooks/useWatchlistName";
+import useQueryUsername from "../../hooks/useQueryUsername";
 
 export const WatchlistSidebar = () => {
   const cn = classNames.bind(styles);
 
   const updateMovieListType = useStore(state => state.changeMovieListType);
-  const movieCountAddedList = useStore(state => state.movieCountAddedList);
-  const movieCountRemovedList = useStore(state => state.movieCountRemovedList);
   const { username } = useUsernameStore();
 
   const { watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
+
+  const usernameData = useQueryUsername();
+  const movieCountAddedList = usernameData?.lists?.added?.total || 0;
+  const movieCountRemovedList = usernameData?.lists?.removed?.total || 0;
 
   return (
     <aside className={styles.watchlistContainer}>
