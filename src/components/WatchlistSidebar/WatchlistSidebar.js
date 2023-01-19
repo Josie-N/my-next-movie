@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 
 import styles from "../WatchlistSidebar/WatchlistSidebar.module.css";
 import { Emoji, MovieListType } from "../../constants/constants";
-import { useStore } from "../../store/store";
+import { useStore, useUsernameStore } from "../../store/store";
 import useWatchlistName from "../../hooks/useWatchlistName";
 
 export const WatchlistSidebar = () => {
@@ -12,7 +12,7 @@ export const WatchlistSidebar = () => {
   const updateMovieListType = useStore(state => state.changeMovieListType);
   const movieCountAddedList = useStore(state => state.movieCountAddedList);
   const movieCountRemovedList = useStore(state => state.movieCountRemovedList);
-  const username = useStore(state => state.username);
+  const { username } = useUsernameStore();
 
   const { watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
 
@@ -23,7 +23,8 @@ export const WatchlistSidebar = () => {
       <ul className={styles.watchlist}>
         <li>
           <div className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameAdded })}
-               onClick={() => updateMovieListType(MovieListType.Added)}>
+               onClick={() => updateMovieListType(MovieListType.Added)}
+          >
             <span className={styles.emoji}>{Emoji.ThumbsUp}</span>
             <h3 className={cn('watchlistItemLabel', { 'watchlistItemLabel__selected': watchlistNameAdded })}>
               Added ({movieCountAddedList})
@@ -40,7 +41,8 @@ export const WatchlistSidebar = () => {
         </li>
         <li>
           <div className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameRemoved })}
-               onClick={() => updateMovieListType(MovieListType.Removed)}>
+               onClick={() => updateMovieListType(MovieListType.Removed)}
+          >
             <span className={styles.emoji}>{Emoji.ThumbsDown}</span>
             <h3 className={cn('watchlistItemLabel', { 'watchlistItemLabel__selected': watchlistNameRemoved })}>
               Removed ({movieCountRemovedList})

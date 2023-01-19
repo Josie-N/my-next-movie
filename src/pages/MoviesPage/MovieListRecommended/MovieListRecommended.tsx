@@ -1,16 +1,22 @@
 import React from "react";
 import {useStore} from "../../../store/store";
+
+import useQueryList from "../../../hooks/useQueryList";
 import useUpdateList from "./hooks/useUpdateList";
-import useQueryListRecommended from "./hooks/useQueryListRecommended";
+
+import {postToAddedMovieList, postToRejectedMovieList} from "../../../services/movieList";
+import getMovieListConfiguration from '../utils/movieListConfiguration';
 import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
-import {postToAddedMovieList, postToRejectedMovieList} from "../../../services/movieList";
 
 const MovieListRecommended = () => {
-    const {movies: recommendedMovies, fetchNextPage, hasNextPage} = useQueryListRecommended();
-
+    const movieListType = useStore(state => state.movieListType);
     const setMovieCountAddedList = useStore(state => state.setMovieCountAddedList);
     const setMovieCountRemovedList = useStore(state => state.setMovieCountRemovedList);
+
+    const movieListConfig = getMovieListConfiguration(movieListType);
+    const {movies: recommendedMovies, fetchNextPage, hasNextPage} = useQueryList(movieListConfig);
+
     const addedList = useUpdateList(postToAddedMovieList);
     const removedList = useUpdateList(postToRejectedMovieList);
 

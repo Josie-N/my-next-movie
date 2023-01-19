@@ -1,11 +1,16 @@
 import React from "react";
+import {useStore} from "../../../store/store";
 
+import useQueryList from "../../../hooks/useQueryList";
+import getMovieListConfiguration from "../utils/movieListConfiguration";
 import MovieList from "../MovieList/MovieList";
 import LoadMoreMovies from "../LoadMoreMovies/LoadMoreMovies";
-import useQueryListRejected from "./hooks/useQueryListRejected";
 
 const MovieListRejected = () => {
-    const {movies: rejectedMovies, fetchNextPage, hasNextPage} = useQueryListRejected();
+    const movieListType = useStore(state => state.movieListType);
+
+    const movieListConfig = getMovieListConfiguration(movieListType);
+    const {movies: rejectedMovies, fetchNextPage, hasNextPage} = useQueryList(movieListConfig);
 
     const handleLoadMoreMovies = () => {
         fetchNextPage();
