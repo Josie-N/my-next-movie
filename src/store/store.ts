@@ -8,12 +8,6 @@ const username = getFormatToLowercase(getGenerateUsername());
 interface StoreState {
     movieListType: string,
     changeMovieListType: (newMovieListType: string) => void,
-
-    movieCountAddedList: number,
-    setMovieCountAddedList: () => void,
-
-    movieCountRemovedList: number,
-    setMovieCountRemovedList: () => void,
 }
 
 export const useStore = create<StoreState>(
@@ -21,20 +15,9 @@ export const useStore = create<StoreState>(
         movieListType: MovieListType.Recommended,
         changeMovieListType: (newMovieListType) => set(
             {movieListType: newMovieListType}
-        ),
-
-        movieCountAddedList: 0,
-        setMovieCountAddedList: () => set(
-            (state) => ({movieCountAddedList: state.movieCountAddedList + 1})
-        ),
-
-        movieCountRemovedList: 0,
-        setMovieCountRemovedList: () => set(
-            (state) => ({movieCountRemovedList: state.movieCountRemovedList + 1})
         )
     })
 );
-
 
 export const useUsernameStore = create(
     persist(
