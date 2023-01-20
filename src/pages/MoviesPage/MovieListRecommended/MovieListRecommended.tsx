@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import {useStore} from "../../../store/store";
 
+import {numberOfMoviesPerPage} from "../../../constants/constants";
 import useQueryList from "../../../hooks/useQueryList";
 import useUpdateList from "./hooks/useUpdateList";
 
@@ -17,6 +18,13 @@ const MovieListRecommended = () => {
 
     const addedList = useUpdateList(postToAddedMovieList);
     const removedList = useUpdateList(postToRejectedMovieList);
+
+    const allRecommendedMovies = recommendedMovies.pagination.totalItems;
+    const moviesAlreadyPaginated = recommendedMovies.data.length;
+
+    // Returns remaining movies left to be paginated (hidden below the 'Show More' button)
+    const initialValue = allRecommendedMovies - moviesAlreadyPaginated;
+    const [hiddenMoviesCount, setHiddenMoviesCount] = useState(initialValue);
 
     // Runs when user adds a movie to added watchlist
     const handleMoveToAddedList = (_id: string, event: React.SyntheticEvent<HTMLButtonElement>): void => {
@@ -39,6 +47,7 @@ const MovieListRecommended = () => {
 
     const handleLoadMoreMovies = () => {
         fetchNextPage();
+        setHiddenMoviesCount((allRecommendedMovies - numberOfMoviesPerPage) - moviesAlreadyPaginated);
     }
 
     return (
@@ -52,6 +61,7 @@ const MovieListRecommended = () => {
                 movies={recommendedMovies}
                 handleLoadMoreMovies={handleLoadMoreMovies}
                 hasNextPage={hasNextPage}
+                moviesToPaginate={hiddenMoviesCount}
             />
         </>
     )

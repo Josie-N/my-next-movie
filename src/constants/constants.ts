@@ -24,7 +24,7 @@ export enum Emoji {
 export enum ButtonLabel {
     Add = 'ADD',
     Remove = 'REMOVE',
-    Back = 'BACK',
+    Back = 'SEND BACK',
     ShowMore = 'SHOW MORE'
 }
 
