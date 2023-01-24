@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'DIN Cond';
-  src:         url("https://s3.eu-central-1.amazonaws.com/truetaleof.com/FFDIN-COND-subset.woff2") format("woff2");
+  src:         url("https://s3.eu-central-1.amazonaws.com/truetaleof.com/FFDIN-COND-subset.woff") format("woff");
 
   font-weight: 400;
   font-style:  normal;
