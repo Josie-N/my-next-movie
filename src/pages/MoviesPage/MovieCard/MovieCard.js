@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
-import classNames from "classnames/bind";
 
 import styles from "./MovieCard.module.css";
 
@@ -8,13 +7,12 @@ import useWatchlistName from "../../../hooks/useWatchlistName";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import { ButtonLabel, Emoji } from "../../../constants/constants";
 import { getFormatMovieTitle, getImdbRatingInteger } from "./utils/helper";
+import { getMovieCardBackground } from "./utils/card_background_color";
 
 import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
 
 function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
-  const cn = classNames.bind(styles);
-
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
   const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
 
@@ -24,12 +22,8 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
   const [isCardHidden, setCardHidden] = useLocalStorage(false, _id);
   const [isCardActive, setCardActive] = useState(false);
 
-  // Adds a different background color to movie cards released before a certain year
-  const isMovieNew = releaseYear >= 2000;
-  const movieCardShadowClassNames = cn(
-    { 'movieCardShadow__new': isMovieNew },
-    { 'movieCardShadow__old': !isMovieNew }
-  );
+  // Shows different movie card styles depending on the movie release date
+  const movieCardShadowClassNames = getMovieCardBackground(movie);
 
   // Shows buttons (add, remove) when user hovers in and out of a movie card
   const handleMouseEnter = () => setCardActive(true);

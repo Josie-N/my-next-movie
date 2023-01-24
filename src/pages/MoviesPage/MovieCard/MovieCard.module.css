@@ -103,6 +103,12 @@
   opacity:          0.9;
 }
 
+.movieCardShadow_older {
+  composes: movieCardShadow;
+  border:   2px solid var(--text-color-gunmetal);
+  opacity:  0.75;
+}
+
 .movieCardShadow__old {
   composes:         movieCardShadow;
   background-image: radial-gradient(var(--text-color-gunmetal) 0.9px, transparent 0.9px);
