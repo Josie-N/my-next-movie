@@ -6,6 +6,8 @@ import { Emoji, MovieListType } from "../../constants/constants";
 import { useStore, useUsernameStore } from "../../store/store";
 import useWatchlistName from "../../hooks/useWatchlistName";
 import useQueryUsername from "../../hooks/useQueryUsername";
+import usePageScroll from "./hooks/usePageScroll";
+import { getWatchlistStyles } from "./utils/helper";
 
 export const WatchlistSidebar = () => {
   const cn = classNames.bind(styles);
@@ -14,13 +16,16 @@ export const WatchlistSidebar = () => {
   const { username } = useUsernameStore();
 
   const { watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
-
   const usernameData = useQueryUsername();
+  const isPageScrolledDown = usePageScroll();
+
   const movieCountAddedList = usernameData?.lists?.added?.total || 0;
   const movieCountRemovedList = usernameData?.lists?.removed?.total || 0;
 
+  const watchlistContainerClassNames = getWatchlistStyles(isPageScrolledDown);
+
   return (
-    <aside className={styles.watchlistContainer}>
+    <aside className={watchlistContainerClassNames}>
       <p className={styles.watchlistUsername}>{username}</p>
       <h2 className={styles.watchlistTitle}>My watchlist:</h2>
       <ul className={styles.watchlist}>

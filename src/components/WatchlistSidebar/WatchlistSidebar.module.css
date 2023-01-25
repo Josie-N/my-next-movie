@@ -10,8 +10,14 @@
   margin-left:    var(--grid-column-width);
 }
 
+.watchlistContainer__scrollDown {
+  composes:    watchlistContainer;
+  padding-top: var(--space-3);
+}
+
 .watchlistUsername {
   font-size: var(--font-size-lg);
+  cursor:    default;
 }
 
 .watchlist {

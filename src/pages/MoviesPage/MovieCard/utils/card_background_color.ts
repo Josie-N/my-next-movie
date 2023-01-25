@@ -3,7 +3,7 @@ import styles from "../MovieCard.module.css";
 import { MovieData } from "../../../../types/Movies";
 
 // Adds a different background color to movie cards depending on their release date
-export const getMovieCardBackground = (movie: MovieData) => {
+export const getMovieCardBackground = (movie: MovieData): string => {
   const { releaseYear } = movie;
 
   const isMovieNew = releaseYear >= 2000;  // 2000 ~ present
