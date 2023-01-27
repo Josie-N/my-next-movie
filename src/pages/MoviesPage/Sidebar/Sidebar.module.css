@@ -1,0 +1,15 @@
+.sidebarContainer {
+  display:        flex;
+  flex-direction: column;
+  flex-grow:      1;
+
+  position:       sticky;
+  top:            0;
+  padding-left:   var(--grid-column-gap);
+  margin-left:    var(--grid-column-width);
+}
+
+.sidebarContainer__scrollDown {
+  composes:    sidebarContainer;
+  padding-top: var(--space-3);
+}

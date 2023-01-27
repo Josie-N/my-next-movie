@@ -1,32 +1,25 @@
 import React from "react";
 import classNames from "classnames/bind";
 
-import styles from "../WatchlistSidebar/WatchlistSidebar.module.css";
+import styles from "./Watchlist.module.css";
 import { Emoji, MovieListType } from "../../constants/constants";
-import { useStore, useUsernameStore } from "../../store/store";
+import { useStore } from "../../store/store";
 import useWatchlistName from "../../hooks/useWatchlistName";
 import useQueryUsername from "../../hooks/useQueryUsername";
-import usePageScroll from "./hooks/usePageScroll";
-import { getWatchlistStyles } from "./utils/helper";
 
-export const WatchlistSidebar = () => {
+export default function Watchlist() {
   const cn = classNames.bind(styles);
 
   const updateMovieListType = useStore(state => state.changeMovieListType);
-  const { username } = useUsernameStore();
 
   const { watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
   const usernameData = useQueryUsername();
-  const isPageScrolledDown = usePageScroll();
 
   const movieCountAddedList = usernameData?.lists?.added?.total || 0;
   const movieCountRemovedList = usernameData?.lists?.removed?.total || 0;
 
-  const watchlistContainerClassNames = getWatchlistStyles(isPageScrolledDown);
-
   return (
-    <aside className={watchlistContainerClassNames}>
-      <p className={styles.watchlistUsername}>{username}</p>
+    <>
       <h2 className={styles.watchlistTitle}>My watchlist:</h2>
       <ul className={styles.watchlist}>
         <li>
@@ -58,6 +51,6 @@ export const WatchlistSidebar = () => {
           </div>
         </li>
       </ul>
-    </aside>
+    </>
   );
 }

@@ -7,11 +7,14 @@ import styles from "./MoviesPage.module.css";
 
 import useQueryList from "../../../hooks/useQueryList";
 import getMovieListConfiguration from "../utils/movieListConfiguration";
-import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
-import MovieListHeaderScreenReader from "../MovieListHeadlineScreenReader/MovieListHeadlineScreenReader";
+
 import LoadingIndicator from "../../../components/generic/LoadingIndicator/LoadingIndicator";
-import { WatchlistSidebar } from "../../../components/WatchlistSidebar/WatchlistSidebar";
 import { ErrorFallback } from "../../../components/ErrorFallback/ErrorFallback";
+import MovieListHeaderScreenReader from "../MovieListHeadlineScreenReader/MovieListHeadlineScreenReader";
+import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
+import Watchlist from "../../../components/Watchlist/Watchlist";
+import UserAccount from "../UserAccount/UserAccount";
+import Sidebar from "../Sidebar/Sidebar";
 
 function MoviesPage () {
   const movieListType = useStore(state => state.movieListType);
@@ -35,7 +38,13 @@ function MoviesPage () {
               </ErrorBoundary>
             </div>
           }
-          {isLoadingMovies ? <LoadingIndicator /> : <WatchlistSidebar />}
+          <Sidebar>
+            <UserAccount />
+            <Watchlist />
+            {/*Watchlist is confusing, try instead*/}
+            {/*WatchlistSelection*/}
+            {/*WatchlistNavigation*/}
+          </Sidebar>
         </main>
       </div>
     </>

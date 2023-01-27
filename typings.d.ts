@@ -6,5 +6,5 @@ declare module "*.png";
 declare module "*.svg";
 
 declare module 'randanimal' {
-    export function randanimalSync(): string
+  export function randanimalSync(): string
 }

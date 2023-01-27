@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import styles from "../WatchlistSidebar.module.css";
+import styles from "../Watchlist.module.css";
 
 export const getWatchlistStyles = (isPageScrolledDown: boolean): string => {
   const cn = classNames.bind(styles);
