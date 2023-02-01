@@ -25,8 +25,7 @@ export enum ButtonLabel {
   Add = 'ADD',
   Remove = 'REMOVE',
   Back = 'SEND BACK',
-  ShowMore = 'SHOW MORE',
-  Copy = "COPY"
+  ShowMore = 'SHOW MORE'
 }
 
 // How many movies are displayed per page in each movie list
