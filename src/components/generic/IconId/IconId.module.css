@@ -1,0 +1,13 @@
+.icon {
+  display:       inline-block;
+  font-size:     var(--font-size-sm);
+  font-weight:   800;
+
+  padding:       0 3px;
+  margin-right:  var(--space-0);
+
+  border:        0.12rem solid var(--text-color-gunmetal);
+  border-radius: 4px;
+
+  line-height:   var(--line-height-sm);
+}

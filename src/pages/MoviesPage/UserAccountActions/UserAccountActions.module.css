@@ -1,0 +1,12 @@
+.accountActionCategories {
+  display:       flex;
+  border-bottom: 1px solid var(--text-color-gunmetal);
+}
+
+.actionCategoryLabel {
+  font-size:   var(--font-size-base);
+  font-weight: 400;
+
+  margin:      0 var(--space-1) var(--space-0) 0;
+  cursor:      pointer;
+}
