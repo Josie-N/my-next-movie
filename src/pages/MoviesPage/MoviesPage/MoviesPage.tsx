@@ -12,11 +12,12 @@ import LoadingIndicator from "../../../components/generic/LoadingIndicator/Loadi
 import { ErrorFallback } from "../../../components/ErrorFallback/ErrorFallback";
 import MovieListHeaderScreenReader from "../MovieListHeadlineScreenReader/MovieListHeadlineScreenReader";
 import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
-import Watchlist from "../../../components/Watchlist/Watchlist";
 import UserAccount from "../UserAccount/UserAccount";
 import Sidebar from "../Sidebar/Sidebar";
+import WatchlistNavigation from "../WatchlistNavigation/WatchlistNavigation";
 
-function MoviesPage () {
+// Top level structure of MoviesPage view
+function MoviesPage() {
   const movieListType = useStore(state => state.movieListType);
 
   const movieListConfig = getMovieListConfiguration(movieListType);
@@ -40,10 +41,7 @@ function MoviesPage () {
           }
           <Sidebar>
             <UserAccount />
-            <Watchlist />
-            {/*Watchlist is confusing, try instead*/}
-            {/*WatchlistSelection*/}
-            {/*WatchlistNavigation*/}
+            <WatchlistNavigation />
           </Sidebar>
         </main>
       </div>
