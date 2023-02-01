@@ -3,10 +3,11 @@
   flex-direction: column;
   flex-grow:      1;
 
+  max-width:      calc((var(--grid-column) * 2) + var(--grid-column-width)); /* 235px */
+  margin-left:    var(--grid-column);
+
   position:       sticky;
   top:            0;
-  padding-left:   var(--grid-column-gap);
-  margin-left:    var(--grid-column-width);
 }
 
 .sidebarContainer__scrollDown {

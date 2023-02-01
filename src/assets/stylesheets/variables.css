@@ -46,7 +46,8 @@
   --space-1:                  13px; /*  26 - (26/ 2)  */
   --space-0:                  6.5px; /*  (26/ 2) / 2  */
 
-  /* Grid column */
+  /* Grid column - Full size: 1100 px */
+  --grid-column:              calc(var(--grid-column-width) + var(--grid-column-gap)); /*  89px;  */
   --grid-column-width:        3.56rem; /*  57px;  */
   --grid-column-gap:          2rem; /*  32px;  */
 }

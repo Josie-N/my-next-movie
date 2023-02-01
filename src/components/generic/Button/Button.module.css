@@ -12,6 +12,11 @@
   box-shadow:       4px 4px 0 var(--text-color-gunmetal);
 }
 
+/*TO DO: extract .button styles into base, outline, contained*/
+/*.button__base {*/
+/*  */
+/*}*/
+
 .button:hover {
   outline: 1px solid var(--text-color-gunmetal);
 }

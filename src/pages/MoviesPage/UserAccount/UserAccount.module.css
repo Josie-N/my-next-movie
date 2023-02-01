@@ -4,11 +4,6 @@
   flex-direction: column;
 }
 
-/*TO DO: Conditionally render margin bottom only when it's open */
-.accountContainer__open {
-  margin-bottom: var(--space-2);
-}
-  
 .accountUsernameContainer {
   display:       flex;
   align-items:   center;
@@ -17,44 +12,17 @@
 
 .accountUsername {
   font-size:     var(--font-size-lg);
-  /*font-size:     var(--font-size-xl);*/
-
   font-weight:   400;
-  /*margin-right:  var(--space-2);*/
+  margin-right:  var(--space-1);
   cursor:        pointer;
 
-  /*Still needs width or max-width to work*/
+  /* Truncate string with ellipsis */
   white-space:   nowrap;
   overflow:      hidden;
   text-overflow: ellipsis;
 }
 
-.username:hover {
+.accountUsername:hover {
   color:       var(--text-color-gunmetal);
   font-weight: 600;
-}
-
-.accountCategories {
-  display:       flex;
-  border-bottom: 1px solid var(--text-color-gunmetal);
-}
-
-.categoryLabel {
-  font-size:     var(--font-size-base);
-  font-weight:   400;
-  margin-right:  var(--space-1);
-  margin-bottom: var(--space-0);
-  cursor:        pointer;
-}
-
-.idChip {
-  display:       inline-block;
-  font-size:     var(--font-size-sm);
-  font-weight:   800;
-  padding:       0 4px;
-  /*line-height:   0.8;*/
-  /*padding:       2px 3px;*/
-  /*border:        2px solid var(--text-color-gunmetal);*/
-  border:        0.12rem solid var(--text-color-gunmetal);
-  border-radius: 4px;
 }
