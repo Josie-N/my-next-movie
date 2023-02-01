@@ -1,13 +1,17 @@
 import React from "react";
 import classNames from "classnames/bind";
 
-import styles from "./Watchlist.module.css";
-import { Emoji, MovieListType } from "../../constants/constants";
-import { useStore } from "../../store/store";
-import useWatchlistName from "../../hooks/useWatchlistName";
-import useQueryUsername from "../../hooks/useQueryUsername";
+import styles from "./WatchlistNavigation.module.css";
 
-export default function Watchlist() {
+import { useStore } from "../../../store/store";
+import { Emoji, MovieListType } from "../../../constants/constants";
+import { Headings } from "src/constants/headings";
+
+import useWatchlistName from "../../../hooks/useWatchlistName";
+import useQueryUsername from "../../../hooks/useQueryUsername";
+
+
+export default function WatchlistNavigation() {
   const cn = classNames.bind(styles);
 
   const updateMovieListType = useStore(state => state.changeMovieListType);
@@ -20,7 +24,7 @@ export default function Watchlist() {
 
   return (
     <>
-      <h2 className={styles.watchlistTitle}>My watchlist:</h2>
+      <h2 className={styles.watchlistTitle}>{Headings.H2["My watchlist:"]}</h2>
       <ul className={styles.watchlist}>
         <li>
           <div className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameAdded })}
