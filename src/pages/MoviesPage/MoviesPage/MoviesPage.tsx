@@ -40,8 +40,10 @@ function MoviesPage() {
             </div>
           }
           <Sidebar>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
             <UserAccount />
             <WatchlistNavigation />
+          </ErrorBoundary>
           </Sidebar>
         </main>
       </div>
