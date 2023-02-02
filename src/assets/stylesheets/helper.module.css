@@ -11,8 +11,13 @@
   overflow: hidden;
 }
 
+/*
+   centers and determines the width of the desktop layout
+   Full layout size: 1100 px
+   12 Columns + 2x Outer gutters
+*/
 .maxWidthDesktop {
-  max-width: 1100px;
+  max-width: calc(((var(--grid-column) * 11) + var(--grid-column-width)) + (var(--grid-column-gap) * 2)); /* 1100 px */
+  padding:   0 var(--grid-column-gap); /* 32px; */
   margin:    0 auto;
-  padding:   0 32px;
 }

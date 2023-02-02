@@ -8,7 +8,7 @@
   --font-size-xl:             1.728rem; /*  29.38px */
   --font-size-lg:             1.44rem; /*   24.48px */
   --font-size-md:             1.20rem; /*   20.40px = 17px (base) * 1,20 (scale) */
-  --font-size-base:           17px; /*      1 rem */
+  --font-size-base:           17px; /*      1 rem (em?) */
   --font-size-sm:             0.885rem; /*  15.10px */
 
   /* Color weights */
@@ -46,7 +46,7 @@
   --space-1:                  13px; /*  26 - (26/ 2)  */
   --space-0:                  6.5px; /*  (26/ 2) / 2  */
 
-  /* Grid column - Full size: 1100 px */
+  /* Layout grid */
   --grid-column:              calc(var(--grid-column-width) + var(--grid-column-gap)); /*  89px;  */
   --grid-column-width:        3.56rem; /*  57px;  */
   --grid-column-gap:          2rem; /*  32px;  */
