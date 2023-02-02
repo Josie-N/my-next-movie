@@ -16,14 +16,3 @@
   composes: movieListGridLayout;
   position: relative;
 }
-
-.movieCardContainerSkeleton {
-  composes:       movieListGridLayout;
-
-  position:       relative;
-  min-height:     39rem;
-
-  display:        flex;
-  flex-direction: column;
-  align-items:    center;
-}

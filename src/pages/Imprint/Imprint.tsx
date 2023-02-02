@@ -2,21 +2,20 @@ import React, { useLayoutEffect } from 'react';
 import { LinkExternal } from "../../components/generic/LinkExternal/LinkExternal";
 
 import styles from "./Imprint.module.css";
-import helperStyles from "../../assets/stylesheets/helper.module.css";
 import imprint from "../../assets/images/Imprint.svg";
 
 import * as Icon from 'react-feather';
+import LayoutDesktop from "../../components/LayoutDesktop/LayoutDesktop";
 
 
 const Imprint = () => {
-
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   });
 
   return (
-    <main className={helperStyles.maxWidthDesktop}>
-      <div className={styles.imprint}>
+    <LayoutDesktop>
+      <main className={styles.imprint}>
         <div className={styles.imprintInnerContainer}>
           <h1 className={styles.imprintMainTitle}>Legal Notice</h1>
           <p className={styles.imprintLegalInfo}>According to{" "}
@@ -74,8 +73,8 @@ const Imprint = () => {
             not recognizable at the time of linking.</p>
         </div>
         <img className={styles.imprintImage} src={imprint} alt="" />
-      </div>
-    </main>
+      </main>
+    </LayoutDesktop>
   );
 }
 
