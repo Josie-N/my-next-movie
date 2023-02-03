@@ -1,4 +1,6 @@
 import React from 'react';
+import classNames from "classnames/bind";
+
 import styles from './Button.module.css';
 
 interface ButtonProps {
@@ -7,15 +9,33 @@ interface ButtonProps {
   icon?: string,
   type: "button" | "submit" | "reset",
   handleButtonClick: React.MouseEventHandler,
+  variant: "base" | "outlined" | "contained",
   children: React.ReactNode
 }
 
-function Button({ ariaLabel, hasIcon = false, icon, type = 'button', handleButtonClick, children }: ButtonProps) {
+function Button({
+                  ariaLabel,
+                  hasIcon = false,
+                  icon,
+                  type = 'button',
+                  handleButtonClick,
+                  variant,
+                  children
+                }: ButtonProps) {
+
+  const cn = classNames.bind(styles);
+
+  const buttonClassNames = cn(
+    'button',
+    { 'button': variant === 'base' },
+    { 'button__outlined': variant === 'outlined' },
+    { 'button__contained': variant === 'contained' },
+  );
 
   return (
     <button onClick={handleButtonClick}
             type={type}
-            className={styles.button}
+            className={buttonClassNames}
             aria-label={ariaLabel}
     >
       {hasIcon ? <span className={styles.buttonIcon}>{icon}</span> : ''}

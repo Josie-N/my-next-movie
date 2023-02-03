@@ -1,23 +1,36 @@
+
 .button {
-  composes:         DINCondSemiBold from "../../../assets/stylesheets/index.css";
-  font-size:        var(--font-size-base);
-  color:            var(--text-color-gunmetal);
-  letter-spacing:   0.06rem;
+  composes:       DINCondSemiBold from "../../../assets/stylesheets/index.css";
+
+  font-size:      var(--font-size-base);
+  color:          var(--text-color-gunmetal);
+  letter-spacing: 0.06rem;
+}
+
+.button__outlined {
+  composes:      button;
+
+  margin:        var(--space-0);
+  padding:       var(--space-0) var(--space-1);
+
+  border:        2px solid var(--text-color-gunmetal);
+  border-radius: 4px;
+}
+
+.button__contained {
+  composes:         button;
 
   margin:           var(--space-0);
   padding:          var(--space-0) var(--space-1);
-  background-color: var(--background-color-white);
+
   border:           2px solid var(--text-color-gunmetal);
   border-radius:    4px;
+
+  background-color: var(--background-color-white);
   box-shadow:       4px 4px 0 var(--text-color-gunmetal);
 }
 
-/*TO DO: extract .button styles into base, outline, contained*/
-/*.button__base {*/
-/*  */
-/*}*/
-
-.button:hover {
+.button__contained:hover {
   outline: 1px solid var(--text-color-gunmetal);
 }
 
