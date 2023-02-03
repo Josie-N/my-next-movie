@@ -1,12 +1,50 @@
+
 .accountActionCategories {
-  display:       flex;
-  border-bottom: 1px solid var(--text-color-gunmetal);
+  display:      flex;
+  margin-right: 2px;
 }
 
 .actionCategoryLabel {
-  font-size:   var(--font-size-base);
-  font-weight: 400;
+  font-size:    var(--font-size-base);
+  font-weight:  400;
 
-  margin:      0 var(--space-1) var(--space-0) 0;
-  cursor:      pointer;
+  padding:      0 5px 6px 5px;
+  margin-right: var(--space-1);
+
+  cursor:       pointer;
+}
+
+.actionCategoryLabel__active {
+  font-weight:   600;
+  border-bottom: 2px solid var(--text-color-gunmetal);
+}
+
+.actionCategoryLabel:hover {
+  font-weight: 600;
+}
+
+.accountActionList {
+  display:        flex;
+  flex-direction: column;
+  align-items:    flex-start;
+
+  min-height:     6rem; /* 96px; */
+  margin:         var(--space-1) 0 var(--space-4) var(--space-0);
+}
+
+.accountActionListItem {
+  display:       inline-block;
+
+  margin-bottom: var(--space-0);
+  padding-right: 1rem; /* 16px; */
+  cursor:        pointer;
+}
+
+.deleteAccount {
+  color:          var(--color-red-negative);
+  letter-spacing: 0.1px;
+}
+
+.accountActionListItem:hover {
+  font-weight: 600;
 }
