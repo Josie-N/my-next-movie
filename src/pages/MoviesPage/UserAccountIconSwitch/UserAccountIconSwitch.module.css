@@ -1,0 +1,17 @@
+
+.dropdownIcon {
+  position: relative;
+  top:      2px;
+}
+
+.idIcon {
+  font-size:     var(--font-size-sm);
+  line-height:   var(--line-height-sm);
+  font-weight:   600;
+
+  padding:       0 3px;
+
+  border-radius: 4px;
+  border:        0.12rem solid #49525d; /*TO DO: add color to variables */
+  color:         #323c49; /*TO DO: add color to variables */
+}
