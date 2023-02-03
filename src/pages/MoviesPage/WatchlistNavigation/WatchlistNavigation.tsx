@@ -5,7 +5,6 @@ import styles from "./WatchlistNavigation.module.css";
 
 import { useStore } from "../../../store/store";
 import { Emoji, MovieListType } from "../../../constants/constants";
-import { Headings } from "src/constants/headings";
 
 import useWatchlistName from "../../../hooks/useWatchlistName";
 import useQueryUsername from "../../../hooks/useQueryUsername";
@@ -24,37 +23,36 @@ export default function WatchlistNavigation() {
 
   return (
     <>
-      <h2 className={styles.watchlistTitle}>{Headings.H2["My watchlist:"]}</h2>
-      <ul className={styles.watchlist}>
-        <li>
-          <div className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameAdded })}
-               onClick={() => updateMovieListType(MovieListType.Added)}
+      <nav>
+        <h2 className={styles.watchlistTitle}>My watchlist:</h2>
+        <ul className={styles.watchlist}>
+          <li className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameAdded })}
+              onClick={() => updateMovieListType(MovieListType.Added)}
+              tabIndex={0}
           >
-            <span className={styles.emoji}>{Emoji.ThumbsUp}</span>
+            <span className={styles.emoji} aria-hidden>{Emoji.ThumbsUp}</span>
             <h3 className={cn('watchlistItemLabel', { 'watchlistItemLabel__selected': watchlistNameAdded })}>
               Added ({movieCountAddedList})
             </h3>
-          </div>
-        </li>
-        <li>
-          <a className={styles.watchlistLink} href="/">
-            <span className={styles.emoji}>{Emoji.Eyes}</span>
-            <h3 className={styles.watchlistItemLabel}>
-              Already seen (0)
-            </h3>
-          </a>
-        </li>
-        <li>
-          <div className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameRemoved })}
-               onClick={() => updateMovieListType(MovieListType.Removed)}
-          >
-            <span className={styles.emoji}>{Emoji.ThumbsDown}</span>
+          </li>
+          <li>
+            <a className={styles.watchlistLink} href="/" tabIndex={0}>
+              <span className={styles.emoji} aria-hidden>{Emoji.Eyes}</span>
+              <h3 className={styles.watchlistItemLabel}>
+                Already seen (0)
+              </h3>
+            </a>
+          </li>
+          <li className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameRemoved })}
+              onClick={() => updateMovieListType(MovieListType.Removed)}
+              tabIndex={0}>
+            <span className={styles.emoji} aria-hidden>{Emoji.ThumbsDown}</span>
             <h3 className={cn('watchlistItemLabel', { 'watchlistItemLabel__selected': watchlistNameRemoved })}>
               Removed ({movieCountRemovedList})
             </h3>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </nav>
     </>
   );
 }
