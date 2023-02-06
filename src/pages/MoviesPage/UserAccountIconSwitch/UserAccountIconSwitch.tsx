@@ -6,13 +6,13 @@ import chevronUp from "../../../assets/icons/chevronUp.svg";
 import chevronDown from "../../../assets/icons/chevronDown.svg";
 
 type Props = {
-  isAccountToggled: boolean,
+  isAccountMenuExpanded: boolean,
   isAccountHovered: boolean
 }
 
 // Rename to: UserAccountIcon
-export default function UserAccountIconSwitch({ isAccountToggled, isAccountHovered }: Props) {
-  if (isAccountToggled) {
+export default function UserAccountIconSwitch({ isAccountMenuExpanded, isAccountHovered }: Props) {
+  if (isAccountMenuExpanded) {
     return <img src={chevronUp} className={styles.dropdownIcon} alt="Close account options" />
   }
   if (isAccountHovered) {

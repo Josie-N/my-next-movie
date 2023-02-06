@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import classNames from "classnames/bind";
-import styles from './UserAccount.module.css';
+import styles from './UserAccountMenu.module.css';
 import helperStyles from "../../../assets/stylesheets/helper.module.css";
 
 import { useUsernameStore } from "src/store/store";
@@ -9,19 +9,18 @@ import useOutsideClick from "../../../hooks/useOutsideClick";
 import UserAccountActions from "../UserAccountActions/UserAccountActions";
 import UserAccountIconSwitch from "../UserAccountIconSwitch/UserAccountIconSwitch";
 
-// Rename to: UserAccountMenu
-const UserAccount = () => {
+
+const UserAccountMenu = () => {
   const { username } = useUsernameStore();
 
-  // Rename to: isAccountMenuExpanded
-  const [isAccountToggled, setAccountToggled] = useState(false);
+  const [isAccountMenuExpanded, setAccountMenuExpanded] = useState(false);
   const [isAccountHovered, setAccountHovered] = useState(false);
 
   const [settings, displaySettings] = useState(true);
   const [account, displayAccount] = useState(false);
 
   const handleToggleAccount = () => {
-    setAccountToggled(!isAccountToggled);
+    setAccountMenuExpanded(!isAccountMenuExpanded);
   }
 
   const handleSettings = () => {
@@ -34,11 +33,11 @@ const UserAccount = () => {
     displayAccount(true);
   }
 
-  // Collapses/opens the user account actions,
-  // resets the default action category back to 'Settings',
+  // Collapses/expands the user account menu,
+  // resets the default menu action category back to 'Settings',
   // changes the icon next to username back to 'id'
   const handleClickOutside = () => {
-    setAccountToggled(false);
+    setAccountMenuExpanded(false);
     displaySettings(true);
     displayAccount(false);
     setAccountHovered(false);
@@ -48,17 +47,17 @@ const UserAccount = () => {
 
   const usernameClassNames = cn(
     'accountUsername',
-    { 'accountUsername__active': isAccountToggled }
+    { 'accountUsername__active': isAccountMenuExpanded }
   );
 
   const accountContainerClassNames = cn(
     'accountContainer',
-    { 'accountContainer__open': isAccountToggled }
+    { 'accountContainer__open': isAccountMenuExpanded }
   );
 
   const usernameContainerClassNames = cn(
     'accountUsernameContainer',
-    { 'accountUsernameContainer__open': isAccountToggled }
+    { 'accountUsernameContainer__open': isAccountMenuExpanded }
   );
 
   const elementRef = useOutsideClick(handleClickOutside);
@@ -74,9 +73,9 @@ const UserAccount = () => {
       >
         <h2 className={helperStyles.visuallyHidden}>Username: {username}</h2>
         <h2 className={usernameClassNames} aria-hidden>{username}</h2>
-        <UserAccountIconSwitch isAccountToggled={isAccountToggled} isAccountHovered={isAccountHovered} />
+        <UserAccountIconSwitch isAccountMenuExpanded={isAccountMenuExpanded} isAccountHovered={isAccountHovered} />
       </div>
-      {isAccountToggled &&
+      {isAccountMenuExpanded &&
         <UserAccountActions
           settings={settings}
           account={account}
@@ -88,4 +87,4 @@ const UserAccount = () => {
   )
 }
 
-export default UserAccount;
+export default UserAccountMenu;

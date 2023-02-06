@@ -26,7 +26,6 @@ function Button({
   const cn = classNames.bind(styles);
 
   const buttonClassNames = cn(
-    'button',
     { 'button': variant === 'base' },
     { 'button__outlined': variant === 'outlined' },
     { 'button__contained': variant === 'contained' },

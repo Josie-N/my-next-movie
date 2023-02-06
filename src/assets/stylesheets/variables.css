@@ -12,8 +12,11 @@
   --font-size-sm:             0.885rem; /*  15.10px */
 
   /* Color weights */
-  /* Naming system from 1 to 10 (darker < 5 > lighter) */
+  /* Naming system from 1 to 10 */
+  /* https://www.color-hex.com/color/1c2735 */
   --text-color-gunmetal-3:    #8D939A;
+  --text-color-gunmetal-4:    #49525D;
+  --text-color-gunmetal-5:    #323C49;
   --text-color-gunmetal:      #1C2735;
 
   --color-yellow-highlight-5: hsl(48, 100%, 50%); /* #FFCE00 */

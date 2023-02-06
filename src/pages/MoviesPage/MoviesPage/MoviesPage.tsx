@@ -11,10 +11,10 @@ import { ErrorFallback } from "src/components/ErrorFallback/ErrorFallback";
 import LayoutDesktop from "src/components/LayoutDesktop/LayoutDesktop";
 import SelectedWatchlistHeadingA11y from "../SelectedWatchlistHeadingA11y/SelectedWatchlistHeadingA11y";
 import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
-import UserAccount from "../UserAccount/UserAccount";
 import Sidebar from "../Sidebar/Sidebar";
 import WatchlistNavigation from "../WatchlistNavigation/WatchlistNavigation";
 import MovieListSkeleton from '../MovieListSkeleton/MovieListSkeleton';
+import UserAccountMenu from '../UserAccountMenu/UserAccountMenu';
 
 // Top level structure of MoviesPage view
 export default function MoviesPage() {
@@ -37,7 +37,7 @@ export default function MoviesPage() {
         }
         <Sidebar>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <UserAccount />
+            <UserAccountMenu />
             <WatchlistNavigation />
           </ErrorBoundary>
         </Sidebar>
