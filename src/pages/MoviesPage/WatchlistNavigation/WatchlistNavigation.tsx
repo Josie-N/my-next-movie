@@ -25,17 +25,17 @@ export default function WatchlistNavigation() {
     <>
       <nav>
         <h2 className={styles.watchlistTitle}>My watchlist:</h2>
-        <ul className={styles.watchlist}>
+        <ul role="listbox" className={styles.watchlist}>
           <li className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameAdded })}
               onClick={() => updateMovieListType(MovieListType.Added)}
-              tabIndex={0}
+              role="option" aria-selected={watchlistNameAdded} tabIndex={0}
           >
             <span className={styles.emoji} aria-hidden>{Emoji.ThumbsUp}</span>
             <h3 className={cn('watchlistItemLabel', { 'watchlistItemLabel__selected': watchlistNameAdded })}>
               Added ({movieCountAddedList})
             </h3>
           </li>
-          <li>
+          <li role="option" aria-selected={false}>
             <a className={styles.watchlistLink} href="/" tabIndex={0}>
               <span className={styles.emoji} aria-hidden>{Emoji.Eyes}</span>
               <h3 className={styles.watchlistItemLabel}>
@@ -45,7 +45,8 @@ export default function WatchlistNavigation() {
           </li>
           <li className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameRemoved })}
               onClick={() => updateMovieListType(MovieListType.Removed)}
-              tabIndex={0}>
+              role="option" aria-selected={watchlistNameRemoved} tabIndex={0}
+          >
             <span className={styles.emoji} aria-hidden>{Emoji.ThumbsDown}</span>
             <h3 className={cn('watchlistItemLabel', { 'watchlistItemLabel__selected': watchlistNameRemoved })}>
               Removed ({movieCountRemovedList})

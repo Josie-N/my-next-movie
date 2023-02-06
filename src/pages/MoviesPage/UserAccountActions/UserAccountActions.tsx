@@ -10,6 +10,13 @@ type Props = {
   handleAccount: () => void
 }
 
+enum Actions {
+  Change = 'Change name',
+  Create = 'Create new',
+  DifferentID = 'Use a different Id',
+  Delete = 'Delete'
+}
+
 export default function UserAccountActions({ settings, account, handleSettings, handleAccount }: Props) {
   const cn = classNames.bind(styles);
 
@@ -27,51 +34,32 @@ export default function UserAccountActions({ settings, account, handleSettings, 
     <>
       <nav role="tablist">
         <div className={styles.accountActionCategories}>
-          <h3 className={settingsClassNames} onClick={handleSettings}
-              role="tab" aria-selected={settings} id="settingsTab" aria-controls="settingsPanel" tabIndex={0}
-          >
+          <h3 className={settingsClassNames} onClick={handleSettings} role="tab"
+              aria-selected={settings} id="settingsTab" aria-controls="settingsPanel" tabIndex={0}>
             Settings
           </h3>
-          <h3 className={accountClassNames} onClick={handleAccount}
-              role="tab" aria-selected={account} id="accountTab" aria-controls="accountPanel" tabIndex={0}
-          >
+          <h3 className={accountClassNames} onClick={handleAccount} role="tab"
+              aria-selected={account} id="accountTab" aria-controls="accountPanel" tabIndex={0}>
             Account
           </h3>
         </div>
-        {/*Not sure whether I should merge back into one <ul/> or not*/}
-        {/*Do I really need aria-hidden here?*/}
         {settings &&
-          <ul aria-hidden={!settings} id="settingsPanel" aria-labelledby="settingsTab"
+          <ul className={styles.accountActionList}
               role="tabpanel"
-              className={styles.accountActionList}
-          >
-            <li className={styles.accountActionListItem} tabIndex={0}>Change name</li>
+              aria-labelledby="settingsTab" id="settingsPanel" aria-hidden={!settings}>
+            <li className={styles.accountActionListItem} tabIndex={0}>{Actions.Change}</li>
           </ul>
         }
         {account &&
-          <ul aria-hidden={!account} id="accountPanel" aria-labelledby="accountTab"
+          <ul className={styles.accountActionList}
               role="tabpanel"
-              className={styles.accountActionList}
-          >
-            <li className={styles.accountActionListItem} tabIndex={0}>Create new</li>
-            <li className={styles.accountActionListItem} tabIndex={0}>Use a different Id</li>
-            <li className={cn('accountActionListItem', 'deleteAccount')} tabIndex={0}>Delete</li>
+              aria-labelledby="accountTab" id="accountPanel" aria-hidden={!account}>
+            <li className={styles.accountActionListItem} tabIndex={0}>{Actions.Create}</li>
+            <li className={styles.accountActionListItem} tabIndex={0}>{Actions.DifferentID}</li>
+            <li className={cn('accountActionListItem', 'deleteAccount')} tabIndex={0}>{Actions.Delete}</li>
           </ul>
         }
       </nav>
     </>
   )
 }
-
-// Last workable solution, with only one ul
-//
-// <ul role="tabpanel" className={styles.accountActionList}>
-//   {settings && <li className={styles.accountActionListItem} tabIndex={0}>Change name</li>}
-//   {account &&
-//     <>
-//      <li className={styles.accountActionListItem} tabIndex={0}>Create new</li>
-//      <li className={styles.accountActionListItem} tabIndex={0}>Use a different Id</li>
-//       <li className={cn('accountActionListItem', 'deleteAccount')} tabIndex={0}>Delete</li>
-//     </>
-//   }
-// </ul>

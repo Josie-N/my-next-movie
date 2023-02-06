@@ -70,7 +70,7 @@ const UserAccount = () => {
          onMouseLeave={() => setAccountHovered(false)}
     >
       <div className={usernameContainerClassNames} onClick={handleToggleAccount}
-           role="button" aria-haspopup="menu" aria-expanded={isAccountToggled} tabIndex={0}
+           role="button" aria-haspopup="menu" aria-expanded={isAccountMenuExpanded} tabIndex={0}
       >
         <h2 className={helperStyles.visuallyHidden}>Username: {username}</h2>
         <h2 className={usernameClassNames} aria-hidden>{username}</h2>
