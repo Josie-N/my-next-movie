@@ -9,7 +9,7 @@ import logo from "../../assets/images/brandLogo.svg";
 import { MovieListType } from "../../constants/constants";
 import LayoutDesktop from "../LayoutDesktop/LayoutDesktop";
 
-export const Topbar = () => {
+const Topbar = () => {
   const updateMovieListType = useStore(state => state.changeMovieListType);
 
   return (
@@ -27,3 +27,5 @@ export const Topbar = () => {
     </LayoutDesktop>
   );
 }
+
+export default Topbar;

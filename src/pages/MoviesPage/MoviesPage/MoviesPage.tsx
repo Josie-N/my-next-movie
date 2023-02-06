@@ -7,7 +7,7 @@ import styles from "./MoviesPage.module.css";
 import useQueryList from "../../../hooks/useQueryList";
 import getMovieListConfiguration from "../utils/movieListConfiguration";
 
-import { ErrorFallback } from "src/components/ErrorFallback/ErrorFallback";
+import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 import LayoutDesktop from "src/components/LayoutDesktop/LayoutDesktop";
 import SelectedWatchlistHeadingA11y from "../SelectedWatchlistHeadingA11y/SelectedWatchlistHeadingA11y";
 import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
@@ -17,7 +17,7 @@ import MovieListSkeleton from '../MovieListSkeleton/MovieListSkeleton';
 import UserAccountMenu from '../UserAccountMenu/UserAccountMenu';
 
 // Top level structure of MoviesPage view
-export default function MoviesPage() {
+const MoviesPage = () => {
   const movieListType = useStore(state => state.movieListType);
 
   const movieListConfig = getMovieListConfiguration(movieListType);
@@ -45,3 +45,5 @@ export default function MoviesPage() {
     </LayoutDesktop>
   );
 }
+
+export default MoviesPage;

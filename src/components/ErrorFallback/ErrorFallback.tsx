@@ -6,7 +6,7 @@ type Props = {
   }
 }
 
-export const ErrorFallback = ({ error }: Props) => {
+const ErrorFallback = ({ error }: Props) => {
   return (
     <div className={styles.errorContainer}>
       <iframe
@@ -23,3 +23,5 @@ export const ErrorFallback = ({ error }: Props) => {
     </div>
   )
 }
+
+export default ErrorFallback;

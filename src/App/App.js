@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import DelayedFallback from "../components/generic/DelayedFallback/DelayedFallback";
-import { Topbar } from "../components/Topbar/Topbar";
+import Topbar from "../components/Topbar/Topbar";
 import styles from "./App.module.css";
 
 const Homepage = lazy(() => import("../pages/MoviesPage/MoviesPage/MoviesPage"));
@@ -13,7 +13,7 @@ const Footer = lazy(() => import("../components/Footer/Footer"));
 
 const queryClient = new QueryClient();
 
-function App () {
+const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Suspense fallback={<DelayedFallback />}>

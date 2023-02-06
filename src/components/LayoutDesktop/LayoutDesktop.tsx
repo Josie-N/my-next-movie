@@ -5,10 +5,12 @@ type Props = {
   children: React.ReactNode
 }
 
-export default function LayoutDesktop({ children }: Props) {
+const LayoutDesktop = ({ children }: Props) => {
   return (
     <div className={helperStyles.maxWidthDesktop}>
       {children}
     </div>
   );
 }
+
+export default LayoutDesktop;
