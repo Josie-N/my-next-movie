@@ -1,4 +1,9 @@
 
+.movieListGridLayout {
+  width:        calc((var(--grid-column) * 7) + var(--grid-column-width));
+  margin-right: var(--grid-column-gap);
+}
+
 .mainContentContainer {
   min-height:  62.7vh;
   display:     flex;
@@ -8,17 +13,6 @@
 }
 
 .movieListContainer {
-  position:     relative;
-  width:        42.5rem;
-  margin-right: var(--grid-column-gap);
-}
-
-.movieCardContainerSkeleton {
-  display:        flex;
-  flex-direction: column;
-  align-items:    center;
-  min-height:     39rem;
-  width:          42.5rem;
-  margin-right:   var(--grid-column-gap);
-  position:       relative;
+  composes: movieListGridLayout;
+  position: relative;
 }

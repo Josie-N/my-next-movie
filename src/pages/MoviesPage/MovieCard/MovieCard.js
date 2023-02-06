@@ -68,25 +68,29 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
       {watchlistNameRecommended && isCardActive
         ?
         <ButtonGroup>
-          <Button hasIcon icon={Emoji.ThumbsDown} type="button"
+          <Button variant="contained" type="button"
+                  hasIcon icon={Emoji.ThumbsDown}
                   handleButtonClick={(event) => handleMoveToRemovedList(_id, event)}>
             <span>{ButtonLabel.Remove}</span>
           </Button>
-          <Button hasIcon icon={Emoji.ThumbsUp} type="button"
+          <Button variant="contained" type="button"
+                  hasIcon icon={Emoji.ThumbsUp}
                   handleButtonClick={(event) => handleMoveToAddedList(_id, event)}>
             <span>{ButtonLabel.Add}</span>
           </Button>
         </ButtonGroup>
-        : ''
+        : null
       }
       {(watchlistNameAdded || watchlistNameRemoved) && isCardActive
         ?
         <ButtonGroup>
-          <Button hasIcon icon={Emoji.PointingLeft} type="button" handleButtonClick={handleMoveToRemovedList}>
+          <Button variant="contained" type="button"
+                  hasIcon icon={Emoji.PointingLeft}
+                  handleButtonClick={handleMoveToRemovedList}>
             <span>{ButtonLabel.Back}</span>
           </Button>
         </ButtonGroup>
-        : ''
+        : null
       }
       <div className={movieCardShadowClassNames} />
     </div>

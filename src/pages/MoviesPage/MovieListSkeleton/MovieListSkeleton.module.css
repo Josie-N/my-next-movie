@@ -1,0 +1,16 @@
+
+.movieListGridLayout {
+  width:        calc((var(--grid-column) * 7) + var(--grid-column-width));
+  margin-right: var(--grid-column-gap);
+}
+
+.movieListSkeleton {
+  composes:       movieListGridLayout;
+
+  position:       relative;
+  min-height:     39rem;
+
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+}

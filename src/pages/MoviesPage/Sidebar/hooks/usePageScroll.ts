@@ -3,12 +3,11 @@
 import { useLayoutEffect, useState } from "react";
 
 export default function usePageScroll(): boolean {
-  const initialValue = window.pageYOffset > 100;
-  const [isPageScrolledDown, setPageScrolledDown] = useState(initialValue);
+  const [isPageScrolledDown, setPageScrolledDown] = useState(window.pageYOffset > 100);
 
   // Adds event handler to catch the scroll position of the whole page (window)
   useLayoutEffect(() => {
-    const handleScroll = () => setPageScrolledDown(window.pageYOffset > 100)
+    const handleScroll = () => setPageScrolledDown(window.pageYOffset > 100);
 
     // Setting the event handler when the component is mounted
     window.addEventListener("scroll", handleScroll);

@@ -1,0 +1,47 @@
+
+.accountContainer {
+  display:        flex;
+  flex-direction: column;
+  margin-bottom:  var(--space-3);
+}
+
+.accountContainer__open {
+  margin-bottom: 0;
+}
+
+.accountUsernameContainer {
+  display:       flex;
+  align-items:   center;
+  margin-bottom: 0;
+  cursor:        pointer;
+}
+
+.accountUsernameContainer__open {
+  margin-bottom: var(--space-3);
+}
+
+/* Keeps accountUsername font bold when hovering anywhere inside accountUsernameContainer */
+.accountUsernameContainer:hover > .accountUsername {
+  font-weight: 600;
+}
+
+.accountUsername {
+  font-size:     var(--font-size-lg);
+  font-weight:   400;
+  margin-right:  var(--space-1);
+  cursor:        pointer;
+
+  /* Truncate string with ellipsis */
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+.accountUsername__active {
+  font-weight: 600;
+}
+
+.accountUsername:hover {
+  color:       var(--text-color-gunmetal);
+  font-weight: 600;
+}

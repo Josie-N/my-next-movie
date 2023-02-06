@@ -1,0 +1,17 @@
+
+.sidebarContainer {
+  display:        flex;
+  flex-direction: column;
+  flex-grow:      1;
+
+  max-width:      calc((var(--grid-column) * 2) + var(--grid-column-width)); /* 235px */
+  margin-left:    var(--grid-column);
+
+  position:       sticky;
+  top:            0;
+}
+
+.sidebarContainer__scrollDown {
+  composes:    sidebarContainer;
+  padding-top: var(--space-3);
+}

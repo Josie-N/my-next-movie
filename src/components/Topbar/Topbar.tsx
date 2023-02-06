@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MovieListType } from "../../constants/constants";
 import { useStore } from "../../store/store";
 
 import styles from "../../components/Topbar/Topbar.module.css";
 import helperStyles from "../../assets/stylesheets/helper.module.css";
+
 import logo from "../../assets/images/brandLogo.svg";
+import { MovieListType } from "../../constants/constants";
+import LayoutDesktop from "../LayoutDesktop/LayoutDesktop";
 
 export const Topbar = () => {
   const updateMovieListType = useStore(state => state.changeMovieListType);
 
   return (
-    <div className={helperStyles.maxWidthDesktop}>
+    <LayoutDesktop>
       <header className={styles.header}>
         <span>
           <Link to="/" onClick={() => updateMovieListType(MovieListType.Recommended)}>
@@ -22,7 +24,6 @@ export const Topbar = () => {
           The tale of, a movie search database
         </h1>
       </header>
-    </div>
+    </LayoutDesktop>
   );
 }
-

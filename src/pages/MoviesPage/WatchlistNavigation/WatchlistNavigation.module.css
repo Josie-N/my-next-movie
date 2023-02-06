@@ -1,33 +1,11 @@
-
-.watchlistContainer {
-  display:        flex;
-  flex-direction: column;
-  flex-grow:      1;
-
-  position:       sticky;
-  top:            0;
-  padding-left:   var(--grid-column-gap);
-  margin-left:    var(--grid-column-width);
-}
-
-.watchlistContainer__scrollDown {
-  composes:    watchlistContainer;
-  padding-top: var(--space-3);
-}
-
-.watchlistUsername {
-  font-size: var(--font-size-lg);
-  cursor:    default;
+.watchlistTitle {
+  font-size:     var(--font-size-md);
+  margin-bottom: var(--space-1);
 }
 
 .watchlist {
   min-width: 8.58rem;
   font-size: var(--font-size-md);
-}
-
-.watchlistTitle {
-  font-size:     var(--font-size-md);
-  margin-bottom: var(--space-1);
 }
 
 .watchlistItemLabel {
@@ -58,6 +36,6 @@
 }
 
 .emoji {
-  composes:     NotoEmoji from "../../assets/stylesheets/index.css";
+  composes:     NotoEmoji from "../../../assets/stylesheets/index.css";
   margin-right: var(--space-0);
 }

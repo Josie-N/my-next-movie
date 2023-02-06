@@ -1,14 +1,14 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {LinkExternal} from "../generic/LinkExternal/LinkExternal";
+import { Link } from "react-router-dom";
 
 import styles from "../../components/Footer/Footer.module.css";
-import helperStyles from "../../assets/stylesheets/helper.module.css";
 
+import { LinkExternal } from "../generic/LinkExternal/LinkExternal";
+import LayoutDesktop from "../LayoutDesktop/LayoutDesktop";
 
 const Footer = (): JSX.Element => {
   return (
-    <div className={helperStyles.maxWidthDesktop}>
+    <LayoutDesktop>
       <footer>
         <ul className={styles.footerList}>
           <li className={styles.footerItem}>
@@ -25,7 +25,7 @@ const Footer = (): JSX.Element => {
           </li>
         </ul>
       </footer>
-    </div>
+    </LayoutDesktop>
   );
 }
 
