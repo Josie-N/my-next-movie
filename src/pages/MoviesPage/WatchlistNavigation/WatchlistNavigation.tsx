@@ -25,8 +25,8 @@ export default function WatchlistNavigation() {
   return (
     <>
       <nav>
-        <Heading level="h2" styling={styles.watchlistTitle}>My watchlist:</Heading>
-        <ul role="listbox" className={styles.watchlist}>
+        <h2 className={styles.watchlistTitle} id="myWatchlist">My watchlist:</h2>
+        <ul role="listbox" aria-labelledby="myWatchlist" className={styles.watchlist}>
           <li className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameAdded })}
               onClick={() => updateMovieListType(MovieListType.Added)}
               role="option" aria-selected={watchlistNameAdded} tabIndex={0}
