@@ -2,10 +2,12 @@ import React from 'react';
 
 import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
 
-import { ButtonLabel, Emoji, numberOfMoviesPerPage } from "../../../constants/constants";
-import Button from "../../../components/generic/Button/Button";
-import useWatchlistName from "../../../hooks/useWatchlistName";
 import { Movies } from "../../../types/Movies";
+import { ButtonLabel, Emoji, numberOfMoviesPerPage } from "../../../constants/constants";
+import useWatchlistName from "../../../hooks/useWatchlistName";
+
+import Heading from 'src/components/generic/Heading/Heading';
+import Button from "../../../components/generic/Button/Button";
 
 type Props = {
   movies: Movies,
@@ -39,7 +41,7 @@ const LoadMoreMovies = ({ movies, handleLoadMoreMovies, hasNextPage, moviesToPag
             }
           </Button>
           :
-          <h4>No more movies to load.</h4>
+          <Heading level="h4">No more movies to load.</Heading>
       }
     </div>
   );
