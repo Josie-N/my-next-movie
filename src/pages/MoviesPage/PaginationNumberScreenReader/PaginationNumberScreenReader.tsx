@@ -1,5 +1,6 @@
 import React from 'react';
-import helperStyles from "../../../assets/stylesheets/helper.module.css";
+
+import Heading from 'src/components/generic/Heading/Heading';
 
 interface PgNumScreenReaderProps {
   shouldBeDisplayed: boolean,
@@ -12,9 +13,7 @@ const PaginationNumberScreenReader = ({ shouldBeDisplayed, pageNumber }: PgNumSc
     <>
       {
         shouldBeDisplayed &&
-        <h3 className={helperStyles.visuallyHidden}>
-          Page {pageNumber}
-        </h3>
+        <Heading level="h3" hideTextVisually>Page {pageNumber}</Heading>
       }
     </>
   );

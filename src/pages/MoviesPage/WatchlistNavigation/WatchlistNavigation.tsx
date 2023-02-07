@@ -8,6 +8,7 @@ import { Emoji, MovieListType } from "../../../constants/constants";
 
 import useWatchlistName from "../../../hooks/useWatchlistName";
 import useQueryUsername from "../../../hooks/useQueryUsername";
+import Heading from "src/components/generic/Heading/Heading";
 
 
 export default function WatchlistNavigation() {
@@ -24,7 +25,7 @@ export default function WatchlistNavigation() {
   return (
     <>
       <nav>
-        <h2 className={styles.watchlistTitle}>My watchlist:</h2>
+        <Heading level="h2" styling={styles.watchlistTitle}>My watchlist:</Heading>
         <ul role="listbox" className={styles.watchlist}>
           <li className={cn('watchlistLink', { 'watchlistLink__selected': watchlistNameAdded })}
               onClick={() => updateMovieListType(MovieListType.Added)}

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import classNames from "classnames/bind";
 import styles from './UserAccountMenu.module.css';
-import helperStyles from "../../../assets/stylesheets/helper.module.css";
 
 import { useUsernameStore } from "src/store/store";
 import useOutsideClick from "../../../hooks/useOutsideClick";
+import Heading from "src/components/generic/Heading/Heading";
 import UserAccountActions from "../UserAccountActions/UserAccountActions";
 import UserAccountIconSwitch from "../UserAccountIconSwitch/UserAccountIconSwitch";
 
@@ -71,8 +71,8 @@ const UserAccountMenu = () => {
       <div className={usernameContainerClassNames} onClick={handleToggleAccount}
            role="button" aria-haspopup="menu" aria-expanded={isAccountMenuExpanded} tabIndex={0}
       >
-        <h2 className={helperStyles.visuallyHidden}>Username: {username}</h2>
-        <h2 className={usernameClassNames} aria-hidden>{username}</h2>
+        <Heading level="h2" hideTextVisually>Username:{username}</Heading>
+        <Heading level="h2" hideFromScreenReader styling={usernameClassNames}>{username}</Heading>
         <UserAccountIconSwitch isAccountMenuExpanded={isAccountMenuExpanded} isAccountHovered={isAccountHovered} />
       </div>
       {isAccountMenuExpanded &&

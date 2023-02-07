@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import DelayedFallback from "../components/generic/DelayedFallback/DelayedFallback";
+import ErrorFallback from "../components/ErrorFallback/ErrorFallback";
 import Topbar from "../components/Topbar/Topbar";
 import styles from "./App.module.css";
 
@@ -21,7 +22,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Homepage />} />
           <Route path="/imprint" element={<Imprint />} />
-          <Route path="*" element={<h1>404 Page not found</h1>} />
+          <Route path="*" element={<ErrorFallback error={{ message: "404 Page not found" }} />} />
         </Routes>
         <hr className={styles.footerTopBoundary} />
         <Footer />

@@ -1,11 +1,12 @@
 import React, { useLayoutEffect } from 'react';
-import { LinkExternal } from "../../components/generic/LinkExternal/LinkExternal";
 
 import styles from "./Imprint.module.css";
 import imprint from "../../assets/images/Imprint.svg";
 
 import * as Icon from 'react-feather';
 import LayoutDesktop from "../../components/LayoutDesktop/LayoutDesktop";
+import Heading from 'src/components/generic/Heading/Heading';
+import { LinkExternal } from 'src/components/generic/LinkExternal/LinkExternal';
 
 
 const Imprint = () => {
@@ -17,20 +18,22 @@ const Imprint = () => {
     <LayoutDesktop>
       <main className={styles.imprint}>
         <div className={styles.imprintInnerContainer}>
-          <h1 className={styles.imprintMainTitle}>Legal Notice</h1>
+          <Heading level="h2" styling={styles.imprintMainTitle}>Legal Notice</Heading>
           <p className={styles.imprintLegalInfo}>According to{" "}
             <LinkExternal ariaLabel="German law: Telemedia Act, Section 5" hasIcon fontSize="sm"
                           path="https://www.gesetze-im-internet.de/tmg/__5.html">
               § 5, Abs. 1, Nr. 1, TMG
             </LinkExternal>
           </p>
-          <h2 className={styles.imprintSubtitle}>truetaleof.com is brought to you by:</h2>
+          <Heading level="h3" hideFromScreenReader styling={styles.imprintSubtitle}>truetaleof.com is brought to you
+            by:</Heading>
+          <Heading level="h3" hideTextVisually>Name and Address</Heading>
           <address>
             <p className={styles.imprintInfo}>Iozefina Nagy</p>
             <p className={styles.imprintInfo}>Prinzregentenstraße 95</p>
             <p className={styles.imprintInfo}>10717 Berlin</p>
             <p className={styles.imprintInfo}>Germany</p>
-            <h3 className={styles.contactTitle}>Contact</h3>
+            <Heading level="h3" styling={styles.contactTitle}>Contact</Heading>
             <p className={styles.imprintInfo}>
               Email: {" "}
               <a className={styles.imprintEmailLink}
@@ -62,7 +65,7 @@ const Imprint = () => {
               </a>
             </div>
           </address>
-          <h2 className={styles.imprintSubtitle}>Legal disclaimer</h2>
+          <Heading level="h3" styling={styles.imprintSubtitle}>Legal disclaimer</Heading>
           <p className={styles.imprintLegalDisclaimer}>
             Our web-based application contains links to external websites. As the contents of these
             third-party websites are beyond
