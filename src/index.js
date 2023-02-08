@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
+import reportAccessibility from "./App/utils/reportAccessibility";
 import "bootstrap/dist/css/bootstrap.css";
 import "./assets/stylesheets/index.css";
 
@@ -18,3 +19,5 @@ root.render(
     </ErrorBoundary>
   </BrowserRouter>
 );
+
+reportAccessibility(React);
