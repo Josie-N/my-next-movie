@@ -2,6 +2,9 @@
 .button {
   composes:       DINCondSemiBold from "../../../assets/stylesheets/index.css";
 
+  display:        flex;
+  align-items:    center;
+  
   font-size:      var(--font-size-base);
   color:          var(--text-color-gunmetal);
   letter-spacing: 0.06rem;
@@ -38,4 +41,10 @@
   composes:     NotoEmoji from "../../../assets/stylesheets/index.css";
   font-size:    1rem;
   margin-right: 0.25rem;
+}
+
+.buttonLoadingIcon {
+  position:    relative;
+  top:         1px;
+  margin-left: var(--space-0);
 }

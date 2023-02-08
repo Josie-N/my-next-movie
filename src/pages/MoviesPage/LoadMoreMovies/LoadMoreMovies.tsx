@@ -29,6 +29,7 @@ const LoadMoreMovies = ({ movies, handleLoadMoreMovies, hasNextPage, moviesToPag
                   ariaLabel={`Show more movies (${moviesToPaginate})`}
                   hasIcon
                   icon={Emoji.PointingDown}
+                  hasLoadingIcon
                   type="button"
                   handleButtonClick={handleLoadMoreMovies}
           >

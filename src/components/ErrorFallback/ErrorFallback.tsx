@@ -1,5 +1,6 @@
 import Heading from "../generic/Heading/Heading";
 import styles from "../../components/ErrorFallback/ErrorFallback.module.css";
+import React from "react";
 
 type Props = {
   error: {
@@ -11,7 +12,7 @@ const ErrorFallback = ({ error }: Props) => {
   return (
     <div className={styles.errorContainer}>
       <iframe
-        title="Cutting branch from underneath you"
+        title="Illustration of someone cutting a branch from underneath them"
         src="https://giphy.com/embed/eNhLtFS7jYhrPg7SSm"
         style={{ width: '100%', height: 380, overflow: 'auto' }}
         frameBorder="0"

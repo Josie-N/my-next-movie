@@ -71,12 +71,12 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
           <Button variant="contained" type="button"
                   hasIcon icon={Emoji.ThumbsDown}
                   handleButtonClick={(event) => handleMoveToRemovedList(_id, event)}>
-            <span>{ButtonLabel.Remove}</span>
+            {ButtonLabel.Remove}
           </Button>
           <Button variant="contained" type="button"
                   hasIcon icon={Emoji.ThumbsUp}
                   handleButtonClick={(event) => handleMoveToAddedList(_id, event)}>
-            <span>{ButtonLabel.Add}</span>
+            {ButtonLabel.Add}
           </Button>
         </ButtonGroup>
         : null
@@ -87,7 +87,7 @@ function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
           <Button variant="contained" type="button"
                   hasIcon icon={Emoji.PointingLeft}
                   handleButtonClick={handleMoveToRemovedList}>
-            <span>{ButtonLabel.Back}</span>
+            {ButtonLabel.Back}
           </Button>
         </ButtonGroup>
         : null
