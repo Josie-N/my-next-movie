@@ -1,12 +1,12 @@
 import { URL } from "../constants/constants";
 
-export const getUrlMovieList = (currentPage, numberOfMoviesPerPage, username, listName) => {
-  const currentPageParam = `page=${currentPage}`;
+export const getUrlMovieList = (nextCursor, numberOfMoviesPerPage, username, listName) => {
+  const cursorParam = `cursor=${nextCursor}`;
   const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
   const listNameParam = `list=${listName}`;
   const usernameParam = `username=${username}`;
 
-  const url = URL.movies + '?' + currentPageParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
+  const url = URL.movies + '?' + cursorParam + '&' + moviePageLimitParam + '&' + listNameParam + '&' + usernameParam;
   return url;
 }
 
