@@ -49,9 +49,11 @@ export default function WatchlistNavigation() {
               role="option" aria-selected={watchlistNameRemoved} tabIndex={0}
           >
             <span className={styles.emoji} aria-hidden>{Emoji.ThumbsDown}</span>
-            <h3 className={cn('watchlistItemLabel', { 'watchlistItemLabel__selected': watchlistNameRemoved })}>
+            <Heading level="h3" hideTextVisually>{movieCountRemovedList} removed movies</Heading>
+            <Heading level="h3" hideFromScreenReader
+                     styling={cn('watchlistItemLabel', { 'watchlistItemLabel__selected': watchlistNameRemoved })}>
               Removed ({movieCountRemovedList})
-            </h3>
+            </Heading>
           </li>
         </ul>
       </nav>

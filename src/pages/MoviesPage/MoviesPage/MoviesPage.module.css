@@ -1,18 +1,8 @@
 
-.movieListGridLayout {
-  width:        calc((var(--grid-column) * 7) + var(--grid-column-width));
-  margin-right: var(--grid-column-gap);
-}
-
 .mainContentContainer {
   min-height:  62.7vh;
   display:     flex;
   align-items: flex-start;
   margin:      var(--space-3) 0 9rem 0;
   padding-top: var(--space-3);
-}
-
-.movieListContainer {
-  composes: movieListGridLayout;
-  position: relative;
 }

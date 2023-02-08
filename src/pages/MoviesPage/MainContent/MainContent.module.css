@@ -1,0 +1,14 @@
+
+.movieListColumnLayout {
+  width:        calc((var(--grid-column) * 7) + var(--grid-column-width)); /* 680px */
+  margin-right: var(--grid-column-gap);
+}
+
+.movieListContainer {
+  composes: movieListColumnLayout;
+  position: relative;
+}
+
+.movieListContainer__bottomSpacing {
+  margin-bottom: calc(var(--space-8) * 3); /* 312px */
+}

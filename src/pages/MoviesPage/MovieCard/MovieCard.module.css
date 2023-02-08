@@ -16,10 +16,6 @@
   margin-top: 0;
 }
 
-.movieCard:last-child {
-  margin-bottom: var(--space-9);
-}
-
 .movieCard__open {
   composes:      movieCard;
   min-height:    15rem;

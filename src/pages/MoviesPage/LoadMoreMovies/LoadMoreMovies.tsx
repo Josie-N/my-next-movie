@@ -1,11 +1,9 @@
 import React from 'react';
-
 import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
 
 import { Movies } from "../../../types/Movies";
 import { ButtonLabel, Emoji, numberOfMoviesPerPage } from "../../../constants/constants";
 import useWatchlistName from "../../../hooks/useWatchlistName";
-
 import Heading from 'src/components/generic/Heading/Heading';
 import Button from "../../../components/generic/Button/Button";
 
@@ -24,9 +22,9 @@ const LoadMoreMovies = ({ movies, handleLoadMoreMovies, hasNextPage, moviesToPag
   }
 
   return (
-    <div className={styles.showMoreMovies}>
-      {
-        hasNextPage ?
+    <>
+      {hasNextPage ?
+        <div className={styles.showMoreMovies}>
           <Button variant="contained"
                   ariaLabel={`Show more movies (${moviesToPaginate})`}
                   hasIcon
@@ -40,10 +38,15 @@ const LoadMoreMovies = ({ movies, handleLoadMoreMovies, hasNextPage, moviesToPag
               <span>{ButtonLabel.ShowMore}</span>
             }
           </Button>
-          :
-          <Heading level="h4">No more movies to load.</Heading>
+        </div>
+        :
+        watchlistNameRecommended ?
+          <div className={styles.showMoreMovies}>
+            <Heading level="h4">No more movies to load.</Heading>
+          </div>
+          : null
       }
-    </div>
+    </>
   );
 };
 
