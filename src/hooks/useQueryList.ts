@@ -20,9 +20,11 @@ export default function useQueryList(movieListConfig: Props) {
     {
       getNextPageParam: (lastPage) => lastPage.pagination?.next?.cursor,
       useErrorBoundary: true,
+      staleTime: 10 * (60 * 1000), // 10 mins
+      cacheTime: 15 * (60 * 1000), // 15 mins
     }
   );
-
+  
   const movies = normalizeMovies(data);
 
   return { movies, isLoading, isFetching, fetchNextPage, hasNextPage };

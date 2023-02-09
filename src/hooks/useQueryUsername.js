@@ -9,7 +9,11 @@ export default function useQueryUsername () {
 
   const { data } = useQuery(
     'username',
-    () => getAPI(getUsername(username))
+    () => getAPI(getUsername(username)),
+    {
+      staleTime: 10 * (60 * 1000), // 10 mins
+      cacheTime: 15 * (60 * 1000), // 15 mins 
+    }
   );
 
   return data?.data;
