@@ -30,6 +30,7 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: P
             />
             <MovieCard
               movie={movie}
+              canBeCollapsed
               handleMoveToAddedList={handleMoveToAddedList}
               handleMoveToRemovedList={handleMoveToRemovedList}
             />

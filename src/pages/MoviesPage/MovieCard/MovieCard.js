@@ -11,34 +11,38 @@ import { getMovieCardBackground } from "./utils/card_background_color";
 
 import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
+import MovieCardHidden from "../MovieCardHidden/MovieCardHidden";
+import Heading from "../../../components/generic/Heading/Heading";
 
-function MovieCard ({ movie, handleMoveToAddedList, handleMoveToRemovedList }) {
+function MovieCard ({ movie, canBeCollapsed = false, handleMoveToAddedList, handleMoveToRemovedList }) {
   const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
   const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
 
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getFormatMovieTitle(name);
 
-  const [isCardHidden, setCardHidden] = useLocalStorage(false, _id);
+  const [cardIsCollapsed, setCardCollapsed] = useLocalStorage(false, _id);
   const [isCardActive, setCardActive] = useState(false);
 
   // Shows different movie card styles depending on the movie release date
   const movieCardShadowClassNames = getMovieCardBackground(movie);
 
-  // Shows buttons (add, remove) when user hovers in and out of a movie card
+  // Shows/ hides buttons (ex: add, remove) when user hovers in and out of a movie card
   const handleMouseEnter = () => setCardActive(true);
   const handleMouseLeave = () => setCardActive(false);
 
   // Shows more or less content inside a movie card
   const handleCollapse = () => {
-    setCardHidden(!isCardHidden);
+    if (canBeCollapsed) setCardCollapsed(!cardIsCollapsed);
+      setCardCollapsed(!cardIsCollapsed);
+    }
   }
 
-  if (isCardHidden) {
+  if (cardIsCollapsed) {
     return (
-      <div
-        tabIndex="0"
-        className={styles.movieCard__collapsed}
+      <MovieCardHidden handleCollapse={handleCollapse}>
+        <Heading level="h4" styling={styles.movieTitle__collapsed}>{movieTitle}</Heading>
+      </MovieCardHidden>
         onClick={handleCollapse}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
