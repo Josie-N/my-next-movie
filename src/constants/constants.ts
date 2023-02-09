@@ -1,8 +1,4 @@
-// ORIGINAL
-// export const path = 'https://josie-moviehut.herokuapp.com';
-
-// TEST
-export const path = 'https://eedb-2003-ca-5712-d200-4ce-f163-5241-532c.eu.ngrok.io';
+export const path = 'https://josie-moviehut.herokuapp.com';
 
 export const URL = {
   movies: `${path}/api/movies`,

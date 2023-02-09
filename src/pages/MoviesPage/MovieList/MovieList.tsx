@@ -23,7 +23,7 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: P
         const showPageNumberOnLastCard = getPageLastCard(movieCardIndex, numberOfMoviesPerPage);
 
         return (
-          <React.Fragment key={movie._id}>
+          <React.Fragment key={movieCardIndex}>
             <PaginationNumberScreenReader
               pageNumber={pageNumber}
               shouldBeDisplayed={showPageNumberOnFirstCard}
