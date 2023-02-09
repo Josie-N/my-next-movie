@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { numberOfMoviesPerPage } from "../../../constants/constants";
+import { Movies } from "../../../types/Movies";
 import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calculatePagination";
 
 import MovieCard from "../MovieCard/MovieCard";
 import PaginationNumberScreenReader from "../PaginationNumberScreenReader/PaginationNumberScreenReader";
 import PaginationNumber from "../PaginationNumber/PaginationNumber";
-import { Movies } from "../../../types/Movies";
+import MovieListContent from '../MovieListContent/MovieListContent';
 
 type Props = {
   movies: Movies,
@@ -33,7 +34,9 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: P
               canBeCollapsed
               handleMoveToAddedList={handleMoveToAddedList}
               handleMoveToRemovedList={handleMoveToRemovedList}
-            />
+            >
+              <MovieListContent movie={movie} />
+            </MovieCard>
             <PaginationNumber
               pageNumber={pageNumber}
               shouldBeDisplayed={showPageNumberOnLastCard}

@@ -13,9 +13,12 @@ import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import Button from "../../../components/generic/Button/Button";
 import MovieCardHidden from "../MovieCardHidden/MovieCardHidden";
 import Heading from "../../../components/generic/Heading/Heading";
+import { getFormatMovieTitle } from "./utils/helper";
 
-function MovieCard ({ movie, canBeCollapsed = false, handleMoveToAddedList, handleMoveToRemovedList }) {
-  const { _id, name, releaseYear, genre, imdbRating, overview } = movie;
+function MovieCard ({ children, movie, canBeCollapsed = false, handleMoveToAddedList, handleMoveToRemovedList }) {
+  const { _id, name } = movie;
+  const movieTitle = getFormatMovieTitle(name);
+
   const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
 
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
@@ -54,13 +57,13 @@ function MovieCard ({ movie, canBeCollapsed = false, handleMoveToAddedList, hand
 
   return (
     <div
-      tabIndex="0"
+      tabIndex={0}
       className={styles.movieCard__open}
       onClick={handleCollapse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={styles.movieCardInner}>
+      {children}
         <h4 className={styles.movieTitle__open}>{movieTitle}</h4>
         <p className={styles.movieDetails}>
           <span className={styles.movieYear}>{releaseYear} ∙ </span>
