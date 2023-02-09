@@ -1,25 +1,28 @@
 import axios from "axios";
+import { handleErrorProps } from "src/types/handleError";
 
-export const getAPI = async (url) => {
+
+export const getAPI = async (url: string) => {
   try {
     const response = await axios.get(url);
     return response.data;
-  } catch (err) {
+  } catch (err: any) {
     handleError(err);
   }
 }
 
-export const postAPI = async (url) => {
+export const postAPI = async (url: string) => {
   try {
     const response = await axios.post(url);
     return response.data;
-  } catch (err) {
+  } catch (err: any) {
     handleError(err);
   }
 }
 
+
 // Reusable error handler for all requests
-const handleError = (err) => {
+const handleError = (err: handleErrorProps) => {
   if (err.response) {
     // HTTP Error: request was made and received back a 5xx/ Server, 4xx/ Client response
     console.log('HTTP error, response data:', err.response.data);

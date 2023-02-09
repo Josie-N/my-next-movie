@@ -1,5 +1,10 @@
 // Using the adapter pattern: https://refactoring.guru/design-patterns/adapter
-export const normalizeMovies = (movies) => {
+
+import { InfiniteData } from "react-query";
+import { Movies } from "../types/Movies";
+
+export const normalizeMovies = (movies: InfiniteData<Movies> | undefined) => {
+
   if (!movies) {
     return {
       data: [],
