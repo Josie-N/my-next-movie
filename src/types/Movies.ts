@@ -2,7 +2,6 @@ export type Movies = {
   data: MovieData[],
   pagination: {
     totalItems: number,
-    totalPages: number
   }
 }
 

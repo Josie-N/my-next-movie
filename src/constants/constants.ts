@@ -1,7 +1,9 @@
+export const path = 'https://josie-moviehut.herokuapp.com';
+
 export const URL = {
-  movies: 'https://josie-moviehut.herokuapp.com/api/movies',
-  movie: 'https://josie-moviehut.herokuapp.com/api/movie',
-  user: 'https://josie-moviehut.herokuapp.com/api/user'
+  movies: `${path}/api/movies`,
+  movie: `${path}/api/movie`,
+  user: `${path}/api/user`
 } as const;
 
 // Types of movie lists available to user
@@ -12,6 +14,7 @@ export enum MovieListType {
 }
 
 // Types of emoji available in app
+// All skin color types supported
 export enum Emoji {
   ThumbsUp = '👍',
   ThumbsDown = '👎🏻',
