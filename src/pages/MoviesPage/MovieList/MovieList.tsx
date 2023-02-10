@@ -1,17 +1,18 @@
 import React from 'react';
 
 import { numberOfMoviesPerPage } from "../../../constants/constants";
+import { Movies } from "../../../types/Movies";
 import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calculatePagination";
 
 import MovieCard from "../MovieCard/MovieCard";
 import PaginationNumberScreenReader from "../PaginationNumberScreenReader/PaginationNumberScreenReader";
 import PaginationNumber from "../PaginationNumber/PaginationNumber";
-import { Movies } from "../../../types/Movies";
+import MovieListContent from '../MovieListContent/MovieListContent';
 
 type Props = {
   movies: Movies,
-  handleMoveToAddedList?: (_id: string, event: React.SyntheticEvent<HTMLButtonElement>) => void,
-  handleMoveToRemovedList?: (_id: string, event: React.SyntheticEvent<HTMLButtonElement>) => void,
+  handleMoveToAddedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
+  handleMoveToRemovedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
 }
 
 const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: Props) => {
@@ -30,14 +31,19 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: P
             />
             <MovieCard
               movie={movie}
+              canBeCollapsed
+              hasPrimaryActionButtons
+              hasCardShadow
               handleMoveToAddedList={handleMoveToAddedList}
               handleMoveToRemovedList={handleMoveToRemovedList}
-            />
+            >
+              <MovieListContent movie={movie} />
+            </MovieCard>
             <PaginationNumber
               pageNumber={pageNumber}
               shouldBeDisplayed={showPageNumberOnLastCard}
             />
-          </ React.Fragment>
+          </React.Fragment>
         );
       })}
     </div>
