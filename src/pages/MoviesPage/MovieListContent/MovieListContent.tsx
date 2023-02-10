@@ -1,5 +1,7 @@
-import styles from "../MovieCard/MovieCard.module.css";
 import React from "react";
+
+import styles from "./MovieListContent.module.css";
+
 import { getFormatMovieTitle, getImdbRatingInteger } from "../MovieCard/utils/helper";
 import { MovieData } from "../../../types/Movies";
 
@@ -14,8 +16,8 @@ export default function MovieListContent({ movie }: Props) {
 
   return (
     <>
-      <div className={styles.movieCardInner}>
-        <h4 className={styles.movieTitle__open}>{movieTitle}</h4>
+      <div className={styles.contentContainer}>
+        <h4 className={styles.movieTitle}>{movieTitle}</h4>
         <p className={styles.movieDetails}>
           <span className={styles.movieYear}>{releaseYear} ∙ </span>
           <span>{genre}</span>

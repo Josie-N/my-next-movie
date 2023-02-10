@@ -11,8 +11,8 @@ import MovieListContent from '../MovieListContent/MovieListContent';
 
 type Props = {
   movies: Movies,
-  handleMoveToAddedList?: (_id: string, event: React.SyntheticEvent<HTMLButtonElement>) => void,
-  handleMoveToRemovedList?: (_id: string, event: React.SyntheticEvent<HTMLButtonElement>) => void,
+  handleMoveToAddedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
+  handleMoveToRemovedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
 }
 
 const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: Props) => {
@@ -32,6 +32,8 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: P
             <MovieCard
               movie={movie}
               canBeCollapsed
+              hasPrimaryActionButtons
+              hasCardShadow
               handleMoveToAddedList={handleMoveToAddedList}
               handleMoveToRemovedList={handleMoveToRemovedList}
             >
@@ -41,7 +43,7 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: P
               pageNumber={pageNumber}
               shouldBeDisplayed={showPageNumberOnLastCard}
             />
-          </ React.Fragment>
+          </React.Fragment>
         );
       })}
     </div>
