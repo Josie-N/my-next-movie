@@ -23,9 +23,7 @@ interface hideTextFromScreenReader extends HeadingProps {
 // to the screen reader, but never both at the same time
 // https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/
 type Props = hideTextVisually | hideTextFromScreenReader;
-
-
-export default function Heading({
+export function Heading({
                                   level: headingLevel = "p",
                                   hideTextVisually = false,
                                   children,

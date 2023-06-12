@@ -5,7 +5,7 @@ import imprint from "../../assets/images/Imprint.svg";
 
 import * as Icon from 'react-feather';
 import LayoutDesktop from "../../components/LayoutDesktop/LayoutDesktop";
-import Heading from 'src/components/generic/Heading/Heading';
+import { Heading } from 'src/components/generic/Heading/Heading';
 import { LinkExternal } from 'src/components/generic/LinkExternal/LinkExternal';
 
 

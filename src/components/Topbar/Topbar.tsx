@@ -7,7 +7,7 @@ import styles from "../../components/Topbar/Topbar.module.css";
 import logo from "../../assets/images/brandLogo.svg";
 import { MovieListType } from "../../constants/constants";
 import LayoutDesktop from "../LayoutDesktop/LayoutDesktop";
-import Heading from "../generic/Heading/Heading";
+import { Heading } from "../generic/Heading/Heading";
 
 const Topbar = () => {
   const updateMovieListType = useStore(state => state.changeMovieListType);

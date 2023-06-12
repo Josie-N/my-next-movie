@@ -1,4 +1,4 @@
-import Heading from "../generic/Heading/Heading";
+import { Heading } from "../generic/Heading/Heading";
 import styles from "../../components/ErrorFallback/ErrorFallback.module.css";
 import React from "react";
 

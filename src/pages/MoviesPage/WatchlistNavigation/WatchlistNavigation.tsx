@@ -8,8 +8,7 @@ import { Emoji, MovieListType } from "../../../constants/constants";
 
 import useWatchlistName from "../../../hooks/useWatchlistName";
 import useQueryUsername from "../../../hooks/useQueryUsername";
-import Heading from "src/components/generic/Heading/Heading";
-
+import { Heading } from "src/components/generic/Heading/Heading";
 
 export default function WatchlistNavigation() {
   const cn = classNames.bind(styles);

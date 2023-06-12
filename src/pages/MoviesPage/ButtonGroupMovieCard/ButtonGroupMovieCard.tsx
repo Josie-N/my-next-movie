@@ -9,7 +9,7 @@ type Props = {
   backButton: JSX.Element,
 }
 
-export default function ButtonGroupMovieCard({ isCardActive, removeButton, addButton, backButton }: Props) {
+export function ButtonGroupMovieCard({ isCardActive, removeButton, addButton, backButton }: Props) {
   const { watchlistNameRecommended } = useWatchlistName();
 
   if (!isCardActive) return null;

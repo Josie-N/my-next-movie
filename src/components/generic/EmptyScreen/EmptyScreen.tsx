@@ -1,6 +1,6 @@
 import React from 'react';
 import noMovies from "../../../assets/images/noMovies.svg";
-import Heading from '../Heading/Heading';
+import { Heading } from '../Heading/Heading';
 
 export default function EmptyScreen() {
   return (

@@ -4,7 +4,7 @@ import styles from "../LoadMoreMovies/LoadMoreMovies.module.css";
 import { Movies } from "../../../types/Movies";
 import { ButtonLabel, Emoji, numberOfMoviesPerPage } from "../../../constants/constants";
 import useWatchlistName from "../../../hooks/useWatchlistName";
-import Heading from 'src/components/generic/Heading/Heading';
+import { Heading } from 'src/components/generic/Heading/Heading';
 import Button from "../../../components/generic/Button/Button";
 
 type Props = {

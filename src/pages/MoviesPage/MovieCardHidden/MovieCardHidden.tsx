@@ -6,7 +6,7 @@ type Props = {
   handleCollapse: () => void
 }
 
-export default function MovieCardHidden({ children, handleCollapse }: Props) {
+export function MovieCardHidden({ children, handleCollapse }: Props) {
   return (
     <div
       tabIndex={0}

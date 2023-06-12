@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useLocalStorage (defaultValue, key) {
+export function useLocalStorage (defaultValue, key) {
 
   const [value, setValue] = useState(() => {
     const persistentValue = window.localStorage.getItem(key);

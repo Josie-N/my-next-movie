@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Heading from 'src/components/generic/Heading/Heading';
+import { Heading } from 'src/components/generic/Heading/Heading';
 
 interface PgNumScreenReaderProps {
   shouldBeDisplayed: boolean,

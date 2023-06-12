@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, PropsWithChildren } from 'react';
 
 import styles from "./MovieCard.module.css";
 
 import { getFormatMovieTitle } from "./utils/helper";
 import { getMovieCardBackground } from "./utils/card_background_color";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { ButtonLabel, Emoji } from "../../../constants/constants";
 import { MovieData } from "../../../types/Movies";
 
-import Heading from "src/components/generic/Heading/Heading"
-import MovieCardHidden from "../MovieCardHidden/MovieCardHidden";
-import ButtonGroupMovieCard from "../ButtonGroupMovieCard/ButtonGroupMovieCard";
-import ButtonMovieCard from "../ButtonMovieCard/ButtonMovieCard";
+import { Heading } from "src/components/generic/Heading/Heading"
+import { MovieCardHidden } from "../MovieCardHidden/MovieCardHidden";
+import { ButtonGroupMovieCard } from "../ButtonGroupMovieCard/ButtonGroupMovieCard";
+import { ButtonMovieCard } from "../ButtonMovieCard/ButtonMovieCard";
 import classNames from "classnames/bind";
 
-type Props = {
-  children: React.ReactNode,
+interface MovieCardProps {
   movie: MovieData,
   canBeCollapsed?: boolean,
   hasPrimaryActionButtons?: boolean,
@@ -32,7 +31,7 @@ function MovieCard({
                      hasCardShadow = false,
                      handleMoveToAddedList,
                      handleMoveToRemovedList
-                   }: Props) {
+                   }: PropsWithChildren<MovieCardProps>) {
   const cn = classNames.bind(styles);
 
   const { name, _id } = movie;

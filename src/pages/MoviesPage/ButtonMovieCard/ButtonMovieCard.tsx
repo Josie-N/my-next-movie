@@ -8,7 +8,7 @@ type Props = {
   handleButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export default function ButtonMovieCard({ name, icon, handleButtonClick }: Props) {
+export function ButtonMovieCard({ name, icon, handleButtonClick }: Props) {
   return (
     <Button variant="contained" type="button"
             hasIcon icon={icon}

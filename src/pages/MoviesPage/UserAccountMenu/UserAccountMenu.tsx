@@ -5,7 +5,7 @@ import styles from './UserAccountMenu.module.css';
 
 import { useUsernameStore } from "src/store/store";
 import useOutsideClick from "../../../hooks/useOutsideClick";
-import Heading from "src/components/generic/Heading/Heading";
+import { Heading } from "src/components/generic/Heading/Heading";
 import UserAccountActions from "../UserAccountActions/UserAccountActions";
 import UserAccountIconSwitch from "../UserAccountIconSwitch/UserAccountIconSwitch";
 

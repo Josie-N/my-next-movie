@@ -1,6 +1,6 @@
 import React from 'react';
 import useWatchlistName from "../../../hooks/useWatchlistName";
-import Heading from 'src/components/generic/Heading/Heading';
+import { Heading } from 'src/components/generic/Heading/Heading';
 
 export default function SelectedWatchlistHeadingA11y() {
   const { watchlistNameRecommended, watchlistNameAdded, watchlistNameRemoved } = useWatchlistName();
