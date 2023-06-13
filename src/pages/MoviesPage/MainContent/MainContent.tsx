@@ -30,12 +30,14 @@ export default function MainContent({ children }: Props) {
 
   return (
     <>
-      <SelectedWatchlistHeadingA11y />
       {isLoadingMovies ?
         <MovieListSkeleton /> :
-        <div className={movieListContainerClassNames}>
-          {children}
-        </div>
+        <>
+          <SelectedWatchlistHeadingA11y />
+          <div className={movieListContainerClassNames}>
+            {children}
+          </div>
+        </>
       }
     </>
   );

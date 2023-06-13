@@ -7,10 +7,12 @@ export default function useWatchlistName() {
     const watchlistNameRecommended = watchlistName === MovieListType.Recommended;
     const watchlistNameAdded = watchlistName === MovieListType.Added;
     const watchlistNameRemoved = watchlistName === MovieListType.Removed;
+    const watchlistEmpty = watchlistName === '';
 
     return {
         watchlistNameRecommended,
         watchlistNameAdded,
-        watchlistNameRemoved
+        watchlistNameRemoved,
+        watchlistEmpty
     }
 }
