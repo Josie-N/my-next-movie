@@ -12,7 +12,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-function Sidebar({ children }: Props) {
+export function Sidebar({ children }: Props) {
   const movieListType = useStore(state => state.movieListType);
 
   const movieListConfig = getMovieListConfiguration(movieListType);
@@ -34,5 +34,3 @@ function Sidebar({ children }: Props) {
     </>
   );
 }
-
-export default Sidebar;

@@ -14,7 +14,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export default function MainContent({ children }: Props) {
+export function MainContent({ children }: Props) {
   const movieListType = useStore(state => state.movieListType);
   const movieListConfig = getMovieListConfiguration(movieListType);
 

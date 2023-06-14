@@ -1,9 +1,9 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import useQueryList from "../../../hooks/useQueryList";
-import MainContent from "./MainContent";
+import { MainContent } from "./MainContent";
 
-// Make TypeScript happy, by resolving TS errors
+// Resolving TS error
 const mockedQuery = useQueryList as jest.Mock<any>;
 
 // Mock the custom hook module
@@ -55,7 +55,7 @@ describe("MainContent", () => {
     expect(screen.getByRole("heading", { name: /Browse all movies available/i })).toBeInTheDocument();
   });
 
-  it("renders children when app is not loading", () => {
+  it("should render children when app is not loading", () => {
     mockedQuery.mockImplementation(() => ({
       isLoading: false,
     }));
@@ -70,7 +70,7 @@ describe("MainContent", () => {
     expect(screen.queryByText(/loading/i)).toBeNull();
   });
 
-  it("renders loading indicator when app is loading", () => {
+  it("should render loading screen when app is loading", () => {
     render(
       <MainContent>
         <MockChildrenContent />
