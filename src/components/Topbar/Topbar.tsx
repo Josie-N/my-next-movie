@@ -20,7 +20,7 @@ const Topbar = () => {
             <img className={styles.brandLogo} src={logo} alt="True tale of" />
           </Link>
         </span>
-        <Heading level="h1" hideTextVisually>
+        <Heading dataTestID="accessible heading" level="h1" hideTextVisually>
           The tale of, a movie search database
         </Heading>
       </header>
