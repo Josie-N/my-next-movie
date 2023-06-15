@@ -12,6 +12,7 @@
       "dom",
       "dom.iterable"
     ],
+    "types": ["cypress", "node"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -29,6 +30,7 @@
   "include": [
     "src",
     "src/**/*",
-    "typings.d.ts"
+    "typings.d.ts",
+    "**/*.ts"
   ]
 }
