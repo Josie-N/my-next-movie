@@ -1,0 +1,4 @@
+TO DO:
+
+- check that Added(0) does not equal Added(3) if you click on the same card 3 times in a row
+- check that Added(2) + adding two more movie cards will always equal Added(4)

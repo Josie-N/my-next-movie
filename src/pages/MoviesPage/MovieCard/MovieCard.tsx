@@ -67,6 +67,7 @@ function MovieCard({
       onClick={handleCollapse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      data-cy="movie_card_test"
     >
       {hasPrimaryActionButtons &&
         <ButtonGroupMovieCard
