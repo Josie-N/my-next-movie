@@ -23,6 +23,19 @@ npm run start
 ```
 <p>&nbsp;</p>
 
+
+### Testing
+```
+# Run unit tests
+npm run test
+
+# Run end-to-end tests
+npx cypress open
+or
+npm run cypress:open
+```
+<p>&nbsp;</p>
+
 ### Demo
 ![Video demo of truetaleof.com](https://github.com/Josie-N/the-tale-of/assets/23569001/48d33783-f4d8-4b37-8c2e-8608b88cc585)
 <p>&nbsp;</p>
