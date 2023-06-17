@@ -3,6 +3,7 @@ describe('Movie list (switch)', () => {
   beforeEach(() => {
     // Set to desktop viewport
     cy.viewport(1280, 695);
+    // Open app
     cy.visit('http://localhost:3000/');
   });
 

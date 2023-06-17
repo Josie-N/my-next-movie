@@ -1,8 +1,11 @@
 export const path = 'https://josie-moviehut.herokuapp.com';
 
 export const URL = {
+  // request a movie list (ex: recommended, added, removed)
   movies: `${path}/api/movies`,
+  // send a movie from recommended list to a watchlist (added or removed)
   movie: `${path}/api/movie`,
+  // request username information
   user: `${path}/api/user`
 } as const;
 
