@@ -1,0 +1,13 @@
+{
+  "data": {
+    "username": "username test",
+    "lists": {
+      "added": {
+        "total": 0
+      },
+      "removed": {
+        "total": 0
+      }
+    }
+  }
+}

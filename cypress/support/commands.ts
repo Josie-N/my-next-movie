@@ -35,3 +35,11 @@
 //     }
 //   }
 // }
+
+
+Cypress.Commands.add("interceptApiCalls", () => {
+    cy.intercept("GET", "/api/user*", { fixture: "username.json" }).as("usernameStubTest");
+    cy.intercept("GET", "/api/movies*", { fixture: "movies.json" }).as("moviesStubTest");
+});
+
+export {};
