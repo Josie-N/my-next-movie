@@ -5,6 +5,7 @@ import getMovieListConfiguration from "../utils/movieListConfiguration";
 import { getSidebarStyles } from "./utils/helper";
 import useQueryList from "../../../hooks/useQueryList";
 import usePageScroll from "./hooks/usePageScroll";
+import bunny from "../../../assets/images/bunny_thiner.png";
 
 import LoadingIndicator from "../../../components/generic/LoadingIndicator/LoadingIndicator";
 
@@ -27,9 +28,12 @@ export function Sidebar({ children }: Props) {
         isLoadingMovies ?
           <LoadingIndicator />
           :
-          <aside className={sidebarContainerClassNames}>
-            {children}
-          </aside>
+            <>
+              <aside className={sidebarContainerClassNames}>
+               {children}
+                <img alt="" src={bunny} />
+              </aside>
+            </>
       }
     </>
   );
