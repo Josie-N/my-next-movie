@@ -1,61 +1,30 @@
 // TO DO:
 //
 // - check that Added(0) does not equal Added(3) if you click on the same card 3 times in a row
-// - check that Added(2) + adding two more movie cards will always equal Added(4)
+// - (done) check that Added(1) + adding one more movie card will always equal Added(2)
 //
 
-describe('Watchlist Navigation', () => {
-  // before(() => {
-  //   // Set to desktop viewport
-  //   cy.viewport(1280, 695);
-  //   // Open app
-  //   cy.visit('http://localhost:3000/');
-  // });
-
-  it('should show the correct amount of movies added in a watchlist menu item', () => {
-
+describe('Watchlist navigation', () => {
+  beforeEach(() => {
     cy.viewport(1280, 695);
-    // Open app
+    cy.apiStubWatchlistOneItem();
     cy.visit('http://localhost:3000/');
+  });
 
-    cy.get('[data-cy="movie_card_test"]').contains("Shawshank Redemption");
+  it('should count 1 + 1 = 2', () => {
+    cy.checkHomepageIsSelected();
 
+    cy.get('[aria-labelledby="my menu watchlist"]').should('exist');
+    cy.get('[aria-labelledby="my menu watchlist"]').find('li').eq(0).contains("1");
 
-    // cy.get("button").contains(/add/i).click();
-    // //
-    // // cy.get('[aria-labelledby="my menu watchlist"]').should('exist');
-    // // cy.get('[aria-labelledby="my menu watchlist"]').find('li').eq(0).contains("1");
-    // cy.get('[aria-labelledby="my menu watchlist"]').should('exist').then(() => {
-    //   cy.get('[aria-labelledby="my menu watchlist"]').find('li').eq(0).contains("1");
-    // });
-    //
-    // cy.wait(5000);
-    //
-    //
-    // cy.get('[data-cy="movie_card_test"]').contains("Dark Knight").trigger('mouseover');
-    // cy.get("button").contains(/add/i).click({ force: true });
-    //
-    // // cy.get('[aria-labelledby="my menu watchlist"]').should('exist');
-    // // cy.get('[aria-labelledby="my menu watchlist"]').find('li').eq(0).contains("2");
-    //
-    //
-    // cy.get('[aria-labelledby="my menu watchlist"]').should('exist').then(() => {
-    //   cy.get('[aria-labelledby="my menu watchlist"]').find('li').eq(0).contains("1");
-    // });
+    // Hover over second movie card, click 'ADD' button
+    cy.get('[data-testid="cy-movie-card"]').eq(2).trigger('mouseover');
+    cy.get("button").contains(/Add/i).click();
 
-    // cy.get('[data-cy="movie_card_test"]').eq(0).trigger('mouseover');
-    // cy.get("button").contains(/add/i).click();
-    //
-    // cy.get('[data-cy="movie_card_test"]').eq(1).trigger('mouseover');
-    // cy.get("button").contains(/add/i).click();
+    cy.intercept("GET", "/api/user*", {fixture: "user-watchlist-activity/watchlist-counts-added-2-removed-0.json"}).as("usernameTest");
+    cy.wait("@usernameTest");
 
-
-    // cy.get('[data-cy="movie_card_test"]').eq(1).trigger('mouseover').within(() => {
-    //   cy.contains(/add/i).click();
-    // });
-
-
-
+    cy.get('[aria-labelledby="my menu watchlist"]').find('li').eq(0).contains("2");
   });
 });
 

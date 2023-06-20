@@ -1,22 +1,24 @@
-describe('App', () => {
-    before(() => {
+describe('Homepage new user', () => {
+    beforeEach(() => {
         // Set to desktop viewport
         cy.viewport(1280, 695);
-        // API calls for username and movies are stubbed
-        cy.interceptApiCalls();
+
+        // API calls for username and lists available
+        cy.apiStubWatchlistEmpty();
+
         // Visit homepage
         cy.visit('http://localhost:3000/');
     });
 
-    it('should open the homepage', () => {
-        // should this type of test be covered by unit tests?
-        cy.get('h1').invoke('text').should('not.be.empty')
-        cy.get("h1").contains(/the tale of/i).should('exist');
+    it('should render the main heading', () => {
+        cy.get("h1").should('exist');
+        cy.get('[data-testid="accessible heading"]').contains(/the tale of/i).should('exist');
     });
 
-    // When I click on topbar logo, I should be redirected to the homepage
+    it('should have movie list', () => {
+       cy.checkListIsSelected();
+       cy.checkHomepageIsSelected();
+    });
 });
 
 export {}
-// Typescript treats files without import/exports as legacy script files
-// Adding any import or export to a file makes it a module and the error disappear

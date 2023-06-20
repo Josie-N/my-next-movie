@@ -8,7 +8,7 @@ export default function SelectedWatchlistHeadingA11y() {
   return (
     <>
       {watchlistEmpty ? null : (
-        <Heading level="h2" hideTextVisually>
+        <Heading level="h2" hideTextVisually dataTestID="cy-heading-watchlist">
           {watchlistNameRecommended && 'Browse all movies available'}
           {watchlistNameAdded && 'My added watchlist'}
           {watchlistNameRemoved && 'My removed watchlist'}
