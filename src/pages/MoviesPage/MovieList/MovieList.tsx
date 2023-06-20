@@ -36,6 +36,7 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: P
               hasCardShadow
               handleMoveToAddedList={handleMoveToAddedList}
               handleMoveToRemovedList={handleMoveToRemovedList}
+              dataTestID="cy-movie-card"
             >
               <MovieListContent movie={movie} />
             </MovieCard>

@@ -1,0 +1,35 @@
+{
+  "status": true,
+  "pagination": {
+    "totalItems": 2,
+    "next": {
+      "cursor": "OTA5ZWQ0ZTJhNGQ1ZjRjYTFkNWI3YTg3NjAyNmZhNGM6NQ=="
+    }
+  },
+  "data": [
+    {
+      "_id": "60684dbbbba8ef50a50bbb37",
+      "name": "1st movie title",
+      "releaseYear": 1234,
+      "certificate": "U",
+      "runtime": "1 min",
+      "genre": "Genre, Genre, Genre",
+      "imdbRating": 1,
+      "overview": "1st movie card description",
+      "metaScore": "10",
+      "director": "Peter Jackson"
+    },
+    {
+      "_id": "71795ecce9fe61b61ccc48",
+      "name": "2nd movie title",
+      "releaseYear": 1234,
+      "certificate": "U",
+      "runtime": "2 min",
+      "genre": "Genre",
+      "imdbRating": 2,
+      "overview": "2nd movie card description",
+      "metaScore": "20",
+      "director": "Sofia Coppola"
+    }
+  ]
+}

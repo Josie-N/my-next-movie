@@ -5,6 +5,7 @@ interface HeadingProps {
   level: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p",
   children: React.ReactNode,
   styling?: string | null,
+  dataTestID?: string
 }
 
 // Hidden visually, but provided to screen readers
@@ -23,13 +24,15 @@ interface hideTextFromScreenReader extends HeadingProps {
 // to the screen reader, but never both at the same time
 // https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/
 type Props = hideTextVisually | hideTextFromScreenReader;
+
 export function Heading({
-                                  level: headingLevel = "p",
-                                  hideTextVisually = false,
-                                  children,
-                                  styling = null,
-                                  hideFromScreenReader
-                                }: Props) {
+                          level: headingLevel = "p",
+                          hideTextVisually = false,
+                          children,
+                          styling = null,
+                          hideFromScreenReader,
+                          dataTestID
+                        }: Props) {
   const safeHeading = headingLevel ? headingLevel.toLowerCase() : "";
   const validHeadingLevels = ["h1", "h2", "h3", "h4", "h5", "h6"];
   const HeadingTag = validHeadingLevels.includes(safeHeading) ? safeHeading : "p";
@@ -42,7 +45,7 @@ export function Heading({
   return (
     React.createElement(
       HeadingTag,
-      { className: headingStyle, "aria-hidden": isAriaHidden },
+      {className: headingStyle, "aria-hidden": isAriaHidden, "data-testid": dataTestID},
       children
     )
   );

@@ -14,7 +14,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export default function MainContent({ children }: Props) {
+export function MainContent({ children }: Props) {
   const movieListType = useStore(state => state.movieListType);
   const movieListConfig = getMovieListConfiguration(movieListType);
 
@@ -30,12 +30,14 @@ export default function MainContent({ children }: Props) {
 
   return (
     <>
-      <SelectedWatchlistHeadingA11y />
       {isLoadingMovies ?
         <MovieListSkeleton /> :
-        <div className={movieListContainerClassNames}>
-          {children}
-        </div>
+        <>
+          <SelectedWatchlistHeadingA11y />
+          <div className={movieListContainerClassNames}>
+            {children}
+          </div>
+        </>
       }
     </>
   );

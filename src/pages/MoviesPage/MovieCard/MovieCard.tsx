@@ -21,6 +21,7 @@ interface MovieCardProps {
   hasCardShadow?: boolean,
   handleMoveToAddedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
   handleMoveToRemovedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
+  dataTestID?: string
 }
 
 function MovieCard({
@@ -30,7 +31,8 @@ function MovieCard({
                      hasPrimaryActionButtons = false,
                      hasCardShadow = false,
                      handleMoveToAddedList,
-                     handleMoveToRemovedList
+                     handleMoveToRemovedList,
+                     dataTestID
                    }: PropsWithChildren<MovieCardProps>) {
   const cn = classNames.bind(styles);
 
@@ -67,6 +69,7 @@ function MovieCard({
       onClick={handleCollapse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      data-testid={dataTestID}
     >
       {hasPrimaryActionButtons &&
         <ButtonGroupMovieCard

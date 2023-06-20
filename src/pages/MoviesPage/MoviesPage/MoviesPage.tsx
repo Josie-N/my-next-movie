@@ -6,8 +6,8 @@ import styles from "./MoviesPage.module.css";
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 import LayoutDesktop from "src/components/LayoutDesktop/LayoutDesktop";
 import MovieListSwitch from "../MovieListSwitch/MovieListSwitch";
-import MainContent from '../MainContent/MainContent';
-import Sidebar from "../Sidebar/Sidebar";
+import { MainContent } from '../MainContent/MainContent';
+import { Sidebar } from "../Sidebar/Sidebar";
 import WatchlistNavigation from "../WatchlistNavigation/WatchlistNavigation";
 import UserAccountMenu from '../UserAccountMenu/UserAccountMenu';
 

@@ -1,0 +1,72 @@
+
+{
+  "status": true,
+  "pagination": {
+    "totalItems": 20,
+    "next": {
+      "cursor": "YjZiN2I2YTA4Y2U5YjI0NmVhZTc1MmM5MDJkOWU4Mzk6NQ=="
+    }
+  },
+  "data": [
+    {
+      "_id": "60684dbbbba8ef50a50bbb32",
+      "name": "1st movie title",
+      "releaseYear": 1000,
+      "certificate": "A",
+      "runtime": "1 min",
+      "genre": "Genre",
+      "imdbRating": 1,
+      "overview": "1st movie card description",
+      "metaScore": "10",
+      "director": "1st Director"
+    },
+    {
+      "_id": "60684dbbbba8ef50a50bbb33",
+      "name": "2nd movie title",
+      "releaseYear": 2000,
+      "certificate": "A",
+      "runtime": "2 min",
+      "genre": "Genre, Genre",
+      "imdbRating": 2,
+      "overview": "2nd movie card description",
+      "metaScore": "20",
+      "director": "2nd Director"
+    },
+    {
+      "_id": "60684dbbbba8ef50a50bbb35",
+      "name": "3rd movie title",
+      "releaseYear": 3000,
+      "certificate": "A",
+      "runtime": "3 min",
+      "genre": "Genre, Genre",
+      "imdbRating": 3,
+      "overview": "3rd movie card description",
+      "metaScore": "30",
+      "director": "3rd Director"
+    },
+    {
+      "_id": "60684dbbbba8ef50a50bbb36",
+      "name": "4th movie title",
+      "releaseYear": 4000,
+      "certificate": "U",
+      "runtime": "4 min",
+      "genre": "Genre, Genre",
+      "imdbRating": 4,
+      "overview": "4th movie card description",
+      "metaScore": "40",
+      "director": "4th Director"
+    },
+    {
+      "_id": "60684dbbbba8ef50a50bbb34",
+      "name": "5th movie title",
+      "releaseYear": 5000,
+      "certificate": "UA",
+      "runtime": "5 min",
+      "genre": "Genre, Genre, Genre",
+      "imdbRating": 5,
+      "overview": "5th movie card description",
+      "metaScore": "50",
+      "director": "5th Director"
+    }
+  ]
+}
