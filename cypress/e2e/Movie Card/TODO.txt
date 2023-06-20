@@ -1,8 +1,0 @@
-TO DO:
-
--  check that movie card can be collapsed
--  check that movie card can be expanded
-
--  check that button group appears on card hover
--  maybe check that hovered movie card has ADD and REMOVE
-

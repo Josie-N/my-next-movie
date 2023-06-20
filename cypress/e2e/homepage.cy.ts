@@ -8,6 +8,7 @@ describe('Homepage new user', () => {
 
         // Visit homepage
         cy.visit('http://localhost:3000/');
+        cy.screenshot();
     });
 
     it('should render the main heading', () => {
