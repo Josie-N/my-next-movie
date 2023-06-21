@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./MovieListContent.module.css";
+import styles from "./MovieCardContent.module.css";
 
 import { getFormatMovieTitle, getImdbRatingInteger } from "../MovieCard/utils/helper";
 import { MovieData } from "../../../types/Movies";
@@ -9,7 +9,7 @@ type Props = {
   movie: MovieData
 }
 
-export default function MovieListContent({ movie }: Props) {
+export function MovieCardContent({ movie }: Props) {
   const { name, releaseYear, genre, imdbRating, overview } = movie;
   const imdbRatingInteger = getImdbRatingInteger(imdbRating);
   const movieTitle = getFormatMovieTitle(name);

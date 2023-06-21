@@ -7,7 +7,7 @@ import { getPageFirstCard, getPageLastCard, getPageNumber } from "./utils/calcul
 import MovieCard from "../MovieCard/MovieCard";
 import PaginationNumberScreenReader from "../PaginationNumberScreenReader/PaginationNumberScreenReader";
 import PaginationNumber from "../PaginationNumber/PaginationNumber";
-import MovieListContent from '../MovieListContent/MovieListContent';
+import { MovieCardContent } from '../MovieCardContent/MovieCardContent';
 
 type Props = {
   movies: Movies,
@@ -38,7 +38,7 @@ const MovieList = ({ movies, handleMoveToAddedList, handleMoveToRemovedList }: P
               handleMoveToRemovedList={handleMoveToRemovedList}
               dataTestID="cy-movie-card"
             >
-              <MovieListContent movie={movie} />
+              <MovieCardContent movie={movie} />
             </MovieCard>
             <PaginationNumber
               pageNumber={pageNumber}
