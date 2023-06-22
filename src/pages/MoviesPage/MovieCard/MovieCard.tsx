@@ -56,7 +56,7 @@ function MovieCard({
 
   if (cardIsCollapsed) {
     return (
-      <MovieCardHidden handleCollapse={handleCollapse}>
+      <MovieCardHidden handleCollapse={handleCollapse} dataTestID="movie-card-collapsed">
         <Heading level="h4" styling={styles.movieTitle__collapsed}>{movieTitle}</Heading>
       </MovieCardHidden>
     )

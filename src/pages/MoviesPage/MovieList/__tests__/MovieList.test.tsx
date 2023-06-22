@@ -4,10 +4,6 @@ import MovieList from "../MovieList";
 import {mockMovieData} from "../../../../utils/tests/mockMovieData";
 
 describe("MovieList", () => {
-  it("should render without crashing", () => {
-    render(<MovieList movies={mockMovieData(1, 1)}/>);
-  });
-
   it("should render the correct number of movies", () => {
     const numberOfMovies = 5;
     render(<MovieList movies={mockMovieData(numberOfMovies, 5)}/>);

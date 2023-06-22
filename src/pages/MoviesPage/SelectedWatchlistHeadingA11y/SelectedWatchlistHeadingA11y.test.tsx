@@ -7,16 +7,6 @@ const mockedWatchlistName = useWatchlistName as jest.Mock<any>;
 jest.mock("../../../hooks/useWatchlistName");
 
 describe('SelectedWatchlistHeadingA11y', () => {
-  it('should render without crashing', () => {
-    mockedWatchlistName.mockImplementation(() => ({
-      watchlistNameRecommended: true,
-      watchlistNameAdded: false,
-      watchlistNameRemoved: false,
-      watchlistEmpty: false,
-    }));
-    render(<SelectedWatchlistHeadingA11y />);
-  });
-
   it('should display custom heading title when selecting recommended watchlist', () => {
     mockedWatchlistName.mockImplementation(() => ({
       watchlistNameRecommended: true,
