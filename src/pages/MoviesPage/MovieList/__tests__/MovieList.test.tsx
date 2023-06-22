@@ -1,16 +1,16 @@
 import React from "react";
 import {render, screen} from "@testing-library/react";
 import MovieList from "../MovieList";
-import {generateMovieData} from "../__mocks__/mockedMovieData";
+import {mockMovieData} from "../../../../utils/tests/mockMovieData";
 
 describe("MovieList", () => {
   it("should render without crashing", () => {
-    render(<MovieList movies={generateMovieData(1, 1)}/>);
+    render(<MovieList movies={mockMovieData(1, 1)}/>);
   });
 
   it("should render the correct number of movies", () => {
     const numberOfMovies = 5;
-    render(<MovieList movies={generateMovieData(numberOfMovies, 5)}/>);
+    render(<MovieList movies={mockMovieData(numberOfMovies, 5)}/>);
     const amountOfMovies = screen.getAllByRole("heading", {level: 4});
 
     expect(amountOfMovies).toHaveLength(numberOfMovies);
@@ -18,7 +18,7 @@ describe("MovieList", () => {
 
   it("should render no pagination number when less than 5 movies are available", () => {
     const numberOfMovies = 2;
-    render(<MovieList movies={generateMovieData(numberOfMovies, 2)}/>);
+    render(<MovieList movies={mockMovieData(numberOfMovies, 2)}/>);
 
     const amountOfMovies = screen.getAllByRole("heading", {level: 4});
     expect(amountOfMovies).toHaveLength(numberOfMovies);
@@ -29,7 +29,7 @@ describe("MovieList", () => {
 
   it("should render pagination number 1 when at least 5 movies are available", () => {
     const numberOfMovies = 5;
-    render(<MovieList movies={generateMovieData(numberOfMovies, 5)}/>);
+    render(<MovieList movies={mockMovieData(numberOfMovies, 5)}/>);
 
     const amountOfMovies = screen.getAllByRole("heading", {level: 4});
     expect(amountOfMovies).toHaveLength(numberOfMovies);
@@ -41,7 +41,7 @@ describe("MovieList", () => {
 
   it("should increase pagination count every 5 movie cards", () => {
     const numberOfMovies = 10;
-    render(<MovieList movies={generateMovieData(numberOfMovies, 20)}/>);
+    render(<MovieList movies={mockMovieData(numberOfMovies, 20)}/>);
 
     const amountOfMovies = screen.getAllByRole("heading", {level: 4});
     expect(amountOfMovies).toHaveLength(numberOfMovies);
@@ -55,7 +55,7 @@ describe("MovieList", () => {
 
   it("should provide no accessible pagination number for page 1", () => {
     const numberOfMovies = 13;
-    render(<MovieList movies={generateMovieData(numberOfMovies, 13)}/>);
+    render(<MovieList movies={mockMovieData(numberOfMovies, 13)}/>);
 
     const amountOfMovies = screen.getAllByRole("heading", {level: 4});
     expect(amountOfMovies).toHaveLength(numberOfMovies);
@@ -66,7 +66,7 @@ describe("MovieList", () => {
 
   it("should provide an accessible pagination number starting with page 2", () => {
     const numberOfMovies = 12;
-    render(<MovieList movies={generateMovieData(numberOfMovies, 12)}/>);
+    render(<MovieList movies={mockMovieData(numberOfMovies, 12)}/>);
 
     const amountOfMovies = screen.getAllByRole("heading", {level: 4});
     expect(amountOfMovies).toHaveLength(numberOfMovies);

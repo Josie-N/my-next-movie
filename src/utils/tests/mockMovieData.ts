@@ -1,15 +1,15 @@
-import {getOrdinalSuffix} from "../utils/getOrdinalSuffix";
+import {getOrdinalSuffix} from "../helper/getOrdinalSuffix";
 
-export const generateMovieData = (numberOfMovies: number, totalItems: number) => {
+export const mockMovieData = (numberOfMovies: number, totalItems: number) => {
   return {
-    data: generateMovies(numberOfMovies),
+    data: mockMovies(numberOfMovies),
     pagination: {
       totalItems: totalItems,
     }
   };
 }
 
-export const generateMovies = (num: number) => {
+export const mockMovies = (num: number) => {
   const result = [];
 
   // Increment the movie number

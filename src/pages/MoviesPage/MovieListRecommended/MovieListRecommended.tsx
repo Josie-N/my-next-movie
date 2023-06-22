@@ -59,7 +59,7 @@ const MovieListRecommended = () => {
         movies={recommendedMovies}
         handleLoadMoreMovies={handleLoadMoreMovies}
         hasNextPage={hasNextPage}
-        moviesToPaginate={hiddenMoviesCount}
+        numberOfMoviesNotPaginated={hiddenMoviesCount}
       />
     </>
   )
