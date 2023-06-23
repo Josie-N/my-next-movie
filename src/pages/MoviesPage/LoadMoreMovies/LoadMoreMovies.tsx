@@ -11,10 +11,10 @@ type Props = {
   movies: Movies,
   handleLoadMoreMovies: () => void,
   hasNextPage: boolean | undefined,
-  moviesToPaginate?: number
+  numberOfMoviesNotPaginated?: number
 }
 
-const LoadMoreMovies = ({ movies, handleLoadMoreMovies, hasNextPage, moviesToPaginate }: Props) => {
+const LoadMoreMovies = ({ movies, handleLoadMoreMovies, hasNextPage, numberOfMoviesNotPaginated }: Props) => {
   const { watchlistNameRecommended } = useWatchlistName();
 
   if (movies?.data.length < numberOfMoviesPerPage) {
@@ -26,7 +26,7 @@ const LoadMoreMovies = ({ movies, handleLoadMoreMovies, hasNextPage, moviesToPag
       {hasNextPage ?
         <div className={styles.showMoreMovies}>
           <Button variant="contained"
-                  ariaLabel={`Show more movies (${moviesToPaginate})`}
+                  ariaLabel={watchlistNameRecommended ? `Show more movies (${numberOfMoviesNotPaginated})` : 'Show more movies'}
                   hasIcon
                   icon={Emoji.PointingDown}
                   hasLoadingIcon
@@ -34,7 +34,7 @@ const LoadMoreMovies = ({ movies, handleLoadMoreMovies, hasNextPage, moviesToPag
                   handleButtonClick={handleLoadMoreMovies}
           >
             {watchlistNameRecommended ?
-              <span>{ButtonLabel.ShowMore} ({moviesToPaginate})</span>
+              <span>{ButtonLabel.ShowMore} ({numberOfMoviesNotPaginated})</span>
               :
               <span>{ButtonLabel.ShowMore}</span>
             }
