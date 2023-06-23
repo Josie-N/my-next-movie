@@ -1,6 +1,6 @@
-import { URL } from "../constants/constants";
+import {URL} from "../constants/constants";
 
-export const getUrlMovieList = (nextCursor, numberOfMoviesPerPage, username, listName) => {
+export const getUrlMovieList = (nextCursor: string, numberOfMoviesPerPage: number, username: string, listName: string) => {
   const cursorParam = `cursor=${nextCursor}`;
   const moviePageLimitParam = `limit=${numberOfMoviesPerPage}`;
   const listNameParam = `list=${listName}`;
@@ -10,7 +10,7 @@ export const getUrlMovieList = (nextCursor, numberOfMoviesPerPage, username, lis
   return url;
 }
 
-export const postUrlMovieList = (id, username, listName) => {
+export const postUrlMovieList = (id: string, username: string, listName: string) => {
   const movieIdParam = `movieId=${id}`;
   const listTypeParam = `list=${listName}`;
   const usernameParam = `username=${username}`;
@@ -19,7 +19,7 @@ export const postUrlMovieList = (id, username, listName) => {
   return url;
 }
 
-export const getUsername = (username) => {
+export const getUsername = (username: string) => {
   const usernameParam = `username=${username}`;
 
   const url = URL.user + '?' + usernameParam;

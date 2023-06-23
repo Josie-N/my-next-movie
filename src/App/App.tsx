@@ -20,7 +20,7 @@ const App = () => {
       <Suspense fallback={<DelayedFallback />}>
         <Topbar />
         <Routes>
-          <Route exact path="/" element={<Homepage />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/imprint" element={<Imprint />} />
           <Route path="*" element={<ErrorFallback error={{ message: "404 Page not found" }} />} />
         </Routes>
