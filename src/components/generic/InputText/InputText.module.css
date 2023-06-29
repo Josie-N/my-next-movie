@@ -1,0 +1,91 @@
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputText {
+  font-size: var(--font-size-lg);
+
+  padding: 16px var(--space-2) 10px 0;
+  border: none;
+
+  box-shadow: 0 1px 0 #babec2;
+  transition: 0.20s ease all;
+
+  caret-color: var(--text-color-gunmetal);
+}
+
+.inputText:focus-visible {
+  border: 0;
+  outline: 0;
+
+  box-shadow: 0 2.5px 0 var(--color-yellow-highlight-5);
+  transition: 0.25s ease all;
+}
+
+.inputText__error {
+  composes: inputText;
+
+  box-shadow: 0 2.5px 0 var(--color-red-negative);
+}
+
+.inputText__error:focus-visible {
+  border: 0;
+  outline: 0;
+
+  box-shadow: 0 2.5px 0 var(--color-red-negative);
+  transition: 0.25s ease all;
+}
+
+.inputContainer label {
+  position: absolute;
+
+  font-size: var(--font-size-lg);
+  color: var(--text-color-gunmetal-5);
+  line-height: 1;
+
+  pointer-events: none;
+  transform: translate(0, 23px) scale(1);
+  transform-origin: top left;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.inputContainer:focus-within label {
+  transform: translate(0, -6px) scale(0.62);
+  color: var(--text-color-gunmetal-4);
+}
+
+.inputContainer .filledInput {
+  transform: translate(0, -6px) scale(0.62);
+  color: var(--text-color-gunmetal-4);
+}
+
+.clearInput {
+  position: absolute;
+  right: 0;
+  top: 24px;
+  cursor: pointer;
+}
+
+/* Disables LastPass and visually removes LastPass icon */
+div[data-lastpass-icon-root] {
+  display: none;
+}
+
+.characterLimit {
+  position: absolute;
+  right: 0;
+  top: 62px;
+
+  font-size: var(--font-size-s);
+  letter-spacing: -0.2px;
+  color: #767d85;
+
+  margin-top: 5px;
+  min-height: 21.23px;
+}
+
+.characterCount {
+  margin-right: 2.5px;
+}

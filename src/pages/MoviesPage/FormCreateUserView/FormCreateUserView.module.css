@@ -1,0 +1,18 @@
+
+.createNewAccountContainer {
+    margin-top: var(--space-2);
+    max-width: calc((var(--grid-column-width) + var(--grid-column-gap)) * 5);
+}
+
+.mainHeader {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-8);
+}
+
+.primaryActionsButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin-top: var(--space-5);
+}

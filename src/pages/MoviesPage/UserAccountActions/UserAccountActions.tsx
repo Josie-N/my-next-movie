@@ -2,12 +2,13 @@ import React from "react";
 import classNames from "classnames/bind";
 
 import styles from "./UserAccountActions.module.css";
+import {useNewAccountFormStore} from "../../../store/store";
 
 type Props = {
   settings: boolean,
   account: boolean,
   handleSettings: () => void,
-  handleAccount: () => void
+  handleAccount: () => void,
 }
 
 enum Actions {
@@ -17,17 +18,19 @@ enum Actions {
   Delete = 'Delete'
 }
 
-export default function UserAccountActions({ settings, account, handleSettings, handleAccount }: Props) {
+export default function UserAccountActions({settings, account, handleSettings, handleAccount}: Props) {
+  const showNewAccountForm = useNewAccountFormStore(state => state.showNewAccountForm);
+
   const cn = classNames.bind(styles);
 
   const settingsClassNames = cn(
     'actionCategoryLabel',
-    { 'actionCategoryLabel__active': settings }
+    {'actionCategoryLabel__active': settings}
   )
 
   const accountClassNames = cn(
     'actionCategoryLabel',
-    { 'actionCategoryLabel__active': account }
+    {'actionCategoryLabel__active': account}
   )
 
   return (
@@ -44,20 +47,21 @@ export default function UserAccountActions({ settings, account, handleSettings, 
           </h3>
         </div>
         {settings &&
-          <ul className={styles.accountActionList}
-              role="tabpanel"
-              aria-labelledby="settingsTab" id="settingsPanel" aria-hidden={!settings}>
-            <li className={styles.accountActionListItem} tabIndex={0}>{Actions.Change}</li>
-          </ul>
+            <ul className={styles.accountActionList}
+                role="tabpanel"
+                aria-labelledby="settingsTab" id="settingsPanel" aria-hidden={!settings}>
+                <li className={styles.accountActionListItem} tabIndex={0}>{Actions.Change}</li>
+            </ul>
         }
         {account &&
-          <ul className={styles.accountActionList}
-              role="tabpanel"
-              aria-labelledby="accountTab" id="accountPanel" aria-hidden={!account}>
-            <li className={styles.accountActionListItem} tabIndex={0}>{Actions.Create}</li>
-            <li className={styles.accountActionListItem} tabIndex={0}>{Actions.DifferentID}</li>
-            <li className={cn('accountActionListItem', 'deleteAccount')} tabIndex={0}>{Actions.Delete}</li>
-          </ul>
+            <ul className={styles.accountActionList}
+                role="tabpanel" aria-labelledby="accountTab" id="accountPanel" aria-hidden={!account}
+            >
+                <li className={styles.accountActionListItem} tabIndex={0}
+                    onClick={() => showNewAccountForm(true)}>{Actions.Create}</li>
+                <li className={styles.accountActionListItem} tabIndex={0}>{Actions.DifferentID}</li>
+                <li className={cn('accountActionListItem', 'deleteAccount')} tabIndex={0}>{Actions.Delete}</li>
+            </ul>
         }
       </nav>
     </>
