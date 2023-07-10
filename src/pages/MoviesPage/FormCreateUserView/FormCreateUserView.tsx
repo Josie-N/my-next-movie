@@ -28,7 +28,7 @@ export function FormCreateUserView({
     <div className={styles.createNewAccountContainer}>
       <Heading styling={styles.mainHeader} level="h2">Create new account</Heading>
       {errorMsgOnSubmit && <BadgeAlert textMessage={errorMsgOnSubmit}/>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-label="Create new user form">
         <InputText
           textLabel="Username"
           maxLength={30}

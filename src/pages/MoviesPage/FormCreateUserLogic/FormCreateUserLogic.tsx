@@ -51,8 +51,20 @@ export function FormCreateUserLogic() {
     event.preventDefault();
 
     // Access the input text value from the event object
-    const formElement = event.target as HTMLFormElement;
-    const inputElement = formElement[0] as HTMLInputElement;
+    // TO DO: Clean this up
+    // TO DO: What is the difference between event.target and event.currentTarget?
+    // TO DO: Write some comments explaining what in the world is happening here
+    const formElement = event.currentTarget;
+    const inputElement = formElement.elements.namedItem("Username") as HTMLInputElement;
+    // console.log('typeof event.target', typeof event.target);
+    // const inputElement = formElement as HTMLButtonElement;
+    // console.log('typeof formElement', typeof formElement);
+    // console.log('typeof formElement[0]', typeof formElement[0]);
+    //
+    // for (let i = 0; i < formElement.elements.length; i++) {
+    //   console.log(formElement.elements[i].tagName, formElement.elements[i].id);
+    // }
+
     const inputValue = inputElement.value;
 
     // Format the input text to remove any whitespace

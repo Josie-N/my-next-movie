@@ -46,6 +46,8 @@ export function InputText({
   const cn = classNames.bind(styles);
   const inputTextClassNames = cn('inputText', {'inputText__error': hasError});
 
+  const characterCount = maxLength ? maxLength - inputText.length : 0;
+
   return (
     <div className={styles.inputContainer}>
       <input type="text" value={inputText} onChange={handleTextInput}
@@ -53,17 +55,22 @@ export function InputText({
              autoCorrect="off" autoComplete="off" spellCheck={false}
              name={textLabel} id={textLabel}
              className={inputTextClassNames}
+             // required
       />
       <label htmlFor={textLabel} className={inputText && styles.filledInput}>{textLabel}</label>
       <span className={styles.clearInput}>
       {isClearable && inputText ?
-        <Button variant="base" type="reset" handleButtonClick={handleClearTextInput}>
-          <img alt='Reset text input' src={x}/>
+        <Button ariaLabel="Clear text input" variant="base" type="reset" handleButtonClick={handleClearTextInput}>
+          <img alt='' src={x}/>
         </Button> : null
       }
       </span>
       {hasCharacterCounter && showCharacterLimit ?
-        <div className={styles.characterLimit}>
+        <div
+          aria-live="polite"
+          aria-label={`You have ${characterCount} characters remaining`}
+          className={styles.characterLimit}
+        >
           <span className={styles.characterCount}>{inputText.length}</span>
           <span className={styles.characterCount}>/</span>
           <span>{maxLength}</span>
