@@ -77,7 +77,7 @@ export function FormCreateUserLogic() {
     // No characters typed into the input field
     if (isInputEmpty) {
       setIsSubmitButtonDisabled(true);
-      changeSubmitErrorMsg('Please type in at least one word.');
+      changeSubmitErrorMsg('Please enter a username.');
       return;
     }
 

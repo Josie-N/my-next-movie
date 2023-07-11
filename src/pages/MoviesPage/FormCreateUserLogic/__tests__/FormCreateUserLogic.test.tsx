@@ -49,7 +49,7 @@ describe('FormCreateUserLogic', () => {
       const submitButton = screen.getByRole('button', {name: /create/i});
       fireEvent.click(submitButton);
 
-      expect(screen.getByText(/Please type in at least one word/i)).toBeInTheDocument();
+      expect(screen.getByText(/Please enter a username/i)).toBeInTheDocument();
     });
 
     it('should be able to contain emojis', () => {
@@ -70,7 +70,7 @@ describe('FormCreateUserLogic', () => {
       fireEvent.click(submitButton);
 
       expect(screen.queryByText(/Your username needs at least 2 characters/i)).not.toBeInTheDocument();
-      expect(screen.queryByText(/Please type in at least one word/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Please enter a username/i)).not.toBeInTheDocument();
     });
   });
 

@@ -61,31 +61,7 @@
   color: var(--text-color-gunmetal-4);
 }
 
-.clearInput {
-  position: absolute;
-  right: 0;
-  top: 24px;
-  cursor: pointer;
-}
-
 /* Disables LastPass and visually removes LastPass icon */
 div[data-lastpass-icon-root] {
   display: none;
-}
-
-.characterLimit {
-  position: absolute;
-  right: 0;
-  top: 62px;
-
-  font-size: var(--font-size-s);
-  letter-spacing: -0.2px;
-  color: #767d85;
-
-  margin-top: 5px;
-  min-height: 21.23px;
-}
-
-.characterCount {
-  margin-right: 2.5px;
 }

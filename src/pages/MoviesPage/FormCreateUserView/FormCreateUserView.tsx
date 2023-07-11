@@ -28,11 +28,12 @@ export function FormCreateUserView({
     <div className={styles.createNewAccountContainer}>
       <Heading styling={styles.mainHeader} level="h2">Create new account</Heading>
       {errorMsgOnSubmit && <BadgeAlert textMessage={errorMsgOnSubmit}/>}
-      <form onSubmit={handleSubmit} aria-label="Create new user form">
+      <form onSubmit={handleSubmit} aria-label="Create new user form" noValidate>
         <InputText
           textLabel="Username"
           maxLength={30}
           isClearable
+          isRequired
           hasCharacterCounter
           hasInputValidation
           onTextInput={handleTextInput}

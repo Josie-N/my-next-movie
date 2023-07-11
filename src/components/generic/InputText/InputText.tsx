@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import styles from "./InputText.module.css";
 import classNames from "classnames/bind";
-
+import {CharacterCounter} from "../CharacterCounter/CharacterCounter";
+import {ButtonClearInput} from "../ButtonClearInput/ButtonClearInput";
 import x from "../../../assets/icons/x.svg";
-import Button from "../Button/Button";
 
 
 type Props = {
   textLabel: string,
   isClearable?: boolean,
+  isRequired?: boolean,
   hasCharacterCounter?: boolean,
   hasInputValidation?: boolean,
   maxLength?: number,
@@ -19,6 +20,7 @@ type Props = {
 
 export function InputText({
                             isClearable = false,
+                            isRequired = false,
                             hasCharacterCounter = false,
                             hasInputValidation = false,
                             maxLength,
@@ -46,8 +48,6 @@ export function InputText({
   const cn = classNames.bind(styles);
   const inputTextClassNames = cn('inputText', {'inputText__error': hasError});
 
-  const characterCount = maxLength ? maxLength - inputText.length : 0;
-
   return (
     <div className={styles.inputContainer}>
       <input type="text" value={inputText} onChange={handleTextInput}
@@ -55,27 +55,13 @@ export function InputText({
              autoCorrect="off" autoComplete="off" spellCheck={false}
              name={textLabel} id={textLabel}
              className={inputTextClassNames}
-             // required
+             required={isRequired}
       />
       <label htmlFor={textLabel} className={inputText && styles.filledInput}>{textLabel}</label>
-      <span className={styles.clearInput}>
       {isClearable && inputText ?
-        <Button ariaLabel="Clear text input" variant="base" type="reset" handleButtonClick={handleClearTextInput}>
-          <img alt='' src={x}/>
-        </Button> : null
-      }
-      </span>
+        <ButtonClearInput ariaTextLabel="Clear text input" handleClearInput={handleClearTextInput} clearIcon={x}/> : null}
       {hasCharacterCounter && showCharacterLimit ?
-        <div
-          aria-live="polite"
-          aria-label={`You have ${characterCount} characters remaining`}
-          className={styles.characterLimit}
-        >
-          <span className={styles.characterCount}>{inputText.length}</span>
-          <span className={styles.characterCount}>/</span>
-          <span>{maxLength}</span>
-        </div> : null
-      }
+        <CharacterCounter maxCharacterLength={30} inputTextLength={inputText.length}/> : null}
     </div>
   );
 }
