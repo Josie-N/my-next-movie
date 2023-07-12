@@ -52,6 +52,16 @@ describe('FormCreateUserLogic', () => {
       expect(screen.getByText(/Please enter a username/i)).toBeInTheDocument();
     });
 
+    it('should not contain only empty spaces', () => {
+      const {userInput} = getInputButton();
+      fireEvent.change(userInput, {target: {value: '   '}});
+
+      const submitButton = screen.getByRole('button', {name: /create/i});
+      fireEvent.click(submitButton);
+
+      expect(screen.getByText(/Please enter a username/i)).toBeInTheDocument();
+    });
+
     it('should be able to contain emojis', () => {
       const {userInput} = getInputButton();
       fireEvent.change(userInput, {target: {value: '👍'}});
@@ -62,7 +72,7 @@ describe('FormCreateUserLogic', () => {
       expect(screen.queryByText(/Some symbols are not allowed:/i)).not.toBeInTheDocument();
     });
 
-    it('should be able to contain characters with spaces between them', () => {
+    it('should be able to contain characters with spaces in between them', () => {
       const {userInput} = getInputButton();
       fireEvent.change(userInput, {target: {value: '1   2   3'}});
 
