@@ -16,7 +16,7 @@ export enum MovieListType {
   Removed = 'removed'
 }
 
-// Types of emoji available in app
+// Types of emoji available to be rendered
 // All skin color types supported
 export enum Emoji {
   ThumbsUp = '👍',

@@ -3,6 +3,7 @@ import {useNewAccountFormStore, useUsernameStore} from "../../../store/store";
 import {getRemoveWhitespace} from "./utils/helper";
 import {useInvalidateQueries} from "../../../hooks/useInvalidateAllQueries";
 import {FormCreateUserView} from "../FormCreateUserView/FormCreateUserView";
+import {FormErrorMessage} from "../../../constants/formErrorMessages";
 
 export function FormCreateUserLogic() {
   const invalidateQueries = useInvalidateQueries();
@@ -14,16 +15,15 @@ export function FormCreateUserLogic() {
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(false);
 
   const checkForbiddenCharacters = (value: string) => {
-    const forbiddenCharacters = "( ) ' - _ . ! * ~";
-
-    // Regex pattern that matches all occurrences of these characters in a string
+    // Regex pattern that matches all occurrences of characters in a string
     const detectForbiddenCharacters = /[-_.!~*'()]/g;
+
     // Check if the value contains specific characters, returns true or false
     const hasForbiddenCharacters = detectForbiddenCharacters.test(value);
 
     if (hasForbiddenCharacters) {
       setIsSubmitButtonDisabled(true);
-      changeSubmitErrorMsg(`Some symbols are not allowed: ${forbiddenCharacters}`);
+      changeSubmitErrorMsg(FormErrorMessage.symbolsNotAllowed);
       return;
     }
 
@@ -50,21 +50,14 @@ export function FormCreateUserLogic() {
     // Stop the default action of the browser, handle the event with JavaScript instead
     event.preventDefault();
 
-    // Access the input text value from the event object
-    // TO DO: Clean this up
-    // TO DO: What is the difference between event.target and event.currentTarget?
-    // TO DO: Write some comments explaining what in the world is happening here
+    // Returns the element that the event listener (onSubmit) is attached to
     const formElement = event.currentTarget;
-    const inputElement = formElement.elements.namedItem("Username") as HTMLInputElement;
-    // console.log('typeof event.target', typeof event.target);
-    // const inputElement = formElement as HTMLButtonElement;
-    // console.log('typeof formElement', typeof formElement);
-    // console.log('typeof formElement[0]', typeof formElement[0]);
-    //
-    // for (let i = 0; i < formElement.elements.length; i++) {
-    //   console.log(formElement.elements[i].tagName, formElement.elements[i].id);
-    // }
 
+    // formElement.elements: returns all elements within the form, including input elements and buttons
+    // formElement.elements.namedItem: searches for an element with the name attribute equal to "Username" within the form's elements
+    const inputElement = formElement.elements.namedItem("Username") as HTMLInputElement;
+
+    // Access to the value of the input field
     const inputValue = inputElement.value;
 
     // Format the input text to remove any whitespace
@@ -77,14 +70,14 @@ export function FormCreateUserLogic() {
     // No characters typed into the input field
     if (isInputEmpty) {
       setIsSubmitButtonDisabled(true);
-      changeSubmitErrorMsg('Please enter a username.');
+      changeSubmitErrorMsg(FormErrorMessage.emptyField);
       return;
     }
 
     // Only 1 character typed into the input field
     if (isInputTooShort) {
       setIsSubmitButtonDisabled(true);
-      changeSubmitErrorMsg('Your username needs at least 2 characters.');
+      changeSubmitErrorMsg(FormErrorMessage.usernameTooShort);
       return;
     }
 
