@@ -10,6 +10,8 @@
   --font-size-md:             1.20rem; /*   20.40px = 17px (base) * 1,20 (scale) */
   --font-size-base:           17px; /*      1 rem (em?) */
   --font-size-sm:             0.885rem; /*  15.10px */
+  --font-size-s:              13px;
+
 
   /* Color weights */
   /* Naming system from 1 to 10 */

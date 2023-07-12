@@ -1,0 +1,7 @@
+
+.clearInput {
+    position: absolute;
+    right: 0;
+    top: 24px;
+    cursor: pointer;
+}

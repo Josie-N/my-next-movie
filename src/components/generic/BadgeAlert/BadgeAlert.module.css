@@ -1,0 +1,20 @@
+
+.mainContainer {
+    color: var(--color-red-negative);
+    font-weight: 600;
+
+    position: absolute;
+    top: 80px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 12px 23px 12px 17px;
+    border: 2px solid var(--color-red-negative);
+    border-radius: 8px;
+    box-shadow: 2px 2px var(--color-red-negative);
+}
+
+.alertIcon {
+    margin-right: 17px;
+}

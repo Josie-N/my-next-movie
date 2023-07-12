@@ -16,7 +16,7 @@ export enum MovieListType {
   Removed = 'removed'
 }
 
-// Types of emoji available in app
+// Types of emoji available to be rendered
 // All skin color types supported
 export enum Emoji {
   ThumbsUp = '👍',
@@ -31,7 +31,9 @@ export enum ButtonLabel {
   Add = 'ADD',
   Remove = 'REMOVE',
   Back = 'SEND BACK',
-  ShowMore = 'SHOW MORE'
+  ShowMore = 'SHOW MORE',
+  Cancel = 'CANCEL',
+  Create = 'CREATE',
 }
 
 // How many movies are displayed per page in each movie list
