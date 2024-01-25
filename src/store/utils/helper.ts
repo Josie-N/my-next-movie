@@ -1,5 +1,9 @@
+type ExtractNumbersResult = {
+  currentBookmarkNumber: number,
+  lastReturnedBookmarkNumber: number
+}
 
-export const extractNumberFromBookmarkId = (bookmarkId: string | undefined) => {
+export const extractNumberFromBookmarkId = (bookmarkId: string | undefined) : number => {
   if (bookmarkId === undefined) {
     return 0;
   }
@@ -16,16 +20,19 @@ export const sortBookmarks = (bookmarks: string[]): string[] => {
   });
 };
 
-// (bookmarkId: string) => boolean is the type declaration
-// export const doesBookmarkIdContainDigits: (bookmarkId: string) => boolean = (bookmarkId: string) => {
-//   const doesItContainDigits = /\d$/;
-//   return doesItContainDigits.test(bookmarkId);
-// }
-
-// // (bookmarkId: string) => boolean is the type declaration
+// (bookmarkId: string) => boolean is the type declaration in TS
 export const doesBookmarkIdHaveValidFormat: (bookmarkId: string) => boolean = (bookmarkId: string) => {
-  // Does it contain hyphen separated letters from a to z
-  // with one number at the end
+  // Check if contains hyphen separated letters from a to z, with one number at the end
   const validFormat = /^[-a-zA-Z]+-[0-9]+$/;
   return validFormat.test(bookmarkId);
+}
+
+export const extractBookmarkIdNumbers = (id: string, lastReturnedBookmarkId: string) : ExtractNumbersResult => {
+  const currentBookmarkNumber = extractNumberFromBookmarkId(id);
+  const lastReturnedBookmarkNumber = extractNumberFromBookmarkId(lastReturnedBookmarkId);
+  return { currentBookmarkNumber, lastReturnedBookmarkNumber };
+};
+
+export const isCurrentBookmarkSmallerThanLastBookmark = (currentBookmarkNumber : number, lastReturnedBookmarkNumber: number) : boolean => {
+  return currentBookmarkNumber <= lastReturnedBookmarkNumber;
 }

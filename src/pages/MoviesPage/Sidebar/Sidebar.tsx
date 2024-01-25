@@ -7,9 +7,9 @@ import getMovieListConfiguration from "../utils/movieListConfiguration";
 import {getSidebarStyles} from "./utils/helper";
 import useQueryList from "../../../hooks/useQueryList";
 import usePageScroll from "./hooks/usePageScroll";
-import bunny from "../../../assets/images/bunny_thiner.png";
 
 import LoadingIndicator from "../../../components/generic/LoadingIndicator/LoadingIndicator";
+import rabbitIllustration from "../../../assets/images/rabbit.png";
 
 type Props = {
   children?: React.ReactNode
@@ -17,9 +17,7 @@ type Props = {
 
 export function Sidebar({children}: Props) {
   const movieListType = useStore(state => state.movieListType);
-
-  // Zustand was added here
-  const setNextBookmarkId = useBookmarkStore(state => state.setNextBookmarkId);
+  const getNextBookmarkId = useBookmarkStore(state => state.getNextBookmarkId);
 
   const movieListConfig = getMovieListConfiguration(movieListType);
   const {isLoading: isLoadingMovies} = useQueryList(movieListConfig);
@@ -28,7 +26,7 @@ export function Sidebar({children}: Props) {
   const sidebarContainerClassNames = getSidebarStyles(isPageScrolledDown);
 
   const handleScrollToID = () => {
-    const divElement = document.getElementById(setNextBookmarkId());
+    const divElement = document.getElementById(getNextBookmarkId());
     divElement?.scrollIntoView({behavior: 'smooth', block: "center", inline: "nearest"});
   };
 
@@ -41,7 +39,7 @@ export function Sidebar({children}: Props) {
           <>
             <aside className={sidebarContainerClassNames}>
               {children}
-              <img className={styles.bunnyNavigation} onClick={handleScrollToID} alt="" src={bunny}/>
+              <img className={styles.bunnyNavigation} onClick={handleScrollToID} alt="" src={rabbitIllustration}/>
             </aside>
           </>
       }
