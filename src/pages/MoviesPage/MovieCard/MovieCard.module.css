@@ -1,10 +1,10 @@
 
 .movieCard {
-  display:          flex;
-  margin-top:       var(--space-5);
-  padding:          0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
-  position:         relative;
-  border:           3px solid var(--text-color-gunmetal);
+  display: flex;
+  margin-top: var(--space-5);
+  padding: 0 calc(var(--space-5) - 3px) calc(var(--space-2) - 3px) calc(var(--space-4) - 3px);
+  position: relative;
+  border: 3px solid var(--text-color-gunmetal);
   background-color: var(--background-color-white);
 }
 
@@ -21,8 +21,8 @@
 }
 
 .movieCard__open {
-  composes:      movieCard;
-  min-height:    15rem;
+  composes: movieCard;
+  min-height: 15rem;
   border-radius: 6px;
 }
 
@@ -32,53 +32,81 @@
 }
 
 .movieCard__collapsed {
-  composes:      movieCard;
+  composes: movieCard;
   border-radius: 4px;
-  opacity:       0.5;
+  opacity: 0.5;
 }
 
 .movieCard__collapsed:hover {
   background-image: radial-gradient(var(--text-color-gunmetal) 1.1px, var(--background-color-white) 1.1px);
-  background-size:  44px 44px;
-  opacity:          1;
+  background-size: 44px 44px;
+  opacity: 1;
 }
 
 .movieTitle__collapsed {
   max-width: 31.2rem;
   font-size: var(--font-size-xl);
-  margin:    var(--space-2) 0 0 0;
+  margin: var(--space-2) 0 0 0;
 }
 
 .movieDetails {
   font-size: var(--font-size-base);
-  opacity:   0.78;
+  opacity: 0.78;
 }
 
 .movieCardShadow {
-  height:        100%;
-  width:         42.6rem;
-  z-index:       -1;
-  position:      absolute;
-  transform:     translate(-34px, 23px);
+  height: 100%;
+  width: 42.6rem;
+  z-index: -1;
+  position: absolute;
+  transform: translate(-34px, 23px);
+
+  border: 2px solid var(--text-color-gunmetal);
   border-radius: 4px 4px 6px 4px;
 }
 
-.movieCardShadow__new {
-  composes:         movieCardShadow;
-  background-color: var(--text-color-gunmetal);
-  opacity:          0.9;
-}
-
-.movieCardShadow__old {
-  composes:         movieCardShadow;
-  background-image: radial-gradient(var(--text-color-gunmetal) 0.9px, transparent 0.9px);
-  background-size:  5px 5px;
-  border:           2px solid var(--text-color-gunmetal);
-  opacity:          0.75;
-}
-
-.movieCardShadow_older {
+.movieCardShadow__recent {
   composes: movieCardShadow;
-  border:   2px solid var(--text-color-gunmetal);
-  opacity:  0.75;
+  background-color: var(--text-color-gunmetal);
+  opacity: 0.9;
 }
+
+.movieCardShadow__classic {
+  composes: movieCardShadow;
+  opacity: 0.75;
+}
+
+.movieCardShadow__vintage {
+  composes: movieCardShadow;
+  background-image: radial-gradient(var(--text-color-gunmetal) 0.9px, transparent 0.9px);
+  background-size: 5px 5px;
+  opacity: 0.75;
+}
+
+.movieCardShadow__forMainActions {
+  composes: movieCardShadow;
+
+  /* FEEDBACK: TOO BRIGHT AND LOUD, NEED SOMETHING A BIT MORE SUBTLE TO GO WITH THE PINK */
+  /* I like this one */
+  background: #32DE8A;
+
+  /* For 'send back' button movie card shadow */
+  background: #1B98E0;
+
+  transition: background 0.4s ease;
+}
+
+.movieCardShadow__forSecondActions {
+  composes: movieCardShadow;
+
+  /* THIS ONE IS GOOD, KEEP IT */
+  background: #F9CFF2;
+
+  transition: background 0.4s ease;
+}
+
+/*.bookmarkIconContainer {*/
+/*  position: absolute;*/
+/*  left: -74px;*/
+/*  top: -8px;*/
+/*}*/

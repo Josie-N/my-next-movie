@@ -15,3 +15,9 @@
   composes:    sidebarContainer;
   padding-top: var(--space-3);
 }
+
+.bunnyNavigation {
+  margin-top: var(--space-4);
+  width: 55%;
+  opacity: 0.9;
+}

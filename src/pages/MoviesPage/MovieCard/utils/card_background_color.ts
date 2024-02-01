@@ -2,19 +2,23 @@ import classNames from "classnames/bind";
 import styles from "../MovieCard.module.css";
 import { MovieData } from "../../../../types/Movies";
 
-// Adds a different background color to movie cards depending on their release date
-export const getMovieCardBackground = (movie: MovieData): string => {
+// Adds a different background style to movie cards
+export const getMovieCardBackground = (movie: MovieData,
+                                       isSecondHighlightStyle: boolean,
+                                       isMainHighlightStyle: boolean ) : string => {
   const { releaseYear } = movie;
 
-  const isMovieNew = releaseYear >= 2000;  // 2000 ~ present
-  const isMovieOlder = releaseYear >= 1975 && releaseYear < 2000;  // 1975 ~ 1999
-  const isMovieOld = releaseYear < 1975;  // ... ~ 1974
+  const isRecentMovie = releaseYear >= 2000;  // 2000 ~ present
+  const isClassicMovie = releaseYear >= 1975 && releaseYear < 2000;  // 1975 ~ 1999
+  const isVintageMovie = releaseYear < 1975;  // ... ~ 1974
 
   const cn = classNames.bind(styles);
   const movieCardShadowClassNames = cn(
-    { 'movieCardShadow__new': isMovieNew },
-    { 'movieCardShadow_older': isMovieOlder },
-    { 'movieCardShadow__old': isMovieOld },
+    { 'movieCardShadow__recent': isRecentMovie },
+    { 'movieCardShadow__classic': isClassicMovie },
+    { 'movieCardShadow__vintage': isVintageMovie },
+    { 'movieCardShadow__forMainActions': isMainHighlightStyle },
+    { 'movieCardShadow__forSecondActions': isSecondHighlightStyle },
   );
 
   return movieCardShadowClassNames;

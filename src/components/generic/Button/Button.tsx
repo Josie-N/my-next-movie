@@ -7,14 +7,22 @@ import getMovieListConfiguration from "../../../pages/MoviesPage/utils/movieList
 import useQueryList from "../../../hooks/useQueryList";
 import {Loader} from 'react-feather';
 
-interface ButtonProps {
-  ariaLabel?: string,
+interface ButtonEventHandlers {
+  handleButtonClick?: React.MouseEventHandler;
+  handleButtonMouseEnter?: React.MouseEventHandler;
+  handleButtonMouseLeave?: React.MouseEventHandler;
+}
+
+interface ButtonAppearance {
   hasIcon?: boolean,
   icon?: string,
   hasLoadingIcon?: boolean,
+  variant: "base" | "text" | "outlined" | "contained" | "contained-secondary",
+}
+
+interface ButtonProps extends ButtonEventHandlers, ButtonAppearance {
+  ariaLabel?: string,
   type: "button" | "submit" | "reset",
-  handleButtonClick?: React.MouseEventHandler,
-  variant: "base" | "text" | "outlined" | "contained",
   children: React.ReactNode,
   isButtonDisabled?: boolean
 }
@@ -26,6 +34,8 @@ function Button({
                   hasLoadingIcon = false,
                   type = 'button',
                   handleButtonClick,
+                  handleButtonMouseEnter,
+                  handleButtonMouseLeave,
                   variant,
                   children,
                   isButtonDisabled
@@ -35,17 +45,22 @@ function Button({
   const movieListConfig = getMovieListConfiguration(movieListType);
   const {isFetching} = useQueryList(movieListConfig);
 
+  // TO DO: Move this to a separate file
+  // Need a storybook with examples of all the buttons
   const cn = classNames.bind(styles);
   const buttonClassNames = cn(
     {'button': variant === 'base'},
     {'button__text': variant === 'text'},
     {'button__outlined': variant === 'outlined'},
     {'button__contained': variant === 'contained'},
+    {'button__contained-secondary': variant === 'contained-secondary'},
     {'button__disabled': isButtonDisabled}
   );
 
   return (
     <button onClick={handleButtonClick}
+            onMouseEnter={handleButtonMouseEnter}
+            onMouseLeave={handleButtonMouseLeave}
             type={type}
             className={buttonClassNames}
             aria-label={ariaLabel}
@@ -59,7 +74,7 @@ function Button({
         :
         <>
           {hasIcon ? <span className={styles.buttonIcon}>{icon}</span> : null}
-          {children}
+          <span className={styles.test}>{children}</span>
         </>
       }
     </button>

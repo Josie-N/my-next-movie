@@ -34,6 +34,7 @@ export enum ButtonLabel {
   ShowMore = 'SHOW MORE',
   Cancel = 'CANCEL',
   Create = 'CREATE',
+  Remember = 'REMEMBER'
 }
 
 // How many movies are displayed per page in each movie list

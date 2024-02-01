@@ -1,0 +1,21 @@
+
+.buttonGroup {
+    display: flex;
+    position: absolute;
+    top: -30px;
+}
+
+.buttonGroup__primary {
+    composes: buttonGroup;
+    right: 35px;
+}
+
+.buttonGroup__secondary {
+    composes: buttonGroup;
+    /*Style that aligns the secondary button group to the left of the primary button group*/
+    /*left: 42px;*/
+
+    /*left: -35px;*/
+
+    left: -24px;
+}

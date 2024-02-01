@@ -44,11 +44,55 @@
     outline: 1px solid var(--text-color-gunmetal);
 }
 
+/*----------------*/
+
+/* NEW */
+
+.button__contained-secondary {
+    composes: button;
+
+    margin: var(--space-0);
+    padding: var(--space-0);
+
+    border: 2px solid var(--text-color-gunmetal);
+    border-radius: 4px;
+
+    background-color: var(--background-color-white);
+    box-shadow: 2px 2px 0 var(--text-color-gunmetal);
+}
+
+.button__contained-secondary:hover {
+    margin: var(--space-0);
+    padding: var(--space-0) var(--space-1);
+
+    border: 2px solid var(--text-color-gunmetal);
+    border-radius: 4px;
+
+    background-color: var(--background-color-white);
+    box-shadow: 4px 4px 0 var(--text-color-gunmetal);
+
+    transition: padding 0.2s ease-out, margin 0.2s ease-out;
+}
+
+.test {
+    /*background: pink;*/
+}
+
+/*----------------*/
+
 .buttonIcon {
+    /*TODO: Needs to accept NotoEmoji and NotoEmojiBold*/
     composes: NotoEmoji from "../../../assets/stylesheets/index.css";
     font-size: 1rem;
+    /*Issue: we need to only have this margin-right for some buttons, but not all*/
     margin-right: 0.25rem;
 }
+
+/* Something like this: */
+/*.buttonIcon__withText {*/
+/*    composes: buttonIcon;*/
+/*    margin-right: var(--space-0);*/
+/*}*/
 
 .buttonLoadingIcon {
     position: relative;
