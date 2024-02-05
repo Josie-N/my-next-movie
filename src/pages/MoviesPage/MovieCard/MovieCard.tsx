@@ -39,7 +39,7 @@ function MovieCard({
                    }: PropsWithChildren<MovieCardProps>) {
   const cn = classNames.bind(styles);
 
-  // Movie content data
+  // Movie data
   const {name, _id} = movie;
   const movieTitle = getFormatMovieTitle(name);
 
@@ -68,11 +68,8 @@ function MovieCard({
 
   //  Show movie card highlight styles
   // Idea: these two states can be combined into one
-  const [isMainHighlightStyle, setMainHighlightStyle] = useState(false);
-  const [isSecondHighlightStyle, setSecondHighlightStyle] = useState(false);
 
-
-  // const [hlStyle, setHlStyle] = useState({});
+  const[highlightStyle, setHighlightStyle] = useState('none');
 
   // Control what happens once a movie card is bookmarked
   // Maybe it should be wasCardBookmarked?
@@ -96,9 +93,9 @@ function MovieCard({
 
   // Show more or less content inside a movie card
   const handleCardCollapse = () => {
-    if(isSecondHighlightStyle) {
-      setCardCollapsed(false);
-      return;
+    if(highlightStyle === 'second') {
+        setCardCollapsed(false);
+        return;
     }
 
     if (canBeCollapsed) setCardCollapsed(!cardIsCollapsed);
@@ -109,7 +106,9 @@ function MovieCard({
     // setCardCollapsed(false);
     isCardBookmarked ? removeBookmarkId(movieCardId) : storeBookmarkId(movieCardId);
 
-    setSecondHighlightStyle(!isCardBookmarked);
+    // Toggle: if card is already bookmarked, remove style (set to 'none').
+    //         if the card is not yet bookmarked, set to 'second'
+    setHighlightStyle(isCardBookmarked ? 'none' : 'second');
     setCardBookmarked(!isCardBookmarked);
   }
 
@@ -118,7 +117,7 @@ function MovieCard({
   // }
 
   // Show different movie card styles depending on the movie card state
-  const movieCardShadowClassNames = getMovieCardBackground(movie, isSecondHighlightStyle, isMainHighlightStyle);
+  const movieCardShadowClassNames = getMovieCardBackground(movie, highlightStyle);
 
   if (cardIsCollapsed) {
     return (
@@ -150,7 +149,8 @@ function MovieCard({
                     () => {
                       // setHlStyle({...hlStyle, primaryButtonActive: true, })
                       setBookmarkButtonActive(true);
-                      setSecondHighlightStyle(true);
+
+                      setHighlightStyle('second');
                       setPrimaryButtonsActive(false);
                     }
                   }
@@ -160,7 +160,7 @@ function MovieCard({
                       setPrimaryButtonsActive(true);
 
                       if (!isCardBookmarked) {
-                        setSecondHighlightStyle(false);
+                        setHighlightStyle('none');
                       }
                     }
                   }
@@ -184,21 +184,16 @@ function MovieCard({
                     (event) => {
                       handleMoveToRemovedList?.(_id, event);
                       if (handleMoveToRemovedList) {
-                        setMainHighlightStyle(false);
-                        setSecondHighlightStyle(false);
+                        setHighlightStyle('none');
                         setCardBookmarked(false);
                       }
                     }
                   }
-                  handleMouseEnter={() => {
-                    setMainHighlightStyle(true);
-                    setSecondHighlightStyle(false);
-                  }}
+                  handleMouseEnter={() => setHighlightStyle('main')}
                   handleMouseLeave={() => {
-                    setMainHighlightStyle(false);
-                    if(isCardBookmarked) {
-                      setSecondHighlightStyle(true);
-                    }
+                    setHighlightStyle('none');
+
+                    if(isCardBookmarked) setHighlightStyle('second');
                   }}
                 />
               }
@@ -210,34 +205,31 @@ function MovieCard({
                     (event) =>  {
                       handleMoveToAddedList?.(_id, event);
                       if (handleMoveToAddedList) {
-                        setMainHighlightStyle(false);
-                        setSecondHighlightStyle(false);
+                        setHighlightStyle('none');
+
                         // EXPERIMENTAL:
                         // PROBABLY THE SOLUTI0N:
+                        // (1st FEB) Probably the reason for the bug? Not sure
+                        // Why is it not unbookmarking the card?
                         setCardBookmarked(false);
                       }
                     }
                   }
-                  handleMouseEnter={() => {
-                    setMainHighlightStyle(true);
-                    setSecondHighlightStyle(false);
-                  }}
-                  // handleMouseLeave={() => setMainHighlightStyle(false)}
+                  handleMouseEnter={() => setHighlightStyle('main')}
                   handleMouseLeave={() => {
-                    setMainHighlightStyle(false);
-
+                    setHighlightStyle('none');
 
                     // TO DO (30th JAN): There's a bug where if you bookmark a card
                     // and then press the Add or Remove button,
                     // the background is still green
 
                     // UPDATE ON BUG (31st JAN):
-                    // Now when you press Add or Remove button
-                    // the background is no longer green,
-                    // BUT the movie card is still bookmarked
-                    if(isCardBookmarked) {
-                      setSecondHighlightStyle(true);
-                    }
+                    // Now when you press Add or Remove button:
+                    // -> the background is no longer green,
+                    // -> it removes the card,
+                    // -> BUT the movie card underneath the one being Added/ Removed is still bookmarked
+                    // -> despite the background not being green
+                    if(isCardBookmarked) setHighlightStyle('second');
                   }}
                 />
               }
