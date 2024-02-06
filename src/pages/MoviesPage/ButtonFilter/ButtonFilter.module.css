@@ -12,10 +12,5 @@
 
 .buttonGroup__secondary {
     composes: buttonGroup;
-    /*Style that aligns the secondary button group to the left of the primary button group*/
-    /*left: 42px;*/
-
-    /*left: -35px;*/
-
     left: -24px;
 }

@@ -1,27 +1,21 @@
-import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 import React from "react";
+import styles from "./ButtonFilter.module.css";
+
 import useWatchlistName from "../../../hooks/useWatchlistName";
-import styles from "./ButtonGroupMovieCard.module.css";
+import ButtonGroup from "../../../components/generic/ButtonGroup/ButtonGroup";
 
 type Props = {
-  isCardActive: boolean,
   removeButton?: JSX.Element,
   addButton?: JSX.Element,
   backButton?: JSX.Element,
   bookmarkButton?: JSX.Element,
 }
 
-// ButtonFilter
-// responsibility: filter buttons according to watchlist type
-export function ButtonGroupMovieCard({ isCardActive, removeButton, addButton, backButton, bookmarkButton }: Props) {
+// Filter buttons according to watchlist type
+export function ButtonFilter({ removeButton, addButton, bookmarkButton, backButton }: Props) {
   const { watchlistNameRecommended } = useWatchlistName();
 
-  // If card is not active, don't render anything
-  if (!isCardActive) return null;
-
-  // Maybe make it a bit more explicit?
-  // Say if it's any kind of list except for the recommended list, then show only back button
-  // Remember to update the unit tests
+  // TO DO: Add unit tests
   if (watchlistNameRecommended) {
     return (
       <ButtonGroup>

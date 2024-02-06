@@ -11,7 +11,7 @@ type Props = {
   hasPrimaryActionButtons?: boolean
 }
 
-// ActionButton
+// TO DO: Rename to ActionButton
 export function ButtonMovieCard({ name, icon, handleButtonClick, handleMouseEnter, handleMouseLeave, hasPrimaryActionButtons }: Props) {
   const buttonStyle = hasPrimaryActionButtons ? 'contained' : 'contained-secondary';
 

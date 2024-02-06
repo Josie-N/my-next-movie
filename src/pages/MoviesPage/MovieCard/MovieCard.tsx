@@ -11,7 +11,7 @@ import {MovieData} from "../../../types/Movies";
 
 import {Heading} from "src/components/generic/Heading/Heading"
 import {MovieCardHidden} from "../MovieCardHidden/MovieCardHidden";
-import {ButtonGroupMovieCard} from "../ButtonGroupMovieCard/ButtonGroupMovieCard";
+import {ButtonFilter} from "../ButtonFilter/ButtonFilter";
 import {ButtonMovieCard} from "../ButtonMovieCard/ButtonMovieCard";
 import useBookmarkStore from "../../../store/bookmarkStore";
 
@@ -47,11 +47,7 @@ function MovieCard({
   const {storeBookmarkId, removeBookmarkId} = useBookmarkStore();
 
   // Local State
-  // Control movie card as a whole
-  // TO DO: You need to use isCardActive directly in MovieCard to show/ hide the movie card buttons
-  // Right now it depends on watchlistNameRecommended inside ButtonGroupMovieCard, it's pretty sketchy
-  // ButtonGroupMovieCard (soon to be renamed ButtonFilter) should be responsible for filtering the buttons,
-  // not for showing/ hiding them
+  // Control what happens when a movie card is hovered
   const [isCardActive, setCardActive] = useState(false);
   //  TO DO: I think this is supposed to be cardIsOpen? Is seems like the logic is reversed
   // Previous feedback was that it's not easy to understand what false is without going inside the useLocalStorage hook
@@ -63,15 +59,18 @@ function MovieCard({
   // Is it a good idea to have an array that remembers which buttons are active?
   const [arePrimaryButtonsActive, setPrimaryButtonsActive] = useState(false);
 
+  // NEW (5th Feb):
+  // Need to create a custom hook
+  // useButtonActivation
+  // ButtonActivationSettings
+  // const [buttonCategory, setButtonCategory] = useButtonCategoryFilter();
+
   // TO DO: This state can be moved to a different component
   const [isBookmarkButtonActive, setBookmarkButtonActive] = useState(false);
 
-  //  Show movie card highlight styles
-  // Idea: these two states can be combined into one
-
   const[highlightStyle, setHighlightStyle] = useState('none');
 
-  // Control what happens once a movie card is bookmarked
+  // Controls what happens once a movie card is bookmarked
   // Maybe it should be wasCardBookmarked?
   // TO DO: This state can be moved to a different component
   const [isCardBookmarked, setCardBookmarked] = useState(false);
@@ -79,17 +78,8 @@ function MovieCard({
 
   // Event handlers
   // Hover in and out of a movie card
-  const handleCardMouseEnter = () => {
-    setCardActive(true);
-    // Remove here:
-    setPrimaryButtonsActive(true);
-  }
-
-  const handleCardMouseLeave = () => {
-    setCardActive(false);
-    // Remove here:
-    setPrimaryButtonsActive(false);
-  }
+  const handleCardMouseEnter = () => setCardActive(true);
+  const handleCardMouseLeave = () => setCardActive(false);
 
   // Show more or less content inside a movie card
   const handleCardCollapse = () => {
@@ -111,10 +101,6 @@ function MovieCard({
     setHighlightStyle(isCardBookmarked ? 'none' : 'second');
     setCardBookmarked(!isCardBookmarked);
   }
-
-  // const handleBookmarkMouseEnter = () => {
-  //
-  // }
 
   // Show different movie card styles depending on the movie card state
   const movieCardShadowClassNames = getMovieCardBackground(movie, highlightStyle);
@@ -138,8 +124,8 @@ function MovieCard({
       id={movieCardId}
     >
       {/* How can I refactor this into something more manageable? */}
-          <ButtonGroupMovieCard
-              isCardActive={isCardActive}
+      {isCardActive &&
+          <ButtonFilter
               bookmarkButton={
                 <ButtonMovieCard
                   name={isBookmarkButtonActive? ButtonLabel.Remember : ''}
@@ -167,80 +153,78 @@ function MovieCard({
                 />
               }
           />
-
-      {/*
-      Idea: Do (hasPrimaryActionButtons && isCardActive)
-            Remove isCardActive={isCardActive} from ButtonGroupMovieCard
-            Remove setPrimaryButtonsActive(true); from handleCardMouseEnter & handleCardMouseLeave
-      */}
-      {(hasPrimaryActionButtons && arePrimaryButtonsActive) &&
-          <ButtonGroupMovieCard
-              isCardActive={isCardActive}
-              removeButton={
-                <ButtonMovieCard
-                  name={ButtonLabel.Remove} icon={Emoji.ThumbsDown}
-                  hasPrimaryActionButtons
-                  handleButtonClick={
-                    (event) => {
-                      handleMoveToRemovedList?.(_id, event);
-                      if (handleMoveToRemovedList) {
-                        setHighlightStyle('none');
-                        setCardBookmarked(false);
-                      }
-                    }
-                  }
-                  handleMouseEnter={() => setHighlightStyle('main')}
-                  handleMouseLeave={() => {
-                    setHighlightStyle('none');
-
-                    if(isCardBookmarked) setHighlightStyle('second');
-                  }}
-                />
+      }
+      {/* NEW: */}
+      {/* If we do this: */}
+      {/* {hasPrimaryActionButtons && buttonCategory.primary === 'active' && ( */}
+      {/* Do we still need isCardActive? */}
+      {(hasPrimaryActionButtons && isCardActive) &&
+      <ButtonFilter
+        removeButton={
+          <ButtonMovieCard
+            name={ButtonLabel.Remove} icon={Emoji.ThumbsDown}
+            hasPrimaryActionButtons
+            handleButtonClick={
+              (event) => {
+                handleMoveToRemovedList?.(_id, event);
+                if (handleMoveToRemovedList) {
+                  setHighlightStyle('none');
+                  setCardBookmarked(false);
+                }
               }
-              addButton={
-                <ButtonMovieCard
-                  name={ButtonLabel.Add} icon={Emoji.ThumbsUp}
-                  hasPrimaryActionButtons
-                  handleButtonClick={
-                    (event) =>  {
-                      handleMoveToAddedList?.(_id, event);
-                      if (handleMoveToAddedList) {
-                        setHighlightStyle('none');
+            }
+            handleMouseEnter={() => setHighlightStyle('main')}
+            handleMouseLeave={() => {
+              setHighlightStyle('none');
 
-                        // EXPERIMENTAL:
-                        // PROBABLY THE SOLUTI0N:
-                        // (1st FEB) Probably the reason for the bug? Not sure
-                        // Why is it not unbookmarking the card?
-                        setCardBookmarked(false);
-                      }
-                    }
-                  }
-                  handleMouseEnter={() => setHighlightStyle('main')}
-                  handleMouseLeave={() => {
-                    setHighlightStyle('none');
-
-                    // TO DO (30th JAN): There's a bug where if you bookmark a card
-                    // and then press the Add or Remove button,
-                    // the background is still green
-
-                    // UPDATE ON BUG (31st JAN):
-                    // Now when you press Add or Remove button:
-                    // -> the background is no longer green,
-                    // -> it removes the card,
-                    // -> BUT the movie card underneath the one being Added/ Removed is still bookmarked
-                    // -> despite the background not being green
-                    if(isCardBookmarked) setHighlightStyle('second');
-                  }}
-                />
-              }
-              backButton={
-                <ButtonMovieCard
-                  name={ButtonLabel.Back} icon={Emoji.PointingLeft}
-                  hasPrimaryActionButtons
-                  handleButtonClick={() => {}}
-                />
-              }
+              if(isCardBookmarked) setHighlightStyle('second');
+            }}
           />
+        }
+        addButton={
+          <ButtonMovieCard
+            name={ButtonLabel.Add} icon={Emoji.ThumbsUp}
+            hasPrimaryActionButtons
+            handleButtonClick={
+              (event) =>  {
+                handleMoveToAddedList?.(_id, event);
+                if (handleMoveToAddedList) {
+                  setHighlightStyle('none');
+
+                  // EXPERIMENTAL:
+                  // PROBABLY THE SOLUTI0N:
+                  // (1st FEB) Probably the reason for the bug? Not sure
+                  // Why is it not unbookmarking the card?
+                  setCardBookmarked(false);
+                }
+              }
+            }
+            handleMouseEnter={() => setHighlightStyle('main')}
+            handleMouseLeave={() => {
+              setHighlightStyle('none');
+
+              // TO DO (30th JAN): There's a bug where if you bookmark a card
+              // and then press the Add or Remove button,
+              // the background is still green
+
+              // UPDATE ON BUG (31st JAN):
+              // Now when you press Add or Remove button:
+              // -> the background is no longer green,
+              // -> it removes the card,
+              // -> BUT the movie card underneath the one being Added/ Removed is still bookmarked
+              // -> despite the background not being green
+              if(isCardBookmarked) setHighlightStyle('second');
+            }}
+          />
+        }
+        backButton={
+          <ButtonMovieCard
+            name={ButtonLabel.Back} icon={Emoji.PointingLeft}
+            hasPrimaryActionButtons
+            handleButtonClick={() => {}}
+          />
+        }
+      />
       }
       {children}
       {hasCardShadow && <div className={movieCardShadowClassNames}/>}
