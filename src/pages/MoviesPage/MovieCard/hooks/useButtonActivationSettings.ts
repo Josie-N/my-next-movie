@@ -1,120 +1,125 @@
 import { useState } from "react";
 
-type HighlightStyle = "primary" | "secondary" | "none";
-
 export default function useButtonActivationSettings() {
   const [ buttons, setButtons ] = useState({
-    isPrimaryButtonDisplayed: false,
-    isSecondaryButtonDisplayed: false,
+    isPrimaryButtonHovered: false,
+    isSecondaryButtonHovered: false,
+
+    isPrimaryButtonPressed: false,
     isSecondaryButtonPressed: false,
-    highlightStyle: "none" as HighlightStyle
+
+    hasSecondaryButtonJustBeenUnpressed: false,
+    isCardHovered: false,
   });
 
   return {
-    isPrimaryButtonDisplayed: () => buttons.isPrimaryButtonDisplayed,
-    isSecondaryButtonDisplayed: () => buttons.isSecondaryButtonDisplayed,
-    highlightStyle: () => buttons.highlightStyle,
+    isPrimaryButtonDisplayed: () => {
+      if (buttons.isSecondaryButtonHovered) {
+        return false;
+      }
+      return buttons.isCardHovered;
+    },
+
+    isSecondaryButtonDisplayed: () => {
+      return buttons.isCardHovered;
+    },
+
+    isSecondaryButtonLabelDisplayed: () => {
+      return buttons.isSecondaryButtonHovered;
+    },
+
+    isSecondaryButtonPressed: () => buttons.isSecondaryButtonPressed,
+
+    highlightStyle: () => {
+      if (buttons.isPrimaryButtonHovered) {
+        return "primary";
+      }
+      // unbookmarking
+      if (buttons.hasSecondaryButtonJustBeenUnpressed) {
+        return "none";
+      }
+      // about to bookmark or bookmarking
+      if (buttons.isSecondaryButtonPressed || buttons.isSecondaryButtonHovered) {
+        return "secondary";
+      }
+      return "none";
+    },
+
+    onCardMouseEnter: () => {
+      setButtons({
+        ...buttons,
+        isCardHovered: true,
+      });
+    },
+
+    onCardMouseLeave: () => {
+      setButtons({
+        ...buttons,
+        isCardHovered: false,
+      });
+    },
 
     onButtonMouseEnter: (role: string) => {
-      if (role === "primary") {
-        // show primary button
-        setButtons({
-          ...buttons,
-          isPrimaryButtonDisplayed: true,
-          highlightStyle: "primary"
-        });
-
-        // hide secondary button
-        if (buttons.isSecondaryButtonDisplayed) {
-          setButtons({
-            ...buttons,
-            isSecondaryButtonDisplayed: false
-          });
+      setButtons(prevButtons => {
+        if (role === "primary") {
+          return {
+            ...prevButtons,
+            isPrimaryButtonHovered: true,
+          };
         }
 
-        return;
-      }
-
-      if (role === "secondary") {
-        // show secondary button
-        setButtons({
-          ...buttons,
-          isSecondaryButtonDisplayed: true,
-          highlightStyle: "secondary"
-        });
-
-        // hide primary button
-        if (buttons.isPrimaryButtonDisplayed) {
-          setButtons({
-            ...buttons,
-            isPrimaryButtonDisplayed: false
-          });
+        if (role === "secondary") {
+          return {
+            ...prevButtons,
+            isSecondaryButtonHovered: true,
+            hasSecondaryButtonJustBeenUnpressed: false
+          };
         }
 
-        return;
-      }
-
-      throw new Error(`Invalid role to display button: ${role}`);
+        throw new Error(`Invalid role to display button: ${role}`);
+      });
     },
 
     onButtonMouseLeave: (role: string) => {
-      if(role === "primary") {
-        if(buttons.isSecondaryButtonPressed) {
-          setButtons({
-            ...buttons,
-            highlightStyle: "secondary"
-          });
+      // @ts-ignore
+      setButtons(prevButtons => {
+        if (role === "primary") {
+          return {
+            ...prevButtons,
+            isPrimaryButtonHovered: false,
+          };
         }
 
-        setButtons({
-          ...buttons,
-          isPrimaryButtonDisplayed: false,
-          highlightStyle: "none"
-        });
-      }
-
-      if(role === "secondary") {
-        if(buttons.isSecondaryButtonPressed) {
-          setButtons({
-            ...buttons,
-            highlightStyle: "secondary"
-          });
+        if (role === "secondary") {
+          return {
+            ...prevButtons,
+            isSecondaryButtonHovered: false,
+          };
         }
-
-        setButtons({
-          ...buttons,
-          isSecondaryButtonDisplayed: false,
-          highlightStyle: "none"
-        });
-      }
+      })
     },
 
     onSecondaryButtonToggle: () => {
-      if (buttons.isSecondaryButtonPressed) {
-        setButtons({
-          ...buttons,
-          isSecondaryButtonPressed: false,
-          isSecondaryButtonDisplayed: false,
-          highlightStyle: "none"
-        });
-      } else {
-        setButtons({
-          ...buttons,
-          isSecondaryButtonPressed: true,
-          isSecondaryButtonDisplayed: true,
-          highlightStyle: "secondary"
-        });
-      }
+      setButtons(prevButtons => {
+        if (prevButtons.isSecondaryButtonPressed) {
+          return {
+            ...prevButtons,
+            isSecondaryButtonPressed: false,
+            hasSecondaryButtonJustBeenUnpressed: true,
+          };
+        } else {
+          return {
+            ...prevButtons,
+            isSecondaryButtonPressed: true,
+          };
+        }
+      });
     },
 
     onPrimaryButtonClick: () => {
         setButtons({
           ...buttons,
-          isSecondaryButtonPressed: false,
-          highlightStyle: "none"
+          isPrimaryButtonPressed: true
         });
     },
-
-    // isPrimaryState: () => buttons.isPrimaryButtonDisplayed
-    // isSecondaryState: () => buttons.isSecondaryButtonDisplayed || buttons.isSecondaryButtonPressed,
   }};

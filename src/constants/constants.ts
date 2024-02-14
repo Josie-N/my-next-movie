@@ -23,11 +23,13 @@ export enum Emoji {
   ThumbsDown = '👎🏻',
   PointingDown = '👇',
   PointingLeft = '👈🏿',
-  Eyes = '👀'
+  Eyes = '👀',
+  Pin = '📌',
 }
 
 // Types of button labels
 export enum ButtonLabel {
+  Loading = 'LOADING',
   Add = 'ADD',
   Remove = 'REMOVE',
   Back = 'SEND BACK',

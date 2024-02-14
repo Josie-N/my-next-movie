@@ -1,16 +1,17 @@
 import React from 'react';
 import classNames from "classnames/bind";
+import {Loader} from 'react-feather';
 
 import styles from './Button.module.css';
 import {useStore} from "../../../store/store";
 import getMovieListConfiguration from "../../../pages/MoviesPage/utils/movieListConfiguration";
 import useQueryList from "../../../hooks/useQueryList";
-import {Loader} from 'react-feather';
+import {ButtonLabel} from "../../../constants/constants";
 
 interface ButtonEventHandlers {
-  handleButtonClick?: React.MouseEventHandler;
-  handleButtonMouseEnter?: React.MouseEventHandler;
-  handleButtonMouseLeave?: React.MouseEventHandler;
+  handleButtonClick?: React.MouseEventHandler<HTMLButtonElement>;
+  handleButtonMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
+  handleButtonMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 interface ButtonAppearance {
@@ -46,7 +47,7 @@ function Button({
   const {isFetching} = useQueryList(movieListConfig);
 
   // TO DO: Move this to a separate file
-  // Need a storybook with examples of all the buttons
+  // TO DO: Need a storybook with examples of all the buttons
   const cn = classNames.bind(styles);
   const buttonClassNames = cn(
     {'button': variant === 'base'},
@@ -68,7 +69,7 @@ function Button({
     >
       {hasLoadingIcon && isFetching ?
         <>
-          LOADING
+          {ButtonLabel.Loading}
           <Loader className={styles.buttonLoadingIcon} strokeWidth={2.5} size={16} color="#1C2735"/>
         </>
         :

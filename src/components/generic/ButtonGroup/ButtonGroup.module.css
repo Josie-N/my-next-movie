@@ -1,7 +1,15 @@
-
 .buttonGroup {
-  display:  flex;
+  display: flex;
   position: absolute;
-  right:    35px;
-  top:      -30px;
+  top: -30px;
+}
+
+.buttonGroup__primary {
+  composes: buttonGroup;
+  right: 35px;
+}
+
+.buttonGroup__secondary {
+  composes: buttonGroup;
+  left: -24px;
 }
