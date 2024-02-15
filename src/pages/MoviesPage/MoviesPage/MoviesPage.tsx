@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {ErrorBoundary} from "react-error-boundary";
 import {useNewAccountFormStore} from "../../../store/store";
 
@@ -24,9 +24,7 @@ const MoviesPage = () => {
         <MainContent>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             {createNewAccount ?
-              <FormCreateUserLogic/>
-              :
-              <MovieListSwitch/>
+              <FormCreateUserLogic/> : <MovieListSwitch/>
             }
           </ErrorBoundary>
         </MainContent>

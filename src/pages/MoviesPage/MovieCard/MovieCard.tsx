@@ -17,21 +17,16 @@ import {MovieCardHidden} from "../MovieCardHidden/MovieCardHidden";
 import {ButtonRemove} from "../ActionButtons/ButtonRemove";
 import {ButtonAdd} from "../ActionButtons/ButtonAdd";
 import {ButtonBookmark} from "../ActionButtons/ButtonBookmark";
+import {ButtonSendBack} from "../ActionButtons/ButtonSendBack";
 
 interface MovieCardProps {
   movie: MovieData,
   canBeCollapsed?: boolean,
   hasActionButtons?: boolean,
   hasCardShadow?: boolean,
-  handleMoveToAddedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
-  handleMoveToRemovedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
   dataTestID?: string,
   movieCardId?: string
 }
-
-// handleMoveToAddedList and handleMoveToRemovedList need to be prop drilled even deeper into the
-// ButtonAdd and ButtonRemove components.
-// TO DO: Find another way to pass these handlers to the ButtonAdd and ButtonRemove components
 
 function MovieCard({
                      children,
@@ -92,7 +87,7 @@ function MovieCard({
                 <ButtonGroup role="primary" movieId={_id} buttonActivationSettings={buttonActivationSettings}>
                     <ButtonAdd />
                     <ButtonRemove />
-                  {/* TO DO: <ButtonAlreadySeen />*/}
+                    {/* TO DO: <ButtonAlreadySeen />*/}
                 </ButtonGroup>
             }
             {buttonActivationSettings.isSecondaryButtonDisplayed() &&
@@ -104,8 +99,9 @@ function MovieCard({
       }
 
       {(watchlistNameAdded || watchlistNameRemoved) &&
+        buttonActivationSettings.isSecondaryButtonDisplayed() &&
           <ButtonGroup role="primary" buttonActivationSettings={buttonActivationSettings}>
-            {/*TO DO: <ButtonSendBack />*/}
+              <ButtonSendBack/>
           </ButtonGroup>
       }
     </>

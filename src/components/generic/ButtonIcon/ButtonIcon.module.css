@@ -1,0 +1,10 @@
+.buttonIconMedium {
+    composes: NotoEmoji from "../../../assets/stylesheets/index.css";
+    font-size: 1rem;
+    margin-right: 0.25rem;
+}
+
+.buttonIconBold {
+    composes: NotoEmojiBold from "../../../assets/stylesheets/index.css";
+    font-size: 0.90rem;
+}

@@ -24,11 +24,21 @@
   font-style:  normal;
 }
 
+/* Available emojis in this subset: 👍, 👎, 👇, 👈, 👀, ✅ */
 @font-face {
   font-family: 'Noto Emoji';
   src:         url("https://s3.eu-central-1.amazonaws.com/truetaleof.com/NotoEmoji-Medium-subset.woff2") format("woff2");
 
   font-weight: 500;
+  font-style:  normal;
+}
+
+/* Available emojis in this subset: 📌 */
+@font-face {
+  font-family: 'Noto Emoji';
+  src:         url("https://s3.eu-central-1.amazonaws.com/truetaleof.com/NotoEmoji-Bold-subset.woff2") format("woff2");
+
+  font-weight: 700;
   font-style:  normal;
 }
 
@@ -113,6 +123,11 @@ button {
 .NotoEmoji {
   font-family: "Noto Emoji", sans-serif;
   font-weight: 500;
+}
+
+.NotoEmojiBold {
+  font-family: "Noto Emoji", sans-serif;
+  font-weight: 700;
 }
 
 ::-webkit-scrollbar {

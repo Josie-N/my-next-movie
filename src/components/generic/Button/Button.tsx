@@ -6,7 +6,8 @@ import styles from './Button.module.css';
 import {useStore} from "../../../store/store";
 import getMovieListConfiguration from "../../../pages/MoviesPage/utils/movieListConfiguration";
 import useQueryList from "../../../hooks/useQueryList";
-import {ButtonLabel} from "../../../constants/constants";
+import {ButtonLabel, Emoji} from "../../../constants/constants";
+import {ButtonIcon} from "../ButtonIcon/ButtonIcon";
 
 interface ButtonEventHandlers {
   handleButtonClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -17,6 +18,7 @@ interface ButtonEventHandlers {
 interface ButtonAppearance {
   hasIcon?: boolean,
   icon?: string,
+  isIconBold?: boolean,
   hasLoadingIcon?: boolean,
   variant: "base" | "text" | "outlined" | "contained" | "contained-secondary",
 }
@@ -31,7 +33,8 @@ interface ButtonProps extends ButtonEventHandlers, ButtonAppearance {
 function Button({
                   ariaLabel,
                   hasIcon = false,
-                  icon,
+                  icon = "",
+                  isIconBold = false,
                   hasLoadingIcon = false,
                   type = 'button',
                   handleButtonClick,
@@ -74,8 +77,8 @@ function Button({
         </>
         :
         <>
-          {hasIcon ? <span className={styles.buttonIcon}>{icon}</span> : null}
-          <span className={styles.test}>{children}</span>
+          {hasIcon ? <ButtonIcon icon={icon} isIconBold={isIconBold} /> : null}
+          {children}
         </>
       }
     </button>

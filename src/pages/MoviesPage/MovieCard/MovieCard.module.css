@@ -83,30 +83,18 @@
   opacity: 0.75;
 }
 
+/* Highlight styles */
+
 .movieCardShadow__forMainActions {
   composes: movieCardShadow;
 
-  /* FEEDBACK: TOO BRIGHT AND LOUD, NEED SOMETHING A BIT MORE SUBTLE TO GO WITH THE PINK */
-  /* I like this one */
-  background: #32DE8A;
-
-  /* For 'send back' button movie card shadow */
-  background: #1B98E0;
-
+  background: #97EAD2;
   transition: background 0.4s ease;
 }
 
 .movieCardShadow__forSecondActions {
   composes: movieCardShadow;
 
-  /* THIS ONE IS GOOD, KEEP IT */
   background: #F9CFF2;
-
   transition: background 0.4s ease;
 }
-
-/*.bookmarkIconContainer {*/
-/*  position: absolute;*/
-/*  left: -74px;*/
-/*  top: -8px;*/
-/*}*/

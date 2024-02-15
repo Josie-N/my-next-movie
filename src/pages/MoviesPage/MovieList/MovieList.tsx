@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 
 import {numberOfMoviesPerPage} from "../../../constants/constants";
 import {Movies} from "../../../types/Movies";
@@ -11,11 +11,9 @@ import {MovieCardContent} from '../MovieCardContent/MovieCardContent';
 
 type MovieListProps = {
   movies: Movies,
-  handleMoveToAddedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
-  handleMoveToRemovedList?: (_id: string, event: React.MouseEvent<HTMLButtonElement>) => void,
 }
 
-const MovieList = ({movies, handleMoveToAddedList, handleMoveToRemovedList}: MovieListProps) => {
+const MovieList = ({movies}: MovieListProps) => {
   return (
     <div aria-live="polite">
       {movies.data.map((movie, movieCardIndex) => {
@@ -32,10 +30,8 @@ const MovieList = ({movies, handleMoveToAddedList, handleMoveToRemovedList}: Mov
             <MovieCard
               movie={movie}
               canBeCollapsed
-              hasPrimaryActionButtons
+              hasActionButtons
               hasCardShadow
-              handleMoveToAddedList={handleMoveToAddedList}
-              handleMoveToRemovedList={handleMoveToRemovedList}
               dataTestID="cy-movie-card"
               movieCardId={`card-index-${movieCardIndex}`}
             >

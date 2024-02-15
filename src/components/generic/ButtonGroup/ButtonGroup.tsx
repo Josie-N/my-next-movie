@@ -16,17 +16,17 @@ interface ButtonGroupProps {
 
 function ButtonGroup({children, role, movieId, buttonActivationSettings}: ButtonGroupProps) {
   const cn = classNames.bind(styles);
-  const buttonStyle = cn({
-    "contained": role === "primary",
-    "contained-secondary": role === "secondary"
-  });
-
   const buttonGroupStyle = cn({
         "buttonGroup__primary": role === "primary",
         "buttonGroup__secondary": role === "secondary"
   });
 
-    // Clone each child element and pass additional props to them
+  const buttonStyle = cn({
+    "contained": role === "primary",
+    "contained-secondary": role === "secondary"
+  });
+
+  // Clone each child element and pass additional props to them
     const childrenWithProps = React.Children.map(
       children,
       child => {

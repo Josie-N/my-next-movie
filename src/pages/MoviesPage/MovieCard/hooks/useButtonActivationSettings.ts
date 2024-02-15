@@ -46,16 +46,20 @@ export default function useButtonActivationSettings() {
     },
 
     onCardMouseEnter: () => {
-      setButtons({
-        ...buttons,
-        isCardHovered: true,
+      setButtons(prevState => {
+        return {
+          ...prevState,
+          isCardHovered: true,
+        }
       });
     },
 
     onCardMouseLeave: () => {
-      setButtons({
-        ...buttons,
-        isCardHovered: false,
+      setButtons(prevState => {
+        return {
+          ...prevState,
+          isCardHovered: false,
+        }
       });
     },
 
@@ -117,9 +121,11 @@ export default function useButtonActivationSettings() {
     },
 
     onPrimaryButtonClick: () => {
-        setButtons({
-          ...buttons,
-          isPrimaryButtonPressed: true
+        setButtons(prevState => {
+          return {
+            ...prevState,
+            isPrimaryButtonPressed: true
+          }
         });
     },
   }};
